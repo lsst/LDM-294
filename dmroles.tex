@@ -1,0 +1,132 @@
+\section{Roles in Data Management}
+
+There are many roles listed in \figref{fig:dmorg}, this section enumerates responsibilities going with those roles. 
+
+
+\subsection{DM Project Manager \label{role:dmpm}}
+
+The DM Project Manager is responsible for the efficient coordination of all LSST activities and responsibilities assigned to the Data Management Subsystem. The DM Project Manager has the responsibility of establishing the organization, resources, and work assignments to provide DM solutions.  The DM Project Manager, serves as the DM representative in the LSST Project Office and in that role is responsible for presenting DM initiative status and submitting new DM initiatives for approval consideration. Ultimately, the DM Project Manager, in conjunction with his / her peer Project Managers (Telescope, Camera), is responsible for delivering an integrated LSST system. The DM Project Manager reports to the LSST Project Manager. Specific responsibilities include:
+
+\begin{itemize}
+\item Manage the overall DM System
+\item Define scope and funding for DM System 
+\item Develop and implement the DM project management and control process, including earned value management
+\item Approve the DM Work Breakdown Structure (WBS), budgets and resource estimates
+\item Approve or execute as appropriate all DM outsourcing contracts 
+\item Convene and/or participate in all DM reviews
+\item Co-Chair the DM Leadership Team
+\end{itemize}
+
+\subsection{DM Project Scientist \label{role:dmps} }
+The DM Project Scientist has ultimate responsibility for ensuring DM initiatives provide solutions that meet the overall LSST scientific and technical requirements.  The DM Project Scientist must ensure correct specification of DM Scientific Requirements and proper translation of those requirements into derived information technology requirements and ultimately, into implemented solutions.  The DM Project Scientist must ensure that the DM subsystem is properly scoped and integrated within the overall LSST system.  The DM Project Scientist is also a member of the LSST Project Science Team (PST) and reports to the LSST Director. Specific responsibilities include:
+
+\begin{itemize}
+\item Responsible for the science deliverables of the DM System
+\item Set requirements for the DM that:
+\begin{itemize}
+\item Ensure that the design and operational flow of the data products meet the needs of the science community
+\item Ensure that the quality requirements of the data products will be / are being met by the DMS, with a particular emphasis on choice of appropriate application algorithms
+\end{itemize}
+\item Set requirements for and assess/validate results of Data Challenges and other precursor experiments
+\item Set requirements and assess/validate results for Data Releases
+\item Convene and/or participate in all DM reviews
+\item Co-Chair the DM Leadership Team and Science/Architecture Team
+\end{itemize}
+
+\subsection{ Project Controller/Scheduler \label{role:pcon}}
+Keep AGILE plan in sync with the overall LSST planning (primavera), track milestones from TCAMS \secref{role:tcam}. 
+Help TCAMS with building the plan from the milestones tracking dependencies and keeping it up to date. 
+
+Help set up sprint - points available (start/end day, account for holidays etc.) 
+Bug team in general about story status in sprints and their tracking status (points spent).
+
+Create reports and gannt charts for the DM Project Manager as needed \secref{role:dmpm}
+\subsection{Technical Control/Account Manager (TCAM) \label{role:tcam} }
+Accountable for planning and execution in their area. Reporting to the DM Project Manager \secref{role:dmpm}. In AGILE could also be seen as the SCRUM Master for the local team.
+
+\subsection{ Product Owner \label{role:prodo }}
+The product owner, aka. the X scientist (where X is the product e.g. Alerts Production), is responsible for the product quality and acceptance. 
+The product owner should sign off on the requirements to be fulfilled in every delivery and therefore also on any descopes or enhancements. 
+The Product owner should define tests which can be run to prove a delivery meets the requirements due for that product. 
+
+\subsection{Pipeline Scientist \label{role:pipe }}
+Several DM products come together to form the LSST pipeline. The Pipeline Scientist is the product owner for the overall pipeline. 
+The Pipeline Scientist should :
+\begin{itemize}
+\item  Provide guidance and test criteria for the full pipeline including how QA is done on the products.  
+\item Keep the big picture of where the codes are going in view. Predominantly the algorithms, but also the implementation and architecture (as part of the System Engineering Team \secref{sect:sysengt}).
+
+
+\item Advise on how we should attack algorithmic problems,  
+providing continuing advice to subsystem product owners as we try new things. 
+
+\item Advise on calibration issues, provide understanding of the detectors from a DM point of view. 
+
+\item Advise on the overall (scientific) performance of the system, and how we'll test it.  Thinking about all the small things that we have to get right to make the overall system good.
+
+
+
+\end{itemize}
+
+
+\subsection{System Engineer \label{role:sysengineer }}
+With the system engineering team \secref{sect:sysengt} 
+ the System engineer 
+ owns the DM entries in the risk register and is generally in charge or the {\em process} of building DM products. 
+
+The System engineer  
+is responsible for the requirements work:
+\begin{itemize}
+\item E.g., updating the DMSR, OSS, LSR (including traceability)
+\item Ensure we’re appropriately modelling and recording information about the system (e.g.,
+    drawings, design documents, etc.)
+\item Overseeing work on ICDs, lower level requirements documents, etc.
+\item Ensuring we have a solid verification plans/standards across the board in DM
+\end{itemize}
+
+The System Engineer is responsible for the process to define \& maintain DM interfaces
+\begin{itemize}
+\item Defining standards for and ensuring internal interfaces are identified and worked out
+\item Direct Interface Scientist's work on external ICDs
+\end{itemize}
+
+The System Engineer shall Chair the DM Technical Control Team \secref{sect:tct}
+\begin{itemize}
+\item Organise TCT processes so our change control process runs smoothly
+\item Shepherd RFCs through change control
+\item Monitor + Flag RFCs requiring TCT attention
+\item Call up meetings, make sure decisions are made, and recorded
+\end{itemize}
+
+The System Engineer represents DM on the CCB
+\begin{itemize}
+\item Shepherd DM’s CRs through the CCB
+\item Serve as the Point of Contact for DM on the CCB
+\end{itemize}
+
+\subsection{Requirements Engineer \label{role:reqeng }}
+With the system engineering team \secref{sect:sysengt} and in close coordination with the software architect (\secref{role:softarc} and the system engineer \secref{role:sysengineer} look after the baseline requirements for DM.. 
+
+
+\subsection{Operations Architect \label{role:optarc }}
+How do we deploy and run everything .. Ops Architect will help us find out. 
+
+
+\subsection{Software Architect \label{role:softarc }}
+The software architect looks after the software we are building. How does it all fit together are their techniques/technologies we should be using. How can we minimise dependencies. 
+
+With the \secref{role:sysengineer} the Software architect should also agree how to track requirements to code and verify requirements are i.e. are hooks required in the code ?
+\subsection{Operations Architect \label{role:sysarc }}
+The DM System Architect is responsible for ensuring that all elements of the DM systems, including operations teams, infrastructure, middle ware, applications, and interfaces, i
+come together to form an operable system. 
+Specific responsibilities include:
+\begin{itemize}
+\item Setting up and coordinating  Operations Rehearsals
+\item Ensuring Readiness of procedures and personnel for Operations
+\item Set standards for operations e..g procedure handling and operator logging
+\item Participate in stakeholder and end user coordination and approval processes and reviews
+\item Member of the LSST System Engineering Team
+\end{itemize}
+
+
+%\subsection{ \label{role: }}

@@ -1,0 +1,61 @@
+\documentclass[DM,lsstdraft,SDP]{lsstdoc}
+%Replace the CUx here and all \CU will resolve below.
+
+\usepackage{gwp}
+\usepackage{risk}
+
+\begin{document}
+
+\title  {Data Management Organization and Managment }
+\setDocTitle[DM PMP] {}
+
+\author   {William O'Mullane, Mario Juric, Jeffrey P Kantor,  Tim Axelrod,  Roberta Allsman}                % the author(s) \setDocApprove  {LSST Project Oeefice}              % approval by ...
+\setDocRef      {LDM-294} % the reference code
+\setDocIssue    {2}                        % the issue
+\setDocRevision {2}                        % the revision
+\setDocDate     {\today}              % the date of the issue
+\setDocStatus   {draft}                    % the document status
+
+%
+% a short abstract
+%
+\setDocAbstract {This is the DM plan updaed from the v2 of 2014.
+   It covers the organisation and managemnt of DM for LSST.}
+
+\setDocCompact{true}
+
+%
+% the title page
+%
+\maketitle
+
+%
+%   Revision history
+%
+\begin{docHistory}
+\addtohist{1}{2004-06-23}{Initial version} {JK}
+\addtohist{2}{2015-03-11}{Updated with new RFC process, realignment of TCT, SAT, DMLT - other versions in between}{JK}
+\addtohist{2}{2017-01-09}{Update in TeX}{WOM,MJ}
+\end{docHistory}
+
+%
+%   TOC
+%
+\newpage
+\setcounter{tocdepth}{3}
+\tableofcontents
+\newpage
+
+%
+% It's all yours from here on
+%
+\input{intro}
+\input{dmorg}
+\input{probman}
+\input{positions}
+
+\appendix
+\input{DDMP}
+\input{precon}
+\input{refs}
+\end{document}
