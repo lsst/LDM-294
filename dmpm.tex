@@ -1,5 +1,5 @@
-\subsection {Document Management}
-DM documents will follow the System Engineering Guidelines of LSST. PDF versions of released documents shall be put in Docushare. 
+\subsection {Document Management} \label{sect:docman}
+DM documents will follow the System Engineering Guidelines of LSST. PDF versions of released documents shall be put in Docushare in accordance with the project Document management plan \citell{LPM-51}.
 
 The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive but gives a high level orientation for the main documents in DM and how they relate to each other.
 
@@ -10,6 +10,19 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \end{center}
 \end{figure}
 
-\subsection {Configuration Control }
-\subsection {Risk Management }
-\subsection {Product Assurance  }
+
+\subsubsection{Draft Documents}
+Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the {\em released } version which should match the version on docushare. 
+
+In addition each repository will be included as a {\em submodule} of a single dm-docs git repository namely\url{https://github.com/lsst-dm/dm-docs}. 
+
+An LSST document class fro LaTeX is provided for TeX documents, to use this texmf must be set up to include the texmf folder form the repository. See \url{https://github.com/lsst/lsst-texmf/} to set this up. 
+
+\subsection {Configuration Control } \label{sect:config}
+\subsection {Risk Management } \label{sect:risk}
+
+Risks will be dealt with within the project framework defined in \citell{LPM-20}, the specific DM process for risk assessment is defined in \citell{LDM-512}.
+
+
+\subsection {Quality Assurance  } \label{sect:pa}
+In accordance with the project QA plan \citell{LPM-55} ..
