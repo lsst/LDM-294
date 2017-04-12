@@ -15,12 +15,17 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the {\em released } version which should match the version on docushare. 
 
 In addition each repository will be included as a {\em submodule} of a single dm-docs git repository namely\url{https://github.com/lsst-dm/dm-docs}. 
+\footnote{Use of Google Docs or confluence is tolerated but final delivered documents should look like LSST docs so either done with TeX or Word Templates. The Google doc or Confluence page should then be erased with a pointer to the baseline document. This should be in github.}
 
 An LSST document class fro LaTeX is provided for TeX documents, to use this texmf must be set up to include the texmf folder form the repository. See \url{https://github.com/lsst/lsst-texmf/} to set this up. 
 
-End user documentaiton will most likely and approriately be web based and the scheme for that is described in \citeyearpar{LDM-493}
+End user documentation will most likely and appropriately be web based and the scheme for that is described in \citeyearpar{LDM-493}.
+
 
 \subsection {Configuration Control } \label{sect:config}
+Configuration control of documents is dealt with in \secref{sect:docman}. Here we consider more the operational systems and software configuration control. 
+\subsubsection{Software Configuration Control}
+
 \subsection {Risk Management } \label{sect:risk}
 
 Risks will be dealt with within the project framework defined in \citell{LPM-20}, the specific DM process for risk assessment is defined in \citell{LDM-512}.
@@ -28,3 +33,7 @@ Risks will be dealt with within the project framework defined in \citell{LPM-20}
 
 \subsection {Quality Assurance  } \label{sect:pa}
 In accordance with the project QA plan \citell{LPM-55} ..
+
+\subsection {Verification and Validation } \label{sect:vanv}
+We intend to verify and validate as much of DM as we can before commissioning and operations. This will be achieved through testing and
+operations rehearsals/data challenges. The Verification and Validation approach is detailed in \citeyearpar{LDM-503}
