@@ -25,6 +25,25 @@ End user documentation will most likely and appropriately be web based and the s
 \subsection {Configuration Control } \label{sect:config}
 Configuration control of documents is dealt with in \secref{sect:docman}. Here we consider more the operational systems and software configuration control. 
 \subsubsection{Software Configuration Control}
+{\bf We should have a configuration management plan covering this.} \\
+
+DM follows a regular gitflow based on public git repositories and the approach is covered in the developer Guide \url{https://developer.lsst.io/}.
+The master branch is the stable code with development done in {\em ticket} branches (named with the id of the corresponding Jira Ticket describing the work. Once reviewed a branch is merged to master.\footnote{LSE-14 seem out of date and should be updated or revoked - titled a guideline it seems inappropriate as an LSE.}
+
+As we approach commissioning and operations DM will have a much stricter configuration control. At this point there will be a version of the software which may need urgent patching, a
+next candidate release version of the software, and the master. A patch to the operational version
+will require the same fix to be made in the two other versions. Th's role of the Configuration Control Board (CCB) becomes very important at this point to ensure only essential fixes make it to the live system as patches and that required features are included in planned releases.
+
+
+We  can not escape the fact that we  will have multiple code branches to maintain in operations which will lead to an increase in work load.
+Hence one should consider that perhaps more manpower may be needed in commissioning to cope with urgent
+software fixes while continuing development. The other consideration would be that features to
+be developed post commissioning will probably be delayed more than one may think, as maintenance will take priority.\footnote{WOM identifies this as the maintenance surge.}
+
+\subsubsection{Hardware Configuration Control}
+On the hardware side we have multiple configurable items, we need to control which versions of software are on which machines. These days tooling like Puppet make this reasonably painless. Still the configuration  must be carefully controlled to ensure reproducible deployments providing correct and reproducible results. The exact set of released software and other tools on each system should be held in a configuration item list. 
+Changes to the configuration should be endorsed by the CCB. 
+
 
 \subsection {Risk Management } \label{sect:risk}
 
