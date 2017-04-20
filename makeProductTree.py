@@ -39,7 +39,7 @@ def doFile(inFile ):
                         else:
                             sibs=[];
                         sibs.append(part[0])
-                        sibcount[part[0]]=count
+                        sibcount[part[0]]=dcount
                         child[pa]=sibs
                         if (len(sibs)==1) : # first child ti the right
                             fout.write("right=15mm of "+pa) 
@@ -51,10 +51,11 @@ def doFile(inFile ):
                                 dist=1
                             else:
                                 dist = 13 * (dcount - sibcount[prev] )
+                                print part[0] + " Parent:"+pa + " dist "+ str(dist) +" prev:"+prev + " sibcount:"+ str(sibcount[prev ]) + "dcount:"+str(dcount)
                                 sibcount[prev] = dcount
                             fout.write("below="+str(dist)+"mm of "+prev) 
                         fout.write("] {\\textbf{"+part[1]+"}}; \n")
-                        fout.write(" \draw[pline] ("+part[0]+".west) -| ("+pa+".east);\n ")
+                        fout.write(" \draw[pline] ("+pa+".east) -| ++(0.4,0)  |- ("+part[0]+".west);\n ")
                     else:
                         fout.write(part[0]+ " no parent \n");
         footer(fout)
@@ -91,7 +92,7 @@ def header(fout):
      fout.write("\usetikzlibrary{backgrounds,calc}")
      fout.write("\n")
 
-     fout.write("\usepackage[paperwidth=31cm,paperheight=60cm,")
+     fout.write("\usepackage[paperwidth=25cm,paperheight=50cm,")
      fout.write("\n")
      fout.write("left=-2mm,top=3mm,bottom=0mm,right=0mm,")
      fout.write("\n")
