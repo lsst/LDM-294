@@ -5,9 +5,6 @@
 import os
 import fileinput
 
-
-
-
 def doFile(inFile ):
 	"This processes a csv and produced a  tex tree diagram."
 	count =0
@@ -16,7 +13,7 @@ def doFile(inFile ):
         sibcount = dict();
         child = dict();
 	f=inFile 
-	nf = f.replace(".csv",".tex")
+	nf = "ProductTree.tex"
 	print "Processing " + f  +"-> "+ nf 
 	fin = open (f,'r')  	
 	fout = open (nf,'w')  	
@@ -29,8 +26,6 @@ def doFile(inFile ):
                 if (count==1) : # root node
                     fout.write("\\node ("+part[0]+") [wbbox]{\\textbf{"+part[1]+"}}; \n");
                 else:
-                    #ind = len(parent) - 1
-                    #if ind>=0 and parent[ind]==part[2]:
                     pa=part[2]
                     if pa <> "":
                         fout.write("\\node ("+part[0]+") [pbox,")
@@ -41,21 +36,22 @@ def doFile(inFile ):
                         sibs.append(part[0])
                         sibcount[part[0]]=dcount
                         child[pa]=sibs
-                        if (len(sibs)==1) : # first child ti the right
+                        if (len(sibs)==1) : # first child t0 the right
                             fout.write("right=15mm of "+pa) 
-                            parent=pa;
                         else : # benetih the sibling
                             dcount = dcount +1
                             prev = sibs[len(sibs)-2]
+                            print part[0] + " Parent:"+parent+" pa:"+pa + " prev:"+prev + " sibcount:"+ str(sibcount[prev ]) + "dcount:"+str(dcount)
                             if (pa == parent):
                                 dist=1
                             else:
-                                dist = 13 * (dcount - sibcount[prev] )
-                                print part[0] + " Parent:"+pa + " dist "+ str(dist) +" prev:"+prev + " sibcount:"+ str(sibcount[prev ]) + "dcount:"+str(dcount)
+                                dist = 9 * (dcount - sibcount[prev] -1 )
                                 sibcount[prev] = dcount
+                            print part[0] + " dist "+ str(dist) +" prev:"+prev 
                             fout.write("below="+str(dist)+"mm of "+prev) 
                         fout.write("] {\\textbf{"+part[1]+"}}; \n")
                         fout.write(" \draw[pline] ("+pa+".east) -| ++(0.4,0)  |- ("+part[0]+".west);\n ")
+                        parent=pa;
                     else:
                         fout.write(part[0]+ " no parent \n");
         footer(fout)
@@ -92,7 +88,7 @@ def header(fout):
      fout.write("\usetikzlibrary{backgrounds,calc}")
      fout.write("\n")
 
-     fout.write("\usepackage[paperwidth=25cm,paperheight=50cm,")
+     fout.write("\usepackage[paperwidth=25cm,paperheight=150cm,")
      fout.write("\n")
      fout.write("left=-2mm,top=3mm,bottom=0mm,right=0mm,")
      fout.write("\n")
@@ -115,7 +111,7 @@ def header(fout):
      fout.write("\n")
 
      fout.write("\\tikzstyle{wbbox}=[rectangle, rounded corners=3pt, draw=black, top color=blue!50!white, bottom color=white, very thick, minimum height=12mm, inner sep=2pt, text centered, text width=30mm] \n")
-     fout.write("\\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top color=yellow!50!white, bottom color=white, very thick, minimum height=12mm, inner sep=2pt, text centered, text width=30mm] \n")
+     fout.write("\\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top color=yellow!50!white, bottom color=white, very thick, minimum height=7mm, inner sep=2pt, text centered, text width=35mm] \n")
      fout.write("\\tikzstyle{pline}=[-, thick]")
 
 
