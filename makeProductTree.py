@@ -4,61 +4,98 @@
 
 import os
 import fileinput
+from treelib import Node, Tree
+
+class Product(object): 
+    def __init__(self, id, name, parent, desc, manager, owner): 
+        self.id = id
+        self.name = name
+        self.parent = parent
+        self.desc = desc
+        self.manager=manager
+        self.owner=owner
+
+def constructTree(fin ):
+    "Read the tree file and ocntrcut a tree structure"
+    count=0
+    ptree = Tree()
+    for line in fin :
+        if line.startswith(",,,,") or line.startswith("id,Item,"):
+                continue
+        count= count + 1
+        part=line.split(","); #id,prod, parent, descr ..
+        
+        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5])
+        #print "Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
+        if (count==1) : # root node
+            ptree.create_node(prod.id, prod.id, data=prod)
+        else:
+            #print "Creating node:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
+            if prod.parent <> "":
+                ptree.create_node(prod.id,prod.id,data=prod, parent=prod.parent)
+            else:
+                fout.write(part[0]+ " no parent \n")
+
+    print  str(count) + " Product lines \n"
+    return ptree;
+
+def outputTexTree(fout, ptree ):
+    fnodes=[];
+    nodes=ptree.expand_tree()
+    count=0
+    prev=Product("n","n","n","n","n","n")
+    for n in  nodes:
+        prod = ptree[n].data
+        fnodes.append(prod)
+        depth=ptree.depth(n)
+        count=count+1
+        #print str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
+        if (count==1) : # root node
+            fout.write("\\node ("+prod.id+") [wbbox]{\\textbf{"+prod.name+"}}; \n");
+        else:
+            fout.write("\\node ("+prod.id+") [pbox,")
+            if (prev.parent <> prod.parent) : # first child to the right
+                found=0
+                scount=count-1
+                while found==0 and scount>0:
+                    scount=scount-1
+                    found =  fnodes[scount].parent==prod.parent
+                if  scount<=0 :  # first sib can go righ of parent
+                    fout.write("right=15mm of "+prod.parent) 
+                else: #Figure how low to go  - find my prior sibling
+                    psib=fnodes[scount];
+                    depth=len(ptree.leaves(psib.id))
+                    diff = count - scount
+                    dist=depth*9
+                    print "Depth:"+str(depth)+" dist:"+str(dist) + " diff:"+str(diff)
+                    fout.write("below="+str(dist)+"mm of "+psib.id) 
+            else : # benetih the sibling
+                dist=1
+                fout.write("below="+str(dist)+"mm of "+prev.id) 
+            fout.write("] {\\textbf{"+prod.name+"}}; \n")
+            fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
+        prev=prod;
+    print  str(count) + " Product lines in TeX \n"
+    return
 
 def doFile(inFile ):
 	"This processes a csv and produced a  tex tree diagram."
-	count =0
-        dcount=0
-        parent="";
-        sibcount = dict();
-        child = dict();
 	f=inFile 
 	nf = "ProductTree.tex"
 	print "Processing " + f  +"-> "+ nf 
 	fin = open (f,'r')  	
+        ptree=constructTree(fin)
+
+        #ptree.show(data_property="name")
 	fout = open (nf,'w')  	
         header(fout)
-	for line in fin :
-		if line.startswith(",,,,") or line.startswith("id,Item,"):
-			continue
-		count= count + 1
-		part=line.split(","); #id,prod, parent, descr ..
-                if (count==1) : # root node
-                    fout.write("\\node ("+part[0]+") [wbbox]{\\textbf{"+part[1]+"}}; \n");
-                else:
-                    pa=part[2]
-                    if pa <> "":
-                        fout.write("\\node ("+part[0]+") [pbox,")
-                        if (pa in child.keys()) :
-                            sibs=child[pa]
-                        else:
-                            sibs=[];
-                        sibs.append(part[0])
-                        sibcount[part[0]]=dcount
-                        child[pa]=sibs
-                        if (len(sibs)==1) : # first child t0 the right
-                            fout.write("right=15mm of "+pa) 
-                        else : # benetih the sibling
-                            dcount = dcount +1
-                            prev = sibs[len(sibs)-2]
-                            print part[0] + " Parent:"+parent+" pa:"+pa + " prev:"+prev + " sibcount:"+ str(sibcount[prev ]) + "dcount:"+str(dcount)
-                            if (pa == parent):
-                                dist=1
-                            else:
-                                dist = 9 * (dcount - sibcount[prev] -1 )
-                                sibcount[prev] = dcount
-                            print part[0] + " dist "+ str(dist) +" prev:"+prev 
-                            fout.write("below="+str(dist)+"mm of "+prev) 
-                        fout.write("] {\\textbf{"+part[1]+"}}; \n")
-                        fout.write(" \draw[pline] ("+pa+".east) -| ++(0.4,0)  |- ("+part[0]+".west);\n ")
-                        parent=pa;
-                    else:
-                        fout.write(part[0]+ " no parent \n");
+
+        outputTexTree(fout, ptree)
+
         footer(fout)
 	fout.close()
 	fin.close()
 
-	print str(inFile) + " ...." + str(count) + " Product lines \n"
 	return;
  # End DoDir
 
