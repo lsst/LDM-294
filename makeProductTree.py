@@ -6,6 +6,11 @@ import os
 import fileinput
 from treelib import Node, Tree
 
+#pt sizes for box + margin + gap between boex
+txtheight=20
+sep=2  # inner sep
+gap=4
+
 class Product(object): 
     def __init__(self, id, name, parent, desc, manager, owner): 
         self.id = id
@@ -44,6 +49,7 @@ def outputTexTree(fout, ptree ):
     nodes=ptree.expand_tree()
     count=0
     prev=Product("n","n","n","n","n","n")
+    blocksize=txtheight +gap + sep   # Text height  + the gap added to each one
     for n in  nodes:
         prod = ptree[n].data
         fnodes.append(prod)
@@ -64,14 +70,18 @@ def outputTexTree(fout, ptree ):
                     fout.write("right=15mm of "+prod.parent) 
                 else: #Figure how low to go  - find my prior sibling
                     psib=fnodes[scount];
-                    depth=len(ptree.leaves(psib.id))
-                    diff = count - scount
-                    dist=depth*9
-                    print "Depth:"+str(depth)+" dist:"+str(dist) + " diff:"+str(diff)
-                    fout.write("below="+str(dist)+"mm of "+psib.id) 
+                    leaves=ptree.leaves(psib.id)
+                    depth=len(leaves)
+                    lleaf=leaves[depth-1].data
+                    #print "Prev:"+prev.id + " psib:"+psib.id + " lleaf.parent:"+lleaf.parent
+                    if (lleaf.parent==psib.id): depth = depth -1 
+                    #if (prod.id=="L2") : depth=depth+1 # Not sure why this is one short .. 
+                    dist=depth* blocksize # the numbe rof leaves below my sibling
+                    #print prod.id+" Depth:"+str(depth)+" dist:"+str(dist) + " blocksize:"+str(blocksize)+ " siblin:"+psib.id
+                    fout.write("below="+str(dist)+"pt of "+psib.id) 
             else : # benetih the sibling
-                dist=1
-                fout.write("below="+str(dist)+"mm of "+prev.id) 
+                dist=gap
+                fout.write("below="+str(dist)+"pt of "+prev.id) 
             fout.write("] {\\textbf{"+prod.name+"}}; \n")
             fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
         prev=prod;
@@ -148,7 +158,7 @@ def header(fout):
      fout.write("\n")
 
      fout.write("\\tikzstyle{wbbox}=[rectangle, rounded corners=3pt, draw=black, top color=blue!50!white, bottom color=white, very thick, minimum height=12mm, inner sep=2pt, text centered, text width=30mm] \n")
-     fout.write("\\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top color=yellow!50!white, bottom color=white, very thick, minimum height=7mm, inner sep=2pt, text centered, text width=35mm] \n")
+     fout.write("\\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top color=yellow!50!white, bottom color=white, very thick, minimum height="+str(txtheight)+"pt, inner sep="+str(sep)+"pt, text centered, text width=35mm] \n")
      fout.write("\\tikzstyle{pline}=[-, thick]")
 
 
