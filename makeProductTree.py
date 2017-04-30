@@ -7,16 +7,18 @@ import fileinput
 from treelib import Node, Tree
 
 #pt sizes for box + margin + gap between boex
-txtheight=20
+txtheight=22
 sep=2  # inner sep
 gap=4
+WBS=1
 
 class Product(object): 
-    def __init__(self, id, name, parent, desc, manager, owner): 
+    def __init__(self, id, name, parent, desc, wbs, manager, owner): 
         self.id = id
         self.name = name
         self.parent = parent
         self.desc = desc
+        self.wbs = wbs
         self.manager=manager
         self.owner=owner
 
@@ -30,7 +32,7 @@ def constructTree(fin ):
         count= count + 1
         part=line.split(","); #id,prod, parent, descr ..
         
-        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5])
+        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5],part[6])
         #print "Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
             ptree.create_node(prod.id, prod.id, data=prod)
@@ -48,7 +50,7 @@ def outputTexTree(fout, ptree ):
     fnodes=[];
     nodes=ptree.expand_tree()
     count=0
-    prev=Product("n","n","n","n","n","n")
+    prev=Product("n","n","n","n","n","n","n")
     blocksize=txtheight +gap + sep   # Text height  + the gap added to each one
     for n in  nodes:
         prod = ptree[n].data
@@ -82,7 +84,12 @@ def outputTexTree(fout, ptree ):
             else : # benetih the sibling
                 dist=gap
                 fout.write("below="+str(dist)+"pt of "+prev.id) 
-            fout.write("] {\\textbf{"+prod.name+"}}; \n")
+            fout.write("] {")
+            if WBS ==1 and prod.wbs != "":
+                fout.write("{\\tiny \\color{gray}"+prod.wbs+"} ")
+                fout.write("\\newline")
+            fout.write("\\textbf{"+prod.name+"}")
+            fout.write("}; \n")
             fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
         prev=prod;
     print  str(count) + " Product lines in TeX \n"
@@ -98,7 +105,10 @@ def doFile(inFile ):
 
         #ptree.show(data_property="name")
 	fout = open (nf,'w')  	
-        header(fout)
+
+        width = ptree.depth() * 6 # cm
+        heigth = len(ptree.leaves()) * 1 # cm
+        header(fout,width,heigth)
 
         outputTexTree(fout, ptree)
 
@@ -111,7 +121,7 @@ def doFile(inFile ):
 
 
 
-def header(fout):
+def header(fout,pwidth,pheigth):
      fout.write("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
      fout.write("\n")
      fout.write("%")
@@ -135,7 +145,7 @@ def header(fout):
      fout.write("\usetikzlibrary{backgrounds,calc}")
      fout.write("\n")
 
-     fout.write("\usepackage[paperwidth=25cm,paperheight=150cm,")
+     fout.write("\usepackage[paperwidth="+str(pwidth)+"cm,paperheight="+str(pheigth)+"cm,")
      fout.write("\n")
      fout.write("left=-2mm,top=3mm,bottom=0mm,right=0mm,")
      fout.write("\n")
