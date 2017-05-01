@@ -40,7 +40,7 @@ DBB,Data Backbone,INFRA,Data Backbone System,,.,,,
 DTR,Transport/Repl,DBB,File and database transport and replication,,NCSA,JoelP,,
 GMDS,Global Metadata,DBB,Global metadata service,1.02C.06.02.05,DAX,FritzM,,
 PRVDB,Provenance DB,DBB,Provenance database,1.02C.06.01.01,DAX,FritzM,,
-INFRASYS,Infra Systems,INFRA,"Filesystems/ provisioning/monitoring systems and system management",,NCSA,JoelP,,
+INFRASYS,Infra Systems,INFRA,Filesystems/ provisioning/monitoring systems and system management,,NCSA,JoelP,,
 ITENV,IT Environments,DM,Computing and Storage Infrastructure including provisioning,,.,,,
 ITARC,Archive IT,ITENV,Archive IT Environments,,.,,,
 DEVENV,Dev Env,ITARC,Developer environment,,NCSA,JoelP,,
@@ -56,24 +56,24 @@ ITBASE,Base IT,ITENV,Base IT Environments,,.,,,
 BCTRENV,Base Center Env,ITBASE,Base Production Center environment,,NCSA,JoelP,,
 BDBBENV,Base DBB Env,ITBASE,Base Data Backbone endpoints and storage,,NCSA,JoelP,,
 BDACENV,Base DAC Env,ITBASE,Base DAC environment,,NCSA,JoelP,,
-NET,Networks,LSST,All Networks,"1.02C.07.04.03, 1.02C.0704.06, 1.02C.08.03, 1.04C.12.05","DM, TS",Kantor J,Multiple,Multiple
-NETDM,DM Networks,DM,Data Management Provided Networks,"1.02C.07.04.03, 1.02C.0704.06, 1.02C.08.03, ",DM,"Kantor J, Petravick D","Kantor J, Petravick D","Lambert R, Kollross M"
-NETBASE,Base network,NETDM,Base Local Area Network ,1.02C.07.04.03 (moving to 1.02C.08),NCSA (moving to AURA),Petravick D (moving to Kantor J),"Kantor J, Petravick D","Lambert R, Kollross M"
-NETARCH,Archive External Network,NETDM,Archive External Network,1.02C.07.04.06,NCSA,Petravick D,Wheeler D,Kollross M
+NET,Networks,LSST,All Networks,1.02C.07.04.03 1.02C.0704.06 1.02C.08.03 1.04C.12.05,DM TS,Kantor J,Multiple,Multiple
+NETCPL,Summit LAN,NET,Summit Local Area Network,1.04C.12.05,AURA,Kantor J,Kantor J,Lambert R
+NETDM,DM Networks,DM,Data Management Provided Networks,1.02C.07.04.03 1.02C.0704.06 1.02C.08.03 ,DM,Kantor J/ Petravick D,Kantor J/Petravick D,Lambert R/ Kollross M
 NETLHN,Long-Haul Networks,NETDM,Summit - Base/ Base - Archive/ US Networks,1.02C.08.03,AURA,Kantor J,Kantor J,Lambert R
-NETCHILE,Chilean National Networks,NETDM,Summit - Gatehouse La Serena - Gatehouse/ La Serena - Santiago Networks DWDM Equipment,1.02C.08.03.01,AURA REUNA Liello Telefonica,Kantor J,Kantor J,Lambert R
-NETLSSCL,La Serena - Santiago Network,NETCHILE,La Serena - Santiago Network,1.02C.08.03.01.01,"REUNA Telefonica",Kantor J,Kantor J,Lambert R
-NETLSAG,La Serena - AURA Gatehouse Network,NETCHILE,La Serena - AURA Gatehouse Network,1.02C.08.03.01.01A,REUNA Telefonica,Kantor J,Kantor J,Lambert R
+NETBASE,Base network,NETDM,Base Local Area Network ,1.02C.07.04.03 (moving to 1.02C.08),NCSA (moving to AURA),Petravick D (moving to Kantor J),Kantor J Petravick D,Lambert R Kollross M
+NETARCH,Arc Extl Net,NETDM,Archive External Network,1.02C.07.04.06,NCSA,Petravick D,Wheeler D,Kollross M
+NETCHILE,Chilean Nat,NETDM,Summit - Gatehouse La Serena - Gatehouse/ La Serena - Santiago Networks DWDM Equipment,1.02C.08.03.01,AURA REUNA Liello Telefonica,Kantor J,Kantor J,Lambert R
+NETLSSCL,La Ser - Santi ,NETCHILE,La Serena - Santiago Network,1.02C.08.03.01.01,REUNA Telefonica,Kantor J,Kantor J,Lambert R
+NETLSAG,La Serena Net,NETCHILE,La Serena - AURA Gatehouse Network,1.02C.08.03.01.01A,REUNA Telefonica,Kantor J,Kantor J,Lambert R
 NETCONS,Network Consulting,NETCHILE,Network Consulting,1.02C.08.03.01.02,REUNA Liello,Kantor J,Kantor J,Lambert R
-NETCPAG,Summit - AURA Gatehouse Network,NETCHILE,Summit - AURA Gatehouse Network,1.02C.08.03.01.03,AURA Telefonica,Kantor J,Kantor J,Lambert R
+NETCPAG,Summit Net,NETCHILE,Summit - AURA Gatehouse Network,1.02C.08.03.01.03,AURA Telefonica,Kantor J,Kantor J,Lambert R
 NETDWDM,DWDM Equipment,NETCHILE,DWDM Equipment,1.02C.08.03.01.04,AURA,Kantor J,Kantor J,Lambert R
-NETOPTG,Operating Costs during MREFC,NETCHILE,Operating Costs during MREFC,1.02C.08.03.05,AURA,Kantor J,Kantor J,Lambert R
-NETINTLUS,International and US WANs,NETDM,"International WAN/US WAN",1.02C.08.03.02,"AURA FIU/AmLight",Kantor J,Kantor J,Lambert R
-NET100G,Santiago - Miami 100 Gbps Ring,NETINTLUS,Santiago - Miami 100 Gbps Ring,1.02C.08.03.02.01,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
+NETOPTG,Ops in MREFC,NETCHILE,Operating Costs during MREFC,1.02C.08.03.05,AURA,Kantor J,Kantor J,Lambert R
+NETINTLUS,Int/US WANs,NETDM,International WAN/US WAN,1.02C.08.03.02,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
+NET100G,Miami 100 Gbps ,NETINTLUS,Santiago - Miami 100 Gbps Ring,1.02C.08.03.02.01,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
 NETMGT,Network Management,NETINTLUS,Network Management,1.02C.08.03.02.02,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NETSPEC,Santiago - Boca Raton Spectrum,NETINTLUS,Santiago - Boca Raton Spectrum,1.02C.08.03.02.03,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
+NETSPEC,Santiago - Boca ,NETINTLUS,Santiago - Boca Raton Spectrum,1.02C.08.03.02.03,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
 NETUSW,US National WAN,NETINTLUS,US National WAN,1.02C.08.03.02.01,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NETCPL,Summit Local Area Network,NET,Summit Local Area Network,1.04C.12.05,AURA,Kantor J,Kantor J,Lambert R
 L2,Level 2 System,DM,Level 2 System,,.,,,
 PRODEX,Production Exec,L2,Production Execution System,,.,,,
 CMPGN,Campaign Manager,PRODEX,Campaign Manager,,NCSA,JoelP,,
