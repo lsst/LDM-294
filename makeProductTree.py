@@ -39,7 +39,7 @@ def constructTree(fin ):
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
             #print "Creating node:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
-            if prod.parent <> "":
+            if prod.parent != "":
                 ptree.create_node(prod.id,prod.id,data=prod, parent=prod.parent)
             else:
                 fout.write(part[0]+ " no parent \n")
