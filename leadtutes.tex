@@ -1,6 +1,6 @@
 \section {Lead institutions in DM } \label{sect:leadtutes}
 \subsection {LSST Tucson}\label{sect:tucson}
-LSST in Tucson hosts he LSST project and for DM it hosts  the DM project manager (\secref{role:dmpm}) and the DM System Engineer (\secref{role:sysengineer}). The largest group for DM in Tucson is SQuaRE described below. 
+LSST in Tucson hosts the LSST project and for DM it hosts the DM Project Manager (\secref{role:dmpm}) and the DM System Engineer (\secref{role:sysengineer}). The largest group for DM in Tucson is SQuaRE described below.
 
 \subsubsection{DM Science Quality and Reliability Engineering (SQuaRE) Leads \label{sect:square}}
 The DM SQuaRE Leads are the SQuaRE Lead Scientist and the SQuaRE Technical Manager.  The primary organisational responsibility for this Tucson-led group is to provide scientific and technical feedback to the LSST DM Manager that demonstrates LSST/AURA DM is fulfilling its responsibilities as charged by the NSF with regards to quality and software performance and reliability.
@@ -15,9 +15,39 @@ As such, areas of activity include:
 
 In the event that SQuaRE identifies issues with the performance or future maintainability of the DM codebase, it brings them to the attention of the DM System Architect, who is ultimately responsible to decide who will address them and how. In the event that SQuaRE identifies issues with the quality of the data, it brings them to the attention of the DM Project Scientist.
 
-
 \subsection {Princeton University}\label{sect:princeton}
+
+Princeton University hosts the Pipelines Scientist (\secref{role:pipe}) and the Data Release Production group, described below.
+
+\subsubsection{Data Release Production \label{sect:drp}}
+
+The Data Release Production (DRP) group has three major areas of activity within DM.
+
+\begin{itemize}
+
+  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generated LSST's annual data releases;}
+
+  \item{Definition and implementation of the algorithms and pipelines which will be used to produce the ``calibration products'' (for example, flat fields, characterization of detector effects, etc) which will be used as inputs to the photometric calibration procedure in both nightly and annual data processing. This includes the development of the spectrophotometric data reduction pipeline for the Auxiliary Telescope;}
+
+  \item{Development, in conjunction with the Alert Production team (AP; \secref{sect:ap}), of a library of re-usable software libraries and components which form the basis of both the AP and DRP pipelines and which are made available to science users within the LSST Science Platform.}
+
+\end{itemize}
+
+Development of software in support of annual data releases and of reusable software components are carried out under the direction of the DRP Science Lead, who acts as product owner for this part of the system.
+The DRP Science Lead is ultimately responsible to both the Pipelines Scientist (\secref{role:pipe}) and DM Project Scientist (\secref{role:dmps}).
+
+The product owner for calibration products product is the LSST Calibration Scientist (who doubles as the Pipelines Scientist, \secref{role:pipe}).
+The Calibration Scientist liases with other LSST subsystems and with the products owners of the annual and nightly data processing pipelines to ensure that appropriate calibration products are available to those pipelines to enable them to meet specifications.
+
+Management of the group is the responsibility of the Science Pipelines T/CAM, reporting to the DM Project Manager (\secref{role:dmpm}).
+
+The DRP group is responsible for delivering software which adheres to the architectural and testing standard defined by the Software Architect (\secref{role:softarc}).
+In addition, the DRP group is responsible for testing each major product delivered to demonstrate its fitness for purpose, and working with the DM Project Scientist and DM System Science Team (\secref{sec:dmsst}) to define, run and analyze ``data challenges'' and other large scale tests to validate the performance of the data release production syste.
+
 \subsection {Washington University}\label{sect:uw}
+
+\subsubsection{Alert Production \label{sect:ap}}
+
 \subsection {Caltech IPAC}\label{sect:ipac}
 \subsection {SLAC}\label{sect:slac}
 \subsection {NCSA}\label{sect:ncsa}
