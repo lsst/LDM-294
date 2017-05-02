@@ -12,7 +12,7 @@ install:
   - git clone https://github.com/lsst-dm/images
 script:
   - export TEXMFHOME=./lsst-texmf/texmf
-  - rm LDM-294.pdf
+  - rm -f LDM-294.pdf
   - make
 after_success:
   - pip install -r deployment/requirements.txt
