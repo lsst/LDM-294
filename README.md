@@ -1,25 +1,19 @@
 # LDM-294
-DM management plan update in LaTex. 
+DM management plan update in LaTex.
 
-
-
-This is following a lsstdoc.cls. 
-You need the lsst-texmf in your TEXMFLOCAL to build it. 
+This document uses [`lsstdoc.cls`](https://lsst-texmf.lsst.io).
+You need the `lsst-texmf` files in your TEXMFHOME to build it.
 
 Clone this repo:
 
      https://github.com/lsst/lsst-texmf/
 
+then add the `texmf` folder  to TEXMFHOME environment variable in your bashrc or equivalent
 
-then add the texmf folder  to TEXMFLOCAL environment variable in your bashrc or equivalent
+    export TEXMFHOME=path-to-lsst-texmf/texmf
 
-    export TEXMFLOCAL=pathtolsst-texmf/texmf
+For the document to build there must be an images directory cloned from
 
+   https://github.com/lsst-dm/images
 
-then you must run 
-
-    mktexlsr
-
-After this tex will find all the cls files bibliography etc ..
-
-
+located in `../../`.
