@@ -12,23 +12,20 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \end{figure}
 
 
-{\bf Need a DOC tree for End User Documentaiton - Jonathan ?}
+{\bf Need a DOC tree for End User Documentaton - Jonathan ?}
 
 {\bf Need a DOC tree for Hardware/Services  - Margaret }
 
 \subsubsection{Draft Documents}
-Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the {\em released } version which should match the version on docushare. 
+Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the {\em released } version which should match the version on docushare. Each repository will be included as a {\em submodule} of a single git repository located at \url{https://github.com/lsst-dm/dm-docs}.
 
-In addition each repository will be included as a {\em submodule} of a single dm-docs git repository namely\url{https://github.com/lsst-dm/dm-docs}. 
-\footnote{Use of Google Docs or confluence is tolerated but final delivered documents should look like LSST docs so either done with TeX or Word Templates. The Google doc or Confluence page should then be erased with a pointer to the baseline document. This should be in github.}
+Use of Google Docs or confluence is tolerated but final delivered documents must conform to the standard LSST format, and hence either produced with LaTeX, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate LSST template \citedsp{Document-9224, Document-11920}. The precurosr document should then be erased with a pointer to the baseline document, stored in GitHub.
 
-An LSST document class for LaTeX is provided for TeX documents, to use this texmf must be set up to include the texmf folder form the repository. See \url{https://github.com/lsst/lsst-texmf/} to set this up. 
+End user documentation will most likely and appropriately be web based and the scheme for that is described in \citeds{LDM-493}.
 
-End user documentation will most likely and appropriately be web based and the scheme for that is described in \citeyearpar{LDM-493}.
+\subsection {Configuration Control} \label{sect:config}
+Configuration control of documents is dealt with in \secref{sect:docman}. Here we consider more the operational systems and software configuration control.
 
-
-\subsection {Configuration Control } \label{sect:config}
-Configuration control of documents is dealt with in \secref{sect:docman}. Here we consider more the operational systems and software configuration control. 
 \subsubsection{Software Configuration Control}
 {\bf We should have a configuration management plan covering this.} \\
 
