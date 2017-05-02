@@ -11,6 +11,10 @@
 *.cb
 *.cb2
 
+## Products (published by CI)
+LDM-294.pdf
+ProductTree.pdf
+
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
