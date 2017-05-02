@@ -7,5 +7,20 @@ matrix:
 before_install:
   - "sudo apt-get update && sudo apt-get install -y --no-install-recommends texlive-fonts-recommended texlive-latex-extra texlive-fonts-extra dvipng texlive-latex-recommended latexmk poppler-utils latex-xcolor lmodern texlive-xetex texlive-generic-recommended"
 script:
-  - rm LDM-294.pdf
+
+  - export TEXMFHOME=./lsst-texmf/texmf
+  - rm -f LDM-294.pdf
+
   - make
+after_success:
+  - pip install -r deployment/requirements.txt
+  - cp LDM-294.pdf deployment/_build/LDM-294.pdf
+  - cp ProductTree.pdf deployment/_build/ProductTree.pdf
+  - python deployment/build.py deployment/index.jinja2 deployment/_build/
+  - ltd-mason-travis --html-dir deployment/_build
+env:
+  global:
+    - LTD_MASON_BUILD=true
+    - LTD_MASON_PRODUCT="ldm-294"
+    - secure: "fqSjpqeC4Els8A4eKk0IXSGPvtSrLVMG0Z31b7UrwdTMOQRUJrLkka7fIxqaQCgRkNiLa1zDdtfQEaO/peuB4hbhI5l1uvL0WBCMYEetvVyDJOZy5gF2+gk4yT+67pUzbidVc/tybpV21qOeHjVR32S3S0KzuCQtafmd1d1W51Rr0ektNsyM9fFdq9wI8EECvPuArkHShYYVqp8lysJNoOywGKxbCYusk6XZbwYNBODEDmEosv9TtonqUfXJg2gIDo+QN9bQut1bWJgwPXB8bY1fhnNexUbMfnnkF/VwiYOdj+0S5YJdH1ne7oYfbLzKXGQllQDy8xp05pArjMr2O8pTZ4dCU6E+izK4NGBXh6dFS+rg53jKygJx/NbBsunpdzVSPnUYrv80WnAnd0I7rtBMcvW4sk76ezgaLcpzzkbEz+w1aLKnORRUTMKxrW0ccQF1zBRR2/MT2BgD2XdBTY8QuxZKj14HwXVIYnPnWowy4TwaSrafVQNNYDPIoj7TqmuokL5qlJi8iEQfNtKL8eUJzFdaVHNmeCCdg9Fck2zf5B0Vxzv+waWwStXZ0UxpGjrIrxkoHwY76rAhkDREoE/tJeCTwXHD0e+5aSObgnt+O0XVwBzS4qA4mdRsuLi/+oq5VqIhv767sLvh2Rdb/D3BNfU0jB7TctGlIcPVFno="
+    - secure: "DpHxUeTW5V6CJzckyvYFPctFd8Rpe9v+2Y/BHZwH79P5z3RM5C8FGLfeOC7buAPvLN9WOrMDaHylZKkcS4Q27F86tf7sELZj06QLM5oq+z+HtS0XoOFyBnzFGgXIphBkfB5bBEO4Tkc25/z58Cf2/eRppcm7ajqgQEgVRcTz/FN8Ut5uoUUbOs4h7G3RmUf2Andn8Mqua6tfC04hBn2y5kPEVN4hDch3h7TaRGA0HXf5xLzzblOPfMX+pKqLYcmEUMfyjXwbWtzQgmW4rVvNeB4r74IGHef7aS/Jy7U2lufKKM6kRS44zcrWzmOPlstBWlKScr11LEMG8sg302EtjDR5QxNoBC8YTqZuoyko7WQqb7uinTgDw3CSU4MKuJNPelC+Ke5VVOF0U1fve9hQjFGW86gc/chM1jnXDtZk48pnvn2jRlMRhOUW/ufL2pocJx9J5tin4azZ4JK0KtDCE39d8cpjATZY3FZNrYDck7F6mmIfUEv9a5Y67kpVrlEx8a77nthZqyxr5gL1Whf7MheXAzhkEW6olnoLTIZ7HcIc4SXkjnqjAGwYlbOllkgXQu8rFWKz6sr6xVzuwLA8GIbRCIgISGwhJbX3mHApAbaea50UsGSiQ1HSLhPDFa7XrgEDQvp2G4ONDPZsp5fzEKf1ZdZx+XfY9PLXIMcqeF4="
