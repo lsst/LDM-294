@@ -185,6 +185,7 @@ NBKENV,Notebook Env,SPLNBK,Basic notebook environment,1.02C.10.02.02.01,SQuaRE,F
 NBKSW,Notebook SW Env,SPLNBK,Notebook software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
 NBKACTIV,Notebook Activator,SPLNBK,Notebook Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
 NBKDPLY,Notebook Deploy,SPLNBK,Notebook deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
+NBKSUIT,Notebook SUIT Intf,SPLNBK,Notebook visualization widgets and other Notebook/Portal bridges ,1.02C.05.07.04,SUIT,Xiuqin Wu,,SW,
 DEVEL,Developer services,DM,Developer services,.,.,,,,
 DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
 CI,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
@@ -195,8 +196,9 @@ ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQu
 INTGTEST,Integration Test,DM,Automated integration and test services,,?,,,SW,
 PRECURSR,Precursor Data,DM,Precursor data for development and testing,,?,,,,obs_*/validation_data_*/testdata_*/afwdata
 SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform portal component,.,.,,,,
-VIS,Visualizers,SPLPRTL,Client-server query/visualization framework,1.02C.05.06 ,SUIT,Xuiqin Wu,,SW,firefly_client/display_*
-SUIACTIV,SUI Activator,SPLPRTL,SUI Activators,1.02C.05.07,SUIT,Xuiqin Wu,,SW,
-PRTLDAX,Portal Data Access,SPLPRTL,Portal data access Interfaces,1.02C.05.07,SUIT,Xuiqin Wu,,SW,
-PRTLAPPS,Portal Applications,SPLPRTL,Portal applications,1.02C.05.08,SUIT,Xuiqin Wu,,SW,
-PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces,1.02C.05.09,SUIT,Xuiqin Wu,,SW,
+FIREFLY,Firefly,SPLPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
+FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,firefly_client
+PRTLINTF,Portal Interfaces,SPLPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
+PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,
+PRTLAPPS,Portal Applications,SPLPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
+PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
