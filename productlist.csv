@@ -1,15 +1,15 @@
 id,Item,Parent,Description,WBS,Team,Manager,Product Owner,Package Owner
 DM,Data Management,,Data Management System,.,.,,,
 L1,Level 1 System,DM,Level 1 System,.,.,,,
-L1ONL,L1 OCS Devices,L1,Level 1 Online (OCS-connected),.,.,,,
-ARC,Archiver,L1ONL,Archiving Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-CARC,Catchup Archiver,L1ONL,Catch-up Archiving Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-EFDT,EFD Tranform,L1ONL,EFD Transformation Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-PRMPT,Prompt Proc,L1ONL,Prompt Processing Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-OCSBAT,OCS Batch Proc,L1ONL,OCS-Driven Batch Processing Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-TMG,Telem Gateway,L1ONL,Telemetry Gateway Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-HEADER,Header Generator,L1ONL,Header Generator Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
-POINTP,Pointing Publisher,L1ONL,Pointing Prediction Publishing Device,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+L1ONL,L1 OCS Components,L1,Level 1 Online (OCS-connected),.,.,,,
+ARC,Archiver,L1ONL,Archiving Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+CARC,Catchup Archiver,L1ONL,Catch-up Archiving Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+EFDT,EFD Tranform,L1ONL,EFD Transformation Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+PRMPT,Prompt Proc,L1ONL,Prompt Processing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+OCSBAT,OCS Batch Proc,L1ONL,OCS-Driven Batch Processing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+TMG,Telem Gateway,L1ONL,Telemetry Gateway Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+HEADER,Header Generator,L1ONL,Header Generator Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
+POINTP,Pointing Publisher,L1ONL,Pointing Prediction Publishing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,JimP
 L1OFFL,L1 Offline Proc,L1,L1 Offline Processing System,,NCSA,Joel Plutchak,,
 L1SCI,L1 Science Payloads,L1,L1 science payloads,.,.,,,
 APPRMPT,Prompt Alert Prod,L1SCI,Prompt Processing Alert Production payload,.,.,,,
