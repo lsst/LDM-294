@@ -1,198 +1,204 @@
-id,Item,Parent,Description,WBS,Team,Manager,Product Owner,Package Owner
-LSST,LSST,,,,,,,
-DM,Data Management,LSST,Data Management System,,.,,,
-L1,Level 1 System,DM,Level 1 System,,.,,,
-L1ONL,L1 OCS Devices,L1,Level 1 Online (OCS-connected),,.,,,
-ARC,Archiver,L1ONL,Archiving Device,,NCSA,JoelP,FelipeM,JimP
-CARC,Catchup Archiver,L1ONL,Catch-up Archiving Device,,NCSA,JoelP,FelipeM,JimP
-EFDT,EFD Tranform,L1ONL,EFD Transformation Device,,NCSA,JoelP,FelipeM,JimP
-PRMPT,Prompt Proc,L1ONL,Prompt Processing Device,,NCSA,JoelP,FelipeM,JimP
-OCSBAT,OCS Batch Proc,L1ONL,OCS-Driven Batch Processing Device,,NCSA,JoelP,FelipeM,JimP
-TMG,Telem Gateway,L1ONL,Telemetry Gateway Device,,NCSA,JoelP,FelipeM,JimP
-HEADER,Header Generator,L1ONL,Header Generator Device,,NCSA,JoelP,FelipeM,JimP
-POINTP,Pointing Publisher,L1ONL,Pointing Prediction Publishing Device,,NCSA,JoelP,FelipeM,JimP
-L1OFFL,L1 Offline Proc,L1,L1 Offline Processing System,,NCSA,JoelP,,
-L1SCI,L1 Science Payloads,L1,L1 science payloads,,.,,,
-APPRMPT,Prompt Alert Prod,L1SCI,Prompt Processing Alert Production payload,,.,,,
-SFPPIPE,Single Frame Pipe,APPRMPT,Single frame processing pipeline,1.02C.03.01,AP,SimonK,EricB,
-ALERTPIPE,Alert Gen Pipe,APPRMPT,Alert generation pipeline,1.02C.03.03,AP,SimonK,EricB,
-CALPRMPT,Prompt Calibration,L1SCI,Prompt Processing calibration frame payload,1.02C.04.02,DRP,JohnS,JimB,
-CBPCTRL,CBP Control,L1SCI,OCS control scripts for collimated beam projector control,1.02C.04.02,DRP,JohnS,JimB,
-APOFFL,Offline Alert Prod,L1SCI,Offline Alert Production payload,,.,,,
-SFPOFFL,Offline SFP,APOFFL,Offline single frame processing pipeline,1.02C.03.01,AP,SimonK,EricB,
-ALRTOFFL,Offline Alert Gen,APOFFL,Offline alert generation pipeline,1.02C.03.03,AP,SimonK,EricB,
-AUXTEL,Aux Tel Spec Pipe,L1SCI,Offline Auxiliary Telescope spectrograph pipeline,1.02C.04.02,DRP,JohnS,JimB,
-PRECOV,Precovery,APOFFL,Precovery and forced photometry pipeline,1.02C.03.04,AP,SimonK,EricB,
-MOPS,Moving Object,APOFFL,Moving object pipeline,1.02C.03.06,AP,SimonK,EricB,
-CALOFFL,Offline Calibration,L1SCI,Offline calibration single frame processing pipeline,1.02C.04.02,DRP,JohnS,JimB,
-CALDAILY,Daily Calibration,L1SCI,OCS-Controlled batch daily CPP payload,1.02C.04.02,DRP,JohnS,JimB,
-L1QC,L1 Quality Control,L1SCI,L1 QC measurement generators,,AP,SimonK,EricB,
-BRKRFEED,Alert Broker Feed,L1,Alert broker feed service,1.02C.03.03,AP,SimonK,EricB,
-MINIBRKR,Alert Mini-Broker,L1,Alert mini-broker service,1.02C.03.03,AP,SimonK,EricB,
-IDM,Identity Manager,DM,Identity (Authentication and Authorization) Manager,,NCSA,JoelP,,
-DAC,Data Access Center,DM,DAC Software,,.,,,
-DACPROP,Proposal Manager,DAC,Proposal Manager,,NCSA,JoelP,,
-DACRM,Resource Manager,DAC,DAC Resource Manager,,NCSA,JoelP,,
-BULKD,Bulk Distrib,DAC,Bulk Distribution System,,NCSA,JoelP,,
-INFRA,Infrastructure,DM,Infrastructure Software Systems,,.,,,
-BPS,Batch Proc,INFRA,Batch Processing System,,NCSA,JoelP,,
-DBB,Data Backbone,INFRA,Data Backbone System,,.,,,
-DTR,Transport/Repl,DBB,File and database transport and replication,,NCSA,JoelP,,
-GMDS,Global Metadata,DBB,Global metadata service,1.02C.06.02.05,DAX,FritzM,,
-PRVDB,Provenance DB,DBB,Provenance database,1.02C.06.01.01,DAX,FritzM,,
-INFRASYS,Infra Systems,INFRA,Filesystems/ provisioning/monitoring systems and system management,,NCSA,JoelP,,
-ITENV,IT Environments,DM,Computing and Storage Infrastructure including provisioning,,.,,,
-ITARC,Archive IT,ITENV,Archive IT Environments,,.,,,
-DEVENV,Dev Env,ITARC,Developer environment,,NCSA,JoelP,,
-L1INTGR,L1 Integration Env,ITARC,Level 1 Integration environment,,NCSA,JoelP,,
-L2INTGR,L2 Integration Env,ITARC,Level 2 Integration environment,,NCSA,JoelP,,
-DACINTGR,DAC Integ Env,ITARC,DAC Integration environment (PDAC),,NCSA,JoelP,,
-DBBINTGR,DBB Integ Env,ITARC,Data Backbone Integration environment,,NCSA,JoelP,,
-CTRENV,Archive Center Env,ITARC,Archive Production Center environment,,NCSA,JoelP,,
-DBBENV,Archive DBB Env,ITARC,Archive Data Backbone endpoints and storage,,NCSA,JoelP,,
-DACENV,Archive DAC Env,ITARC,Archive DAC environment,,NCSA,JoelP,,
-SATENV,Satellite Env,ITARC,Satellite compute environment,,NCSA,JoelP,,
-ITBASE,Base IT,ITENV,Base IT Environments,,.,,,
-BCTRENV,Base Center Env,ITBASE,Base Production Center environment,,NCSA,JoelP,,
-BDBBENV,Base DBB Env,ITBASE,Base Data Backbone endpoints and storage,,NCSA,JoelP,,
-BDACENV,Base DAC Env,ITBASE,Base DAC environment,,NCSA,JoelP,,
-NET,Networks,LSST,All Networks,1.02C.07.04.03 1.02C.0704.06 1.02C.08.03 1.04C.12.05,DM TS,Kantor J,Multiple,Multiple
-NETCPL,Summit LAN,NET,Summit Local Area Network,1.04C.12.05,AURA,Kantor J,Kantor J,Lambert R
-NETDM,DM Networks,DM,Data Management Provided Networks,1.02C.07.04.03 1.02C.0704.06 1.02C.08.03 ,DM,Kantor J/ Petravick D,Kantor J/Petravick D,Lambert R/ Kollross M
-NETLHN,Long-Haul Networks,NETDM,Summit - Base/ Base - Archive/ US Networks,1.02C.08.03,AURA,Kantor J,Kantor J,Lambert R
-NETBASE,Base network,NETDM,Base Local Area Network ,1.02C.07.04.03 (moving to 1.02C.08),NCSA (moving to AURA),Petravick D (moving to Kantor J),Kantor J Petravick D,Lambert R Kollross M
-NETARCH,Arc Extl Net,NETDM,Archive External Network,1.02C.07.04.06,NCSA,Petravick D,Wheeler D,Kollross M
-NETCHILE,Chilean Nat,NETDM,Summit - Gatehouse La Serena - Gatehouse/ La Serena - Santiago Networks DWDM Equipment,1.02C.08.03.01,AURA REUNA Liello Telefonica,Kantor J,Kantor J,Lambert R
-NETLSSCL,La Ser - Santi ,NETCHILE,La Serena - Santiago Network,1.02C.08.03.01.01,REUNA Telefonica,Kantor J,Kantor J,Lambert R
-NETLSAG,La Serena Net,NETCHILE,La Serena - AURA Gatehouse Network,1.02C.08.03.01.01A,REUNA Telefonica,Kantor J,Kantor J,Lambert R
-NETCONS,Network Consulting,NETCHILE,Network Consulting,1.02C.08.03.01.02,REUNA Liello,Kantor J,Kantor J,Lambert R
-NETCPAG,Summit Net,NETCHILE,Summit - AURA Gatehouse Network,1.02C.08.03.01.03,AURA Telefonica,Kantor J,Kantor J,Lambert R
-NETDWDM,DWDM Equipment,NETCHILE,DWDM Equipment,1.02C.08.03.01.04,AURA,Kantor J,Kantor J,Lambert R
-NETOPTG,Ops in MREFC,NETCHILE,Operating Costs during MREFC,1.02C.08.03.05,AURA,Kantor J,Kantor J,Lambert R
-NETINTLUS,Int/US WANs,NETDM,International WAN/US WAN,1.02C.08.03.02,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NET100G,Miami 100 Gbps ,NETINTLUS,Santiago - Miami 100 Gbps Ring,1.02C.08.03.02.01,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NETMGT,Network Management,NETINTLUS,Network Management,1.02C.08.03.02.02,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NETSPEC,Santiago - Boca ,NETINTLUS,Santiago - Boca Raton Spectrum,1.02C.08.03.02.03,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-NETUSW,US National WAN,NETINTLUS,US National WAN,1.02C.08.03.02.01,AURA FIU/AmLight,Kantor J,Kantor J,Lambert R
-L2,Level 2 System,DM,Level 2 System,,.,,,
-PRODEX,Production Exec,L2,Production Execution System,,.,,,
-CMPGN,Campaign Manager,PRODEX,Campaign Manager,,NCSA,JoelP,,
-WLM,Workload Manager,PRODEX,Workload Manager,,NCSA,JoelP,,
-WFM,Workflow Manager,PRODEX,Workflow Manager/Orchestrator,,NCSA,JoelP,,
-PLTACTIV,Pilot Activator,PRODEX,Pilot Activator,,NCSA,JoelP,,
-JOBACTIV,Job Activator,PRODEX,Job Activator,,NCSA,JoelP,,
-L2SCI,L2 Science Payloads,L2,L2 science payloads,,.,,,
-CPPSLOW,Periodic Cal Prod,L2SCI,Periodic CPP payload,1.02C.04.02,DRP,JohnS,JimB,
-CPPYEAR,Annual Cal Prod,L2SCI,Annual CPP payload,1.02C.04.02,DRP,JohnS,JimB,
-CPPQC,CPP Quality Control,L2SCI,CPP QC measurement generators,1.02C.04.02,DRP,JohnS,JimB,
-DRP,Data Release Prod,L2SCI,Annual mini-DRP and DRP payload,,.,,,
-IMGCHAR,Image Char and Cal,DRP,Image characterization and calibration,1.02C.04.03,DRP,JohnS,JimB,
-COADPIPE,Coadd and Diff,DRP,Image coaddition and differencing,1.02C.04.04,DRP,JohnS,JimB,
-COADPROC,Coadd Processing,DRP,Coadd processing,1.02C.04.05,DRP,JohnS,JimB,
-OVERLAP,Overlap Resolution,DRP,Overlap resolution,1.02C.04.05,DRP,JohnS,JimB,
-MULTIFIT,Object Char,DRP,Multi-epoch object characterization,1.02C.04.06,DRP,JohnS,JimB,
-DRPPOST,DRP Postprocessing,DRP,DRP Postprocessing,1.02C.04.06,DRP,JohnS,JimB,
-L2QC,L2 Quality Control,L2,L2 QC measurement generators,,DRP,JohnS,JimB,
-SCIALG,Science Algorithms,DM,Common science algorithmic components,,.,,,
-ORBEP,Orbit/EPhemeris,SCIALG,Orbit tools,,AP,SimonK,EricB,
-REFCAT,Reference Catalogs,SCIALG,Reference catalogs,1.02C.03.01,AP,SimonK,EricB,
-ISR,ISR,SCIALG,ISR,1.02C.03.01,AP,SimonK,EricB,
-ARTFDET,Artifact Detection,SCIALG,Artifact detection,1.02C.03.01,AP,SimonK,EricB,
-ARTFINTP,Artifact Interp,SCIALG,Artifact interpolation,1.02C.03.01,AP,SimonK,EricB,
-SRCDET,Source Detection,SCIALG,Source detection,1.02C.04.05,DRP,JohnS,JimB,
-DEBLEND,Deblending,SCIALG,Deblending,1.02C.04.05,DRP,JohnS,JimB,
-MEASURE,Measurement,SCIALG,Measurement,1.02C.04.05,DRP,JohnS,JimB,
-SPATMOD,Spatial Models,SCIALG,Spatial models,1.02C.03.01,AP,SimonK,EricB,
-BKGDEST,Background Estim,SCIALG,Background estimation,1.02C.04.03,DRP,JohnS,JimB,
-BKGDREF,Background Ref,SCIALG,Background reference,1.02C.04.03,DRP,JohnS,JimB,
-PSFESTSM,PSF Estim Small,SCIALG,PSF estimation (1 CCD),1.02C.03.01,AP,SimonK,EricB,
-PSFESTLG,PSF Estim Large,SCIALG,PSF estimation (visit),1.02C.04.03,DRP,JohnS,JimB,
-APCORR,Aperture Corr,SCIALG,Aperture correction,1.02C.04.05,DRP,JohnS,JimB,
-ASTROM,Astrometric Fit,SCIALG,Astrometric fitting,1.02C.03.07,AP,SimonK,EricB,
-PHOTOM,Photometric Fit,SCIALG,Photometric fitting,1.02C.03.08,AP,SimonK,EricB,
-TEMPLATE,Template Storage,SCIALG,Difference template storage/retrieval,1.02C.03.04,AP,SimonK,EricB,
-PSFMATCH,PSF Matching,SCIALG,PSF matching,1.02C.04.04,DRP,JohnS,JimB,
-IMCOADD,Image Coaddition,SCIALG,Image coaddition,1.02C.04.04,DRP,JohnS,JimB,
-DCRTMPL,DCR Template Gen,SCIALG,DCR-corrected template generation,1.02C.03.04,AP,SimonK,EricB,
-DECORR,Img Decorrelation,SCIALG,Image decorrelation,,AP,SimonK,EricB,
-STARGAL,Star/Galaxy Sep,SCIALG,Star/galaxy classification,1.02C.04.05,DRP,JohnS,JimB,
-VRBLTY,Variability Char,SCIALG,Variability characterization,,AP,SimonK,EricB,
-PRPRMOT,Proper Motion,SCIALG,Proper motion and parallax,,AP,SimonK,EricB,
-REFMATCH,Reference Match,SCIALG,Matching to reference catalogs,1.02C.03.02,AP,SimonK,EricB,
-DASSOC,DIAObj Association,SCIALG,DIAObject association,1.02C.03.02,AP,SimonK,EricB,
-ASSOC,Association/Match,SCIALG,Association and matching,1.02C.04.05,DRP,JohnS,JimB,
-RAWCAL,Raw Meas Cal,SCIALG,Raw measurement calibration,,DRP,JohnS,JimB,
-EPHEM,Ephemeris Calc,ORBEP,Ephemeris calculation,1.02C.03.06,AP,SimonK,EricB,
-TRACKLET,Tracklet Gen,ORBEP,Tracklet generation,1.02C.03.06,AP,SimonK,EricB,
-ATTRIB,Attribution/Precov,SCIALG,Attribution and precovery,1.02C.03.06,AP,SimonK,EricB,
-ORBFIT,Orbit Fitting,ORBEP,Orbit fitting,1.02C.03.06,AP,SimonK,EricB,
-ORBMERGE,Orbit Merging,ORBEP,Orbit merging,1.02C.03.06,AP,SimonK,EricB,
-SCIPRIM,Science Primitives,DM,Science software primitives,,.,,,
-GEOM,Geometry,SCIPRIM,Geometry gathering,,.,,,
-CARTGEOM,Cartesian Geom,GEOM,Cartesian geometry,1.02C.03.05,AP,SimonK,EricB,
-SPHGEOM,Spherical Geom,GEOM,Spherical geometry,1.02C.06.04.03,DAX,FritzM,,
-IMAGE,Images,SCIPRIM,Images,1.02C.04.01,DRP,JohnS,JimB,
-PROPSET,Property/Metadata,SCIPRIM,Multi-type associative containers,1.02C.06.02.01,DAX,FritzM,,
-TABLE,Tables,SCIPRIM,Tables,1.02C.04.01,DRP,JohnS,JimB,
-FOOTPRNT,Footprints,SCIPRIM,Footprints,1.02C.04.01,DRP,JohnS,JimB,
-STATS,Basic Statistics,SCIPRIM,Basic statistics,1.02C.04.01,DRP,JohnS,JimB,
-CHROM,Chromaticity Utils,SCIPRIM,Chromaticity utilities,1.02C.03.05,AP,SimonK,EricB,
-PHOTPRIM,PhotoCal Repr,SCIPRIM,Photometric calibration representation,1.02C.04.01,DRP,JohnS,JimB,
-CONVOL,Convolution,SCIPRIM,Convolution kernels,1.02C.04.01,DRP,JohnS,JimB,
-COORD,Coord Transforms,GEOM,Coordinate transformations,1.02C.03.05,AP,SimonK,EricB,
-NUMINTEG,Num Integration,SCIPRIM,Numerical integration,1.02C.04.01,DRP,JohnS,JimB,
-RANDOM,Random Numbers,SCIPRIM,Random number generation,1.02C.04.01,DRP,JohnS,JimB,
-FIELDS,Approx 2-D Fields,SCIPRIM,Interpolation and approximation of 2-D fields,1.02C.03.05,AP,SimonK,EricB,
-FUNCTION,Common Functions,SCIPRIM,Common functions and source profiles,1.02C.03.05,AP,SimonK,EricB,
-CAMDESC,Camera Descr,SCIPRIM,Camera descriptions,1.02C.03.05,AP,SimonK,EricB,
-NUMOPTIM,Num Optimization,SCIPRIM,Numerical optimization,1.02C.04.01,DRP,JohnS,JimB,
-MCSAMP,MC Sampling,SCIPRIM,Monte Carlo sampling,1.02C.04.01,DRP,JohnS,JimB,
-PSF,Point-Spread Funcs,SCIPRIM,Point-spread functions,1.02C.03.05,AP,SimonK,EricB,
-WARP,Warping,SCIPRIM,Warping,1.02C.04.01,DRP,JohnS,JimB,
-FT,Fourier Transforms,SCIPRIM,Fourier transforms,1.02C.03.05,AP,SimonK,EricB,
-TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,SimonK,EricB,
-SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,JohnS,JimB,
-ALERTDB,Alert DB,DAC,Alert database,1.02C.03.03,AP,SimonK,EricB,
-L1DB,L1 Catalog DB,DAC,L1 catalog database,1.02C.06.01.01,DAX,FritzM,,
-DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,FritzM,,
-L2DB,L2 Catalog DB,DAC,L2 catalog database,1.02C.06.01.01,DAX,FritzM,,
-QSERV,Qserv DBMS,INFRA,Qserv distributed database system,1.02C.06.02.03,DAX,FritzM,,
-DAX,DAX Web Services,DAC,DAX Web services including VO interfaces,,.,,,
-DAXWEB,Web Framework,DAX,Web services framework,1.02C.06.02.02,DAX,,,
-DAXIMG,Image Access,DAX,Image access,1.02C.06.02.04,DAX,FritzM,,
-DAXCAT,Catalog Access,DAX,Catalog access,1.02C.06.02.05,DAX,FritzM,,
-DAXIMETA,Img Metadata Acc,DAX,Image metadata access,1.02C.06.02.05,DAX,FritzM,,
-DAXCMETA,Cat Metadata Acc,DAX,Catalog metadata access,1.02C.06.02.05,DAX,FritzM,,
-BUTLER,Data Butler Client,DM,Data Butler data access client library,1.02C.06.02.01,DAX,FritzM,,
-TXF,Task Execution,DM,Task execution framework,,.,,,
-SPRTASK,SuperTask,TXF,SuperTask,1.02C.06.03,DAX,FritzM,,
-ACTIVATR,Activator Bases,TXF,Activator base and Command Line Activator,1.02C.06.03,DAX,FritzM,,
-CONFIG,Pipeline Config,TXF,Pipeline configuration,1.02C.06.03,DAX,FritzM,,
-LOG,Logging,TXF,Logging,1.02C.06.04.01,DAX,FritzM,,
-MULTNODE,Multi-Node Task,TXF,Multi-node Task API,1.02C.06.03,DAX,FritzM,,
-MULTCORE,Multi-Core Task,TXF,Multi-core Task API,1.02C.06.03,DAX,FritzM,,
-SQUASH,QC Dashboard,DM,QC measurement collection/storage/dashboard service,,.,,,
-SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,FrossieE,,
-SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,FrossieE,,
-SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,FrossieE,,
-SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,FrossieE,,
-SCIPLAT,Science Platform,DM,Science Platform,,.,,,
-SPLNBK,SciPlat Notebook,SCIPLAT,Science Platform notebook component,,.,,,
-NBKENV,Notebook Env,SPLNBK,Basic notebook environment,1.02C.10.02.02.01,SQuaRE,FrossieE,,
-NBKSW,Notebook SW Env,SPLNBK,Notebook software environments,1.02C.10.02.02.04,SQuaRE,FrossieE,,
-NBKACTIV,Notebook Activator,SPLNBK,Notebook Activators,1.02C.10.02.02.05,SQuaRE,FrossieE,,
-NBKDPLY,Notebook Deploy,SPLNBK,Notebook deployment,1.02C.10.02.02.06,SQuaRE,FrossieE,,
-DEVEL,Developer services,DM,Developer services,,.,,,
-DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,FrossieE,,
-CI,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,FrossieE,,
-PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,FrossieE,,
-DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,FrossieE,,
-COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,FrossieE,,
-ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,FrossieE,,
-INTGTEST,Integration Test,DM,Automated integration and test services,,?,,,
-SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform portal component,,.,,,
-VIS,Visualizers,SPLPRTL,Client-server query/visualization framework,1.02C.05.06 ,SUIT,XiuqinW,,
-SUIACTIV,SUI Activator,SPLPRTL,SUI Activators,1.02C.05.07,SUIT,XiuqinW,,
-PRTLDAX,Portal Data Access,SPLPRTL,Portal data access Interfaces,1.02C.05.07,SUIT,XiuqinW,,
-PRTLAPPS,Portal Applications,SPLPRTL,Portal applications,1.02C.05.08,SUIT,XiuqinW,,
-PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces,1.02C.05.09,SUIT,XiuqinW,,
+id,Item,Parent,Description,WBS,Team,Manager,Product Owner,Service/SW/HW,Package List
+DM,Data Management,,Data Management System,.,.,,,,
+L1,Level 1 System,DM,Level 1 System,.,.,,,,
+L1ONL,L1 OCS Components,L1,Level 1 Online (OCS-connected),.,.,,,,
+ARC,Archiver,L1ONL,Archiving Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip
+CARC,Catchup Archiver,L1ONL,Catch-up Archiving Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip
+EFDT,EFD Tranform,L1ONL,EFD Transformation Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,
+PRMPT,Prompt Proc,L1ONL,Prompt Processing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip
+OCSBAT,OCS Batch Proc,L1ONL,OCS-Driven Batch Processing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip
+TMG,Telem Gateway,L1ONL,Telemetry Gateway Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip
+HEADER,Header Generator,L1ONL,Header Generator Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,
+POINTP,Pointing Publisher,L1ONL,Pointing Prediction Publishing Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,
+L1SRV,Level 1 Services,L1,Level 1 Services,.,.,,,,
+ARCAT,Aux Tel Archiver,L1SRV,Auxiliary Telescope Archiving Service,,NCSA,,,Service,
+ARCCOM,ComCam Archiver,L1SRV,ComCam Archiving Service,,NCSA,,,Service,
+ARCLSST,LSSTCam Archiver,L1SRV,LSSTCam Archiving Service,,NCSA,,,Service,
+CARCCOM,ComCam Catchup,L1SRV,ComCam Catchup Archiving Service,,NCSA,,,Service,
+CARCLSST,LSSTCam Catchup,L1SRV,LSSTCam Catchup Archiving Service,,NCSA,,,Service,
+PRMPTCOM,ComCam Prompt,L1SRV,ComCam Prompt Processing Service,,NCSA,,,Service,
+PRMPTLSST,LSSTCam Prompt,L1SRV,LSSTCam Prompt Processing Service,,NCSA,,,Service,
+L1OFFL,L1 Offline Proc,L1,L1 Offline Processing System,,NCSA,Joel Plutchak,,SW,
+L1SCI,L1 Science Payloads,L1,L1 science payloads,.,.,,,,
+APPRMPT,Prompt Alert Prod,L1SCI,Prompt Processing Alert Production payload,.,.,,,,
+SFPPIPE,Single Frame Pipe,APPRMPT,Single frame processing pipeline,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,pipe_drivers
+ALERTPIPE,Alert Gen Pipe,APPRMPT,Alert generation pipeline,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
+CALPRMPT,Prompt Calibration,L1SCI,Prompt Processing calibration frame payload,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
+CBPCTRL,CBP Control,L1SCI,OCS control scripts for collimated beam projector control,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+APOFFL,Offline Alert Prod,L1SCI,Offline Alert Production payload,.,.,,,,
+SFPOFFL,Offline SFP,APOFFL,Offline single frame processing pipeline,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,
+ALRTOFFL,Offline Alert Gen,APOFFL,Offline alert generation pipeline,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
+AUXTEL,Aux Tel Spec Pipe,L1SCI,Offline Auxiliary Telescope spectrograph pipeline,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+PRECOV,Precovery,APOFFL,Precovery and forced photometry pipeline,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
+MOPS,Moving Object,APOFFL,Moving object pipeline,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,mops_daymops
+CALOFFL,Offline Calibration,L1SCI,Offline calibration single frame processing pipeline,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
+CALDAILY,Daily Calibration,L1SCI,OCS-Controlled batch daily CPP payload,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+L1QC,L1 Quality Control,L1SCI,L1 QC measurement generators,,AP,Simon Krughoff,Eric Bellm,SW,
+BRKRFEED,Alert Broker Feed,L1,Alert broker feed service,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
+MINIBRKR,Alert Mini-Broker,L1,Alert mini-broker service,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
+IDM,Identity Manager,DM,Identity (Authentication and Authorization) Manager,,NCSA,Joel Plutchak,,SW,
+DAC,Data Access Center,DM,DAC Software,.,.,,,,
+DACPROP,Proposal Manager,DAC,Proposal Manager,,NCSA,Joel Plutchak,,SW,
+DACRM,Resource Manager,DAC,DAC Resource Manager,,NCSA,Joel Plutchak,,SW,
+BULKD,Bulk Distrib,DAC,Bulk Distribution System,,NCSA,Joel Plutchak,,SW,
+INFRA,Infrastructure,DM,Infrastructure Software Systems,.,.,,,,
+BPS,Batch Proc,INFRA,Batch Processing System,,NCSA,Joel Plutchak,,SW,
+DBB,Data Backbone,INFRA,Data Backbone System,.,.,,,,
+DTR,Transport/Repl,DBB,File and database transport and replication,,NCSA,Joel Plutchak,,SW,
+GMDS,Global Metadata,DBB,Global metadata service,1.02C.06.02.05,DAX,Fritz Mueller,,SW,
+PRVDB,Provenance DB,DBB,Provenance database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,
+INFRASYS,Infra Systems,INFRA,Filesystems/ provisioning/monitoring systems and system management,,NCSA,Joel Plutchak,,SW,
+ITENV,IT Environments,DM,Computing and Storage Infrastructure including provisioning,.,.,,,,
+ITARC,Archive IT,ITENV,Archive IT Environments,.,.,,,,
+DEVENV,Dev Env,ITARC,Developer environment,,NCSA,Joel Plutchak,,HW,
+L1INTGR,L1 Integration Env,ITARC,Level 1 Integration environment,,NCSA,Joel Plutchak,,HW,
+L2INTGR,L2 Integration Env,ITARC,Level 2 Integration environment,,NCSA,Joel Plutchak,,HW,
+DACINTGR,DAC Integ Env,ITARC,DAC Integration environment (PDAC),,NCSA,Joel Plutchak,,HW,
+DBBINTGR,DBB Integ Env,ITARC,Data Backbone Integration environment,,NCSA,Joel Plutchak,,HW,
+CTRENV,Archive Center Env,ITARC,Archive Production Center environment,,NCSA,Joel Plutchak,,HW,
+DBBENV,Archive DBB Env,ITARC,Archive Data Backbone endpoints and storage,,NCSA,Joel Plutchak,,HW,
+DACENV,Archive DAC Env,ITARC,Archive DAC environment,,NCSA,Joel Plutchak,,HW,
+SATENV,Satellite Env,ITARC,Satellite compute environment,,NCSA,Joel Plutchak,,HW,
+ITBASE,Base IT,ITENV,Base IT Environments,.,.,,,,
+BCTRENV,Base Center Env,ITBASE,Base Production Center environment,,NCSA,Joel Plutchak,,HW,
+BDBBENV,Base DBB Env,ITBASE,Base Data Backbone endpoints and storage,,NCSA,Joel Plutchak,,HW,
+BDACENV,Base DAC Env,ITBASE,Base DAC environment,,NCSA,Joel Plutchak,,HW,
+NETDM,DM Networks,DM,Data Management Provided Networks,.,.,,,,
+NETLHN,Long-Haul Nets,NETDM,Summit - Base/ Base - Archive/ US Networks,1.02C.08.03,Network,Jeff Kantor,Jeff Kantor,HW,
+NETBASE,Base network,NETDM,Base Local Area Network ,1.02C.07.04.03 (moving to 1.02C.08),Network,Don Petravick (moving to Jeff Kantor),Jeff Kantor/Don Petravick,HW,
+NETARCH,Arc Extl Net,NETDM,Archive External Network,1.02C.07.04.06,Network,Don Petravick,D Wheeler,HW,
+NETCHILE,Chilean Nat,NETDM,Summit - Gatehouse La Serena - Gatehouse/ La Serena - Santiago Networks DWDM Equipment,.,.,,,,
+NETLSSCL,La Ser - Santi ,NETCHILE,La Serena - Santiago Network,1.02C.08.03.01.01,Network,Jeff Kantor,Jeff Kantor,HW,
+NETLSAG,La Serena Net,NETCHILE,La Serena - AURA Gatehouse Network,1.02C.08.03.01.01A,Network,Jeff Kantor,Jeff Kantor,HW,
+NETCPAG,Summit Net,NETCHILE,Summit - AURA Gatehouse Network,1.02C.08.03.01.03,Network,Jeff Kantor,Jeff Kantor,HW,
+NETDWDM,DWDM Equipment,NETCHILE,DWDM Equipment,1.02C.08.03.01.04,Network,Jeff Kantor,Jeff Kantor,HW,
+NETINTLUS,Int/US WANs,NETDM,International WAN/US WAN,.,.,,,,
+NET100G,Miami 100 Gbps ,NETINTLUS,Santiago - Miami 100 Gbps Ring,1.02C.08.03.02.01,Network,Jeff Kantor,Jeff Kantor,HW,
+NETMGT,Network Mgmt,NETINTLUS,Network Management,1.02C.08.03.02.02,Network,Jeff Kantor,Jeff Kantor,HW,
+NETSPEC,Santiago - Boca ,NETINTLUS,Santiago - Boca Raton Spectrum,1.02C.08.03.02.03,Network,Jeff Kantor,Jeff Kantor,HW,
+NETUSW,US National WAN,NETINTLUS,US National WAN,1.02C.08.03.02.01,Network,Jeff Kantor,Jeff Kantor,HW,
+L2,Level 2 System,DM,Level 2 System,.,.,,,,
+PRODEX,Production Exec,L2,Production Execution System,.,.,,,,
+CMPGN,Campaign Manager,PRODEX,Campaign Manager,,NCSA,Joel Plutchak,,SW,
+WLM,Workload Manager,PRODEX,Workload Manager,,NCSA,Joel Plutchak,,SW,
+WFM,Workflow Manager,PRODEX,Workflow Manager/Orchestrator,,NCSA,Joel Plutchak,,SW,ctrl_orca/ctrl_platform_*/ctrl_execute/ctrl_stats/ctrl_provenance
+PLTACTIV,Pilot Activator,PRODEX,Pilot Activator,,NCSA,Joel Plutchak,,SW,
+JOBACTIV,Job Activator,PRODEX,Job Activator,,NCSA,Joel Plutchak,,SW,
+L2SCI,L2 Science Payloads,L2,L2 science payloads,.,.,,,,
+CPPSLOW,Periodic Cal Prod,L2SCI,Periodic CPP payload,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+CPPYEAR,Annual Cal Prod,L2SCI,Annual CPP payload,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+CPPQC,CPP Quality Control,L2SCI,CPP QC measurement generators,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
+DRP,Data Release Prod,L2SCI,Annual mini-DRP and DRP payload,.,.,,,,
+IMGCHAR,Image Char and Cal,DRP,Image characterization and calibration,1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
+COADPIPE,Coadd and Diff,DRP,Image coaddition and differencing,1.02C.04.04,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
+COADPROC,Coadd Processing,DRP,Coadd processing,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
+OVERLAP,Overlap Resolution,DRP,Overlap resolution,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+MULTIFIT,Object Char,DRP,Multi-epoch object characterization,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
+DRPPOST,DRP Postprocessing,DRP,DRP Postprocessing,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
+L2QC,L2 Quality Control,L2,L2 QC measurement generators,,DRP,John Swinbank,Jim Bosch,SW,validate_drp/verify_metrics/ci_hsc
+SCIALG,Science Algorithms,DM,Common science algorithmic components,.,.,,,,
+ORBEP,Orbit/Ephemeris,SCIALG,Orbit tools,,AP,Simon Krughoff,Eric Bellm,SW,mops_nightmops
+REFCAT,Reference Catalogs,SCIALG,Reference catalogs,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms
+ISR,ISR,SCIALG,ISR,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,pipe_tasks/ip_isr
+ARTFDET,Artifact Detection,SCIALG,Artifact detection,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms
+ARTFINTP,Artifact Interp,SCIALG,Artifact interpolation,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,
+SRCDET,Source Detection,SCIALG,Source detection,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+DEBLEND,Deblending,SCIALG,Deblending,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,meas_deblender
+MEASURE,Measurement,SCIALG,Measurement,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,meas_base/meas_algorithms/meas_extensions_*/meas_modelfit
+SPATMOD,Spatial Models,SCIALG,Spatial models,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,afw
+BKGDEST,Background Estim,SCIALG,Background estimation,1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,meas_algorithms
+BKGDREF,Background Ref,SCIALG,Background reference,1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,
+PSFESTSM,PSF Estim Small,SCIALG,PSF estimation (1 CCD),1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms
+PSFESTLG,PSF Estim Large,SCIALG,PSF estimation (visit),1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,
+APCORR,Aperture Corr,SCIALG,Aperture correction,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+ASTROM,Astrometric Fit,SCIALG,Astrometric fitting,1.02C.03.07,AP,Simon Krughoff,Eric Bellm,SW,jointcal/meas_astrom/meas_mosaic
+PHOTOM,Photometric Fit,SCIALG,Photometric fitting,1.02C.03.08,AP,Simon Krughoff,Eric Bellm,SW,jointcal/meas_mosaic
+TEMPLATE,Template Storage,SCIALG,Difference template storage/retrieval,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
+PSFMATCH,PSF Matching,SCIALG,PSF matching,1.02C.04.04,DRP,John Swinbank,Jim Bosch,SW,
+IMCOADD,Image Coaddition,SCIALG,Image coaddition,1.02C.04.04,DRP,John Swinbank,Jim Bosch,SW,coadd_utils/coadd_chisquared
+DCRTMPL,DCR Template Gen,SCIALG,DCR-corrected template generation,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
+DECORR,Img Decorrelation,SCIALG,Image decorrelation,,AP,Simon Krughoff,Eric Bellm,SW,ip_diffim
+STARGAL,Star/Galaxy Sep,SCIALG,Star/galaxy classification,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+VRBLTY,Variability Char,SCIALG,Variability characterization,,AP,Simon Krughoff,Eric Bellm,SW,
+PRPRMOT,Proper Motion,SCIALG,Proper motion and parallax,,AP,Simon Krughoff,Eric Bellm,SW,
+REFMATCH,Reference Match,SCIALG,Matching to reference catalogs,1.02C.03.02,AP,Simon Krughoff,Eric Bellm,SW,
+DASSOC,DIAObj Association,SCIALG,DIAObject association,1.02C.03.02,AP,Simon Krughoff,Eric Bellm,SW,
+ASSOC,Association/Match,SCIALG,Association and matching,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+RAWCAL,Raw Meas Cal,SCIALG,Raw measurement calibration,,DRP,John Swinbank,Jim Bosch,SW,
+EPHEM,Ephemeris Calc,ORBEP,Ephemeris calculation,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,
+TRACKLET,Tracklet Gen,ORBEP,Tracklet generation,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,
+ATTRIB,Attribution/Precov,SCIALG,Attribution and precovery,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,
+ORBFIT,Orbit Fitting,ORBEP,Orbit fitting,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,
+ORBMERGE,Orbit Merging,ORBEP,Orbit merging,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,
+SCIPRIM,Science Primitives,DM,Science software primitives,.,.,,,SW,
+GEOM,Geometry,SCIPRIM,Geometry gathering,.,.,,,SW,
+CARTGEOM,Cartesian Geom,GEOM,Cartesian geometry,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,
+SPHGEOM,Spherical Geom,GEOM,Spherical geometry,1.02C.06.04.03,DAX,Fritz Mueller,,SW,sphgeom/skypix/skymap/geom/afw
+IMAGE,Images,SCIPRIM,Images,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+PROPSET,Property/Metadata,SCIPRIM,Multi-type associative containers,1.02C.06.02.01,DAX,Fritz Mueller,,SW,daf_base
+TABLE,Tables,SCIPRIM,Tables,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+FOOTPRNT,Footprints,SCIPRIM,Footprints,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+STATS,Basic Statistics,SCIPRIM,Basic statistics,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+CHROM,Chromaticity Utils,SCIPRIM,Chromaticity utilities,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+PHOTPRIM,PhotoCal Repr,SCIPRIM,Photometric calibration representation,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+CONVOL,Convolution,SCIPRIM,Convolution kernels,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+COORD,Coord Transforms,GEOM,Coordinate transformations,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw/astshim
+NUMINTEG,Num Integration,SCIPRIM,Numerical integration,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+RANDOM,Random Numbers,SCIPRIM,Random number generation,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+FIELDS,Approx 2-D Fields,SCIPRIM,Interpolation and approximation of 2-D fields,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+FUNCTION,Common Functions,SCIPRIM,Common functions and source profiles,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+CAMDESC,Camera Descr,SCIPRIM,Camera descriptions,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+NUMOPTIM,Num Optimization,SCIPRIM,Numerical optimization,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+MCSAMP,MC Sampling,SCIPRIM,Monte Carlo sampling,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+PSF,Point-Spread Funcs,SCIPRIM,Point-spread functions,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms/shapelet
+WARP,Warping,SCIPRIM,Warping,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw
+FT,Fourier Transforms,SCIPRIM,Fourier transforms,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
+SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw/utils
+ALERTDB,Alert DB,DAC,Alert database,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
+L1DB,L1 Catalog DB,DAC,L1 catalog database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,cat
+DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,daf_ingest
+L2DB,L2 Catalog DB,DAC,L2 catalog database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,cat
+QSERV,Qserv DBMS,INFRA,Qserv distributed database system,1.02C.06.02.03,DAX,Fritz Mueller,,SW,qserv/partition/scisql
+DAX,DAX Web Services,DAC,DAX Web services including VO interfaces,.,.,,,,
+DAXWEB,Web Framework,DAX,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
+DAXIMG,Image Access,DAX,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
+DAXCAT,Catalog Access,DAX,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
+DAXIMETA,Img Metadata Acc,DAX,Image metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+DAXCMETA,Cat Metadata Acc,DAX,Catalog metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+BUTLER,Data Butler Client,DM,Data Butler data access client library,1.02C.06.02.01,DAX,Fritz Mueller,,SW,daf_persistence/db/daf_fmt_*
+TXF,Task Execution,DM,Task execution framework,.,.,,,,
+SPRTASK,SuperTask,TXF,SuperTask,1.02C.06.03,DAX,Fritz Mueller,,SW,pipe_supertask/pipe_base/pex_exceptions
+ACTIVATR,Activator Bases,TXF,Activator base and Command Line Activator,1.02C.06.03,DAX,Fritz Mueller,,SW,
+CONFIG,Pipeline Config,TXF,Pipeline configuration,1.02C.06.03,DAX,Fritz Mueller,,SW,pex_config
+LOG,Logging,TXF,Logging,1.02C.06.04.01,DAX,Fritz Mueller,,SW,log
+MULTNODE,Multi-Node Task,TXF,Multi-node Task API,1.02C.06.03,DAX,Fritz Mueller,,SW,pipe_base/ctrl_pool
+MULTCORE,Multi-Core Task,TXF,Multi-core Task API,1.02C.06.03,DAX,Fritz Mueller,,SW,
+SQUASH,QC Dashboard,DM,QC measurement collection/storage/dashboard service,.,.,,,,
+SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,,SW,validate_base
+SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,,SW,
+SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,,SW,
+SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,,SW,
+SCIPLAT,Science Platform,DM,Science Platform,.,.,,,,
+SPLNBK,SciPlat Notebook,SCIPLAT,Science Platform notebook component,.,.,,,,
+NBKENV,Notebook Env,SPLNBK,Basic notebook environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
+NBKSW,Notebook SW Env,SPLNBK,Notebook software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
+NBKACTIV,Notebook Activator,SPLNBK,Notebook Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
+NBKDPLY,Notebook Deploy,SPLNBK,Notebook deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
+NBKSUIT,Notebook SUIT Intf,SPLNBK,Notebook visualization widgets and other Notebook/Portal bridges ,1.02C.05.07.04,SUIT,Xiuqin Wu,,SW,
+DEVEL,Developer services,DM,Developer services,.,.,,,,
+DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
+CI,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
+PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,Frossie Economou,,SW,lsst/shebangtron/lsst_dm_stack_demo
+DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,,SW,lsst-texmf/templates/lsstDoxygen
+COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,,SW,
+ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,,SW,
+INTGTEST,Integration Test,DM,Automated integration and test services,,?,,,SW,
+PRECURSR,Precursor Data,DM,Precursor data for development and testing,,?,,,,obs_*/validation_data_*/testdata_*/afwdata
+SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform portal component,.,.,,,,
+FIREFLY,Firefly,SPLPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
+FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,firefly_client
+PRTLINTF,Portal Interfaces,SPLPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
+PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,
+PRTLAPPS,Portal Applications,SPLPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
+PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
