@@ -4,6 +4,7 @@
 
 import os
 import fileinput
+import sys
 from treelib import Node, Tree
 
 #pt sizes for box + margin + gap between boex
@@ -44,7 +45,7 @@ def constructTree(fin ):
             else:
                 fout.write(part[0]+ " no parent \n")
 
-    print  str(count) + " Product lines \n"
+    sys.stdout.write(  str(count) + " Product lines \n")
     return ptree;
 
 def outputTexTree(tout,fout, ptree ):
@@ -64,7 +65,7 @@ def outputTexTree(tout,fout, ptree ):
             fout.write("\\node ("+prod.id+") [wbbox]{\\textbf{"+prod.name+"}}; \n");
         else:
             fout.write("\\node ("+prod.id+") [pbox,")
-            if (prev.parent <> prod.parent) : # first child to the right
+            if (prev.parent != prod.parent) : # first child to the right
                 found=0
                 scount=count-1
                 while found==0 and scount>0:
@@ -94,35 +95,35 @@ def outputTexTree(tout,fout, ptree ):
             fout.write("}; \n")
             fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
         prev=prod;
-    print  str(count) + " Product lines in TeX \n"
+    sys.stdout.write( str(count) + " Product lines in TeX \n")
     return
 
 def doFile(inFile ):
-	"This processes a csv and produced a  tex tree diagram and a tex longtable."
-	f=inFile 
-	nf = "ProductTree.tex"
-	nt = "productlist.tex"
-	print "Processing " + f  +"-> (figure)"+ nf + " and (table)" + nt
-	fin = open (f,'r')  	
-        ptree=constructTree(fin)
+    "This processes a csv and produced a  tex tree diagram and a tex longtable."
+    f=inFile 
+    nf = "ProductTree.tex"
+    nt = "productlist.tex"
+    sys.stdout.write( "Processing " + f  +"-> (figure)"+ nf + " and (table)" + nt)
+    fin = open (f,'r')
+    ptree = constructTree(fin)
 
-        #ptree.show(data_property="name")
-	fout = open (nf,'w')  	
-	tout = open (nt,'w')  	
+    #ptree.show(data_property="name")
+    fout = open (nf,'w')
+    tout = open (nt,'w')
 
-        width = ptree.depth() * 6 # cm
-        heigth = len(ptree.leaves()) * 1 # cm
-        header(fout,width,heigth)
-        theader(tout)
+    width = ptree.depth() * 6 # cm
+    heigth = len(ptree.leaves()) * 1 # cm
+    header(fout,width,heigth)
+    theader(tout)
 
-        outputTexTree(tout, fout, ptree)
+    outputTexTree(tout, fout, ptree)
 
-        footer(fout)
-        tfooter(tout)
-	fout.close()
-	fin.close()
+    footer(fout)
+    tfooter(tout)
+    fout.close()
+    fin.close()
 
-	return;
+    return;
  # End DoDir
 
 
@@ -152,16 +153,16 @@ def header(fout,pwidth,pheigth):
      fout.write("\documentclass{article}")
      fout.write("\n")
 
-     fout.write("\usepackage{times,layouts}")
+     fout.write("\\usepackage{times,layouts}")
      fout.write("\n")
-     fout.write("\usepackage{tikz,hyperref,amsmath}")
+     fout.write("\\usepackage{tikz,hyperref,amsmath}")
      fout.write("\n")
-     fout.write("\usetikzlibrary{positioning,arrows,shapes,decorations.shapes,shapes.arrows}")
+     fout.write("\\usetikzlibrary{positioning,arrows,shapes,decorations.shapes,shapes.arrows}")
      fout.write("\n")
-     fout.write("\usetikzlibrary{backgrounds,calc}")
+     fout.write("\\usetikzlibrary{backgrounds,calc}")
      fout.write("\n")
 
-     fout.write("\usepackage[paperwidth="+str(pwidth)+"cm,paperheight="+str(pheigth)+"cm,")
+     fout.write("\\usepackage[paperwidth="+str(pwidth)+"cm,paperheight="+str(pheigth)+"cm,")
      fout.write("\n")
      fout.write("left=-2mm,top=3mm,bottom=0mm,right=0mm,")
      fout.write("\n")
