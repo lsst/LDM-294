@@ -191,8 +191,12 @@ DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,
 CI,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
 PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,Frossie Economou,,SW,lsst/shebangtron/lsst_dm_stack_demo
 DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,,SW,lsst-texmf/templates/lsstDoxygen
+TEXMF,lsst-texmf,DOCS,DM LaTeX package,,,,,
+WEBSITE,http://dm.lsst.org/,DOCS,DM website,,,,,
 COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,,SW,
 ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,,SW,
+DEVTOOLS,Developer Tools,DEVEL,Developer Tools & Support Libraries,,,,,
+CITIZEN,Citizen,DEVTOOLS,Citizen Memory Debugging System,,,,,
 INTGTEST,Integration Test,DM,Automated integration and test services,,?,,,SW,
 PRECURSR,Precursor Data,DM,Precursor data for development and testing,,?,,,,obs_*/validation_data_*/testdata_*/afwdata
 SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform portal component,.,.,,,,
