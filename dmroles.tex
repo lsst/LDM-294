@@ -131,6 +131,73 @@ Specific responsibilities include:
 \end{itemize}
 
 
+\subsection{Configuration Manager (CM)}\lael{role:cm}
+
+%A configuration management role exists both at DM and Data Facility levels this could be the same individual
+The DM Configuration Manager (CM) is responsible 
+for Configuration Management activities inside DM and NCSA(?).
+The following list is not exhaustive, but is intended as a guideline to the CM activities:
+\begin{itemize}
+	\item assure that Configuration Management Plan (CMP) is correctly applied and provide appropriate reasons in case of non conformance's 
+ \item define which Configuration Items are to be managed in the Configuration Item List
+ \item define the Product Baseline
+ \item support changes to Configuration Items within the DMCCB
+ \item manage the delivery of software products
+ \item maintain the Configuration Item List
+ \item manage the configuration control resources used by DM
+ \item be aware of the relation between  the elements of the Product Baseline (in order for instance to be able to answer the question: ``What is the environment and which software is installed?'')
+ \item check that the Product Assurance  and CMP procedures are correctly applied when Configuration Items are changed
+ \item participate in CCB activities
+\end{itemize}
+
+The Configuration Manager is the secretary of the CCB and 
+works with the support of the Scientific and Technical Leaders 
+and participates in the CCB monitoring the development 
+and change control process.
+
+
+
+\subsubsection{Configuration Item List}
+Configuration Item List (CIL) is the list of Items that are maintained under configuration control.
+CUs and DPC need to report their configuration items in the CIL with an adequate level of details.
+CIL is part of the development plan but may be written 
+in a separate document to which the development plan refers to.
+
+The configuration manager in charge has to identify the configuration items to include in the CIL, 
+with the help of the technical leader and to maintain it when changes to the configuration items happen.
+
+
+\subsubsection{Release management\label{sect:relMng}}
+In DM usually each product will be released once per cycle. 
+Additional releases may be done in case of bug fixing, urgent issues, or in case that the previous one is incomplete.
+In case of longer cycles, intermediate major releases can be done.
+
+Each release needs to be identified with:
+
+\begin{itemize}
+\item Configuration Item
+\item Documentation:
+\subitem User Manual: to be updated each major release
+\subitem Requirements Specification: to be updated each major release
+\subitem Test Specification: to be updated each major release
+\subitem Release Note: new document each major release, updated for patch releases
+\subitem Test Report: new document each major release, updated for patch releases
+\item Latest Release in the master branch in github.
+\end{itemize}
+This information identifies a product baseline.
+
+%Release preparation is in charge of the DU leader and is subject to CCB approval.
+The product manager  is in charge of preparing the release.
+After CCB approval, the release will be delivered to NCSA.
+
+\subsubsection{Configuration Baseline \label{sect:BSLdef}}
+A Configuration Baseline (CB) represents the approved status of the project at key milestones like formal review 
+or at the beginning of test activities.
+
+Configuration Baselines are applicable to hardware and software, and will 
+include the documents that describe the CIs and their status.
+
+
 \subsection{Lead Institution Senior Positions}
 Each Lead Institution has a Project Manager and Scientific/Engineering Lead, who jointly have overall end product responsibility for a broad area of DM work, typically a Work Breakdown Structure (WBS) Level 2 element. They are supervisors of the team at that institution.  Their roles and responsibilities are similar to the DM Project Manager, DM Project Scientist, and DM System Architect, and DM QA and Test Lead, but within the scope of work assigned to that institution.  These leaders are required to acknowledge and implement direction from the DM leadership in all matters pertaining to the DM project.  The DM Project Manager and DM Project Scientist have direct input into the performance appraisals of the Institution Project Manager and Scientific/Engineering Lead. 
 The lead institutions are covered  in \secref{sect:leadtutes}.
