@@ -6,11 +6,8 @@ The DM Project Manager (William O'Mullane), Deputy Project Manger (John Swinbank
 The Project Manager has direct responsibility for coordination with the overall LSST Project Office, the LSST Change Control Board, the LSST Corporation, and LSST partner organisations on all budgetary, schedule, and resource matters.
 The Project Scientist has primary scientific and technical responsibility in the DM and responsibility for ensuring that the scientific requirements of the LSST are supported, and is a member on the LSST Project Science Team (PST).
 
-As shown in \figref{fig:dmorg}, the organization now features lead institutions, each with responsibility for major element of the DM System (Level 2 Work Breakdown Structure elements).
-For example, during Final Design, the Process Control and Archive Site Manager and Team at NCSA will be conducting prototyping activities in computing, data communications, and data storage to select and verify the ability of System technologies to support the LSST requirements.
-They will also be involved in creating a supporting infrastructure for the DM Systems.
-During Construction, before the LSST first light time frame, these resources will be focused on implementation of the selected technologies.
-In order to ensure that team functions as one integrated project, the institutions coordinate support by other lead institution team members directly through this organisational structure, as well as via a number of cross-organisational bodies (described later in this document).
+As shown in \figref{fig:dmorg}, the organization now features  major products  each with a product owner
+relating to a major element of the DM Subsystem (Level 2 Work Breakdown Structure elements).
 
 \begin{figure}[htbp]
 \begin{center}
@@ -22,7 +19,7 @@ In order to ensure that team functions as one integrated project, the institutio
 
 \subsection {Document Management} \label{sect:docman}
 
-DM documents will follow the System Engineering Guidelines of LSST. PDF versions of released documents shall be put in Docushare in accordance with the Project's Document Management Plan \citedsp{LPM-51}.
+DM documents will follow the System Engineering Guidelines of LSST. PDF versions of released documents shall be put in Docushare in accordance with the Project's Document Management Plan \citedsp{LPM-51}. LPM level documents are released on agreement of the DMCCB (\secref{sect:dmccb}), uncontrolled documents such as technotes may be released when the author decides it is appropriate or they are asked to release it by the Project Manager. 
 
 The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive but gives a high level orientation for the main documents in DM and how they relate to each other.
 
@@ -33,7 +30,7 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \end{center}
 \end{figure}
 
-{\bf Need a DOC tree for End User Documentaton - Jonathan ?}
+{\bf Need a DOC tree for End User Documentation - Jonathan ?}
 
 {\bf Need a DOC tree for Hardware/Services  - Margaret }
 
@@ -41,7 +38,7 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 
 Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the {\em released } version which should match the version on docushare. Each repository will be included as a {\em submodule} of a single git repository located at \url{https://github.com/lsst-dm/dm-docs}.
 
-Use of Google Docs or confluence is tolerated but final delivered documents must conform to the standard LSST format, and hence either produced with LaTeX, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate LSST template \citedsp{Document-9224, Document-11920}. The precurosr document should then be erased with a pointer to the baseline document, stored in GitHub.
+Use of Google Docs or confluence is tolerated but final delivered documents must conform to the standard LSST format, and hence either produced with LaTeX, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate LSST template \citedsp{Document-9224, Document-11920}. The precursor document should then be erased with a pointer to the baseline document, stored in GitHub.
 
 End user documentation will most likely and appropriately be web based and the scheme for that is described in \citeds{LDM-493}.
 
@@ -60,7 +57,7 @@ Once reviewed a branch is merged to master.\footnote{LSE-14 seem out of date and
 As we approach commissioning and operations DM will have a much stricter configuration control.
 At this point there will be a version of the software which may need urgent patching, a next candidate release version of the software, and the master.
 A patch to the operational version will require the same fix to be made in the two other versions.
-The role of the DM Change Control Board (DMCCB; \secref{sect:tct}) becomes very important at this point to ensure only essential fixes make it to the live system as patches and that required features are included in planned releases.
+The role of the DM Change Control Board (DMCCB; \secref{sect:dmccb}) becomes very important at this point to ensure only essential fixes make it to the live system as patches and that required features are included in planned releases.
 
 We cannot escape the fact that we  will have multiple code branches to maintain in operations which will lead to an increase in work load.
 Hence one should consider that perhaps more manpower may be needed in commissioning to cope with urgent software fixes while continuing development.
@@ -71,6 +68,8 @@ The other consideration would be that features to be developed post commissionin
 On the hardware side we have multiple configurable items, we need to control which versions of software are on which machines. These days tooling like Puppet make this reasonably painless. Still the configuration  must be carefully controlled to ensure reproducible deployments providing correct and reproducible results. The exact set of released software and other tools on each system should be held in a configuration item list.
 Changes to the configuration should be endorsed by the DMCCB.
 
+The sizing model for compute hardware purchasing is detailed in \citeds{LDM-151} and \citeds{LDM-181}.
+
 \subsection {Risk Management } \label{sect:risk}
 
 Risks will be dealt with within the LSST Project framework as defined in \citeds{LPM-20}.
@@ -80,17 +79,24 @@ Specific DM processes for risk assessment are elaborated in \citeds{LDM-512}.
 
 In accordance with the project QA plan \citeds{LPM-55} we will perform QA on the software products.
 This work will mainly be carried out by SQuaRE (\secref{sect:square}).
+Quality assurance here means compliance with project guidelines for production, in out case of software production. 
+A part of this is to have a verification/validation plan(s) which in and of itself is a major task (see \secref{sect:vanv}).
 
 
 \subsection{Action item control}
 Actions in DM are tracked as Jira issues an periodically reviewed at DMLT meetings.
-l
+
 \subsection{External Interfaces}
 The DM interfaces are {\bf Gregory or KT ??}
+\subsubsection{Auxiliary data in DM}
+Certain tasks in DM rely on external catalogues and other information. Currently we believe we need:
+\begin{enumerate} 
+	\item Gaia catalogue (Release 2) as a photometry baseline.	
+\end{enumerate} 
 
 
 \subsection {Verification and Validation } \label{sect:vanv}
 
 We intend to verify and validate as much of DM as we can before commissioning and operations.
 This will be achieved through testing and operations rehearsals/data challenges.
-The verification and validation approach is detailed in \citeds{LDM-503}.
+The verification and validation approach is detailed in \citeds{LDM-503} including a high level test schedule. 
