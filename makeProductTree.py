@@ -8,13 +8,15 @@ import sys
 from treelib import Node, Tree
 
 #pt sizes for box + margin + gap between boex
-txtheight=22
+txtheight=28
+leafHeight=1.3 # cm space per leaf box .. height of page calc
 sep=2  # inner sep
 gap=4
-WBS=1
+WBS=1 # Put WBS on diagram
+PKG=1 # put packages on diagram
 
 class Product(object): 
-    def __init__(self, id, name, parent, desc, wbs, manager, owner): 
+    def __init__(self, id, name, parent, desc, wbs, manager, owner, kind, pkgs): 
         self.id = id
         self.name = name
         self.parent = parent
@@ -22,6 +24,8 @@ class Product(object):
         self.wbs = wbs
         self.manager=manager
         self.owner=owner
+        self.kind=kind
+        self.pkgs=pkgs
 
 def constructTree(fin ):
     "Read the tree file and ocntrcut a tree structure"
@@ -32,9 +36,10 @@ def constructTree(fin ):
                 continue
         count= count + 1
         line=line.replace("\"","")
+        line=line.rstrip('\r\n')
         part=line.split(","); #id,prod, parent, descr ..
         
-        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5],part[6])
+        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5],part[6],part[8],part[9])
         #print "Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
             ptree.create_node(prod.id, prod.id, data=prod)
@@ -52,7 +57,7 @@ def outputTexTree(tout,fout, ptree ):
     fnodes=[];
     nodes=ptree.expand_tree()
     count=0
-    prev=Product("n","n","n","n","n","n","n")
+    prev=Product("n","n","n","n","n","n","n","n","n")
     blocksize=txtheight +gap + sep   # Text height  + the gap added to each one
     for n in  nodes:
         prod = ptree[n].data
@@ -90,9 +95,14 @@ def outputTexTree(tout,fout, ptree ):
             fout.write("] {")
             if WBS ==1 and prod.wbs != "":
                 fout.write("{\\tiny \\color{gray}"+prod.wbs+"} ")
-                fout.write("\\newline")
-            fout.write("\\textbf{"+prod.name+"}")
+                fout.write("\\newline \n")
+            fout.write("\\textbf{"+prod.name+"}\n ")
+            #fout.write("\\newline \n")
             fout.write("}; \n")
+            if PKG ==1 and prod.pkgs != "":
+                fout.write("\\node ("+prod.id+"pkg) [tbox,below=3mm of "+prod.id+".north] {")
+                fout.write("{\\tiny \\color{gray} \\begin{verbatim} "+prod.pkgs+" \\end{verbatim} }  ")
+                fout.write("}; \n")
             fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
         prev=prod;
     sys.stdout.write( str(count) + " Product lines in TeX \n")
@@ -112,7 +122,7 @@ def doFile(inFile ):
     tout = open (nt,'w')
 
     width = ptree.depth() * 6 # cm
-    heigth = len(ptree.leaves()) * 1 # cm
+    heigth = len(ptree.leaves()) * leafHeight # cm
     header(fout,width,heigth)
     theader(tout)
 
@@ -179,11 +189,12 @@ def header(fout,pwidth,pheigth):
      fout.write("\currentpage\pagedesign}")
      fout.write("\n")
 
-     fout.write("\hypersetup{pdftitle={DM organisation }, pdfsubject={Diagram illustrating the")
+     fout.write("\hypersetup{pdftitle={DM products }, pdfsubject={Diagram illustrating the")
      fout.write("\n")
      fout.write("products in LSST DM }, pdfauthor={ William O\'Mullane}}")
      fout.write("\n")
 
+     fout.write("\\tikzstyle{tbox}=[rectangle,text centered, text width=30mm] \n")
      fout.write("\\tikzstyle{wbbox}=[rectangle, rounded corners=3pt, draw=black, top color=blue!50!white, bottom color=white, very thick, minimum height=12mm, inner sep=2pt, text centered, text width=30mm] \n")
      fout.write("\\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top color=yellow!50!white, bottom color=white, very thick, minimum height="+str(txtheight)+"pt, inner sep="+str(sep)+"pt, text centered, text width=35mm] \n")
      fout.write("\\tikzstyle{pline}=[-, thick]")
