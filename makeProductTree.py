@@ -219,6 +219,7 @@ def footer(fout):
 
 def tfooter(tout):
      tout.write("\end{longtable} \n")
+     tout.write("\\normalsize \n")
      return;
 
 
