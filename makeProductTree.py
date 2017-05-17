@@ -53,6 +53,11 @@ def constructTree(fin ):
     sys.stdout.write(  str(count) + " Product lines \n")
     return ptree;
 
+def fixTex(text ):
+    ret = text.replace("_","\\_")
+    ret = ret.replace("/","/ ")
+    return ret;
+
 def outputTexTree(tout,fout, ptree ):
     fnodes=[];
     nodes=ptree.expand_tree()
@@ -64,8 +69,8 @@ def outputTexTree(tout,fout, ptree ):
         fnodes.append(prod)
         depth=ptree.depth(n)
         count=count+1
-        tout.write("{\\tiny "+prod.wbs+"} & {\\small "+prod.name+"} & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+" & ")
-        #tout.write("{\\tiny \\begin{verbatim} "+prod.pkgs+ " \\end{verbatim}}")
+        tout.write(prod.wbs+" &  "+prod.name+" & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+" & ")
+        tout.write(fixTex(prod.pkgs) )
         tout.write("\\\\ \hline \n")
         #print str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
@@ -145,7 +150,8 @@ def theader(tout):
      tout.write("\n")
      tout.write("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
      tout.write("\n")
-     tout.write("\\begin{longtable}{|p{0.08\\textwidth}|p{0.18\\textwidth}|p{0.4\\textwidth}|p{0.14\\textwidth}|p{0.14\\textwidth}|p{0.14\\textwidth}|}\hline \n ")
+     tout.write("\\tiny \n")
+     tout.write("\\begin{longtable}{|p{0.08\\textwidth}|p{0.17\\textwidth}|p{0.26\\textwidth}|p{0.12\\textwidth}|p{0.12\\textwidth}|p{0.22\\textwidth}|}\hline \n ")
      tout.write("\\bf WBS & Product & Description & Manager & Owner & Packages\\\\ \hline   \n")
 
      return
