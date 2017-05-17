@@ -1,0 +1,59 @@
+\section{Data Management Conceptual Architecture} \label{sect:dmarc}
+
+In operations components of DM are installed and running in several locations. Namely:
+\begin{itemize}
+\item Commissioning cluster (which may be physically in NCSA)
+\item The main centre, NCSA enclave in Champaign Urbana
+\item The US Data Access Centre(DAC) also at NCSA in Champaign Urbana
+\item The Chilean DAC in the Base Facility in La Serena Chile. 
+\item The Satellite Processing Centre at IN2P3 in Lyons, France.
+\end{itemize}
+\figref{fig:dmsdeploy} shows these physical compute environments  and the DM components which are deployed there. 
+ Some components are dotted and split across different
+environments; the connections between these are labelled with the
+protocols involved.  Science payloads (productions) are in shown in blue.
+The Science Platform is expanded in \figref{fig:sciplat}, likewise the data backbone is 
+a complex piece of infrastructure and is expanded in \figref{fig:databb}.
+
+showing where Qserv and the Butler fit
+into the system as well as metadata and provenance.
+
+
+
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[width=0.8\textwidth]{images/DMSDeployment}
+\caption{This figure shows the deployment of DM components in the various DM locations \label{fig:dmsdeploy}}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[width=0.5\textwidth]{images/SciencePlatform}
+\caption{This figure shows the sub components of the Science Platform. \label{fig:sciplan}}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[width=0.6\textwidth]{images/DataBackbone}
+\caption{The Data backbone links all the physical components of DM. \label{fig:databb}}
+\end{center}
+\end{figure}
+
+The common infrastructure services layer is underlying the compute environments. 
+This does not list  specific technologies for management/monitoring,
+provisioning/deployment, or workload/workflow, but you can think of them
+as things like Nagios, Puppet/vSphere/OpenStack/Kubernetes, and Pegasus.
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[width=0.7\textwidth]{images/DMSCommonServices}
+\caption{This figure shows the various Services at each DM location \label{fig:dcs}}
+\end{center}
+\end{figure}
+
+
+

@@ -9,7 +9,7 @@ from treelib import Node, Tree
 
 #pt sizes for box + margin + gap between boex
 txtheight=28
-leafHeight=1.3 # cm space per leaf box .. height of page calc
+leafHeight=1.21 # cm space per leaf box .. height of page calc
 sep=2  # inner sep
 gap=4
 WBS=1 # Put WBS on diagram
@@ -39,7 +39,7 @@ def constructTree(fin ):
         line=line.rstrip('\r\n')
         part=line.split(","); #id,prod, parent, descr ..
         
-        prod= Product(part[0],part[1],part[2],part[3],part[4],part[5],part[6],part[8],part[9])
+        prod= Product(part[0],part[1],part[2],part[3],part[4],part[6],part[7],part[8],part[9])
         #print "Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
             ptree.create_node(prod.id, prod.id, data=prod)
@@ -64,7 +64,9 @@ def outputTexTree(tout,fout, ptree ):
         fnodes.append(prod)
         depth=ptree.depth(n)
         count=count+1
-        tout.write("{\\tiny "+prod.wbs+"} & \\small "+prod.name+" & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+ "\\\\ \hline \n")
+        tout.write("{\\tiny "+prod.wbs+"} & {\\small "+prod.name+"} & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+" & ")
+        #tout.write("{\\tiny \\begin{verbatim} "+prod.pkgs+ " \\end{verbatim}}")
+        tout.write("\\\\ \hline \n")
         #print str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
             fout.write("\\node ("+prod.id+") [wbbox]{\\textbf{"+prod.name+"}}; \n");
@@ -143,8 +145,8 @@ def theader(tout):
      tout.write("\n")
      tout.write("%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%")
      tout.write("\n")
-     tout.write("\\begin{longtable}{|p{0.1\\textwidth}|p{0.2\\textwidth}|p{0.4\\textwidth}|p{0.15\\textwidth}|p{0.15\\textwidth}|}\hline \n ")
-     tout.write("\\bf WBS & Product & Description & Manager & Owner \\\\ \hline   \n")
+     tout.write("\\begin{longtable}{|p{0.08\\textwidth}|p{0.18\\textwidth}|p{0.4\\textwidth}|p{0.14\\textwidth}|p{0.14\\textwidth}|p{0.14\\textwidth}|}\hline \n ")
+     tout.write("\\bf WBS & Product & Description & Manager & Owner & Packages\\\\ \hline   \n")
 
      return
 
