@@ -61,7 +61,19 @@ as things like Nagios, Puppet/vSphere/OpenStack/Kubernetes, and Pegasus.
 
 
 \subsection{External Interfaces}
-The DM interfaces are {\bf Gregory or KT ??}
+The DM external interfaces are controlled by the following ICDs:
+\begin{itemize}
+	\item[\citeds{LSE-68}] Data Acquisition Interface between Data Management and Camera
+	\item[\citeds{LSE-69}] Interface between the Camera and Data Management	 
+	\item[\citeds{LSE-72}] OCS Command Dictionary for Data Management
+	\item[\citeds{LSE-75}] Control System Interfaces between the Telescope and Data Management
+	\item[\citeds{LSE-76}] Infrastructure Interfaces between Summit Facility and Data Management
+	\item[\citeds{LSE-77}] Infrastructure Interfaces between Base Facility and Data Management
+	\item[\citeds{LSE-130}] List of Data Items to be Exchanged Between the Camera and Data Management
+	\item[\citeds{LSE-131}] Data Management Interface Requirements to Support Education and Public Outreach 
+	\item[\citeds{LSE-140}] Auxiliary Instrumentation Interface between Data Management and Telescope
+\end{itemize}
+
 \subsubsection{Auxiliary data in DM}
 Certain tasks in DM rely on external catalogues and other information. Currently we believe we need:
 \begin{enumerate}
