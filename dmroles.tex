@@ -78,9 +78,9 @@ A product owner is responsible for the quality and acceptance of a particular pr
 The product owner should sign off on the requirements to be fulfilled in every delivery and therefore also on any descopes or enhancements.
 The product owner should define tests which can be run to prove a delivery meets the requirements due for that product.
 
-\subsection{Institutional Science Leads \label{role:scilead}}
+\subsection{Institutional Science/Engineering Leads \label{role:scilead}}
 
-The institutional science leads serve as product owners (\secref{role:prodo}) for the major components of the DM System (Alert Production, Data Release Production, Science User Interface etc).
+The Institutional Science/Engineering Leads serve as product owners (\secref{role:prodo}) for the major components of the DM System (Alert Production, Data Release Production, Science User Interface etc).
 
 In addition, they provide scientific and technical expertise to their local engineering teams.
 
@@ -90,121 +90,125 @@ Institutional science leads are members of the DM System Science Team (\secref{s
 
 \subsection{Pipeline Scientist \label{role:pipe}}
 
-Several DM products come together to form the LSST pipeline. The Pipeline Scientist is the product owner for the overall pipeline. 
-The Pipeline Scientist should :
+Several DM products come together to form the LSST pipeline. The Pipeline Scientist is the product owner for the overall pipeline.
+
+The Pipeline Scientist should:
+
 \begin{itemize}
-\item  Provide guidance and test criteria for the full pipeline including how QA is done on the products.  
+
+\item Provide guidance and test criteria for the full pipeline including how QA is done on the products
 \item Keep the big picture of where the codes are going in view. Predominantly the algorithms, but also the implementation and architecture (as part of the System Engineering Team \secref{sect:sysengt}).
-
-
-\item Advise on how we should attack algorithmic problems,  
-providing continuing advice to subsystem product owners as we try new things. 
-
-\item Advise on calibration issues, provide understanding of the detectors from a DM point of view. 
-
+\item Advise on how we should attack algorithmic problems, providing continuing advice to subsystem product owners as we try new things.
+\item Advise on calibration issues, provide understanding of the detectors from a DM point of view
 \item Advise on the overall (scientific) performance of the system, and how we'll test it.  Thinking about all the small things that we have to get right to make the overall system good.
 
-
-
 \end{itemize}
-
 
 \subsection{Systems Engineer \label{role:sysengineer}}
-With the system engineering team \secref{sect:sysengt} 
- the System engineer 
- owns the DM entries in the risk register and is generally in charge of the {\em process} of building DM products. 
 
-The Systems engineer  is responsible for the requirements work:
+With the system engineering team (\secref{sect:sysengt}) the Systems Engineer owns the DM entries in the risk register and is generally in charge of the \textit{process} of building DM products.
+
+As such, the Systems Engineer is responsible for managing requirements as they pertain to DM.
+This includes:
+
 \begin{itemize}
-\item E.g., updating the DMSR, OSS, LSR (including traceability)
-\item Ensure we’re appropriately modelling and recording information about the system (e.g.,
-    drawings, design documents, etc.)
-\item Overseeing work on ICDs, lower level requirements documents, etc.
-\item Ensuring we have a solid verification plans/standards across the board in DM
+\item Updating and ensuring traceability of the high level design documents: DMSR (\citeds{LSE-61}), OSS (\citeds{LSE-30}), and LSR (\citeds{LSE-29})
+\item Overseeing work on lower level requirements documents
+\item Ensuring that the system is appropriately modelled in terms of e.g. drawings, design documentation, etc
+\item Ensuring that solid verification plans and standards are established within DM
 \end{itemize}
 
-The Systems Engineer is responsible for the process to define \& maintain DM interfaces (internal and external) 
+In addition, the Systems Engineer is responsible for the process to define \& maintain DM interfaces (internal and external)
+
 \begin{itemize}
-\item Defining standards for and ensuring internal interfaces are identified and worked out
-\item Direct Interface Scientist's work on external ICDs
+\item Defining standards and enforcing standards for internal interfaces
+\item Directing the Interface Scientist's (\secref{sect:dmis} work on external ICDs
 \end{itemize}
 
-The Systems Engineer shall Chair the DM Change Control Board \secref{sect:dmccb}
+The Systems Engineer shall chair the DM Change Control Board \secref{sect:dmccb}
+
 \begin{itemize}
-\item Organise DMCCB  processes so our change control process runs smoothly
+\item Organise DMCCB processes so that the change control process runs smoothly
+\item Identifying RFCs requiring DMCCB attention
 \item Shepherd RFCs through change control
-\item Monitor + Flag RFCs requiring DMCCB  attention
-\item Call up meetings, make sure decisions are made, and recorded
+\item Call and manage meetings, ensuring that decisions are made and recorded
 \end{itemize}
 
-The System Engineer represents DM on the LSST CCB.
+Finally, the System Engineer represents DM on the LSST CCB.
 
 \subsection{DM Interface Scientist (DMIS) \label{role:dmis}}
-Look after all internal and external DM interfaces - including defining tests for them. 
+
+The DM Interface Scientist is responsible for all internal and external interfaces to the DM Subsystem. This includes ensuring that appropriate tests for those interfaces are defined.
 
 \subsection{Requirements Engineer \label{role:reqeng}}
-With the system engineering team (\secref{sect:sysengt}) and in close coordination with the software architect (\secref{role:softarc}) and the system engineer (\secref{role:sysengineer}) looks after the baseline requirements for DM.. 
 
-
-
+With the System Engineering Team (\secref{sect:sysengt}) and in close coordination with the Software Architect (\secref{role:softarc}) and the Systems Engineer (\secref{role:sysengineer}) looks after the baseline requirements for DM.
 
 \subsection{Software Architect \label{role:softarc}}
-The software architect looks after the software we are building. How does it all fit together are their techniques/technologies we should be using. How can we minimise dependencies. 
 
-With the \secref{role:sysengineer} the Software architect should also agree how to track requirements to code and verify requirements are i.e. are hooks required in the code ?
+The Software Architect is responsible for the overall design of the DM \textit{software} system. This includes:
 
-\subsection{Operations Architect \label{role:opsarc}}
-{\em Margaret  or Don perhaps some text here .. }
-The DM Operations  Architect is responsible for ensuring that all elements of the DM systems, including operations teams, infrastructure, middle ware, applications, and interfaces, 
-all come together to form an operable system. 
-Specific responsibilities include:
 \begin{itemize}
-\item Setting up and coordinating  Operations Rehearsals
-\item Ensuring Readiness of procedures and personnel for Operations
-\item Set standards for operations e.g. procedure handling and operator logging
-\item Participate in stakeholder and end user coordination and approval processes and reviews
-\item Member of the LSST System Engineering Team
+
+\item{Defining the overall architecture of the system and ensuring that all products integrate to form a coherent whole}
+\item{Selecting and advocating appropriate software engineering techniques}
+\item{Choosing the technologies which are used within the codebase}
+\item{Minimizing the exposure of DM to volatile external dependencies}
+
 \end{itemize}
 
+The Software Architect will work closely with the Systems Engineer (\secref{role:sysengineer}) to ensure that processes are in place for tracing requirements to the codebase and providing hooks to ensure that requirement verification is possible.
+
+\subsection{Operations Architect \label{role:opsarc}}
+
+\textit{Margaret or Don perhaps some text here ...}
+
+The DM Operations Architect is responsible for ensuring that all elements of the DM Subsystem, including operations teams, infrastructure, middleware, applications, and interfaces,
+come together to form an operable system.
+
+Specific responsibilities include:
+
+\begin{itemize}
+\item Setting up and coordinating Operations Rehearsals
+\item Ensuring readiness of procedures and personnel for Operations
+\item Setting standards for operations e.g. procedure handling and operator logging
+\item Participating in stakeholder and end user coordination and approval processes and reviews
+\item Member of the LSST System Engineering Team
+\end{itemize}
 
 \subsection{Configuration Manager (CM)}\label{role:cm}
 
 %A configuration management role exists both at DM and Data Facility levels this could be the same individual
-The DM Configuration Manager (CM) is responsible 
-for Configuration Management activities inside DM and NCSA(?).
+The DM Configuration Manager (CM) is responsible for Configuration Management activities inside DM and NCSA(?).
 The following list is not exhaustive, but is intended as a guideline to the CM activities:
+
 \begin{itemize}
-	\item assure that Configuration Management Plan (CMP) is correctly applied and provide appropriate reasons in case of non conformance's 
- \item define which Configuration Items are to be managed in the Configuration Item List
- \item define the Product Baseline
- \item support changes to Configuration Items within the DMCCB
- \item manage the delivery of software products
- \item maintain the Configuration Item List
- \item manage the configuration control resources used by DM
- \item be aware of the relation between  the elements of the Product Baseline (in order for instance to be able to answer the question: ``What is the environment and which software is installed?'')
- \item check that the Product Assurance  and CMP procedures are correctly applied when Configuration Items are changed
- \item participate in CCB activities
+\item Ensure that Configuration Management Plan (CMP) is correctly applied and provide appropriate reasons in case of non conformance's
+\item Defining which Configuration Items are to be managed in the Configuration Item List
+\item Defining the Product Baseline
+\item Supporting changes to Configuration Items within the DMCCB
+\item Managing the delivery of software products
+\item Maintaining the Configuration Item List
+\item Managing the configuration control resources used by DM
+\item Maintaining an awareness of the relationship between  the elements of the Product Baseline (in order for instance to be able to answer the question: ``What is the environment and which software is installed?'')
+ \item Checking that the Product Assurance and CMP procedures are correctly applied when Configuration Items are changed
+ \item Participating in CCB activities
 \end{itemize}
 
-The Configuration Manager is the secretary of the CCB and 
-works with the support of the Scientific and Technical Leaders 
-and participates in the CCB monitoring the development 
-and change control process.
-
-
+The Configuration Manager is the secretary of the CCB and works with the support of the Scientific and Technical Leaders and participates in the CCB monitoring the development and change control process.
 
 \subsubsection{Configuration Item List}
-Configuration Item List (CIL) is the list of Items that are maintained under configuration control.
-CUs and DPC need to report their configuration items in the CIL with an adequate level of details.
-CIL is part of the development plan but may be written 
-in a separate document to which the development plan refers to.
 
-The configuration manager in charge has to identify the configuration items to include in the CIL, 
-with the help of the technical leader and to maintain it when changes to the configuration items happen.
+The Configuration Item List (CIL) is the list of items that are maintained under configuration control.
+CUs and DPC need to report their configuration items in the CIL with an adequate level of details.
+CIL is part of the development plan but may be written in a separate document to which the development plan refers.
+
+The Configuration Manager in charge has to identify the configuration items to include in the CIL, with the help of the technical leader and to maintain it when changes to the configuration items happen.
 
 
 \subsubsection{Release management\label{sect:relMng}}
-In DM usually each product will be released once per cycle. 
+
+In DM usually each product will be released once per cycle.
 Additional releases may be done in case of bug fixing, urgent issues, or in case that the previous one is incomplete.
 In case of longer cycles, intermediate major releases can be done.
 
@@ -218,24 +222,21 @@ Each release needs to be identified with:
 \subitem Test Specification: to be updated each major release
 \subitem Release Note: new document each major release, updated for patch releases
 \subitem Test Report: new document each major release, updated for patch releases
-\item Latest Release in the master branch in github.
+\item Latest Release in the \texttt{master} branch in GitHub.
 \end{itemize}
 This information identifies a product baseline.
 
 %Release preparation is in charge of the DU leader and is subject to CCB approval.
-The product manager  is in charge of preparing the release.
+The product manager is in charge of preparing the release.
 After CCB approval, the release will be delivered to NCSA.
 
 \subsubsection{Configuration Baseline \label{sect:BSLdef}}
-A Configuration Baseline (CB) represents the approved status of the project at key milestones like formal review 
-or at the beginning of test activities.
 
-Configuration Baselines are applicable to hardware and software, and will 
-include the documents that describe the CIs and their status.
+A Configuration Baseline (CB) represents the approved status of the project at key milestones like formal review or at the beginning of test activities.
 
+Configuration Baselines are applicable to hardware and software, and will include the documents that describe the CIs and their status.
 
 \subsection{Lead Institution Senior Positions}
-Each Lead Institution has a Project Manager and Scientific/Engineering Lead, who jointly have overall end product responsibility for a broad area of DM work, typically a Work Breakdown Structure (WBS) Level 2 element. They are supervisors of the team at that institution.  Their roles and responsibilities are similar to the DM Project Manager, DM Project Scientist, and DM System Architect, and DM QA and Test Lead, but within the scope of work assigned to that institution.  These leaders are required to acknowledge and implement direction from the DM leadership in all matters pertaining to the DM project.  The DM Project Manager and DM Project Scientist have direct input into the performance appraisals of the Institution Project Manager and Scientific/Engineering Lead. 
-The lead institutions are covered  in \secref{sect:leadtutes}.
 
-%\subsection{ \label{role:}}
+Each Lead Institution (as defined in \tabref{tab:wbs}) has a T/CAM and Scientific/Engineering Lead, who jointly have overall end product responsibility for a broad area of DM work, typically a Work Breakdown Structure (WBS) Level 2 element. They are supervisors of the team at that institution.  Their roles and responsibilities are similar to the DM Project Manager, DM Project Scientist, and DM System Architect, and DM QA and Test Lead, but within the scope of work assigned to that institution.  These leaders are required to acknowledge and implement direction from the DM leadership in all matters pertaining to the DM project.  The DM Project Manager and DM Project Scientist have direct input into the performance appraisals of the Institution Project Manager and Scientific/Engineering Lead. 
+The lead institutions are covered  in \secref{sect:leadtutes}.
