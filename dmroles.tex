@@ -1,58 +1,65 @@
 \section{Roles in Data Management}
 
-There are many roles listed in \figref{fig:dmorg}, this section enumerates responsibilities going with those roles. 
+This section describes the responsibilities associated with the roles shown in
+\figref{fig:dmorg}.
 
 
 \subsection{DM Project Manager (DMPM)\label{role:dmpm}}
 
-The DM Project Manager is responsible for the efficient coordination of all LSST activities and responsibilities assigned to the Data Management Subsystem. The DM Project Manager has the responsibility of establishing the organization, resources, and work assignments to provide DM solutions.  The DM Project Manager, serves as the DM representative in the LSST Project Office and in that role is responsible for presenting DM initiative status and submitting new DM initiatives for approval consideration. Ultimately, the DM Project Manager, in conjunction with his / her peer Project Managers (Telescope, Camera), is responsible for delivering an integrated LSST system. The DM Project Manager reports to the LSST Project Manager. Specific responsibilities include:
+The DM Project Manager is responsible for the efficient coordination of all LSST activities and responsibilities assigned to the Data Management Subsystem. The DM Project Manager has the responsibility of establishing the organization, resources, and work assignments to provide DM solutions.  The DM Project Manager serves as the DM representative in the LSST Project Office and in that role is responsible for presenting DM initiative status and submitting new DM initiatives to be considered for approval. Ultimately, the DM Project Manager, in conjunction with his / her peer Project Managers (Telescope, Camera), is responsible for delivering an integrated LSST system. The DM Project Manager reports to the LSST Project Manager. Specific responsibilities include:
 
 \begin{itemize}
 \item Manage the overall DM System
-\item Define scope and funding for DM System 
+\item Define scope and funding for DM System
 \item Develop and implement the DM project management and control process, including earned value management
 \item Approve the DM Work Breakdown Structure (WBS), budgets and resource estimates
-\item Approve or execute as appropriate all DM outsourcing contracts 
+\item Approve or execute as appropriate all DM outsourcing contracts
 \item Convene and/or participate in all DM reviews
-\item Co-Chair the DM Leadership Team
+\item Co-chair the DM Leadership Team (\ref{sect:dmlt})
 \end{itemize}
 
 \subsection{DM Deputy Project Manager (DDMPM) \label{role:dmdpm}}
-The DM Project Manager will keep the Deputy Project Manager informed of all DM situations such that the deputy may effectively act in place of the Project Manager when absent. 
-The PM and deputy will work together on the general management of DM and any specific PM tasks may be delegated to the deputy as needed and agreed. In the absence of the PM the deputy carries full authority and decision making powers of the PM. 
 
-\subsection{DM Subsystem Scientist (DMSS) \label{role:dmps} }
-The DM Project Scientist has ultimate responsibility for ensuring DM initiatives provide solutions that meet the overall LSST scientific and technical requirements.  The DM Project Scientist must ensure correct specification of DM Scientific Requirements and proper translation of those requirements into derived information technology requirements and ultimately, into implemented solutions.  The DM Project Scientist must ensure that the DM subsystem is properly scoped and integrated within the overall LSST system.  The DM Project Scientist is also a member of the LSST Project Science Team (PST) and reports to the LSST Director. Specific responsibilities include:
+The PM and deputy will work together on the general management of DM and any specific PM tasks may be delegated to the deputy as needed and agreed. In the absence of the PM the deputy carries full authority and decision making powers of the PM. The DM Project Manager will keep the Deputy Project Manager informed of all DM situations such that the deputy may effectively act in place of the Project Manager when absent.
+
+\subsection{DM Subsystem Scientist (DMSS) \label{role:dmps}}
+
+The DM Project Scientist has ultimate responsibility for ensuring DM initiatives provide solutions that meet the overall LSST scientific and technical requirements.  The DM Project Scientist must ensure correct specification of DM Scientific Requirements and proper translation of those requirements into derived information technology requirements and ultimately, into implemented solutions. The DM Project Scientist must ensure that the DM subsystem is properly scoped and integrated within the overall LSST system. The DM Project Scientist is also a member of the LSST Project Science Team (PST) and reports to the LSST Director. Specific responsibilities include:
 
 \begin{itemize}
-\item Responsible for the science deliverables of the DM System
+\item Ensuring that the scientific goals of the DM system are met
 \item Set requirements for the DM that:
 \begin{itemize}
 \item Ensure that the design and operational flow of the data products meet the needs of the science community
 \item Ensure that the quality requirements of the data products will be / are being met by the DMS, with a particular emphasis on choice of appropriate application algorithms
 \end{itemize}
-\item Set requirements for and assess/validate results of Data Challenges and other precursor experiments
+\item Set requirements for and assess/validate the results of Data Challenges and other precursor experiments
 \item Set requirements and assess/validate results for Data Releases
 \item Convene and/or participate in all DM reviews
-\item Co-Chair the DM Leadership Team 
-\item Chair the DM Subsystem Science Team
+\item Co-Chair the DM Leadership Team (\secref{sec:dmlt})
+\item Chair the DM Subsystem Science Team (\secref{sec:dmsst})
+
 \end{itemize}
 
-\subsection{ Project Controller/Scheduler \label{role:pcon}}
-Keep AGILE plan in sync with the overall LSST planning (primavera), track milestones from TCAMS \secref{role:tcam}. 
-Help TCAMS with building the plan from the milestones tracking dependencies and keeping it up to date. 
+\subsection{Project Controller/Scheduler \label{role:pcon}}
 
-Help set up sprint - points available (start/end day, account for holidays etc.) 
-Bug team in general about story status in sprints and their tracking status (points spent).
+The DM Project Controller is responsible for integrating DM's agile planning process with the LSST Project Management and Control System (PMCS). Specific responsibilities include:
 
-Create reports and gantt charts for the DM Project Manager as needed \secref{role:dmpm}
-\subsection{Technical Control/Account Manager (TCAM) \label{role:tcam} }
-Accountable for planning and execution in their area. Reporting to the DM Project Manager \secref{role:dmpm}. In AGILE could also be seen as the SCRUM Master for the local team.
+\begin{itemize}
 
-\subsection{ Product Owner \label{role:prodo}}
-The product owner, aka. the X scientist (where X is the product e.g. Alerts Production), is responsible for the product quality and acceptance. 
-The product owner should sign off on the requirements to be fulfilled in every delivery and therefore also on any descopes or enhancements. 
-The Product owner should define tests which can be run to prove a delivery meets the requirements due for that product. 
+  \item{Assist T/CAMs in developing the DM plan}
+  \item{Synchronize the DM plan, managed as per \citeds{LDM-472}, with the LSST PMCS}
+  \item{Ensure that the plan is kept up-to-date and milestones are properly tracked}
+  \item{Coordinate sprints, ensuring that appropriate story points are allocated and tracked}
+  \item{Create reports, Gantt charts and figures as requested by the DMPM}
+
+\end{itemize}
+
+\subsection{Product Owner \label{role:prodo}}
+
+The product owner, aka. the X scientist (where X is the product e.g. Alerts Production), is responsible for the product quality and acceptance.
+The product owner should sign off on the requirements to be fulfilled in every delivery and therefore also on any descopes or enhancements.
+The Product owner should define tests which can be run to prove a delivery meets the requirements due for that product.
 
 \subsection{Pipeline Scientist \label{role:pipe}}
 Several DM products come together to form the LSST pipeline. The Pipeline Scientist is the product owner for the overall pipeline. 
