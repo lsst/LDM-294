@@ -63,15 +63,15 @@ within DM:
 \begin{itemize}
 
   \item{Provides software to support ingestion, indexing, query, and administration of DM catalog and image
-  data products, data provenance, and other associated metadata within the LSST Data Acess Centers;}
+  data products, data provenance, and other associated metadata within the LSST Data Access Centers;}
 
   \item{Provides implementations of data access services (including IVOA services), as well as associated
-  client libraries, to be hosted within the LSST Data Access Centers, which facilitate interraction between
+  client libraries, to be hosted within the LSST Data Access Centers, which facilitate interaction between
   LSST data products and tools provided by both other parts of the LSST project and by the astronomical
   research community at large;}
 
   \item{Provides a Python framework (the "Data Butler"), used by the LSST science pipelines, to facilitate
-  abstract interaction between in-memory Python objects and generic persisted archives of those objects;}
+  abstract persistence/retrieval of in-memory Python objects to/from generic archives of those objects;}
 
   \item{Provides a Python framework ("SuperTask") which serves as an interface layer between pipeline
   orchestration and algorithmic code, and which allows pipelines to be constructed, configured, and run at
