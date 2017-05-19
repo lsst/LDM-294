@@ -171,7 +171,7 @@ FT,Fourier Transforms,SCIPRIM,Fourier transforms,1.02C.03.05,AP,Simon Krughoff,E
 TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
 SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw/utils
 DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,daf_ingest
-DAX,DAX VO+ Services,DAC,DAX VO+ services,.,.,,,,
+DAX,DAX VO+ Services,SCIPLAT,DAX VO+ services,.,.,,,,
 DAXWEB,Web Framework,DAX,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
 DAXIMG,Image Access,DAX,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
 DAXCAT,Catalog Access,DAX,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
