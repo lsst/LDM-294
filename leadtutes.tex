@@ -52,5 +52,44 @@ In addition, the DRP group is responsible for testing each major product deliver
 
 \subsection {Caltech IPAC}\label{sect:ipac}
 \subsection {SLAC}\label{sect:slac}
+SLAC hosts the DM Software Architect (\secref{role:softarc}) and the Science Data Archive and Data Access
+Services group described below.
+
+\subsubsection{Science Data Archive and Data Access Services \label{sect:dax}}
+
+The Science Data Archive and Data Access Services (DAX) group has the following major areas of activity
+within DM:
+
+\begin{itemize}
+
+  \item{Provides software to support ingestion, indexing, query, and administration of DM catalog and image
+  data products, data provenance, and other associated metadata within the LSST Data Access Centers;}
+
+  \item{Provides implementations of data access services (including IVOA services), as well as associated
+  client libraries, to be hosted within the LSST Data Access Centers, which facilitate interaction between
+  LSST data products and tools provided by both other parts of the LSST project and by the astronomical
+  research community at large;}
+
+  \item{Provides a Python framework (the "Data Butler"), used by the LSST science pipelines, to facilitate
+  abstract persistence/retrieval of in-memory Python objects to/from generic archives of those objects;}
+
+  \item{Provides a Python framework ("SuperTask") which serves as an interface layer between pipeline
+  orchestration and algorithmic code, and which allows pipelines to be constructed, configured, and run at
+  the level of a single node or a group of tightly-synchronized nodes;}
+
+  \item{Provides support for various middleware and infrastructure toolkits used by DM which would otherwise
+  have no authoritative home institution within DM (e.g. logging support library, spherical geometry support
+  library).}
+
+\end{itemize}
+
+Management of the group is the responsibility of the DAX T/CAM, reporting to the DM Project Manager
+(\secref{role:dmpm}).
+
+The DAX group is responsible for delivering software which adheres to the architectural and testing standard
+defined by the Software Architect (\secref{role:softarc}). In addition, the DAX group is responsible for
+testing each major product delivered to demonstrate its fitness for purpose, and running and analyzing large
+scale tests to validate the performance of the science data archive and data access systems.
+
 \subsection {NCSA}\label{sect:ncsa}
 
