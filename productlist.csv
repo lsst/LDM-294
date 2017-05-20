@@ -171,6 +171,7 @@ FT,Fourier Transforms,SCIPRIM,Fourier transforms,1.02C.03.05,AP,Simon Krughoff,E
 TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
 SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw/utils
 DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,daf_ingest
+SCIPLAT,Science Platform,DM,Science Platform,.,.,,,,
 DAX,DAX VO+ Services,SCIPLAT,DAX VO+ services,.,.,,,,
 DAXWEB,Web Framework,DAX,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
 DAXIMG,Image Access,DAX,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
@@ -189,7 +190,6 @@ SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,,S
 SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,,SW,
 SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,,SW,
 SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,,SW,
-SCIPLAT,Science Platform,DM,Science Platform,.,.,,,,
 SPLJL,SciPlat JupyterLab,SCIPLAT,Science Platform JupyterLab component,.,.,,,,
 JLENV,JupyterLab Env,SPLJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
 JLSW,JupyterLab SW Env,SPLJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,

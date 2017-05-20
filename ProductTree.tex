@@ -8,7 +8,7 @@
 \usepackage{tikz,hyperref,amsmath}
 \usetikzlibrary{positioning,arrows,shapes,decorations.shapes,shapes.arrows}
 \usetikzlibrary{backgrounds,calc}
-\usepackage[paperwidth=24cm,paperheight=208.12cm,
+\usepackage[paperwidth=24.8cm,paperheight=221.25cm,
 left=-2mm,top=3mm,bottom=0mm,right=0mm,
 noheadfoot,marginparwidth=0pt,includemp=false,
 textwidth=30cm,textheight=50mm]{geometry}
@@ -23,20 +23,11 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \tikzstyle{pline}=[-, thick]\begin{document}
 \begin{tikzpicture}[node distance=0mm]
 \node (DM) [wbbox]{\textbf{Data Management}}; 
-\node (BUTLER) [pbox,right=15mm of DM] {{\tiny \color{gray}1.02C.06.02.01} \newline 
-\textbf{Data Butler Client}
- }; 
-\node (BUTLERpkg) [tbox,below=3mm of BUTLER.north] {{\tiny \color{gray} \begin{verbatim} daf_persistence/db/daf_fmt_* \end{verbatim} }  }; 
- \draw[pline] (DM.east) -| ++(0.4,0)  |- (BUTLER.west);
- \node (DAC) [pbox,below=4pt of BUTLER] {{\tiny \color{gray}.} \newline 
+\node (DAC) [pbox,right=15mm of DM] {{\tiny \color{gray}.} \newline 
 \textbf{Data Access Center}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (DAC.west);
- \node (ALERTDB) [pbox,right=15mm of DAC] {{\tiny \color{gray}1.02C.03.03} \newline 
-\textbf{Alert DB}
- }; 
- \draw[pline] (DAC.east) -| ++(0.4,0)  |- (ALERTDB.west);
- \node (BULKD) [pbox,below=4pt of ALERTDB] {\textbf{Bulk Distrib}
+ \node (BULKD) [pbox,right=15mm of DAC] {\textbf{Bulk Distrib}
  }; 
  \draw[pline] (DAC.east) -| ++(0.4,0)  |- (BULKD.west);
  \node (DACPROP) [pbox,below=4pt of BULKD] {\textbf{Proposal Manager}
@@ -45,55 +36,67 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (DACRM) [pbox,below=4pt of DACPROP] {\textbf{Resource Manager}
  }; 
  \draw[pline] (DAC.east) -| ++(0.4,0)  |- (DACRM.west);
- \node (DAX) [pbox,below=4pt of DACRM] {{\tiny \color{gray}.} \newline 
-\textbf{DAX Web Services}
+ \node (DBB) [pbox,below=68pt of DAC] {{\tiny \color{gray}.} \newline 
+\textbf{Data Backbone}
  }; 
- \draw[pline] (DAC.east) -| ++(0.4,0)  |- (DAX.west);
- \node (DAXCAT) [pbox,right=15mm of DAX] {{\tiny \color{gray}1.02C.06.02.05} \newline 
-\textbf{Catalog Access}
+ \draw[pline] (DM.east) -| ++(0.4,0)  |- (DBB.west);
+ \node (BUTLER) [pbox,right=15mm of DBB] {{\tiny \color{gray}1.02C.06.02.01} \newline 
+\textbf{Data Butler Client}
  }; 
-\node (DAXCATpkg) [tbox,below=3mm of DAXCAT.north] {{\tiny \color{gray} \begin{verbatim} dax_dbserv \end{verbatim} }  }; 
- \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXCAT.west);
- \node (DAXCMETA) [pbox,below=4pt of DAXCAT] {{\tiny \color{gray}1.02C.06.02.05} \newline 
-\textbf{Cat Metadata Acc}
+\node (BUTLERpkg) [tbox,below=3mm of BUTLER.north] {{\tiny \color{gray} \begin{verbatim} daf_persistence/db/daf_fmt_* \end{verbatim} }  }; 
+ \draw[pline] (DBB.east) -| ++(0.4,0)  |- (BUTLER.west);
+ \node (DTR) [pbox,below=4pt of BUTLER] {\textbf{Transport/Repl}
  }; 
-\node (DAXCMETApkg) [tbox,below=3mm of DAXCMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  }; 
- \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXCMETA.west);
- \node (DAXIMETA) [pbox,below=4pt of DAXCMETA] {{\tiny \color{gray}1.02C.06.02.05} \newline 
-\textbf{Img Metadata Acc}
+ \draw[pline] (DBB.east) -| ++(0.4,0)  |- (DTR.west);
+ \node (SCICATAR) [pbox,below=4pt of DTR] {{\tiny \color{gray}.} \newline 
+\textbf{Science Cat Archive}
  }; 
-\node (DAXIMETApkg) [tbox,below=3mm of DAXIMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  }; 
- \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXIMETA.west);
- \node (DAXIMG) [pbox,below=4pt of DAXIMETA] {{\tiny \color{gray}1.02C.06.02.04} \newline 
-\textbf{Image Access}
+ \draw[pline] (DBB.east) -| ++(0.4,0)  |- (SCICATAR.west);
+ \node (QSERV) [pbox,right=15mm of SCICATAR] {{\tiny \color{gray}1.02C.06.02.03} \newline 
+\textbf{Qserv DBMS}
  }; 
-\node (DAXIMGpkg) [tbox,below=3mm of DAXIMG.north] {{\tiny \color{gray} \begin{verbatim} dax_imgserv \end{verbatim} }  }; 
- \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXIMG.west);
- \node (DAXWEB) [pbox,below=4pt of DAXIMG] {{\tiny \color{gray}1.02C.06.02.02} \newline 
-\textbf{Web Framework}
+\node (QSERVpkg) [tbox,below=3mm of QSERV.north] {{\tiny \color{gray} \begin{verbatim} qserv/partition/scisql \end{verbatim} }  }; 
+ \draw[pline] (SCICATAR.east) -| ++(0.4,0)  |- (QSERV.west);
+ \node (SCICATDB) [pbox,below=4pt of QSERV] {{\tiny \color{gray}.} \newline 
+\textbf{Science Cat DBs}
  }; 
-\node (DAXWEBpkg) [tbox,below=3mm of DAXWEB.north] {{\tiny \color{gray} \begin{verbatim} dax_webserv/dax_webservcommon \end{verbatim} }  }; 
- \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXWEB.west);
- \node (L1DB) [pbox,below=136pt of DAX] {{\tiny \color{gray}1.02C.06.01.01} \newline 
+ \draw[pline] (SCICATAR.east) -| ++(0.4,0)  |- (SCICATDB.west);
+ \node (ALERTDB) [pbox,right=15mm of SCICATDB] {{\tiny \color{gray}1.02C.03.03} \newline 
+\textbf{Alert DB}
+ }; 
+ \draw[pline] (SCICATDB.east) -| ++(0.4,0)  |- (ALERTDB.west);
+ \node (L1DB) [pbox,below=4pt of ALERTDB] {{\tiny \color{gray}1.02C.06.01.01} \newline 
 \textbf{L1 Catalog DB}
  }; 
 \node (L1DBpkg) [tbox,below=3mm of L1DB.north] {{\tiny \color{gray} \begin{verbatim} cat \end{verbatim} }  }; 
- \draw[pline] (DAC.east) -| ++(0.4,0)  |- (L1DB.west);
+ \draw[pline] (SCICATDB.east) -| ++(0.4,0)  |- (L1DB.west);
  \node (L2DB) [pbox,below=4pt of L1DB] {{\tiny \color{gray}1.02C.06.01.01} \newline 
 \textbf{L2 Catalog DB}
  }; 
 \node (L2DBpkg) [tbox,below=3mm of L2DB.north] {{\tiny \color{gray} \begin{verbatim} cat \end{verbatim} }  }; 
- \draw[pline] (DAC.east) -| ++(0.4,0)  |- (L2DB.west);
- \node (DEVEL) [pbox,below=340pt of DAC] {{\tiny \color{gray}.} \newline 
+ \draw[pline] (SCICATDB.east) -| ++(0.4,0)  |- (L2DB.west);
+ \node (SCIIMGAR) [pbox,below=136pt of SCICATAR] {{\tiny \color{gray}.} \newline 
+\textbf{Science Img Archive}
+ }; 
+ \draw[pline] (DBB.east) -| ++(0.4,0)  |- (SCIIMGAR.west);
+ \node (GMDS) [pbox,right=15mm of SCIIMGAR] {{\tiny \color{gray}1.02C.06.02.05} \newline 
+\textbf{Global Metadata}
+ }; 
+ \draw[pline] (SCIIMGAR.east) -| ++(0.4,0)  |- (GMDS.west);
+ \node (PRVDB) [pbox,below=4pt of GMDS] {{\tiny \color{gray}1.02C.06.01.01} \newline 
+\textbf{Provenance DB}
+ }; 
+ \draw[pline] (SCIIMGAR.east) -| ++(0.4,0)  |- (PRVDB.west);
+ \node (DEVEL) [pbox,below=272pt of DBB] {{\tiny \color{gray}.} \newline 
 \textbf{Developer services}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (DEVEL.west);
- \node (CI) [pbox,right=15mm of DEVEL] {{\tiny \color{gray}1.02C.10.02.03.01} \newline 
+ \node (BUILD) [pbox,right=15mm of DEVEL] {{\tiny \color{gray}1.02C.10.02.03.01} \newline 
 \textbf{Build/Unit Test}
  }; 
-\node (CIpkg) [tbox,below=3mm of CI.north] {{\tiny \color{gray} \begin{verbatim} sconsUtils/base/lsstsw/lsst_build \end{verbatim} }  }; 
- \draw[pline] (DEVEL.east) -| ++(0.4,0)  |- (CI.west);
- \node (COMMS) [pbox,below=4pt of CI] {{\tiny \color{gray}1.02C.10.02.03.04} \newline 
+\node (BUILDpkg) [tbox,below=3mm of BUILD.north] {{\tiny \color{gray} \begin{verbatim} sconsUtils/base/lsstsw/lsst_build \end{verbatim} }  }; 
+ \draw[pline] (DEVEL.east) -| ++(0.4,0)  |- (BUILD.west);
+ \node (COMMS) [pbox,below=4pt of BUILD] {{\tiny \color{gray}1.02C.10.02.03.04} \newline 
 \textbf{Devel Comm Tools}
  }; 
  \draw[pline] (DEVEL.east) -| ++(0.4,0)  |- (COMMS.west);
@@ -125,33 +128,54 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (BPS) [pbox,right=15mm of INFRA] {\textbf{Batch Proc}
  }; 
  \draw[pline] (INFRA.east) -| ++(0.4,0)  |- (BPS.west);
- \node (DBB) [pbox,below=4pt of BPS] {{\tiny \color{gray}.} \newline 
-\textbf{Data Backbone}
- }; 
- \draw[pline] (INFRA.east) -| ++(0.4,0)  |- (DBB.west);
- \node (DTR) [pbox,right=15mm of DBB] {\textbf{Transport/Repl}
- }; 
- \draw[pline] (DBB.east) -| ++(0.4,0)  |- (DTR.west);
- \node (GMDS) [pbox,below=4pt of DTR] {{\tiny \color{gray}1.02C.06.02.05} \newline 
-\textbf{Global Metadata}
- }; 
- \draw[pline] (DBB.east) -| ++(0.4,0)  |- (GMDS.west);
- \node (PRVDB) [pbox,below=4pt of GMDS] {{\tiny \color{gray}1.02C.06.01.01} \newline 
-\textbf{Provenance DB}
- }; 
- \draw[pline] (DBB.east) -| ++(0.4,0)  |- (PRVDB.west);
- \node (INFRASYS) [pbox,below=68pt of DBB] {\textbf{Infra Systems}
+ \node (INFRASYS) [pbox,below=4pt of BPS] {\textbf{Infra Systems}
  }; 
  \draw[pline] (INFRA.east) -| ++(0.4,0)  |- (INFRASYS.west);
- \node (QSERV) [pbox,below=4pt of INFRASYS] {{\tiny \color{gray}1.02C.06.02.03} \newline 
-\textbf{Qserv DBMS}
+ \node (TXF) [pbox,below=4pt of INFRASYS] {{\tiny \color{gray}.} \newline 
+\textbf{Task Execution}
  }; 
-\node (QSERVpkg) [tbox,below=3mm of QSERV.north] {{\tiny \color{gray} \begin{verbatim} qserv/partition/scisql \end{verbatim} }  }; 
- \draw[pline] (INFRA.east) -| ++(0.4,0)  |- (QSERV.west);
- \node (INTGTEST) [pbox,below=170pt of INFRA] {\textbf{Integration Test}
+ \draw[pline] (INFRA.east) -| ++(0.4,0)  |- (TXF.west);
+ \node (ACTIVATR) [pbox,right=15mm of TXF] {{\tiny \color{gray}1.02C.06.03} \newline 
+\textbf{Activator Bases}
+ }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (ACTIVATR.west);
+ \node (CONFIG) [pbox,below=4pt of ACTIVATR] {{\tiny \color{gray}1.02C.06.03} \newline 
+\textbf{Pipeline Config}
+ }; 
+\node (CONFIGpkg) [tbox,below=3mm of CONFIG.north] {{\tiny \color{gray} \begin{verbatim} pex_config \end{verbatim} }  }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (CONFIG.west);
+ \node (LOG) [pbox,below=4pt of CONFIG] {{\tiny \color{gray}1.02C.06.04.01} \newline 
+\textbf{Logging}
+ }; 
+\node (LOGpkg) [tbox,below=3mm of LOG.north] {{\tiny \color{gray} \begin{verbatim} log \end{verbatim} }  }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (LOG.west);
+ \node (MULTCORE) [pbox,below=4pt of LOG] {{\tiny \color{gray}1.02C.06.03} \newline 
+\textbf{Multi-Core Task}
+ }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (MULTCORE.west);
+ \node (MULTNODE) [pbox,below=4pt of MULTCORE] {{\tiny \color{gray}1.02C.06.03} \newline 
+\textbf{Multi-Node Task}
+ }; 
+\node (MULTNODEpkg) [tbox,below=3mm of MULTNODE.north] {{\tiny \color{gray} \begin{verbatim} pipe_base/ctrl_pool \end{verbatim} }  }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (MULTNODE.west);
+ \node (SPRTASK) [pbox,below=4pt of MULTNODE] {{\tiny \color{gray}1.02C.06.03} \newline 
+\textbf{SuperTask}
+ }; 
+\node (SPRTASKpkg) [tbox,below=3mm of SPRTASK.north] {{\tiny \color{gray} \begin{verbatim} pipe_supertask/pipe_base/pex_exceptions \end{verbatim} }  }; 
+ \draw[pline] (TXF.east) -| ++(0.4,0)  |- (SPRTASK.west);
+ \node (INTGTEST) [pbox,below=272pt of INFRA] {\textbf{Integration Test}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (INTGTEST.west);
- \node (ITENV) [pbox,below=4pt of INTGTEST] {{\tiny \color{gray}.} \newline 
+ \node (CI) [pbox,right=15mm of INTGTEST] {{\tiny \color{gray}1.02C.10.02.03.01} \newline 
+\textbf{Contin Integration}
+ }; 
+\node (CIpkg) [tbox,below=3mm of CI.north] {{\tiny \color{gray} \begin{verbatim} Jenkins \end{verbatim} }  }; 
+ \draw[pline] (INTGTEST.east) -| ++(0.4,0)  |- (CI.west);
+ \node (PRECURSR) [pbox,below=4pt of CI] {\textbf{Precursor Data}
+ }; 
+\node (PRECURSRpkg) [tbox,below=3mm of PRECURSR.north] {{\tiny \color{gray} \begin{verbatim} obs_*/validation_data_*/testdata_*/afwdata \end{verbatim} }  }; 
+ \draw[pline] (INTGTEST.east) -| ++(0.4,0)  |- (PRECURSR.west);
+ \node (ITENV) [pbox,below=34pt of INTGTEST] {{\tiny \color{gray}.} \newline 
 \textbf{IT Environments}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (ITENV.west);
@@ -186,7 +210,10 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (SATENV) [pbox,below=4pt of L2INTGR] {\textbf{Satellite Env}
  }; 
  \draw[pline] (ITARC.east) -| ++(0.4,0)  |- (SATENV.west);
- \node (ITBASE) [pbox,below=272pt of ITARC] {{\tiny \color{gray}.} \newline 
+ \node (SVENV) [pbox,below=4pt of SATENV] {\textbf{Science Valid Env}
+ }; 
+ \draw[pline] (ITARC.east) -| ++(0.4,0)  |- (SVENV.west);
+ \node (ITBASE) [pbox,below=306pt of ITARC] {{\tiny \color{gray}.} \newline 
 \textbf{Base IT}
  }; 
  \draw[pline] (ITENV.east) -| ++(0.4,0)  |- (ITBASE.west);
@@ -199,15 +226,22 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (BDBBENV) [pbox,below=4pt of BDACENV] {\textbf{Base DBB Env}
  }; 
  \draw[pline] (ITBASE.east) -| ++(0.4,0)  |- (BDBBENV.west);
- \node (L1) [pbox,below=408pt of ITENV] {{\tiny \color{gray}.} \newline 
+ \node (COMMENV) [pbox,below=4pt of BDBBENV] {\textbf{Comm Cluster Env}
+ }; 
+ \draw[pline] (ITBASE.east) -| ++(0.4,0)  |- (COMMENV.west);
+ \node (L1) [pbox,below=476pt of ITENV] {{\tiny \color{gray}.} \newline 
 \textbf{Level 1 System}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (L1.west);
- \node (BRKRFEED) [pbox,right=15mm of L1] {{\tiny \color{gray}1.02C.03.03} \newline 
-\textbf{Alert Broker Feed}
+ \node (ALRTDSTR) [pbox,right=15mm of L1] {{\tiny \color{gray}1.02C.03.03} \newline 
+\textbf{Alert Distribution}
  }; 
- \draw[pline] (L1.east) -| ++(0.4,0)  |- (BRKRFEED.west);
- \node (L1OFFL) [pbox,below=4pt of BRKRFEED] {\textbf{L1 Offline Proc}
+ \draw[pline] (L1.east) -| ++(0.4,0)  |- (ALRTDSTR.west);
+ \node (ALRTFLTR) [pbox,below=4pt of ALRTDSTR] {{\tiny \color{gray}1.02C.03.03} \newline 
+\textbf{Alert Filtering}
+ }; 
+ \draw[pline] (L1.east) -| ++(0.4,0)  |- (ALRTFLTR.west);
+ \node (L1OFFL) [pbox,below=4pt of ALRTFLTR] {\textbf{L1 Offline Proc}
  }; 
  \draw[pline] (L1.east) -| ++(0.4,0)  |- (L1OFFL.west);
  \node (L1ONL) [pbox,below=4pt of L1OFFL] {{\tiny \color{gray}.} \newline 
@@ -310,32 +344,42 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{Level 1 Services}
  }; 
  \draw[pline] (L1.east) -| ++(0.4,0)  |- (L1SRV.west);
- \node (ARCAT) [pbox,right=15mm of L1SRV] {\textbf{Aux Tel Archiver}
+ \node (ARCSRV) [pbox,right=15mm of L1SRV] {{\tiny \color{gray}.} \newline 
+\textbf{Archiving Services}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (ARCAT.west);
+ \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (ARCSRV.west);
+ \node (ARCAT) [pbox,right=15mm of ARCSRV] {\textbf{Aux Tel Archiver}
+ }; 
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (ARCAT.west);
  \node (ARCCOM) [pbox,below=4pt of ARCAT] {\textbf{ComCam Archiver}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (ARCCOM.west);
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (ARCCOM.west);
  \node (ARCLSST) [pbox,below=4pt of ARCCOM] {\textbf{LSSTCam Archiver}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (ARCLSST.west);
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (ARCLSST.west);
  \node (CARCCOM) [pbox,below=4pt of ARCLSST] {\textbf{ComCam Catchup}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (CARCCOM.west);
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (CARCCOM.west);
  \node (CARCLSST) [pbox,below=4pt of CARCCOM] {\textbf{LSSTCam Catchup}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (CARCLSST.west);
- \node (PRMPTCOM) [pbox,below=4pt of CARCLSST] {\textbf{ComCam Prompt}
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (CARCLSST.west);
+ \node (EFDTSRV) [pbox,below=4pt of CARCLSST] {\textbf{EFD Transf Service}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (PRMPTCOM.west);
+ \draw[pline] (ARCSRV.east) -| ++(0.4,0)  |- (EFDTSRV.west);
+ \node (POINTSRV) [pbox,below=170pt of ARCSRV] {\textbf{Pointing Service}
+ }; 
+ \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (POINTSRV.west);
+ \node (PRMPTSRV) [pbox,below=4pt of POINTSRV] {{\tiny \color{gray}.} \newline 
+\textbf{Prompt Services}
+ }; 
+ \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (PRMPTSRV.west);
+ \node (PRMPTCOM) [pbox,right=15mm of PRMPTSRV] {\textbf{ComCam Prompt}
+ }; 
+ \draw[pline] (PRMPTSRV.east) -| ++(0.4,0)  |- (PRMPTCOM.west);
  \node (PRMPTLSST) [pbox,below=4pt of PRMPTCOM] {\textbf{LSSTCam Prompt}
  }; 
- \draw[pline] (L1SRV.east) -| ++(0.4,0)  |- (PRMPTLSST.west);
- \node (MINIBRKR) [pbox,below=204pt of L1SRV] {{\tiny \color{gray}1.02C.03.03} \newline 
-\textbf{Alert Mini-Broker}
- }; 
- \draw[pline] (L1.east) -| ++(0.4,0)  |- (MINIBRKR.west);
- \node (L2) [pbox,below=986pt of L1] {{\tiny \color{gray}.} \newline 
+ \draw[pline] (PRMPTSRV.east) -| ++(0.4,0)  |- (PRMPTLSST.west);
+ \node (L2) [pbox,below=1088pt of L1] {{\tiny \color{gray}.} \newline 
 \textbf{Level 2 System}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (L2.west);
@@ -395,7 +439,11 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  }; 
 \node (DRPDBpkg) [tbox,below=3mm of DRPDB.north] {{\tiny \color{gray} \begin{verbatim} daf_ingest \end{verbatim} }  }; 
  \draw[pline] (L2SCI.east) -| ++(0.4,0)  |- (DRPDB.west);
- \node (PRODEX) [pbox,below=306pt of L2SCI] {{\tiny \color{gray}.} \newline 
+ \node (TMPLGEN) [pbox,below=4pt of DRPDB] {{\tiny \color{gray}1.02C.03.04} \newline 
+\textbf{Template Gen Prod}
+ }; 
+ \draw[pline] (L2SCI.east) -| ++(0.4,0)  |- (TMPLGEN.west);
+ \node (PRODEX) [pbox,below=340pt of L2SCI] {{\tiny \color{gray}.} \newline 
 \textbf{Production Exec}
  }; 
  \draw[pline] (L2.east) -| ++(0.4,0)  |- (PRODEX.west);
@@ -405,17 +453,17 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (JOBACTIV) [pbox,below=4pt of CMPGN] {\textbf{Job Activator}
  }; 
  \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (JOBACTIV.west);
- \node (PLTACTIV) [pbox,below=4pt of JOBACTIV] {\textbf{Pilot Activator}
+ \node (PREACTIV) [pbox,below=4pt of JOBACTIV] {\textbf{Pre-Flight Activator}
  }; 
- \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (PLTACTIV.west);
- \node (WFM) [pbox,below=4pt of PLTACTIV] {\textbf{Workflow Manager}
+ \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (PREACTIV.west);
+ \node (WFM) [pbox,below=4pt of PREACTIV] {\textbf{Workflow Manager}
  }; 
 \node (WFMpkg) [tbox,below=3mm of WFM.north] {{\tiny \color{gray} \begin{verbatim} ctrl_orca/ctrl_platform_*/ctrl_execute/ctrl_stats/ctrl_provenance \end{verbatim} }  }; 
  \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (WFM.west);
  \node (WLM) [pbox,below=4pt of WFM] {\textbf{Workload Manager}
  }; 
  \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (WLM.west);
- \node (NETDM) [pbox,below=544pt of L2] {{\tiny \color{gray}.} \newline 
+ \node (NETDM) [pbox,below=578pt of L2] {{\tiny \color{gray}.} \newline 
 \textbf{DM Networks}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (NETDM.west);
@@ -424,7 +472,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  }; 
  \draw[pline] (NETDM.east) -| ++(0.4,0)  |- (NETARCH.west);
  \node (NETBASE) [pbox,below=4pt of NETARCH] {{\tiny \color{gray}1.02C.07.04.03 (moving to 1.02C.08)} \newline 
-\textbf{Base network}
+\textbf{Base Network}
  }; 
  \draw[pline] (NETDM.east) -| ++(0.4,0)  |- (NETBASE.west);
  \node (NETCHILE) [pbox,below=4pt of NETBASE] {{\tiny \color{gray}.} \newline 
@@ -471,11 +519,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{Long-Haul Nets}
  }; 
  \draw[pline] (NETDM.east) -| ++(0.4,0)  |- (NETLHN.west);
- \node (PRECURSR) [pbox,below=340pt of NETDM] {\textbf{Precursor Data}
- }; 
-\node (PRECURSRpkg) [tbox,below=3mm of PRECURSR.north] {{\tiny \color{gray} \begin{verbatim} obs_*/validation_data_*/testdata_*/afwdata \end{verbatim} }  }; 
- \draw[pline] (DM.east) -| ++(0.4,0)  |- (PRECURSR.west);
- \node (SCIALG) [pbox,below=4pt of PRECURSR] {{\tiny \color{gray}.} \newline 
+ \node (SCIALG) [pbox,below=340pt of NETDM] {{\tiny \color{gray}.} \newline 
 \textbf{Science Algorithms}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (SCIALG.west);
@@ -501,11 +545,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  }; 
 \node (ASTROMpkg) [tbox,below=3mm of ASTROM.north] {{\tiny \color{gray} \begin{verbatim} jointcal/meas_astrom/meas_mosaic \end{verbatim} }  }; 
  \draw[pline] (SCIALG.east) -| ++(0.4,0)  |- (ASTROM.west);
- \node (ATTRIB) [pbox,below=4pt of ASTROM] {{\tiny \color{gray}1.02C.03.06} \newline 
-\textbf{Attribution/Precov}
- }; 
- \draw[pline] (SCIALG.east) -| ++(0.4,0)  |- (ATTRIB.west);
- \node (BKGDEST) [pbox,below=4pt of ATTRIB] {{\tiny \color{gray}1.02C.04.03} \newline 
+ \node (BKGDEST) [pbox,below=4pt of ASTROM] {{\tiny \color{gray}1.02C.04.03} \newline 
 \textbf{Background Estim}
  }; 
 \node (BKGDESTpkg) [tbox,below=3mm of BKGDEST.north] {{\tiny \color{gray} \begin{verbatim} meas_algorithms \end{verbatim} }  }; 
@@ -546,13 +586,19 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  }; 
 \node (MEASUREpkg) [tbox,below=3mm of MEASURE.north] {{\tiny \color{gray} \begin{verbatim} meas_base/meas_algorithms/meas_extensions_*/meas_modelfit \end{verbatim} }  }; 
  \draw[pline] (SCIALG.east) -| ++(0.4,0)  |- (MEASURE.west);
- \node (ORBEP) [pbox,below=4pt of MEASURE] {\textbf{Orbit/Ephemeris}
+ \node (ORBEP) [pbox,below=4pt of MEASURE] {{\tiny \color{gray}.} \newline 
+\textbf{Orbit/Ephemeris}
  }; 
-\node (ORBEPpkg) [tbox,below=3mm of ORBEP.north] {{\tiny \color{gray} \begin{verbatim} mops_nightmops \end{verbatim} }  }; 
  \draw[pline] (SCIALG.east) -| ++(0.4,0)  |- (ORBEP.west);
- \node (EPHEM) [pbox,right=15mm of ORBEP] {{\tiny \color{gray}1.02C.03.06} \newline 
+ \node (ATTRIB) [pbox,right=15mm of ORBEP] {{\tiny \color{gray}1.02C.03.06} \newline 
+\textbf{Attribution/Precov}
+ }; 
+\node (ATTRIBpkg) [tbox,below=3mm of ATTRIB.north] {{\tiny \color{gray} \begin{verbatim} mops_daymops \end{verbatim} }  }; 
+ \draw[pline] (ORBEP.east) -| ++(0.4,0)  |- (ATTRIB.west);
+ \node (EPHEM) [pbox,below=4pt of ATTRIB] {{\tiny \color{gray}1.02C.03.06} \newline 
 \textbf{Ephemeris Calc}
  }; 
+\node (EPHEMpkg) [tbox,below=3mm of EPHEM.north] {{\tiny \color{gray} \begin{verbatim} mops_night \end{verbatim} }  }; 
  \draw[pline] (ORBEP.east) -| ++(0.4,0)  |- (EPHEM.west);
  \node (ORBFIT) [pbox,below=4pt of EPHEM] {{\tiny \color{gray}1.02C.03.06} \newline 
 \textbf{Orbit Fitting}
@@ -565,8 +611,9 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (TRACKLET) [pbox,below=4pt of ORBMERGE] {{\tiny \color{gray}1.02C.03.06} \newline 
 \textbf{Tracklet Gen}
  }; 
+\node (TRACKLETpkg) [tbox,below=3mm of TRACKLET.north] {{\tiny \color{gray} \begin{verbatim} mops_daymops \end{verbatim} }  }; 
  \draw[pline] (ORBEP.east) -| ++(0.4,0)  |- (TRACKLET.west);
- \node (PHOTOM) [pbox,below=102pt of ORBEP] {{\tiny \color{gray}1.02C.03.08} \newline 
+ \node (PHOTOM) [pbox,below=136pt of ORBEP] {{\tiny \color{gray}1.02C.03.08} \newline 
 \textbf{Photometric Fit}
  }; 
 \node (PHOTOMpkg) [tbox,below=3mm of PHOTOM.north] {{\tiny \color{gray} \begin{verbatim} jointcal/meas_mosaic \end{verbatim} }  }; 
@@ -623,31 +670,60 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{Science Platform}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (SCIPLAT.west);
- \node (SPLNBK) [pbox,right=15mm of SCIPLAT] {{\tiny \color{gray}.} \newline 
-\textbf{SciPlat Notebook}
+ \node (DAX) [pbox,right=15mm of SCIPLAT] {{\tiny \color{gray}.} \newline 
+\textbf{DAX VO+ Services}
  }; 
- \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLNBK.west);
- \node (NBKACTIV) [pbox,right=15mm of SPLNBK] {{\tiny \color{gray}1.02C.10.02.02.05} \newline 
-\textbf{Notebook Activator}
+ \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (DAX.west);
+ \node (DAXCAT) [pbox,right=15mm of DAX] {{\tiny \color{gray}1.02C.06.02.05} \newline 
+\textbf{Catalog Access}
  }; 
- \draw[pline] (SPLNBK.east) -| ++(0.4,0)  |- (NBKACTIV.west);
- \node (NBKDPLY) [pbox,below=4pt of NBKACTIV] {{\tiny \color{gray}1.02C.10.02.02.06} \newline 
-\textbf{Notebook Deploy}
+\node (DAXCATpkg) [tbox,below=3mm of DAXCAT.north] {{\tiny \color{gray} \begin{verbatim} dax_dbserv \end{verbatim} }  }; 
+ \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXCAT.west);
+ \node (DAXCMETA) [pbox,below=4pt of DAXCAT] {{\tiny \color{gray}1.02C.06.02.05} \newline 
+\textbf{Cat Metadata Acc}
  }; 
- \draw[pline] (SPLNBK.east) -| ++(0.4,0)  |- (NBKDPLY.west);
- \node (NBKENV) [pbox,below=4pt of NBKDPLY] {{\tiny \color{gray}1.02C.10.02.02.01} \newline 
-\textbf{Notebook Env}
+\node (DAXCMETApkg) [tbox,below=3mm of DAXCMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  }; 
+ \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXCMETA.west);
+ \node (DAXIMETA) [pbox,below=4pt of DAXCMETA] {{\tiny \color{gray}1.02C.06.02.05} \newline 
+\textbf{Img Metadata Acc}
  }; 
- \draw[pline] (SPLNBK.east) -| ++(0.4,0)  |- (NBKENV.west);
- \node (NBKSUIT) [pbox,below=4pt of NBKENV] {{\tiny \color{gray}1.02C.05.07.04} \newline 
-\textbf{Notebook SUIT Intf}
+\node (DAXIMETApkg) [tbox,below=3mm of DAXIMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  }; 
+ \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXIMETA.west);
+ \node (DAXIMG) [pbox,below=4pt of DAXIMETA] {{\tiny \color{gray}1.02C.06.02.04} \newline 
+\textbf{Image Access}
  }; 
- \draw[pline] (SPLNBK.east) -| ++(0.4,0)  |- (NBKSUIT.west);
- \node (NBKSW) [pbox,below=4pt of NBKSUIT] {{\tiny \color{gray}1.02C.10.02.02.04} \newline 
-\textbf{Notebook SW Env}
+\node (DAXIMGpkg) [tbox,below=3mm of DAXIMG.north] {{\tiny \color{gray} \begin{verbatim} dax_imgserv \end{verbatim} }  }; 
+ \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXIMG.west);
+ \node (DAXWEB) [pbox,below=4pt of DAXIMG] {{\tiny \color{gray}1.02C.06.02.02} \newline 
+\textbf{Web Framework}
  }; 
- \draw[pline] (SPLNBK.east) -| ++(0.4,0)  |- (NBKSW.west);
- \node (SPLPRTL) [pbox,below=136pt of SPLNBK] {{\tiny \color{gray}.} \newline 
+\node (DAXWEBpkg) [tbox,below=3mm of DAXWEB.north] {{\tiny \color{gray} \begin{verbatim} dax_webserv/dax_webservcommon \end{verbatim} }  }; 
+ \draw[pline] (DAX.east) -| ++(0.4,0)  |- (DAXWEB.west);
+ \node (SPLJL) [pbox,below=136pt of DAX] {{\tiny \color{gray}.} \newline 
+\textbf{SciPlat JupyterLab}
+ }; 
+ \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLJL.west);
+ \node (JLACTIV) [pbox,right=15mm of SPLJL] {{\tiny \color{gray}1.02C.10.02.02.05} \newline 
+\textbf{JupyterLab Activator}
+ }; 
+ \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLACTIV.west);
+ \node (JLDPLY) [pbox,below=4pt of JLACTIV] {{\tiny \color{gray}1.02C.10.02.02.06} \newline 
+\textbf{JupyterLab Deploy}
+ }; 
+ \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLDPLY.west);
+ \node (JLENV) [pbox,below=4pt of JLDPLY] {{\tiny \color{gray}1.02C.10.02.02.01} \newline 
+\textbf{JupyterLab Env}
+ }; 
+ \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLENV.west);
+ \node (JLSUIT) [pbox,below=4pt of JLENV] {{\tiny \color{gray}1.02C.05.07.04} \newline 
+\textbf{JupyterLab SUIT Intf}
+ }; 
+ \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLSUIT.west);
+ \node (JLSW) [pbox,below=4pt of JLSUIT] {{\tiny \color{gray}1.02C.10.02.02.04} \newline 
+\textbf{JupyterLab SW Env}
+ }; 
+ \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLSW.west);
+ \node (SPLPRTL) [pbox,below=136pt of SPLJL] {{\tiny \color{gray}.} \newline 
 \textbf{SciPlat Portal}
  }; 
  \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLPRTL.west);
@@ -678,7 +754,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{Visualizers}
  }; 
  \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (PRTLVIS.west);
- \node (SCIPRIM) [pbox,below=374pt of SCIPLAT] {{\tiny \color{gray}.} \newline 
+ \node (SCIPRIM) [pbox,below=544pt of SCIPLAT] {{\tiny \color{gray}.} \newline 
 \textbf{Science Primitives}
  }; 
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (SCIPRIM.west);
@@ -821,37 +897,5 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{QC Reports}
  }; 
  \draw[pline] (SQUASH.east) -| ++(0.4,0)  |- (SQREPORT.west);
- \node (TXF) [pbox,below=102pt of SQUASH] {{\tiny \color{gray}.} \newline 
-\textbf{Task Execution}
- }; 
- \draw[pline] (DM.east) -| ++(0.4,0)  |- (TXF.west);
- \node (ACTIVATR) [pbox,right=15mm of TXF] {{\tiny \color{gray}1.02C.06.03} \newline 
-\textbf{Activator Bases}
- }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (ACTIVATR.west);
- \node (CONFIG) [pbox,below=4pt of ACTIVATR] {{\tiny \color{gray}1.02C.06.03} \newline 
-\textbf{Pipeline Config}
- }; 
-\node (CONFIGpkg) [tbox,below=3mm of CONFIG.north] {{\tiny \color{gray} \begin{verbatim} pex_config \end{verbatim} }  }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (CONFIG.west);
- \node (LOG) [pbox,below=4pt of CONFIG] {{\tiny \color{gray}1.02C.06.04.01} \newline 
-\textbf{Logging}
- }; 
-\node (LOGpkg) [tbox,below=3mm of LOG.north] {{\tiny \color{gray} \begin{verbatim} log \end{verbatim} }  }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (LOG.west);
- \node (MULTCORE) [pbox,below=4pt of LOG] {{\tiny \color{gray}1.02C.06.03} \newline 
-\textbf{Multi-Core Task}
- }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (MULTCORE.west);
- \node (MULTNODE) [pbox,below=4pt of MULTCORE] {{\tiny \color{gray}1.02C.06.03} \newline 
-\textbf{Multi-Node Task}
- }; 
-\node (MULTNODEpkg) [tbox,below=3mm of MULTNODE.north] {{\tiny \color{gray} \begin{verbatim} pipe_base/ctrl_pool \end{verbatim} }  }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (MULTNODE.west);
- \node (SPRTASK) [pbox,below=4pt of MULTNODE] {{\tiny \color{gray}1.02C.06.03} \newline 
-\textbf{SuperTask}
- }; 
-\node (SPRTASKpkg) [tbox,below=3mm of SPRTASK.north] {{\tiny \color{gray} \begin{verbatim} pipe_supertask/pipe_base/pex_exceptions \end{verbatim} }  }; 
- \draw[pline] (TXF.east) -| ++(0.4,0)  |- (SPRTASK.west);
  \end{tikzpicture}
 \end{document}

@@ -9,7 +9,7 @@ from treelib import Node, Tree
 
 #pt sizes for box + margin + gap between boex
 txtheight=28
-leafHeight=1.21 # cm space per leaf box .. height of page calc
+leafHeight=1.25 # cm space per leaf box .. height of page calc
 sep=2  # inner sep
 gap=4
 WBS=1 # Put WBS on diagram
@@ -128,7 +128,7 @@ def doFile(inFile ):
     fout = open (nf,'w')
     tout = open (nt,'w')
 
-    width = ptree.depth() * 6 # cm
+    width = ptree.depth() * 6.2 # cm
     heigth = len(ptree.leaves()) * leafHeight # cm
     header(fout,width,heigth)
     theader(tout)
