@@ -58,18 +58,21 @@ the relevant communication protocols. Science payloads are shown in blue.
 
 
 \subsection{External Interfaces}
-The DM external interfaces are controlled by the following ICDs:
-\begin{itemize}
-	\item[\citeds{LSE-68}] Data Acquisition Interface between Data Management and Camera
-	\item[\citeds{LSE-69}] Interface between the Camera and Data Management	 
-	\item[\citeds{LSE-72}] OCS Command Dictionary for Data Management
-	\item[\citeds{LSE-75}] Control System Interfaces between the Telescope and Data Management
-	\item[\citeds{LSE-76}] Infrastructure Interfaces between Summit Facility and Data Management
-	\item[\citeds{LSE-77}] Infrastructure Interfaces between Base Facility and Data Management
-	\item[\citeds{LSE-130}] List of Data Items to be Exchanged Between the Camera and Data Management
-	\item[\citeds{LSE-131}] Data Management Interface Requirements to Support Education and Public Outreach 
-	\item[\citeds{LSE-140}] Auxiliary Instrumentation Interface between Data Management and Telescope
-\end{itemize}
+The DM external interfaces are controlled by the  ICDs listed in \tabref{tab:icds}.
+\begin{table}
+	\caption{DM Interface Control Documents \label{tb:icds}}
+	\begin{tabular}{l p{0.7\textwidth}}
+		\citeds{LSE-68} & Data Acquisition Interface between Data Management and Camera\\
+		\citeds{LSE-69} & Interface between the Camera and Data Management	 \\
+		\citeds{LSE-72} & OCS Command Dictionary for Data Management\\
+		\citeds{LSE-75} & Control System Interfaces between the Telescope and Data Management\\
+		\citeds{LSE-76} & Infrastructure Interfaces between Summit Facility and Data Management\\
+		\citeds{LSE-77} & Infrastructure Interfaces between Base Facility and Data Management\\
+		\citeds{LSE-130} & List of Data Items to be Exchanged Between the Camera and Data Management\\
+		\citeds{LSE-131} & Data Management Interface Requirements to Support Education and Public Outreach \\
+		\citeds{LSE-140} & Auxiliary Instrumentation Interface between Data Management and Telescope\\
+	\end{tabular}
+\end{table}
 
 \subsubsection{Auxiliary data in DM}
 Certain tasks in DM rely on external catalogs and other information. Currently we believe we need:
