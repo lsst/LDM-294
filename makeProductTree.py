@@ -6,6 +6,7 @@ import os
 import fileinput
 import sys
 from treelib import Node, Tree
+import argparse
 
 #pt sizes for box + margin + gap between boex
 txtheight=28
@@ -14,6 +15,7 @@ sep=2  # inner sep
 gap=4
 WBS=1 # Put WBS on diagram
 PKG=1 # put packages on diagram
+outdepth=100 # set with --depth if you want a shallower tree
 
 class Product(object): 
     def __init__(self, id, name, parent, desc, wbs, manager, owner, kind, pkgs): 
@@ -58,7 +60,35 @@ def fixTex(text ):
     ret = ret.replace("/","/ ")
     return ret;
 
-def outputTexTree(tout,fout, ptree ):
+def slice(ptree, outdepth):
+# copy the tree but stopping at given depth
+    ntree = Tree()
+    nodes=ptree.expand_tree()
+    for n in  nodes:
+        sys.stdout.write( "Accesing " +str(n) +"\n")
+        depth=ptree.depth(n)
+        prod = ptree[n].data
+
+        sys.stdout.write( str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent )
+        if (depth <= outdepth) :
+            sys.stdout.write( " YES ")
+            if (prod.parent == ""):
+                ntree.create_node(prod.id, prod.id, data=prod)
+            else:
+                ntree.create_node(prod.id,prod.id,data=prod, parent=prod.parent)
+        sys.stdout.write( "\n")
+    return ntree;
+
+def outputTexTable(tout, ptree ):
+    nodes=ptree.expand_tree()
+    for n in  nodes:
+        prod = ptree[n].data
+        tout.write(prod.wbs+" &  "+prod.name+" & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+" & ")
+        tout.write(fixTex(prod.pkgs) )
+        tout.write("\\\\ \hline \n")
+    return ;
+
+def outputTexTree(fout, ptree ):
     fnodes=[];
     nodes=ptree.expand_tree()
     count=0
@@ -69,49 +99,47 @@ def outputTexTree(tout,fout, ptree ):
         fnodes.append(prod)
         depth=ptree.depth(n)
         count=count+1
-        tout.write(prod.wbs+" &  "+prod.name+" & "+ prod.desc+" & " + prod.manager+" & "+prod.owner+" & ")
-        tout.write(fixTex(prod.pkgs) )
-        tout.write("\\\\ \hline \n")
         #print str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
-        if (count==1) : # root node
-            fout.write("\\node ("+prod.id+") [wbbox]{\\textbf{"+prod.name+"}}; \n");
-        else:
-            fout.write("\\node ("+prod.id+") [pbox,")
-            if (prev.parent != prod.parent) : # first child to the right
-                found=0
-                scount=count-1
-                while found==0 and scount>0:
-                    scount=scount-1
-                    found =  fnodes[scount].parent==prod.parent
-                if  scount<=0 :  # first sib can go righ of parent
-                    fout.write("right=15mm of "+prod.parent) 
-                else: #Figure how low to go  - find my prior sibling
-                    psib=fnodes[scount];
-                    leaves=ptree.leaves(psib.id)
-                    depth=len(leaves)
-                    lleaf=leaves[depth-1].data
-                    #print "Prev:"+prev.id + " psib:"+psib.id + " lleaf.parent:"+lleaf.parent
-                    if (lleaf.parent==psib.id): depth = depth -1 
-                    #if (prod.id=="L2") : depth=depth+1 # Not sure why this is one short .. 
-                    dist=depth* blocksize # the numbe rof leaves below my sibling
-                    #print prod.id+" Depth:"+str(depth)+" dist:"+str(dist) + " blocksize:"+str(blocksize)+ " siblin:"+psib.id
-                    fout.write("below="+str(dist)+"pt of "+psib.id) 
-            else : # benetih the sibling
-                dist=gap
-                fout.write("below="+str(dist)+"pt of "+prev.id) 
-            fout.write("] {")
-            if WBS ==1 and prod.wbs != "":
-                fout.write("{\\tiny \\color{gray}"+prod.wbs+"} ")
-                fout.write("\\newline \n")
-            fout.write("\\textbf{"+prod.name+"}\n ")
-            #fout.write("\\newline \n")
-            fout.write("}; \n")
-            if PKG ==1 and prod.pkgs != "":
-                fout.write("\\node ("+prod.id+"pkg) [tbox,below=3mm of "+prod.id+".north] {")
-                fout.write("{\\tiny \\color{gray} \\begin{verbatim} "+prod.pkgs+" \\end{verbatim} }  ")
+        if (depth <= outdepth) :
+            if (count==1) : # root node
+                fout.write("\\node ("+prod.id+") [wbbox]{\\textbf{"+prod.name+"}}; \n");
+            else:
+                fout.write("\\node ("+prod.id+") [pbox,")
+                if (prev.parent != prod.parent) : # first child to the right
+                    found=0
+                    scount=count-1
+                    while found==0 and scount>0:
+                        scount=scount-1
+                        found =  fnodes[scount].parent==prod.parent
+                    if  scount<=0 :  # first sib can go righ of parent
+                        fout.write("right=15mm of "+prod.parent) 
+                    else: #Figure how low to go  - find my prior sibling
+                        psib=fnodes[scount];
+                        leaves=ptree.leaves(psib.id)
+                        depth=len(leaves)
+                        lleaf=leaves[depth-1].data
+                        #print "Prev:"+prev.id + " psib:"+psib.id + " lleaf.parent:"+lleaf.parent
+                        if (lleaf.parent==psib.id): depth = depth -1 
+                        #if (prod.id=="L2") : depth=depth+1 # Not sure why this is one short .. 
+                        dist=depth* blocksize # the numbe rof leaves below my sibling
+                        #print prod.id+" Depth:"+str(depth)+" dist:"+str(dist) + " blocksize:"+str(blocksize)+ " siblin:"+psib.id
+                        fout.write("below="+str(dist)+"pt of "+psib.id) 
+                else : # benetih the sibling
+                    dist=gap
+                    fout.write("below="+str(dist)+"pt of "+prev.id) 
+                fout.write("] {")
+                if WBS ==1 and prod.wbs != "":
+                    fout.write("{\\tiny \\color{gray}"+prod.wbs+"} ")
+                    fout.write("\\newline \n")
+                fout.write("\\textbf{"+prod.name+"}\n ")
+                #fout.write("\\newline \n")
                 fout.write("}; \n")
-            fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
-        prev=prod;
+                if PKG ==1 and prod.pkgs != "":
+                    fout.write("\\node ("+prod.id+"pkg) [tbox,below=3mm of "+prod.id+".north] {")
+                    fout.write("{\\tiny \\color{gray} \\begin{verbatim} "+prod.pkgs+" \\end{verbatim} }  ")
+                    fout.write("}; \n")
+                fout.write(" \draw[pline] ("+prod.parent+".east) -| ++(0.4,0)  |- ("+prod.id+".west);\n ")
+            prev=prod;
     sys.stdout.write( str(count) + " Product lines in TeX \n")
     return
 
@@ -123,17 +151,21 @@ def doFile(inFile ):
     sys.stdout.write( "Processing " + f  +"-> (figure)"+ nf + " and (table)" + nt)
     fin = open (f,'r')
     ptree = constructTree(fin)
+    ntree = ptree
+    if (outdepth << 100):
+        ntree=slice(ptree,outdepth)
 
     #ptree.show(data_property="name")
     fout = open (nf,'w')
     tout = open (nt,'w')
 
-    width = ptree.depth() * 6.2 # cm
-    heigth = len(ptree.leaves()) * leafHeight # cm
+    width = ntree.depth() * 6.2 + 2# cm
+    heigth = len(ntree.leaves()) * leafHeight - 1# cm
     header(fout,width,heigth)
     theader(tout)
 
-    outputTexTree(tout, fout, ptree)
+    outputTexTable(tout,  ptree)
+    outputTexTree( fout, ntree)
 
     footer(fout)
     tfooter(tout)
@@ -224,4 +256,9 @@ def tfooter(tout):
 
 
 ### MAIN 
+
+parser = argparse.ArgumentParser()
+parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int)
+args = parser.parse_args()
+outdepth=args.depth
 doFile("productlist.csv")
