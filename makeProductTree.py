@@ -65,18 +65,18 @@ def slice(ptree, outdepth):
     ntree = Tree()
     nodes=ptree.expand_tree()
     for n in  nodes:
-        sys.stdout.write( "Accesing " +str(n) +"\n")
+    #    sys.stdout.write( "Accesing " +str(n) +"\n")
         depth=ptree.depth(n)
         prod = ptree[n].data
 
-        sys.stdout.write( str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent )
+    #    sys.stdout.write( str(depth)+" Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent )
         if (depth <= outdepth) :
-            sys.stdout.write( " YES ")
+    #        sys.stdout.write( " YES ")
             if (prod.parent == ""):
                 ntree.create_node(prod.id, prod.id, data=prod)
             else:
                 ntree.create_node(prod.id,prod.id,data=prod, parent=prod.parent)
-        sys.stdout.write( "\n")
+    #    sys.stdout.write( "\n")
     return ntree;
 
 def outputTexTable(tout, ptree ):
@@ -154,13 +154,16 @@ def doFile(inFile ):
     ntree = ptree
     if (outdepth << 100):
         ntree=slice(ptree,outdepth)
+        width = 2
+        height = -6
 
     #ptree.show(data_property="name")
     fout = open (nf,'w')
     tout = open (nt,'w')
 
-    width = ntree.depth() * 6.2 + 2# cm
-    heigth = len(ntree.leaves()) * leafHeight - 1# cm
+    width = width + ntree.depth() * 6.2 # cm
+    heigth = height + len(ntree.leaves()) * leafHeight # cm
+    
     header(fout,width,heigth)
     theader(tout)
 
