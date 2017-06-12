@@ -22,7 +22,7 @@ relating to a major element of the DM Subsystem (Level 2 Work Breakdown Structur
 As a diverse and distributed organization DM staff will participate in a considerable number of meetings. 
 NSF and Aura have many rules on meeting attendance and LSST keep policies updated accordingly on the project travel web page  \url{https://project.lsst.org/travel/policies-procedures}. This include the travel summary report template \url{https://project.lsst.org/sites/default/files/Travel/Travel%20Summary%20Report.pdf} every traveler must fill after attending a meeting.  More details are in \citeds{Document-13760}.
 
-A detailed debrief note or presentation may be asked of travelers to specif meetings of interest by the DMLT.
+A detailed debrief note or presentation may be asked of travelers to specific meetings of interest by the DMLT.
 
 
 \subsection {Document Management} \label{sect:docman}
@@ -37,7 +37,6 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \caption{Outline of the documentation tree for DM software relating the high level documents to each other. \label{fig:doctree}}
 \end{center}
 \end{figure}
-%FIgure from jsick
 
 \figref{fig:doctree} has one box for End User documentation, this is a major set of documentation for DM which will be web based as  described in  \citeds{LDM-493}. \figref{fig:eudoc} shows the intended web hierarchy for the end user documentation.
 
@@ -47,9 +46,46 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \caption{Outline of the web hierarchy for the DM end user documentation. \label{fig:eudoc}}
 \end{center}
 \end{figure}
+%Figure from jsick
 
 
-{\bf Need a DOC tree for Hardware/Services  - Margaret }
+
+Service-level documentation follows the layered service architecture of the LSST Data Facility (see \figref{fig:servdoc}).
+
+\begin{figure}
+\begin{center}
+ \includegraphics[width=0.5\textwidth]{images/servdocs}
+\caption{Outline of layered service architecture of the Data Facility. \label{fig:servdoc}}
+\end{center}
+\end{figure}
+
+\subsubsection {Documentation of Cross-Cutting Aspects for services}
+
+The cross-cutting aspects of the LSST Data Facility, Security and Operational Manageability, are represented by the vertical boxes. Documentation of these aspects describes policies, procedures, and supporting management frameworks, including:
+\begin{enumerate}
+	\item	LDF service management framework: service catalog, service-level agreements (SLAs), configuration management database (CMDB), service monitoring.
+	\item	LDF service management processes and context in the overall project: incident response, request response, issue tracking, problem management and the problem management database, change management and change control authority, release management.
+	\item	Overview of the security enclave structure
+	\item	Security controls and incident response procedures
+	\item	Disaster recovery and continuity policies
+\end{enumerate}
+
+\subsubsection{Documentation of Service Layers}
+
+The box at the top of the figure, Use Cases, represents subsystem-level and project-level operational use cases. The next layer, LDF-offered Services, represents specific services offered by the Data Facility which satisfy those use cases. Documentation of this layer includes:
+
+\begin{enumerate}
+\item	For each service, a Concept of Operations (ConOps) which summarizes how a service operates to satisfy a use case. The ConOps describes the operational characteristics of the production system, context within overall LSST operations, and representative scenarios. 
+\item	For each service, a Theory of Operations, which provides a mental model of a constructed system. The Theory of Operations explains how the constructed service both fulfills the ConOps and integrates with the cross-cutting aspects of the facility. The document describes the overall architecture of the service and dependency on supporting service layers; integration into aspects of computer security, information security and business continuity; and integration into incident reporting and response, availability and capacity management, and change management.
+\end{enumerate}
+
+The next two layers, Reusable Production Services and Data, Compute, and IT Security Services, represent tiers of supporting service. Documentation of these layers includes a Theory of Operations, as described above, explaining the dependencies on supporting service and ITC layers, and integration with cross-cutting aspects of the facility.
+
+The ITC box represents hardware components supporting all LDF services. Documentation of ITC describes the system elements at all facility sites, administration within each security enclave and integration with security operations, the overall provisioning plan, ITC system monitoring and integration into the service monitoring framework, and integration into service management processes including configuration management and change management.
+
+The Software box represents service software components being developed by the LSST Data Facility. Documentation of software elements follows the standards of the LSST software stack.
+
+Documents are managed as configuration items in the LSST Data Facility CMDB.
 
 \subsubsection{Draft Documents}
 
