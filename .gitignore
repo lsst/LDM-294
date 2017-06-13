@@ -18,6 +18,7 @@ LDM-294.pdf
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
+wbslist.tex
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
