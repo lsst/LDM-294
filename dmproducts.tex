@@ -1,12 +1,22 @@
 \section{Products \label{sect:products}}
 
-The products of DM are not the data products defined in \citeds{LSE-163}, rather they are the artefacts, systems and Services,  we need to produce those produces. \figref{fig:prods} is an initial attempt to define the product tree for DM. \appref{sect:trace} provides a trace of products to requirements. 
+The products of DM are not the data products defined in \citeds{LSE-163}, rather they are the artifacts, systems and services,  we need to produce those products. \secref{sect:dmarc} outlines the highest level of this for dm while  \appref{sect:prodlist}  defines the complete product tree for DM and it is pictorially represented at a trimmed level in  \figref{fig:prods}. 
+\citeds{LDM-148} provides a trace of products to requirements, while \appref{sect:prodlist} proves a full list with technical manager WBS element and product owner for each.  
 
 \begin{figure}[htbp]
 	\begin{center}
 		 \includegraphics[height=19cm]{ProductTree}
-		 \caption{DM product tree. \label{fig:prods}- there are over 200 products, this tree is to convery and idea of the products even if not legible. The full list is given in \appref{sect:prodlist}}
+		 \caption{DM product tree. \label{fig:prods}- there are over 200 products, this tree is to convey and idea of the products and is truncated to make it somewhat legible. 
+		 The full list is given in \appref{sect:prodlist}
+	 }
+		  
 	 \end{center}
  \end{figure}
 
+\figref{fig:prods} 
+ contains the WBS element associated with the component as weal as an git repositories belonging to them.
+ Since the figure stops at level 3 most git repos will only be found in full list in\appref{sect:prodlist}.
 
+ Every git repo should appear in \appref{sect:prodlist}  and hence have a technical manager and product owner identified. The table is hierarchical hence if the manager/owner is not filled in (or gone) we may go to the parent element manager/owner.
+
+ Every JIRA component should map to one row in \appref{sect:prodlist} thus providing a contact for that component. 
