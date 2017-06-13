@@ -45,10 +45,11 @@ def get_wbs_descriptions(wbsdir):
 def format_products(products):
     # Return a LaTeX-formatted itemization of the products listed.
     if not products:
-        output = "No products are defined at this level of the WBS.\n\n"
+        output = "\nNo products are defined at this level of the WBS.\n\n"
 
     else:
-        output = "\\begin{itemize}\n"
+        output = "\nThe following products (per \secref{sect:products}) are defined at this level of WBS:\n\n"
+        output += "\\begin{itemize}\n"
         for product in products:
             output += "\\item{%s}\n" % (product,)
         output += "\end{itemize}\n\n"
