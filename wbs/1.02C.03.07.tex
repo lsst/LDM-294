@@ -1,8 +1,18 @@
-\subsubsection{1.02C.03.07: Photometric calibration on stacks}
+\subsubsection{1.02C.03.07: Transform fitting on stacks of images}
 
 This WBS element covers the construction of the software, together with
 its associated configuration files, test suites and documentation, which
-will allow for high precision photometric calibration of objects using
-multiple apperitions of each object.  This will allow for full focalplane
-photometric calibration.  This will support photometric zeropoints which
-vary on scales smaller than a chip.
+will allow for high precision photometric and astrometric calibration of 
+objects using multiple apperitions of each object.  
+
+Major features of this work will be:
+\begin{itemize}
+
+/item Photometric zeropoint fitting on scales larger than a chip.
+/item Support photometric zeropoints which vary on scales smaller than a chip.
+/item Support fitting composeable astrometric models that can represent
+distortions on a variety of scales from multiple different sources.
+/item The above will allow the distortions from the optical system to be
+separated from the distortions imprinted by the atmosphere.
+
+\end{itemize}
