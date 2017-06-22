@@ -1,0 +1,147 @@
+\section{Lead institutions in DM \label{sect:leadtutes}}
+
+\subsection{LSST Tucson\label{sect:tucson}}
+
+The LSST Project Office in Tucson hosts the DM Project Manager (\secref{role:dmpm}) and the Systems Engineer (\secref{role:sysengineer}).
+In addition, it is home to the Science Quality and Reliability Engineering(SQuaRE) group and LSST International Communications and Base Site (ICBS) groups, described below.
+
+\subsubsection{Science Quality and Reliability Engineering \label{sect:square}}
+
+The SQuaRE group is primarily charged with providing technical feedback to the DM Project Manager that demonstrates that DM is fulfilling its responsibilities with regard to quality — of both scientific data products and software — software performance, and reliability. As such, areas of activity include:
+
+\begin{itemize}
+
+\item Development of algorithms to detect and analyze quality issues with data\footnote{This may overlap with work carried out by the Science Pipelines groups (\S\S\ref{sect:ap} \& \ref{sect:drp}). In some instances this will involve sharing code; in others, it may merit duplicating a metric to ensure that it is correct.}
+
+\item Infrastructure development to support the generation, collection, and analysis of data quality and performance metrics
+
+\item DM developer support services to ensure DM is using appropriate tools to aid software quality
+
+\item DM documentation support, to include defining standards and providing tooling for documentation as well as some document writing
+
+\item Support of publicly released software products, including porting and distributing it according to the scientific community's needs
+
+\end{itemize}
+
+In the event that SQuaRE identifies issues with the performance or future maintainability of the DM codebase, it will bring them to the attention of the DM Software Architect. In the event that SQuaRE identifies issues with the quality of the data or algorithmic performance, it will bring them to the attention of the DM Project Scientist.
+
+\subsubsection{LSST International Communications and Base Site}
+The ICBS group spans both Tucson and La Serena, and is responsible for the design, procurement, installation, deployment, verification, and operating support during construction and commissioning of all data communications networks at the Summit and Base sites, as well as links between all the LSST Sites, with two exceptions:  the Summit Network (WBS 1.04C.12.5) and the Archive External Network (1.02C.07.04.06).  In the case of the exceptions, there are technical and managerial interfaces between the ICBS and the responsible parties, as well as overlaps of staff.  The LSST Network Engineering Team (NET) spans all of these networking assignees and is chaired by the ICBS staff.
+
+The ICBS group is also jointly responsible with the Data Facility Team at NCSA for procurement, installation, deployment, verification, and operating support during construction and commissioning of the computing and storage infrastructure at the Base Site.
+
+Since a large majority of the ICBS work involves procurement and contracted services, the group works in close cooperation with AURA procurement and contracts, as well as with the following major sub awardees and their subcontractors:
+
+REUNA - Chilean National Networks
+Florida International University/AmLight - International Networks connecting Chile and the United States, and US National Networks.
+
+\subsection {Princeton University \label{sect:princeton}}
+
+Princeton University hosts the Pipelines Scientist (\secref{role:pipe}) and the Data Release Production group, described below.
+
+\subsubsection{Data Release Production \label{sect:drp}}
+
+The Data Release Production (DRP) group has three major areas of activity within DM.
+
+\begin{itemize}
+
+  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generated LSST's annual data releases;}
+
+  \item{Definition and implementation of the algorithms and pipelines which will be used to produce the ``calibration products'' (for example, flat fields, characterization of detector effects, etc) which will be used as inputs to the photometric calibration procedure in both nightly and annual data processing. This includes the development of the spectrophotometric data reduction pipeline for the Auxiliary Telescope;}
+
+  \item{Development, in conjunction with the Alert Production team (AP; \secref{sect:ap}), of a library of re-usable software libraries and components which form the basis of both the AP and DRP pipelines and which are made available to science users within the LSST Science Platform.}
+
+\end{itemize}
+
+Development of software in support of annual data releases and of reusable software components are carried out under the direction of the DRP Science Lead, who acts as product owner for this part of the system.
+The DRP Science Lead is ultimately responsible to both the Pipelines Scientist (\secref{role:pipe}) and DM Project Scientist (\secref{role:dmps}).
+
+The product owner for calibration products product is the LSST Calibration Scientist (who doubles as the Pipelines Scientist, \secref{role:pipe}).
+The Calibration Scientist liases with other LSST subsystems and with the products owners of the annual and nightly data processing pipelines to ensure that appropriate calibration products are available to those pipelines to enable them to meet specifications.
+
+Management of the group is the responsibility of the Science Pipelines T/CAM, reporting to the DM Project Manager (\secref{role:dmpm}).
+
+The DRP group is responsible for delivering software which adheres to the architectural and testing standard defined by the Software Architect (\secref{role:softarc}).
+In addition, the DRP group is responsible for testing each major product delivered to demonstrate its fitness for purpose, and working with the DM Project Scientist and DM System Science Team (\secref{sect:dmsst}) to define, run and analyze ``data challenges'' and other large scale tests to validate the performance of the data release production system.
+
+\subsection {The University of Washington\label{sect:uw}}
+
+\subsubsection{Alert Production\label{sect:ap}}
+
+\subsection {California Institute of Technology/IPAC\label{sect:ipac}}
+IPAC hosts the DM Interface Scientist (\secref{role:dmis}) and the Science User Interface and Tools (SUIT) group described below.
+
+\subsubsection{ Science User Interface and Tools} 
+
+The Science User Interface and Tools (SUIT) group has four major areas of activity within DM:
+
+Design and develop the Firefly Web-based visualization and data exploration framework, based upon the the same software already in operations in other NASA archive services (i.e. IRSA’s WISE Image Service) . The Firefly framework provides three basic components –  image display and manipulation, tabular table display and manipulation, and 2D plotting – all of which work together to provide different views into the same data. Firefly also provides JavaScript and Python APIs to enable developers to easily use the components in their own Web pages or Jupyter notebooks.
+
+Develop the interfaces needed to connect Firefly to the other LSST Science Platform components, e.g., connect to authentication and authorization, DAX services, user workspace, flexible compute system.  Develop visualizations of the objects in the LSST Data Products data model, and support their metadata; e.g., Footprint, HeavyFootprint, WCS models.  Provide basic access to Firefly from the LSST stack via afw.display. 
+
+Design and implement the Portal Aspect of the LSST Science Platform for Data Access Center, based on Firefly, providing scientists an easy to use interface to search, visualize, and explore LSST data. The portal will enable users to do as much data discovery and exploration as possible through complex searches and facilitate data assessment through visualization and interaction.  The Portal will assist users in understanding the semantic linkages between the various LSST data products. The Portal will guide users to documentation on the Science Platform itself, the LSST data products, and the processing that generated them.  Support linkage between the Portal and Notebook aspects of the Science Platform, enabling users to switch between the aspects easily by providing tools to make data selected in the Portal readily available for further analysis in user notebooks.
+
+Design and develop the LSST Alert Subscription web portal to enable scientists to access the alert system. The subscription service will enable users to register filters and destinations for alerts matching their interests. The Alert portal will also provide basic capabilities for searching alerts history and for exploring linkage between alerts and other data products.
+
+
+
+
+\subsection {SLAC\label{sect:slac}}
+SLAC hosts the DM Software Architect (\secref{role:softarc}) and the Science Data Archive and Data Access
+Services group described below.
+
+\subsubsection{Science Data Archive and Data Access Services \label{sect:dax}}
+
+The Science Data Archive and Data Access Services (DAX) group has the following major areas of activity
+within DM:
+
+\begin{itemize}
+
+  \item{Provides software to support ingestion, indexing, query, and administration of DM catalog and image
+  data products, data provenance, and other associated metadata within the LSST Data Access Centers;}
+
+  \item{Provides implementations of data access services (including IVOA services), as well as associated
+  client libraries, to be hosted within the LSST Data Access Centers, which facilitate interaction between
+  LSST data products and tools provided by both other parts of the LSST project and by the astronomical
+  research community at large;}
+
+  \item{Provides a Python framework (the "Data Butler"), used by the LSST science pipelines, to facilitate
+  abstract persistence/retrieval of in-memory Python objects to/from generic archives of those objects;}
+
+  \item{Provides a Python framework ("SuperTask") which serves as an interface layer between pipeline
+  orchestration and algorithmic code, and which allows pipelines to be constructed, configured, and run at
+  the level of a single node or a group of tightly-synchronized nodes;}
+
+  \item{Provides support for various middleware and infrastructure toolkits used by DM which would otherwise
+  have no authoritative home institution within DM (e.g. logging support library, spherical geometry support
+  library).}
+
+\end{itemize}
+
+Management of the group is the responsibility of the DAX T/CAM, reporting to the DM Project Manager
+(\secref{role:dmpm}).
+
+The DAX group is responsible for delivering software which adheres to the architectural and testing standard
+defined by the Software Architect (\secref{role:softarc}). In addition, the DAX group is responsible for
+testing each major product delivered to demonstrate its fitness for purpose, and running and analyzing large
+scale tests to validate the performance of the science data archive and data access systems.
+
+\subsection {NCSA\label{sect:ncsa}}
+
+
+NCSA hosts the LSST Project Office Information Security Officer and Computer Security group, as well as the DM group responsible for construction and integration of the LSST Data Facility (LDF), described below.
+
+The LSST Data Facility group has the following major areas of activity within DM:
+\begin{enumerate}
+	\item	Construction of services, including software and operational methods, supporting observatory operations and nightly data production (Level 1 Services). Level 1 Services ingest raw data from all Observatory cameras and the Engineering and Facilities Database (EFD) into the central archive; provide a dedicated computing service controllable by the Observatory Control System (OCS) for prompt generation of nightly calibration assessments, science image parameters, and transient alerts; and provide computing services, data access, and a QA portal for Observatory staff.
+	\item	Construction of services, including software and operational methods, for bulk batch data production. Batch Production Services execute processing campaigns, using resources at NCSA and satellite computing centers, to produce data release products, generate templates and calibrations, and perform scaled testing of science pipelines to assess production readiness.
+	\item	Construction of services, including software and operational methods, for hosting and operating data access services for community users. These services host the SUIT portal, manage the JupyterLab environment, provide computing and data storage for the Data Access Centers, enable bulk data export, and host the LSST limited alert-filtering service and feeds to community-provided brokers.
+	\item	Construction of services, including software and operational methods, for the Data Backbone. Data Backbone Services provide ingestion, management, distribution, access, integrity checking, and backup and disaster recovery for files and catalog data in the LSST central data archive.
+	\item	Construction and operation of services for LSST staff. Staff Services provide specific testing and integration platforms (e.g., a Prototype Data Access Center) and general computing and data services for LSST developers.
+	\item	Provisioning and management of hardware infrastructure at NCSA and the Chilean Base Center for all services described above, as well as infrastructure for project-wide network-based computer security services and authentication and authorization services.
+	\item	Construction and operation of a service management framework and methods to monitor operations of service elements in accordance with service level agreements, track issues, manage service availability, and support change management.
+	\item	Operation of services and IT systems during construction to support on-going development, integration, and commissioning activities.
+\end{enumerate}
+The LDF group is responsible for delivering instantiated production services, which integrate software and hardware components developed across DM. The LDF group performs large-scale tests to integrate and verify production readiness of all components.
+
+

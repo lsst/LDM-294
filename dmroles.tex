@@ -1,0 +1,250 @@
+\section{Roles in Data Management}
+
+This section describes the responsibilities associated with the roles shown in
+\figref{fig:dmorg}.
+
+
+\subsection{DM Project Manager (DMPM)\label{role:dmpm}}
+
+The DM Project Manager is responsible for the efficient coordination of all LSST activities and responsibilities assigned to the Data Management Subsystem. The DM Project Manager has the responsibility of establishing the organization, resources, and work assignments to provide DM solutions.  The DM Project Manager serves as the DM representative in the LSST Project Office and in that role is responsible for presenting DM initiative status and submitting new DM initiatives to be considered for approval. Ultimately, the DM Project Manager, in conjunction with his / her peer Project Managers (Telescope, Camera), is responsible for delivering an integrated LSST system. The DM Project Manager reports to the LSST Project Manager. Specific responsibilities include:
+
+\begin{itemize}
+\item Manage the overall DM System
+\item Define scope and request funding for DM System
+\item Develop and implement the DM project management and control process, including earned value management
+\item Approve the DM Work Breakdown Structure (WBS), budgets and resource estimates
+\item Approve or execute as appropriate all DM outsourcing contracts
+\item Convene and/or participate in all DM reviews
+\item Co-chair the DM Leadership Team (\secref{sect:dmlt})
+\end{itemize}
+
+\subsection{DM Deputy Project Manager (DDMPM) \label{role:dmdpm}}
+The PM and deputy will work together on the general management of DM and any specific PM tasks may be delegated to the deputy as needed and agreed. In the absence of the PM the deputy carries full authority and decision making powers of the PM. The DM Project Manager will keep the Deputy Project Manager informed of all DM situations such that the deputy may effectively act in place of the Project Manager when absent.
+
+\subsection{DM Subsystem Scientist (DMSS) \label{role:dmps} }
+
+The DM Subsystem Scientist (DMSS) has the ultimate responsibility for ensuring DM initiatives provide solutions that meet the overall LSST science goals. As such, they lead the definition and understanding of the science goals and deliverables of the LSST Data Management System, and are accountable for communicating these to the DM engineering team.
+
+The DM Subsystem Scientist reports to the LSST Project Scientist. The DMSS are a member of the LSST Change Control Board and the Project Science Team. They chair and direct the work of the DM System Science Team (\secref{sect:dmsst}).
+
+Specific responsibilities and authorities include ({\bf cite the project-level R2A2 document, once issued}):
+
+
+\begin{itemize}
+\item Communicates with DM science stakeholders (LSST Project Scientist and Team, advisory bodies, the science community) to understand their needs and identifies aspects to be satisfied by the DM Subsystem.
+\item Develops, maintains, and articulates the vision of DM products and services responsive to stakeholder needs.
+\item Works with the LSST Project Scientist to communicate the DM System vision to DM stakeholders. Works with the DM Project Manager to communicate and articulate the DM System vision and requirements to the DM construction team.
+\item Regularly monitors DM construction team progress and provides feedback to the DM Project Manager to ensure the continual understanding of and adherence to the DM vision, requirements, and priorities.
+\item Develops and/or evaluates proposed changes to DM deliverables driven by schedule, budget, or other constraints.
+\item Provides advice to the DM Project Manager on science-driven prioritization of construction activities. 
+\item Validates the science quality of DM deliverables and the capability of all elements of the DM System to achieve LSST science goals.
+\item Serves as Data Management Liaison as requested by LSST Science Collaborations
+\item Provides safe, effective, efficient operations in a respectful work environment.
+\end{itemize}
+
+Specific authorities include ({\bf cite the project-level R2A2 document, once issued}):
+
+\begin{itemize}
+\item Defines the vision and high-level requirements of the DM products and services required to deliver on LSST science goals.
+\item Defines the science acceptance criteria for DM deliverables (both final and intermediate) and validates that they have been met (Science Validation).
+\item Hires or appoints DM System Science Team staff and other direct reports and defines their responsibilities.
+\item Advises and consents to the appointments of institutional DM Science Leads.
+\item Delegates authority and responsibility as appropriate to institutional Science Leads and other members of the DM System Science Team.
+\item Represents and speaks for the LSST Data Management.
+\item Convenes and/or participates in all DM reviews.
+\item Co-Chairs the DM Leadership Team
+\end{itemize}
+
+\subsection{Project Controller/Scheduler \label{role:pcon}}
+
+The DM Project Controller is responsible for integrating DM's agile planning process with the LSST Project Management and Control System (PMCS). Specific responsibilities include:
+
+\begin{itemize}
+
+  \item{Assist T/CAMs in developing the DM plan}
+  \item{Synchronize the DM plan, managed as per \citeds{LDM-472}, with the LSST PMCS}
+  \item{Ensure that the plan is kept up-to-date and milestones are properly tracked}
+  \item{Create reports, Gantt charts and figures as requested by the DMPM}
+
+\end{itemize}
+
+\subsection{Product Owner \label{role:prodo}}
+
+A product owner is responsible for the quality and acceptance of a particular product.
+The product owner should sign off on the requirements to be fulfilled in every delivery and therefore also on any descopes or enhancements.
+The product owner should define tests which can be run to prove a delivery meets the requirements due for that product.
+
+\subsection{Pipeline Scientist \label{role:pipe}}
+
+Several DM products come together to form the LSST pipeline. The Pipeline Scientist is the product owner for the overall pipeline.
+
+The Pipeline Scientist should:
+
+\begin{itemize}
+
+\item Provide guidance and test criteria for the full pipeline including how QA is done on the products
+\item Keep the big picture of where the codes are going in view. Predominantly the algorithms, but also the implementation and architecture (as part of the System Engineering Team \secref{sect:sysengt}).
+\item Advise on how we should attack algorithmic problems, providing continuing advice to subsystem product owners as we try new things.
+\item Advise on calibration issues, provide understanding of the detectors from a DM point of view
+\item Advise on the overall (scientific) performance of the system, and how we'll test it.  Thinking about all the small things that we have to get right to make the overall system good.
+
+\end{itemize}
+
+\subsection{Systems Engineer \label{role:sysengineer}}
+
+With the System Engineering Team (\secref{sect:sysengt}) the Systems Engineer owns the DM entries in the risk register and is generally in charge of the \textit{process} of building DM products.
+
+As such, the Systems Engineer is responsible for managing requirements as they pertain to DM.
+This includes:
+
+\begin{itemize}
+\item Update and ensure traceability of the high level design \& requirements documents: DMSR (\citeds{LSE-61}), OSS (\citeds{LSE-30}), and LSR (\citeds{LSE-29})
+\item Oversee work on lower level requirements documents
+\item Ensure  that the system is appropriately modeled in terms of e.g. drawings, design documentation, etc
+\item Ensure  that solid verification plans and standards are established within DM
+\end{itemize}
+
+In addition, the Systems Engineer is responsible for the process to define \& maintain DM interfaces (internal and external)
+
+\begin{itemize}
+\item Define and enforce standards for internal interfaces
+\item Direct the Interface Scientist's (\secref{role:dmis}) work on external ICDs
+\end{itemize}
+
+The Systems Engineer shall chair the DM Change Control Board (\secref{sect:dmccb})
+
+\begin{itemize}
+\item Organize DMCCB processes so that the change control process runs smoothly
+\item Identify RFCs requiring DMCCB attention
+\item Shepherd RFCs through change control
+\item Call and chair DMCCB meetings, ensuring that decisions are made and recorded
+\end{itemize}
+
+Finally, the System Engineer represents DM on the LSST CCB.
+
+\subsection{DM Interface Scientist (DMIS) \label{role:dmis}}
+
+The DM Interface Scientist is responsible for all internal and external interfaces to the DM Subsystem. This includes ensuring that appropriate tests for those interfaces are defined. This is a responsibility delegated from the DM System engineer (\secref{role:sysengineer}).
+
+\subsection{Software Architect \label{role:softarc}}
+
+The Software Architect is responsible for the overall design of the DM \textit{software} system. Specific responsibilities include:
+
+\begin{itemize}
+
+\item{Define the overall architecture of the system and ensuring that all products integrate to form a coherent whole}
+\item{Select and advocate appropriate software engineering techniques}
+\item{Choose the technologies which are used within the codebase}
+\item{Minimize the exposure of DM to volatile external dependencies}
+
+\end{itemize}
+
+The Software Architect will work closely with the Systems Engineer (\secref{role:sysengineer}) to ensure that processes are in place for tracing requirements to the codebase and providing hooks to ensure that requirement verification is possible.
+
+\subsection{Operations Architect \label{role:opsarc}}
+
+\textit{Margaret or Don perhaps some text here ...}
+
+The DM Operations Architect is responsible for ensuring that all elements of the DM Subsystem, including operations teams, infrastructure, middleware, applications, and interfaces,
+come together to form an operable system.
+
+Specific responsibilities include:
+
+\begin{itemize}
+\item Set up and coordinate  operations rehearsals
+\item Ensure readiness of procedures and personnel for Operations
+\item Set standards for operations e.g. procedure handling and operator logging
+\item Participate in stakeholder and end user coordination and approval processes and reviews
+\item Serve as a member of the LSST System Engineering Team
+\end{itemize}
+
+\subsection{Configuration Manager (CM)}\label{role:cm}
+
+%A configuration management role exists both at DM and Data Facility levels this could be the same individual
+The DM Configuration Manager (CM) is responsible for Configuration Management activities inside DM and NCSA(?).
+The following list is not exhaustive, but is intended as a guideline to the CM activities:
+
+\begin{itemize}
+\item Ensure that Configuration Management Plan (CMP) is correctly applied and provide appropriate reasons in case of non conformance's
+\item Define  which Configuration Items are to be managed in the Configuration Item List
+\item Define the Product Baseline
+\item Support changes to Configuration Items within the DMCCB
+\item Manage the delivery of software products
+\item Maintain the Configuration Item List
+\item Manage the configuration control resources used by DM
+\item Maintain an awareness of the relationship between  the elements of the Product Baseline (in order for instance to be able to answer the question: ``What is the environment and which software is installed?'')
+ \item Check that the Product Assurance and CMP procedures are correctly applied when Configuration Items are changed
+ \item Participate in DMCCB activities
+\end{itemize}
+
+The Configuration Manager is the secretary of the CCB and works with the support of the Scientific and Technical Leaders and participates in the CCB monitoring the development and change control process.
+
+\subsubsection{Configuration Item List}
+
+The Configuration Item List (CIL) is the list of items that are maintained under configuration control.
+CUs and DPC need to report their configuration items in the CIL with an adequate level of details.
+CIL is part of the development plan but may be written in a separate document to which the development plan refers.
+
+The Configuration Manager in charge has to identify the configuration items to include in the CIL, with the help of the technical leader and to maintain it when changes to the configuration items happen.
+
+
+\subsubsection{Release management\label{sect:relMng}}
+
+In DM usually each product will be released once per cycle.
+Additional releases may be done in case of bug fixing, urgent issues, or in case that the previous one is incomplete.
+
+Each release needs to be identified with:
+
+\begin{itemize}
+\item Configuration Item
+\item Documentation:
+\subitem User Manual: to be updated each major release
+\subitem Requirements Specification: to be updated each major release
+\subitem Test Specification: to be updated each major release
+\subitem Release Note: new document each major release, updated for patch releases
+\subitem Test Report: new document each major release, updated for patch releases
+\item Latest Release in the \texttt{master} branch in GitHub.
+\end{itemize}
+This information identifies a product baseline.
+
+%Release preparation is in charge of the DU leader and is subject to CCB approval.
+The release manager is in charge of preparing the release with the technical lead for the product.
+After CCB approval, the release will be delivered to NCSA.
+
+\subsubsection{Configuration Baseline \label{sect:BSLdef}}
+
+A Configuration Baseline (CB) represents the approved status of the project at key milestones like formal review or at the beginning of test activities.
+
+Configuration Baselines are applicable to hardware and software, and will include the documents that describe the CIs and their status.
+
+\subsection{Lead Institution Senior Positions}
+
+Each Lead Institution (as defined in \secref{sect:leadtutes}; see also \tabref{tab:wbs}) has a T/CAM and Scientific or Engineering Lead, who jointly have overall responsibility for a broad area of DM work, typically a Work Breakdown Structure (WBS) Level 2 element. They are supervisors of the team at their institution, with roles broadly analogous to those of the DM Project Manager and Project Scientist.
+
+\subsubsection{Technical/Control Account Manager (T/CAM) \label{role:tcam}}
+
+Technical/Control Account Managers have managerial and financial responsibility
+for the engineering teams within DM. Each T/CAM is responsible for a specific set of WBS elements. Their detailed responsibilities include:
+
+\begin{itemize}
+
+  \item{Develop, resource load, and maintain the plan for executing the DM construction project within the scope of their WBS}
+  \item{Synchronize the construction schedule with development in WBS elements managed by other T/CAMs}
+  \item{Maintain the budget for their WBS and ensuring that all work undertaken is charged to the correct accounts}
+  \item{Work with the relevant Science Leads and Product Owners (\secref{role:prodo}) to develop the detailed plan for each cycle and sprint as required}
+  \item{Work with the DM Project Controller (\secref{role:pcon}) to ensure that all plans and milestones are captured in the LSST Project Controls system}
+  \item{Perform day-to-day management of staff within their WBS}
+  \item{Perform the role of ``scrum-master'' during agile development}
+  \item{Report activities as required, including providing input for monthly status reportsx.}
+
+\end{itemize}
+
+\subsubsection{Institutional Science/Engineering Lead \label{role:scilead}}
+
+The Institutional Science/Engineering Leads serve as product owners (\secref{role:prodo}) for the major components of the DM System (Alert Production, Data Release Production, Science User Interface etc).
+
+In addition, they provide scientific and technical expertise to their local engineering teams.
+
+They work with the T/CAM who has managerial responsibility for their product to define the overall construction plan and the detailed cycle plans for DM.
+
+Institutional science leads are members of the DM System Science Team (\secref{sect:dmsst}) and, as such, report to the DM Subsystem Scientist (\secref{role:dmps}).
