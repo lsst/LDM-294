@@ -1,6 +1,6 @@
 #python
 #Take list file with parents and make a tex diagram of the product tree.
-# Top of the tree will be left of the page .. this allow a LONG list of products. 
+# Top of the tree will be left of the page .. this allow a LONG list of products.
 
 import os
 import fileinput
@@ -17,8 +17,8 @@ WBS=1 # Put WBS on diagram
 PKG=1 # put packages on diagram
 outdepth=100 # set with --depth if you want a shallower tree
 
-class Product(object): 
-    def __init__(self, id, name, parent, desc, wbs, manager, owner, kind, pkgs): 
+class Product(object):
+    def __init__(self, id, name, parent, desc, wbs, manager, owner, kind, pkgs):
         self.id = id
         self.name = name
         self.parent = parent
@@ -40,7 +40,7 @@ def constructTree(fin ):
         line=line.replace("\"","")
         line=line.rstrip('\r\n')
         part=line.split(","); #id,prod, parent, descr ..
-        
+
         prod= Product(part[0],part[1],part[2],part[3],part[4],part[6],part[7],part[8],part[9])
         #print "Product:"+ prod.id + " name:"+prod.name+" parent:"+prod.parent
         if (count==1) : # root node
@@ -112,21 +112,21 @@ def outputTexTree(fout, ptree ):
                         scount=scount-1
                         found =  fnodes[scount].parent==prod.parent
                     if  scount<=0 :  # first sib can go righ of parent
-                        fout.write("right=15mm of "+prod.parent) 
+                        fout.write("right=15mm of "+prod.parent)
                     else: #Figure how low to go  - find my prior sibling
                         psib=fnodes[scount];
                         leaves=ptree.leaves(psib.id)
                         depth=len(leaves)
                         lleaf=leaves[depth-1].data
                         #print "Prev:"+prev.id + " psib:"+psib.id + " lleaf.parent:"+lleaf.parent
-                        if (lleaf.parent==psib.id): depth = depth -1 
-                        #if (prod.id=="L2") : depth=depth+1 # Not sure why this is one short .. 
+                        if (lleaf.parent==psib.id): depth = depth -1
+                        #if (prod.id=="L2") : depth=depth+1 # Not sure why this is one short ..
                         dist=depth* blocksize # the numbe rof leaves below my sibling
                         #print prod.id+" Depth:"+str(depth)+" dist:"+str(dist) + " blocksize:"+str(blocksize)+ " siblin:"+psib.id
-                        fout.write("below="+str(dist)+"pt of "+psib.id) 
+                        fout.write("below="+str(dist)+"pt of "+psib.id)
                 else : # benetih the sibling
                     dist=gap
-                    fout.write("below="+str(dist)+"pt of "+prev.id) 
+                    fout.write("below="+str(dist)+"pt of "+prev.id)
                 fout.write("] {")
                 if WBS ==1 and prod.wbs != "":
                     fout.write("{\\tiny \\color{gray}"+prod.wbs+"} ")
@@ -145,7 +145,7 @@ def outputTexTree(fout, ptree ):
 
 def doFile(inFile ):
     "This processes a csv and produced a  tex tree diagram and a tex longtable."
-    f=inFile 
+    f=inFile
     nf = "ProductTree.tex"
     nt = "productlist.tex"
     sys.stdout.write( "Processing " + f  +"-> (figure)"+ nf + " and (table)" + nt)
@@ -163,7 +163,7 @@ def doFile(inFile ):
 
     width = width + ntree.depth() * 6.2 # cm
     heigth = height + len(ntree.leaves()) * leafHeight # cm
-    
+
     header(fout,width,heigth)
     theader(tout)
 
@@ -258,7 +258,7 @@ def tfooter(tout):
      return;
 
 
-### MAIN 
+### MAIN
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int)
