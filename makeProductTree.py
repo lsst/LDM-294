@@ -182,8 +182,9 @@ def doFile(inFile):
     nf = "ProductTree.tex"
     nt = "productlist.tex"
     print("Processing {}-> (figure){} and (table){}".format(f, nf, nt))
-    fin = open(f, 'r')
-    ptree = constructTree(fin)
+
+    with open(f, 'r') as fin:
+        ptree = constructTree(fin)
     ntree = ptree
     width = 0
     height = 0
@@ -193,22 +194,19 @@ def doFile(inFile):
         height = -6
 
     # ptree.show(data_property="name")
-    fout = open(nf, 'w')
-    tout = open(nt, 'w')
 
     width = width + ntree.depth() * 6.2  # cm
     height = height + len(ntree.leaves()) * leafHeight  # cm
 
-    header(fout, width, height)
-    theader(tout)
+    with open(nf, 'w') as fout:
+        header(fout, width, height)
+        outputTexTree(fout, ntree)
+        footer(fout)
 
-    outputTexTable(tout, ptree)
-    outputTexTree(fout, ntree)
-
-    footer(fout)
-    tfooter(tout)
-    fout.close()
-    fin.close()
+    with open(nt, 'w') as tout:
+        theader(tout)
+        outputTexTable(tout, ptree)
+        tfooter(tout)
 
     return
 # End DoDir
