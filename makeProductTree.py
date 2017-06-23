@@ -56,7 +56,7 @@ def constructTree(fin):
                 ptree.create_node(prod.id, prod.id, data=prod,
                                   parent=prod.parent)
             else:
-                fout.write(part[0] + " no parent \n")
+                print(part[0] + " no parent")
 
     print("{} Product lines".format(count))
     return ptree
