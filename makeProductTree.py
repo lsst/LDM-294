@@ -96,7 +96,7 @@ def outputTexTable(tout, ptree):
     for n in nodes:
         prod = ptree[n].data
         print(r"{p.wbs} &  {p.name} & {p.desc} & {p.manager} & {p.owner} "
-              r"& {}\\ \hline ".format(fixTex(prod.pkgs), p=prod), file=tout)
+              r"& {}\\ \hline".format(fixTex(prod.pkgs), p=prod), file=tout)
     return
 
 
@@ -117,7 +117,7 @@ def outputTexTree(fout, ptree):
         if (depth <= outdepth):
             if (count == 1):  # root node
                 print(r"\node ({p.id}) "
-                      r"[wbbox]{{\textbf{{{p.name}}}}}; ".format(p=prod),
+                      r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
                       file=fout)
             else:
                 print(r"\node ({p.id}) [pbox,".format(p=prod),
@@ -157,16 +157,16 @@ def outputTexTree(fout, ptree):
                 print("] {", file=fout, end='')
                 if WBS == 1 and prod.wbs != "":
                     print(r"{{\tiny \color{{gray}}{}}}"
-                          r" \newline ".format(prod.wbs), file=fout)
+                          r" \newline".format(prod.wbs), file=fout)
                 print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
-                # print(r"\newline ", file=fout)
-                print("}; ", file=fout)
+                # print(r"\newline", file=fout)
+                print("};", file=fout)
                 if PKG == 1 and prod.pkgs != "":
                     print(r"\node ({p.id}pkg) "
                           "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
                           file=fout, end='')
                     print(r"{\tiny \color{gray} \begin{verbatim} " +
-                          prod.pkgs + r" \end{verbatim} }  }; ",
+                          prod.pkgs + r" \end{verbatim} }  };",
                           file=fout)
                 print(r" \draw[pline] ({p.parent}.east) -| ++(0.4,0)  "
                       "|- ({p.id}.west);\n ".format(p=prod),
@@ -187,7 +187,7 @@ def doFile(inFile):
     ntree = ptree
     width = 0
     height = 0
-    if (outdepth < 100):
+    if (outdepth <= 100):
         ntree = slice(ptree, outdepth)
         width = 2
         height = -6
@@ -254,7 +254,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
     print(r"\tikzstyle{pbox}=[rectangle, rounded corners=3pt, draw=black, top"
           " color=yellow!50!white, bottom color=white, very thick,"
           " minimum height=" + str(txtheight) + "pt, inner sep=" + str(sep) +
-          "pt, text centered, text width=35mm] ", file=fout)
+          "pt, text centered, text width=35mm]", file=fout)
 
     print(r"""\tikzstyle{pline}=[-, thick]\begin{document}
 \begin{tikzpicture}[node distance=0mm]""", file=fout)
