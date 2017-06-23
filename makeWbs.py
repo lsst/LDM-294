@@ -41,7 +41,7 @@ def get_wbs_descriptions(wbsdir):
         total = 0
         multiplier = 100.0
         for val in vals:
-            # Increment by a one to avoid 02C.04 and 02C.04.00 sorting as
+            # Increment by one to avoid 02C.04 and 02C.04.00 sorting as
             # equivalent
             total += (float(val) + 1.0) * multiplier
             multiplier /= 100
