@@ -39,12 +39,12 @@ def get_wbs_descriptions(wbsdir):
         # Return a key suitable for sorting WBS elements.
         vals = [x.strip('C') for x in filename_to_wbs(wbs).split(".")]
         total = 0
-        multiplier = 10.0
+        multiplier = 100.0
         for val in vals:
-            # Increment by one to avoid 02C.04 and 02C.04.00 sorting as
+            # Increment by a one to avoid 02C.04 and 02C.04.00 sorting as
             # equivalent
             total += (float(val) + 1.0) * multiplier
-            multiplier /= 10
+            multiplier /= 100
         return total
 
     texfiles = sorted(glob.glob(os.path.join(wbsdir, "*.tex")), key=wbs_key)
