@@ -152,7 +152,9 @@ def doFile(inFile ):
     fin = open (f,'r')
     ptree = constructTree(fin)
     ntree = ptree
-    if (outdepth << 100):
+    width = 0
+    height = 0
+    if (outdepth < 100):
         ntree=slice(ptree,outdepth)
         width = 2
         height = -6
@@ -162,9 +164,9 @@ def doFile(inFile ):
     tout = open (nt,'w')
 
     width = width + ntree.depth() * 6.2 # cm
-    heigth = height + len(ntree.leaves()) * leafHeight # cm
+    height = height + len(ntree.leaves()) * leafHeight # cm
 
-    header(fout,width,heigth)
+    header(fout,width,height)
     theader(tout)
 
     outputTexTable(tout,  ptree)
@@ -263,5 +265,6 @@ def tfooter(tout):
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int)
 args = parser.parse_args()
-outdepth=args.depth
+if args.depth is not None:
+    outdepth=args.depth
 doFile("productlist.csv")
