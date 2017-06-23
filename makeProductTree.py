@@ -226,7 +226,7 @@ def theader(tout):
     return
 
 
-def header(fout, pwidth, pheigth):
+def header(fout, pwidth, pheight):
     print(r"""%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %
 % Document:      DM  product tree
@@ -236,10 +236,9 @@ def header(fout, pwidth, pheigth):
 \usepackage{times,layouts}
 \usepackage{tikz,hyperref,amsmath}
 \usetikzlibrary{positioning,arrows,shapes,decorations.shapes,shapes.arrows}
-\usetikzlibrary{backgrounds,calc}
-""", file=fout)
+\usetikzlibrary{backgrounds,calc}""", file=fout)
     print(r"\usepackage[paperwidth={}cm,paperheight={}cm,".format(pwidth,
-          pheigth), file=fout)
+          pheight), file=fout)
     print(r"""left=-2mm,top=3mm,bottom=0mm,right=0mm,
 noheadfoot,marginparwidth=0pt,includemp=false,
 textwidth=30cm,textheight=50mm]{geometry}
