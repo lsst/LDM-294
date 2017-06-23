@@ -4,6 +4,7 @@ import os
 import sys
 from collections import OrderedDict
 
+
 def get_products_for_wbs(productlist, wbs, wbs_list):
     # Return a list of product descriptions which match the specified WBS
     # element.
@@ -22,11 +23,13 @@ def get_products_for_wbs(productlist, wbs, wbs_list):
     with open(productlist, "r") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
-            score_key = lambda cand: score(row["WBS"], cand)
+            def score_key(cand):
+                return score(row["WBS"], cand)
             if min(wbs_list, key=score_key) == wbs:
                 products.append(row["Description"])
 
     return products
+
 
 def get_wbs_descriptions(wbsdir):
     # Return an OrderedDict of WBS element to LaTeX-formatted description.
@@ -54,6 +57,7 @@ def get_wbs_descriptions(wbsdir):
             wbs_descriptions[filename_to_wbs(texfile)] = f.read()
 
     return wbs_descriptions
+
 
 def format_products(products):
     # Return a LaTeX-formatted itemization of the products listed.
@@ -92,4 +96,5 @@ if __name__ == "__main__":
         wbs_list = wbs_descriptions.keys()
         for wbs, desc in wbs_descriptions.items():
             out.write(desc)
-            out.write(format_products(get_products_for_wbs(productlist, wbs, wbs_list)))
+            out.write(format_products(get_products_for_wbs(productlist,
+                      wbs, wbs_list)))
