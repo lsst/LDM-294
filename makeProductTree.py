@@ -220,7 +220,7 @@ def theader(tout):
 """.format(__file__), file=tout)
     print(r"""\tiny
 \begin{longtable}{|p{0.08\textwidth}|p{0.17\textwidth}|p{0.26\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.22\textwidth}|}\hline
- \bf WBS & Product & Description & Manager & Owner & Packages\\ \hline""",
+\textbf{WBS} & Product & Description & Manager & Owner & Packages\\ \hline""",
           file=tout)
 
     return
