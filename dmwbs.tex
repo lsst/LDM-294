@@ -2,25 +2,28 @@
 \section{Project Controls}\label{sect:dmpc}
 
 DM follows the LSST project controls system, as described in \citeds{LPM-98}.
-Specific DM processes for project planning are elaborated in \citeds{LDM-472}.
+Considerations specific to DM are outline in \secref{sect:plan}.
 
 The LSST Project Controller is responsible for the PMCS and, in particular, for ensuring that DM properly complies with our earned value management requirements.
-He is the first point of contact for all questions about the PMCS system.
+He is the first point of contact for all questions about the PMCS.
 
-\subsection{Schedule  \label{sect:schedule} }
-The entire LSST project schedule is held in Primavera. Tied to major project milestones we have  a series of DM tests which need to be performed to show readiness for he different project phases.
+\subsection{Schedule}\label{sect:schedule}
+
+The entire LSST project schedule is held in Primavera.
+Tied to major project milestones we have a series of DM tests which need to be performed to show readiness for the different project phases.
 This is depicted in \figref{fig:schedule}.
 
 \begin{figure}[htbp]
 	\begin{center}
 		 \includegraphics[width=\textwidth]{images/DMMasterSchedule}
-		 \caption{DM major milestones(LDM-503-x) in the LSST schedule. \label{fig:schedule}}
+		 \caption{DM major milestones---designated as LDM-503-\textit{x}---in
+         the LSST schedule. These milestones are defined at level 2 according
+         to the scheme described in \secref{sect:plan}.}
+         \label{fig:schedule}
 	 \end{center}
  \end{figure}
 
-
-
-\subsection{Work Breakdown Structure} \label{sect:WBS}
+\subsection{Work Breakdown Structure}\label{sect:WBS}
 
 The DM WBS is laid out in \citeds{LPM-43} with definitions provided in \citeds{LPM-44},
 the new WBS is currently described in \appref{sec:wbslist} making LPM-43 out of date.
@@ -50,3 +53,30 @@ The various groups involved in the WBS are briefly described in \secref{sect:gro
 1.02C.10& Science Quality \& Reliability Engineering& LSST Tucson \\ \hline
 \end{tabular}
 \end{table}
+
+\subsection{Planning Process}\label{sect:plan}
+
+Milestones have been defined to describe the major goals of the DM subsystem throughout the construction project.
+Each milestone has a description, a due date, and a level.
+Four levels are defined:
+
+\begin{description}
+\item[Level 1]{The most important milestones exposed at the NSF level.}
+\item[Level 2]{Cross-subsystem milestones (for example, DM milestones that affect the Camera Subsystem).}
+\item[Level 3]{Cross-team milestones within DM (for example, Middleware milestones that affect the DRP Team).}
+\item[Level 4]{Internal milestones within a team.}
+\end{description}
+
+The major DM subsystem tests described in \secref{sect:schedule} are defined as level 2 milestones.
+Teams plan their work towards each test by defining a series of level 3 milestones.
+Teams may define level 4 milestones for their own use.
+
+Resources to achieve the milestones throughout the duration of construction have been allocated by means of \textit{planning packages} loaded into the PMCS.
+Each top level WBS within DM (per \tabref{tab:wbs}) is divided into some tens of planning packages, each of which addresses some part of the DM baseline design with a clearly defined scope, deliverable, resource cost, and end date.
+
+As the due date for work approaches, the actions required to complete each planning package---and hence meet the associated milestones---must be defined in detail.
+The DM team divides the year into two six month long \textit{cycles}, running from November through May (the ``spring cycle'') and from June through October (the ``fall cycle'').
+At the start of each cycle, the DM Leadership Team (\secref{sect:dmlt}) agrees on the detailed plan of work for the cycle, and this is loaded in to JIRA as a series of ``epics'', corresponding to projects of a few person-months duration, each with defined start and end dates and resource loading.
+The DM team records work and tracks progress against epics using JIRA; the Project Controller (\secref{role:pcon}) arranges for this information to be ingested to and made available within the PMCS.
+
+This process is described in detail in \citeds{DMTN-020}.
