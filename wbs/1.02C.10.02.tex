@@ -1,67 +1,75 @@
-\subsubsection{1.02C.10.02: Quality Control, Dataspace Services, and Developer Infrastructure}
+\subsubsection*{1.02C.10.02: Quality Control, Dataspace Services, and Developer Infrastructure}
 
 This WBS element consists of software, services, unit tests, integration tests, configuration and deployment automation, availability monitoring and documentation for: quality analysis, enabling of science analysis, automated quality control, verification and developer services.
 
-\paragraph{02C.10.2.1: Automated Software and Science Quality Control Service}
+\paragraph*{1.02C.10.02.01: Automated Software and Science Quality Control Service}
+\label{wbs:1.02C.10.02.01}
 
 This WBS element consists of software and services that support the
 implementation of Data Management's plan to ensure the quality of the DM
 Pipelines.
 
-\begin{itemize}
+\begin{description}
 
-\item
-  10.2.1.01 SQuaSH: A harness for executing prepared tests automatically
-  and continuously to characterise the algorithmic performance of the
-  code, key aspects of the performance of the facility that are apparent
-  in the data, its verification status, and uncover regressions to aid
-  development.
-\item
-  10.2.1.02 Monitoring: A system for notifying when values for 10.2.1.01
-  metrics exceed notifiable limits.
-\item
-  10.2.1.03 Verification Reports Tooling: Using data produced by
-  10.2.1.01 to create verification reports and software release
-  characterisations.
-\item
-  10.2.1.04 Harness to perform QA tests on the alert stream
+\item[1.02C.10.02.01.01: SQuaSH]
+  \label{wbs:1.02C.10.02.01.01}
+  A harness for executing prepared tests automatically and continuously to
+  characterise the algorithmic performance of the code, key aspects of the
+  performance of the facility that are apparent in the data, its verification
+  status, and uncover regressions to aid development.
 
-\end{itemize}
+\item[1.02C.10.02.01.02: Monitoring]
+  A system for notifying when values for
+  \hyperref[wbs:1.02C.10.02.01.01]{SQuaSH} metrics exceed notifiable limits.
 
-\paragraph{02C.10.2.2 Science Platform Notebook Environment for QA,  Commissioning \& User Science}
+\item[1.02C.10.02.01.03: Verification Reports Tooling]
+  Using data produced by \hyperref[wbs:1.02C.10.02.01.01]{SQuaSH} to create
+  verification reports and software release characterisations.
 
-\begin{itemize}
+\item[1.02C.10.02.01.04: Alert QA harness]
+  A harness to perform QA tests on the alert stream.
 
-\item
-  10.2.2.01 Jupyter Notebook \& Templates: A set of notebooks, and
-  templates for making them, that demonstrate key features of the
-  capabilities of the system. 
-\item
-  10.2.2.02 JupyterLab deployment: Architecture, orchestration and deployment configuration for the Sciene Platform Notebook service for commissioning.
-  \item
-  10.2.2.03 Custom Portals/Notebooks: The SUI team is providing a
-  portal framework as part of the 02C.05 WBS. This WBS covers
-  supporting these portals post-delivery where they relate to QA and
-  comissioning activities as necessary.
-\item
-  10.2.2.04 Notebook software environments: Production of environments
-  (eg. containers) suitable for the execution of 10.2.2.01
-\item
-  10.2.2.05 Notebook execution: The process to scale notebook execution
-  from 10.4.1 so they can execute over a large dataset. This involves an interface to the batch workflow system.
-\item
-  10.2.2.06 Dataspace packaging: The packaging and configuration
-  required to deploy the dataspace on a platform that is design-matched
-  to the compute and filespace elements of the Archive Center dataspace
-  (eg. if the DAC compute is based on an openstack architecture, the
-  deliverable of this WBS are the packages, configuration, automation
-  deployment and instructions that would allow a Data Access Center at
-  an international partner to deploy a Dataspace service on top of their
-  open OpenStack compute for their own users.
+\end{description}
 
-\end{itemize}
+\paragraph*{1.02C.10.02.02: Science Platform Notebook Environment for QA, Commissioning \& User Science}
 
-\paragraph{02C10.2.3 Developer Infrastructure, Software Distribution, Documentation Tooling, Communication Tooling}
+\begin{description}
+
+\item[1.02C.10.02.02.01: Jupyter Notebook \& Templates]
+  A set of notebooks, and templates for making them, that demonstrate key
+  features of the capabilities of the system.
+
+\item[1.02C.10.02.02.02: JupyterLab Deployment]
+  Architecture, orchestration and deployment configuration for the Sciene
+  Platform Notebook service for commissioning.
+
+\item[1.02C.10.02.02.03: Custom Portals/Notebooks]
+  \label{wbs:1.02C.10.02.02.03}
+  This WBS element covers supporting the portals delivered by the SUIT team
+  (\hyperref[wbs:1.02C.05.08]{1.02C.05.07}) post-delivery where they relate to
+  QA and comissioning activities as necessary.
+
+\item[1.02C.10.02.02.04: Notebook Software Environments]
+  \label{wbs:1.02C.10.02.02.04}
+  Production of environments (e.g. containers) suitable for the execution of
+  \hyperref[wbs:1.02C.10.02.02.03]{custom portals/notebooks}.
+
+\item[1.02C.10.02.02.05: Notebook Execution]
+  The process to scale notebook execution so they can execute over a large
+  dataset. This involves an interface to the batch workflow system.
+
+\item[1.02C.10.02.02.06: Dataspace packaging]
+  The packaging and configuration required to deploy the dataspace on a
+  platform that is design-matched to the compute and filespace elements of the
+  Archive Center dataspace (e.g. if the DAC compute is based on an OpenStack
+  architecture, the deliverable of this WBS are the packages, configuration,
+  automation deployment and instructions that would allow a Data Access Center
+  at an international partner to deploy a Dataspace service on top of their
+  open OpenStack compute for their own users).
+
+\end{description}
+
+\paragraph*{1.02C.10.02.03: Developer Infrastructure, Software Distribution, Documentation Tooling, Communication Tooling}
 
 This WBS element consists of services that support a large distributed
 software team and its product. It includes systems that support current
@@ -76,21 +84,23 @@ are customer-oriented services that benefit from continuous improvement.
 
 \begin{itemize}
 
-\item
-  10.2.3.01 Software Development Services: Continuous Integration
-  service(s), repository management, code linters, software development
-  environments.
-\item
-  10.2.3.02 Release Engineering: Release management, portability
-  testing, binary and containerized distribution, build tooling.
-\item
-  10.2.3.03 Documentation Tooling: Documentation standards,
-  documentation linters, software and technical documentation production
-  and publication, developer guide, user guide, tutorials, document
-  discover services.
-\item
-  10.2.3.04 Communication Tooling: Community forum, ChatOps
-\item
-  10.2.3.05 Bug/Tracking Helpdesk: Bug Tracking, Helpdesk, Community
-  Management
+\item[1.02C.10.02.03.01: Software Development Services]
+  Continuous Integration service(s), repository management, code linters,
+  software development environments.
+
+\item[1.02C.10.02.03.02: Release Engineering]
+  Release management, portability testing, binary and containerized
+  distribution, build tooling.
+
+\item[1.02C.10.02.03.03: Documentation Tooling]
+  Documentation standards, documentation linters, software and technical
+  documentation production and publication, developer guide, user guide,
+  tutorials, document discovery services.
+
+\item[1.02C.10.02.03.04: Communication Tooling]
+  Community forum, ChatOps.
+
+\item[1.02C.10.02.03.05: Bug/Tracking Helpdesk]
+  Bug Tracking, Helpdesk, Community Management
+
 \end{itemize}
