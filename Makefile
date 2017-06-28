@@ -7,7 +7,7 @@ all : LDM-294.pdf
 LDM-294.pdf: *.tex wbslist.tex
 	latexmk -bibtex -pdf -f LDM-294.tex
 
-acronyms.tex:${TEX} myacronyms.tex
+acronyms:${TEX} myacronyms.tex
 	acronyms.csh  ${TEX}
 
 wbslist.tex: wbs/*tex productlist.csv
