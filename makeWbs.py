@@ -23,6 +23,11 @@ def get_products_for_wbs(productlist, wbs, wbs_list):
     with open(productlist, "r") as csvfile:
         reader = csv.DictReader(csvfile)
         for row in reader:
+            if not row["WBS"].startswith("1"):
+                # If this doesn't look like a construction WBS, ignore it.
+                # Note that only leaf products have a WBS defined: this is
+                # intentional.
+                continue
             def score_key(cand):
                 return score(row["WBS"], cand)
             if min(wbs_list, key=score_key) == wbs:
