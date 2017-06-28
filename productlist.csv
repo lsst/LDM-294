@@ -195,7 +195,7 @@ JLENV,JupyterLab Env,SPLJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE
 JLSW,JupyterLab SW Env,SPLJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
 JLACTIV,JupyterLab Activator,SPLJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
 JLDPLY,JupyterLab Deploy,SPLJL,JupterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
-JLSUIT,JupyterLab SUIT Intf,SPLJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07.04,SUIT,Xiuqin Wu,,SW,
+JLSUIT,JupyterLab SUIT Intf,SPLJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 DEVEL,Developer services,DM,Developer services,.,.,,,,
 DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
 BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
@@ -208,8 +208,8 @@ CI,Contin Integration,INTGTEST,Automated integration and test services,1.02C.10.
 PRECURSR,Precursor Data,INTGTEST,Precursor data for development and testing,1.02C.01.01,DMSST,Mario Juric,,SW,obs_*/validation_data_*/testdata_*/afwdata
 SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform Portal Aspect,.,.,,,,
 FIREFLY,Firefly,SPLPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
-FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,firefly_client
+FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07,SUIT,Xiuqin Wu,,SW,firefly_client
 PRTLINTF,Portal Interfaces,SPLPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
-PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,
+PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 PRTLAPPS,Portal Applications,SPLPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
 PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
