@@ -37,7 +37,7 @@ PRECOV,Precovery,APOFFL,Precovery and forced photometry pipeline,1.02C.03.04,AP,
 MOPS,Moving Object,APOFFL,Moving object pipeline,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,mops_daymops
 CALOFFL,Offline Calibration,L1SCI,Offline calibration single frame processing pipeline,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,pipe_drivers
 CALDAILY,Daily Calibration,L1SCI,OCS-Controlled batch daily calibration update payload,1.02C.04.02,DRP,John Swinbank,Jim Bosch,SW,
-L1QC,L1 Quality Control,L1SCI,L1 QC measurement generators,,AP,Simon Krughoff,Eric Bellm,SW,
+L1QC,L1 Quality Control,L1SCI,L1 QC measurement generators,1.02C.03,AP,Simon Krughoff,Eric Bellm,SW,
 ALRTDSTR,Alert Distribution,L1,Alert distribution service,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
 ALRTFLTR,Alert Filtering,L1,Alert filtering service,1.02C.03.03,AP,Simon Krughoff,Eric Bellm,SW,
 IDM,Identity Manager,DM,Identity (Authentication and Authorization) Manager,,NCSA,Joel Plutchak,,SW,
@@ -110,7 +110,7 @@ COADPROC,Coadd Processing,DRP,Coadd processing,1.02C.04.05,DRP,John Swinbank,Jim
 OVERLAP,Overlap Resolution,DRP,Overlap resolution,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
 MULTIFIT,Object Char,DRP,Multi-epoch object characterization,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
 DRPPOST,DRP Postprocessing,DRP,DRP Postprocessing,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
-L2QC,L2 Quality Control,L2,L2 QC measurement generators,,DRP,John Swinbank,Jim Bosch,SW,validate_drp/verify_metrics/ci_hsc
+L2QC,L2 Quality Control,L2,L2 QC measurement generators,1.02C.04.07,DRP,John Swinbank,Jim Bosch,SW,validate_drp/verify_metrics/ci_hsc
 SCIALG,Science Algorithms,DM,Common science algorithmic components,.,.,,,,
 REFCAT,Reference Catalogs,SCIALG,Reference catalogs,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms
 ISR,ISR,SCIALG,ISR,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,pipe_tasks/ip_isr
@@ -118,26 +118,26 @@ ARTFDET,Artifact Detection,SCIALG,Artifact detection,1.02C.03.01,AP,Simon Krugho
 ARTFINTP,Artifact Interp,SCIALG,Artifact interpolation,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,
 SRCDET,Source Detection,SCIALG,Source detection,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
 DEBLEND,Deblending,SCIALG,Deblending,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,meas_deblender
-MEASURE,Measurement,SCIALG,Measurement,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,meas_base/meas_algorithms/meas_extensions_*/meas_modelfit
+MEASURE,Measurement,SCIALG,Measurement,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,meas_base/meas_algorithms/meas_extensions_*/meas_modelfit
 SPATMOD,Spatial Models,SCIALG,Spatial models,1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,afw
 BKGDEST,Background Estim,SCIALG,Background estimation,1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,meas_algorithms
 BKGDREF,Background Ref,SCIALG,Background reference,1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,
 PSFESTSM,PSF Estim Small,SCIALG,PSF estimation (1 CCD),1.02C.03.01,AP,Simon Krughoff,Eric Bellm,SW,meas_algorithms
 PSFESTLG,PSF Estim Large,SCIALG,PSF estimation (visit),1.02C.04.03,DRP,John Swinbank,Jim Bosch,SW,
-APCORR,Aperture Corr,SCIALG,Aperture correction,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+APCORR,Aperture Corr,SCIALG,Aperture correction,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
 ASTROM,Astrometric Fit,SCIALG,Astrometric fitting,1.02C.03.07,AP,Simon Krughoff,Eric Bellm,SW,jointcal/meas_astrom/meas_mosaic
-PHOTOM,Photometric Fit,SCIALG,Photometric fitting,1.02C.03.08,AP,Simon Krughoff,Eric Bellm,SW,jointcal/meas_mosaic
+PHOTOM,Photometric Fit,SCIALG,Photometric fitting,1.02C.03.07,AP,Simon Krughoff,Eric Bellm,SW,jointcal/meas_mosaic
 TEMPLATE,Template Storage,SCIALG,Difference template storage/retrieval,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
 PSFMATCH,PSF Matching,SCIALG,PSF matching,1.02C.04.04,DRP,John Swinbank,Jim Bosch,SW,
 IMCOADD,Image Coaddition,SCIALG,Image coaddition,1.02C.04.04,DRP,John Swinbank,Jim Bosch,SW,coadd_utils/coadd_chisquared
 DCRTMPL,DCR Template Gen,SCIALG,DCR-corrected template generation,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
-DECORR,Img Decorrelation,SCIALG,Image decorrelation,,AP,Simon Krughoff,Eric Bellm,SW,ip_diffim
-STARGAL,Star/Galaxy Sep,SCIALG,Star/galaxy classification,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
-VRBLTY,Variability Char,SCIALG,Variability characterization,,AP,Simon Krughoff,Eric Bellm,SW,
-PRPRMOT,Proper Motion,SCIALG,Proper motion and parallax,,AP,Simon Krughoff,Eric Bellm,SW,
+DECORR,Img Decorrelation,SCIALG,Image decorrelation,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,ip_diffim
+STARGAL,Star/Galaxy Sep,SCIALG,Star/galaxy classification,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
+VRBLTY,Variability Char,SCIALG,Variability characterization,1.02C.03.04,AP,Simon Krughoff,Eric Bellm,SW,
+PRPRMOT,Proper Motion,SCIALG,Proper motion and parallax,1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,
 REFMATCH,Reference Match,SCIALG,Matching to reference catalogs,1.02C.03.02,AP,Simon Krughoff,Eric Bellm,SW,
 DASSOC,DIAObj Association,SCIALG,DIAObject association,1.02C.03.02,AP,Simon Krughoff,Eric Bellm,SW,
-ASSOC,Association/Match,SCIALG,Association and matching,1.02C.04.05,DRP,John Swinbank,Jim Bosch,SW,
+ASSOC,Association/Match,SCIALG,Association and matching,1.02C.04.06,DRP,John Swinbank,Jim Bosch,SW,
 RAWCAL,Raw Meas Cal,SCIALG,Raw measurement calibration,,DRP,John Swinbank,Jim Bosch,SW,
 ORBEP,Orbit/Ephemeris,SCIALG,Orbit tools,.,.,,,,
 EPHEM,Ephemeris Calc,ORBEP,Ephemeris calculation,1.02C.03.06,AP,Simon Krughoff,Eric Bellm,SW,mops_night
@@ -172,12 +172,12 @@ TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,Sim
 SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw/utils
 DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,daf_ingest
 SCIPLAT,Science Platform,DM,Science Platform,.,.,,,,
-DAX,DAX VO+ Services,SCIPLAT,DAX VO+ services,.,.,,,,
-DAXWEB,Web Framework,DAX,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
-DAXIMG,Image Access,DAX,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
-DAXCAT,Catalog Access,DAX,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
-DAXIMETA,Img Metadata Acc,DAX,Image metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
-DAXCMETA,Cat Metadata Acc,DAX,Catalog metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+SPLWEB,SciPlat Web APIs,SCIPLAT,Science Platform Web APIs Aspect,.,.,,,,
+DAXWEB,Web Framework,SPLWEB,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
+DAXIMG,Image Access,SPLWEB,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
+DAXCAT,Catalog Access,SPLWEB,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
+DAXIMETA,Img Metadata Acc,SPLWEB,Image metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+DAXCMETA,Cat Metadata Acc,SPLWEB,Catalog metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
 TXF,Task Execution,INFRA,Task execution framework,.,.,,,,
 SPRTASK,SuperTask,TXF,SuperTask,1.02C.06.03,DAX,Fritz Mueller,,SW,pipe_supertask/pipe_base/pex_exceptions
 ACTIVATR,Activator Bases,TXF,Activator base and Command Line Activator,1.02C.06.03,DAX,Fritz Mueller,,SW,
@@ -190,12 +190,12 @@ SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,,S
 SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,,SW,
 SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,,SW,
 SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,,SW,
-SPLJL,SciPlat JupyterLab,SCIPLAT,Science Platform JupyterLab component,.,.,,,,
+SPLJL,SciPlat JupyterLab,SCIPLAT,Science Platform JupyterLab Aspect,.,.,,,,
 JLENV,JupyterLab Env,SPLJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
 JLSW,JupyterLab SW Env,SPLJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
 JLACTIV,JupyterLab Activator,SPLJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
 JLDPLY,JupyterLab Deploy,SPLJL,JupterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
-JLSUIT,JupyterLab SUIT Intf,SPLJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07.04,SUIT,Xiuqin Wu,,SW,
+JLSUIT,JupyterLab SUIT Intf,SPLJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 DEVEL,Developer services,DM,Developer services,.,.,,,,
 DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
 BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
@@ -203,13 +203,13 @@ PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,
 DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,,SW,lsst-texmf/templates/lsstDoxygen
 COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,,SW,
 ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,,SW,
-INTGTEST,Integration Test,DM,Integration and test,,,,,SW,
+INTGTEST,Integration Test,DM,Integration and test,.,.,,,SW,
 CI,Contin Integration,INTGTEST,Automated integration and test services,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,Jenkins
-PRECURSR,Precursor Data,INTGTEST,Precursor data for development and testing,,?,,,SW,obs_*/validation_data_*/testdata_*/afwdata
-SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform portal component,.,.,,,,
+PRECURSR,Precursor Data,INTGTEST,Precursor data for development and testing,1.02C.01.01,DMSST,Mario Juric,,SW,obs_*/validation_data_*/testdata_*/afwdata
+SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform Portal Aspect,.,.,,,,
 FIREFLY,Firefly,SPLPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
-FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,firefly_client
+FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07,SUIT,Xiuqin Wu,,SW,firefly_client
 PRTLINTF,Portal Interfaces,SPLPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
-PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07.03,SUIT,Xiuqin Wu,,SW,
+PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 PRTLAPPS,Portal Applications,SPLPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
 PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
