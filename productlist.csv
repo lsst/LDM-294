@@ -1,5 +1,5 @@
 id,Item,Parent,Description,WBS,Team,Manager,Product Owner,Service/SW/HW,Package List
-DM,Data Management,,Data Management System,.,.,,,,
+DM,Data Management,,Data Management System,1.02C,William O Mullane,Mario Juric,,,
 L1,Level 1 System,DM,Level 1 System,.,.,,,,
 L1ONL,L1 OCS Components,L1,Level 1 Online (OCS-connected) components,.,.,,,,
 ARC,Archiver,L1ONL,Archiving Commandable SAL Component,,NCSA,Joel Plutchak,Felipe Menanteau,SW,ctrl_iip

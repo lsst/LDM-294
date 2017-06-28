@@ -9,7 +9,7 @@ import argparse
 
 # pt sizes for box + margin + gap between boex
 txtheight = 28
-leafHeight = 1.25  # cm space per leaf box .. height of page calc
+leafHeight = 1.26  # cm space per leaf box .. height of page calc
 sep = 2  # inner sep
 gap = 4
 WBS = 1  # Put WBS on diagram
@@ -191,7 +191,7 @@ def doFile(inFile):
     if (outdepth <= 100):
         ntree = slice(ptree, outdepth)
         width = 2
-        height = -6
+        height = -3 
 
     # ptree.show(data_property="name")
 
@@ -219,7 +219,7 @@ def theader(tout):
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 """.format(__file__), file=tout)
     print(r"""\tiny
-\begin{longtable}{|p{0.08\textwidth}|p{0.17\textwidth}|p{0.26\textwidth}|p{0.12\textwidth}|p{0.12\textwidth}|p{0.22\textwidth}|}\hline
+\begin{longtable}{|p{0.10\textwidth}|p{0.12\textwidth}|p{0.26\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.20\textwidth}|}\hline
 \textbf{WBS} & Product & Description & Manager & Owner & Packages\\ \hline""",
           file=tout)
 
