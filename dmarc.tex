@@ -1,0 +1,81 @@
+\section{Data Management Conceptual Architecture \label{sect:dmarc}}
+
+The DM Subsystem Architecture is detailed in \citeds{LDM-148}.
+A few of the higher level diagrams are reproduced here to orientate the reader within DM.
+
+During Operations, components of the DM Subsystem will be installed and run in
+multiple locations. These include:
+
+\begin{itemize}
+\item The Commissioning Cluster, which may be physically at NCSA in Urbana-Champaign
+\item The main center in NCSA enclave in Urbana-Champaign
+\item The US Data Access Center (DAC), also at NCSA in Urbana-Champaign
+\item The Chilean DAC in the Base Facility in La Serena Chile
+\item The Satellite Processing Center at CC-IN2P3 in Lyon, France
+\end{itemize}
+
+\figref{fig:dmsdeploy} shows the various DM components which will be used in operations and the physical compute environments in which they will be deployed.
+Bulk data storage and transport between components is provided by the Data Backbone. This complex piece of infrastructure is displayed in \figref{fig:databb}.
+
+Science users will access the data products produced by LSST through the
+Science Platform, as shown in \figref{fig:sciplat}.
+
+\figref{fig:dcs} shows the common infrastructure and services layer which underlies the compute environments.
+This does not list specific technologies for management/monitoring, provisioning/deployment, or workload/workflow --- these are still under development --- but consider industry-standard tools such as Nagios, Puppet/vSphere/OpenStack/Kubernetes, and Pegasus.
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.8\textwidth]{images/DMSDeployment}
+\caption{DM components as deployed during Operations. Where components are
+deployed in multiple locations, the connections between them are labeled with
+the relevant communication protocols. Science payloads are shown in blue.
+\label{fig:dmsdeploy}}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.5\textwidth]{images/SciencePlatform}
+\caption{The sub-components of the Science Platform. \label{fig:sciplat}}
+\end{center}
+\end{figure}
+
+
+\begin{figure}[htbp]
+\begin{center}
+\includegraphics[width=0.6\textwidth]{images/DataBackbone}
+\caption{The Data Backbone links all the physical components of DM. \label{fig:databb}}
+\end{center}
+\end{figure}
+
+\begin{figure}[htbp]
+\begin{center}
+ \includegraphics[width=0.7\textwidth]{images/DMSCommonServices}
+\caption{Common infrastructure services available at each DM location. \label{fig:dcs}}
+\end{center}
+\end{figure}
+
+
+
+\subsection{External Interfaces}
+The DM external interfaces are controlled by the  ICDs listed in \tabref{tab:icds}.
+\begin{table}
+	\caption{DM Interface Control Documents \label{tab:icds}}
+	\begin{tabular}{l p{0.7\textwidth}}
+		\citeds{LSE-68} & Data Acquisition Interface between Data Management and Camera\\
+		\citeds{LSE-69} & Interface between the Camera and Data Management	 \\
+		\citeds{LSE-72} & OCS Command Dictionary for Data Management\\
+		\citeds{LSE-75} & Control System Interfaces between the Telescope and Data Management\\
+		\citeds{LSE-76} & Infrastructure Interfaces between Summit Facility and Data Management\\
+		\citeds{LSE-77} & Infrastructure Interfaces between Base Facility and Data Management\\
+		\citeds{LSE-130} & List of Data Items to be Exchanged Between the Camera and Data Management\\
+		\citeds{LSE-131} & Data Management Interface Requirements to Support Education and Public Outreach \\
+		\citeds{LSE-140} & Auxiliary Instrumentation Interface between Data Management and Telescope\\
+	\end{tabular}
+\end{table}
+
+\subsubsection{Auxiliary data in DM}
+Certain tasks in DM rely on external catalogs and other information. Currently we believe we need:
+\begin{enumerate}
+		        \item Gaia catalogue (Release 2) as a photometry baseline.
+		\end{enumerate}

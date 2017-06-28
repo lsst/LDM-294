@@ -1,0 +1,11 @@
+\subsubsection*{1.02C.06.03: Task Framework}
+
+This WBS element includes software programs, database tables, configuration files, unit tests, component integration tests, and documentation needed to build the Task Framework.
+
+The Task Framework is a Python class library that provides a structure (standardized class entry points and conventions) to organize low-level algorithms into potentially-reusable algorithmic components (Tasks; e.g. dark frame subtraction, object detection, object measurement), and to organize tasks into basic pipelines (SuperTasks; e.g., process a single visit, build a coadd, difference a visit). The Task Framework allows the pipelines to be constructed, configured, and run at the level of a single node or a group of tightly-synchronized nodes. In addition to multi-node Tasks, it also allows for sub-node parallelization across multiple cores.
+
+Pipeline configuration includes configuring parameters for scientific algorithms, allowing overrides of defaults based on camera/survey, computing environment, or user choice.  It also includes configuration of debugging capabilities used during pipeline development.
+
+The Task Framework serves as an interface layer between orchestration and the algorithmic code. It exposes a standard interface to ``activators'' (command-line runners as well as the orchestration layer and QA systems), which use it to execute the code wrapped in tasks. The Task Framework exposes to the orchestration system needs and capabilities of the underlying algorithmic code (e.g., the number of cores needed, expected memory-per-core, expected need for data). It may also receive from the orchestration layer the information on how to optimally run the particular task (i.e., which level of intra-node parallelization is be desired).
+
+This WBS includes construction of basic implementations for these components.  More complex (or custom) implementations and alternative backends for the APIs and components above (e.g., a special backend to retrieve a configuration from a central database, or a backend to send logs to a database instead of files, or a MultiCore API backend that's better aware of local machine architecture) are out of scope.

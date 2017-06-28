@@ -1,0 +1,17 @@
+\subsubsection*{1.02C.03.03: Alert Distribution System}
+
+This WBS element covers the construction of the software,
+together with its associated configuration files, test suites and
+documentation, which will make up the alert distribution system.
+DIAObjects and ancillary data necessary for alert packet assembly will be delivered
+to this system.  There are three parts to the alert distribution system:
+\begin{itemize}
+
+\item Robust, redundant message queue -- DIAObjects and ancillary data will be delivered to the
+message queue by the alert generation pipeline.
+\item Flexible stream filtering system -- Will operate on the packaged alert stream.  This will provide
+the interface to both community broker and to the minimal LSST provided filtering system.
+\item Alert database -- All alerts will be dumped (possibly verbatim) to a database that can be replayed
+later from any point in the stream.
+
+\end{itemize}

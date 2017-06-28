@@ -1,0 +1,52 @@
+\documentclass[DM,SDP,toc]{lsstdoc}
+
+\setDocChangeRecord{%
+\addtohist{1}{2004-06-23}{Initial version} {JK}
+\addtohist{2}{2015-03-11}{Updated with new RFC process, realignment of TCT, SAT, DMLT - other versions in between}{JK}
+\addtohist{3}{2017-06-29}{Update in TeX and complete overhaul, approved by WOM }{WOM,MJ,JS DMLT}
+	}
+
+\begin{document}
+
+\title[DM PMP]{Data Management Organization and Management }
+
+\author   {William O'Mullane, John Swinbank, Mario Juric and DMLT}                % the author(s) \setDocApprove  {LSST Project Oeefice}              % approval by ...
+\setDocRef      {LDM-294} % the reference code
+\setDocDate     {\today}              % the date of the issue
+
+%
+% a short abstract
+%
+\setDocAbstract {This is the DM plan updated from the v2 of 2015 to v3.
+   It covers the organization and management of DM for LSST.}
+
+%
+% the title page
+%
+\maketitle
+
+%\printnoidxglossaries
+%
+% It's all yours from here on
+%
+\input{intro}
+\input{dmarc}
+\input{dmorg}
+\input{dmwbs}
+\input{dmproducts}
+\input{dmroles}
+\input{dmgroups}
+\input{leadtutes}
+\input{devprocess}
+\input{probman}
+
+\appendix
+\section{DM Product List \label{sect:prodlist}}
+\input{productlist}
+\newpage
+\input{wbslist}
+\input{DDMP}
+\input{trace}
+%\input{precon}
+\input{refs}
+\end{document}
