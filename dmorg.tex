@@ -37,7 +37,7 @@ Some issues in development of a system like Data Management require more effort 
 
 \subsection {Document Management} \label{sect:docman}
 
-DM documents will follow the Systems Engineering Guidelines of LSST. PDF versions of released documents shall be put in Docushare in accordance with the Project's Document Management Plan \citedsp{LPM-51}. LDM level documents are released on agreement of the DMCCB (\secref{sect:dmccb}), uncontrolled documents such as technotes may be released when the author decides it is appropriate or they are asked to release it by the Project Manager.
+DM documents will follow the Systems Engineering Guidelines of LSST. PDF versions of released documents shall be put in DocuShare in accordance with the Project's Document Management Plan \citedsp{LPM-51}. LDM level documents are released on agreement of the DMCCB (\secref{sect:dmccb}), uncontrolled documents such as tech notes may be released when the author decides it is appropriate or they are asked to release it by the Project Manager.
 
 The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive but gives a high level orientation for the main documents in DM and how they relate to each other. Some documents shown in red are not yet written.
 
@@ -99,7 +99,7 @@ Documents are managed as configuration items in the LSST Data Facility CMDB.
 
 \subsubsection{Draft Documents}
 
-Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the \emph{released } version which should match the version on docushare. Each repository will be included as a \emph{submodule} of a single git repository located at \url{https://github.com/lsst-dm/dm-docs}.
+Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the \emph{released } version which should match the version on DocuShare. Each repository will be included as a \emph{submodule} of a single git repository located at \url{https://github.com/lsst-dm/dm-docs}.
 
 Use of Google Docs or confluence is tolerated but final delivered documents must conform to the standard LSST format, and hence either produced with LaTeX, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate LSST template \citedsp{Document-9224, Document-11920}. The precursor document should then be erased with a pointer to the baseline document, stored in GitHub.
 
