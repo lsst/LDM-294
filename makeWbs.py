@@ -28,6 +28,7 @@ def get_products_for_wbs(productlist, wbs, wbs_list):
                 # Note that only leaf products have a WBS defined: this is
                 # intentional.
                 continue
+
             def score_key(cand):
                 return score(row["WBS"], cand)
             if min(wbs_list, key=score_key) == wbs:

@@ -191,7 +191,7 @@ def doFile(inFile):
     if (outdepth <= 100):
         ntree = slice(ptree, outdepth)
         width = 2
-        height = -3 
+        height = -3
 
     # ptree.show(data_property="name")
 
