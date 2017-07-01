@@ -17,7 +17,7 @@ env:
   global:
     - PRODUCT="LDM-294"
 # Manually managed metadata that Lander current can't parse from tex
-    - ABSTRACT="Managemnt and orgnaizaiton of Data Management"
+    - ABSTRACT="This management plan covers the organization and management of DM for development, construction, and commissioning of LSST. It sets out DM goals and lays out the management organization roles and responsibilities to achieve them. It provides high level overview of DM architecture, products  and processes.  It provides a structured starting point for understanding DM and pointers to further documentation."
     - TITLE="Data Management Management Plan"
     - DOCUSHAREURL="https://ls.st/ldm-294*"
 # Add LSST the Docs credentials
