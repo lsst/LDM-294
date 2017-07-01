@@ -18,7 +18,7 @@ env:
     - PRODUCT="LDM-294"
 # Manually managed metadata that Lander current can't parse from tex
     - ABSTRACT="This management plan covers the organization and management of DM for development, construction, and commissioning of LSST. It sets out DM goals and lays out the management organization roles and responsibilities to achieve them. It provides high level overview of DM architecture, products  and processes.  It provides a structured starting point for understanding DM and pointers to further documentation."
-    - TITLE="Data Management Management Plan"
+    - TITLE="Data Management Organization and Management"
     - DOCUSHAREURL="https://ls.st/ldm-294*"
 # Add LSST the Docs credentials
     - secure: "fqSjpqeC4Els8A4eKk0IXSGPvtSrLVMG0Z31b7UrwdTMOQRUJrLkka7fIxqaQCgRkNiLa1zDdtfQEaO/peuB4hbhI5l1uvL0WBCMYEetvVyDJOZy5gF2+gk4yT+67pUzbidVc/tybpV21qOeHjVR32S3S0KzuCQtafmd1d1W51Rr0ektNsyM9fFdq9wI8EECvPuArkHShYYVqp8lysJNoOywGKxbCYusk6XZbwYNBODEDmEosv9TtonqUfXJg2gIDo+QN9bQut1bWJgwPXB8bY1fhnNexUbMfnnkF/VwiYOdj+0S5YJdH1ne7oYfbLzKXGQllQDy8xp05pArjMr2O8pTZ4dCU6E+izK4NGBXh6dFS+rg53jKygJx/NbBsunpdzVSPnUYrv80WnAnd0I7rtBMcvW4sk76ezgaLcpzzkbEz+w1aLKnORRUTMKxrW0ccQF1zBRR2/MT2BgD2XdBTY8QuxZKj14HwXVIYnPnWowy4TwaSrafVQNNYDPIoj7TqmuokL5qlJi8iEQfNtKL8eUJzFdaVHNmeCCdg9Fck2zf5B0Vxzv+waWwStXZ0UxpGjrIrxkoHwY76rAhkDREoE/tJeCTwXHD0e+5aSObgnt+O0XVwBzS4qA4mdRsuLi/+oq5VqIhv767sLvh2Rdb/D3BNfU0jB7TctGlIcPVFno="
