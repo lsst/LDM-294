@@ -1,22 +1,23 @@
 \section{Data Management Organization Structure}
 
-This section defines the organization structure for the period in which the DM System is developed and commissioned, up to the start of LSST Observatory operations.
+This section defines the organizational structure during the period in which the DM Subsystem is developed and commissioned, up to the start of LSST Observatory operations.
 
 The DM Project Manager (William O'Mullane), Deputy Project Manger (John Swinbank) and DM Project Scientist (Mario Juri\'c), who are known collectively as DM Management, lead the DM Subsystem.
 The Project Manager has direct responsibility for coordination with the overall LSST Project Office, the LSST Change Control Board, the LSST Corporation, and LSST partner organizations on all budgetary, schedule, and resource matters.
-The Project Scientist has primary scientific and technical responsibility in the DM and responsibility for ensuring that the scientific requirements of the LSST are supported, and is a member on the LSST Project Science Team (PST).
+The Project Scientist has primary scientific and technical responsibility in the DM and responsibility for ensuring that the scientific requirements of the LSST are supported, and is a member of the LSST Project Science Team (PST).
 
-As shown in \figref{fig:dmorg}, the organization now features  major products  each with a product owner
-relating to a major element of the DM Subsystem (Level 2 Work Breakdown Structure elements).
+DM views its deliverables as hierarchical tree of \textit{products}, as described in
+\secref{sect:products}.
+The subsystem organization is based around groups which are responsible for the highest levels of that product tree (corresponding to Work Breakdown Structure elements at the third level, i.e.
+\textit{1.02C.n}).
+This is illustrated in \figref{fig:dmorg}.
 
 \begin{figure}[htbp]
 \begin{center}
  \includegraphics[width=\textwidth]{images/DmOrg}
-\caption{DM organization with Scientists in Green. \label{fig:dmorg}}
+\caption{DM organization. \label{fig:dmorg}}
 \end{center}
 \end{figure}
-%figure wom
-
 
 \subsection {Meetings } \label{sect:meetings}
 As a diverse and distributed organization DM staff will participate in a considerable number of meetings.
@@ -24,22 +25,29 @@ NSF and Aura have many rules on meeting attendance and LSST keep policies update
 
 A detailed debrief note or presentation may be asked of travelers to specific meetings of interest by the DMLT.
 
-\subsection {Working Groups } \label{sect:wgs}
-Some issues in development of a system like Data Management require more effort to resolve than a simple RFC. When the decision making process (\appref{sect:ddmp}) can not come to a conclusion the DM PM reserves the right to create
- a short lived working group to deal with the issue. A working group will be given a specific narrow charge, it will be a small group ($\approx 7$ people), it will be time bounded and have a clear deliverable.
- Members of the group will be agreed by the DMLT to provide the best technical input from all stakeholders perspectives. Members of the working group should discuss in their local organizations and socialize recommendations ahead of adoption.
+\subsection {Working Groups} \label{sect:wgs}
 
- \subsection {Studies } \label{sect:studies}
- In some cases DM will initiate studies by external parties to investigate potential alternatives this is especially
-  true for technology related activities.
+The regular decision making process within DM is based on individual empowerment and a mechanism to develop consensus.
+This ``RFC'' process is described in Appendix \ref{sect:ddmp}.
 
+However, some issues in development of a system like Data Management require more effort to resolve than can be reasonable addressed through an RFC.
+When required, the DM PM will address these issues through the creation of a short-lived ``working group''.
+The working group will be given a specific narrow charge, it will be a small group (perhaps seven people), its activities will be bounded in time, and it will have a clear deliverable.
+Members of the group will be agreed by the DMLT (\S\ref{sect:dmlt}) to provide the best technical input from the perspective of all stakeholders.
+Members of the working group should discuss in their local organizations and socialize recommendations ahead of adoption.
+
+\subsection {External Studies} \label{sect:studies}
+
+The DM PM may initiate or request studies by external parties to investigate or report on technological or other choices facing the DM system.
 
 
 \subsection {Document Management} \label{sect:docman}
 
-DM documents will follow the Systems Engineering Guidelines of LSST. PDF versions of released documents shall be put in DocuShare in accordance with the Project's Document Management Plan \citedsp{LPM-51}. LDM level documents are released on agreement of the DMCCB (\secref{sect:dmccb}), uncontrolled documents such as tech notes may be released when the author decides it is appropriate or they are asked to release it by the Project Manager.
+DM documents will follow the Systems Engineering Guidelines of LSST. PDF versions of released documents shall be put in DocuShare in accordance with the Project's Document Management Plan \citedsp{LPM-51}.
 
-The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive but gives a high level orientation for the main documents in DM and how they relate to each other. Some documents shown in red are not yet written.
+LDM-level documents are change-controlled, and may be released only on agreement of the DMCCB (\secref{sect:dmccb}). Uncontrolled documents, such as technical notes, may be released when the author decides it is appropriate or they are asked to release it by the Project Manager.
+
+The document tree for DM is shown in \figref{fig:doctree}. This is not exhaustive, but serves to give a high level overview of the main documents in DM and how they relate to each other. Some documents shown in red are not yet written.
 
 \begin{figure}
 \begin{center}
@@ -48,7 +56,7 @@ The Document Tree for DM is shown in \figref{fig:doctree}, it is not exhaustive 
 \end{center}
 \end{figure}
 
-\figref{fig:doctree} has one box for End User documentation, this is a major set of documentation for DM which will be web based as  described in  \citeds{LDM-493}. \figref{fig:eudoc} shows the intended web hierarchy for the end user documentation.
+\figref{fig:doctree} has a single box for ``end user documentation''. However, appropriate web-based, user-focused documentation is regarded as a major DM deliverable. \figref{fig:eudoc} shows the intended hierarchy for this documentation.
 
 \begin{figure}
 \begin{center}

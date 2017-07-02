@@ -1,37 +1,38 @@
 \section{Introduction}
 \subsection{Purpose}
-This document defines the mission, goals and objectives, organization and responsibilities of the LSST Data Management (DM).  The document is currently scoped to define these elements for the LSST Design and Development, Construction, and Commissioning phases.  It does not address any ongoing mission for the DM during LSST operations.
+This document defines the mission, goals and objectives, organization and responsibilities of the LSST Data Management subsystem (``DM'').
+The document is currently scoped to define these elements for the LSST Design, Construction, and Commissioning phases.
+It does not address any ongoing mission for DM during LSST operations.
 
-\subsection{Mission statement}
+\subsection{Mission Statement}
 Stand up operable, maintainable, quality services to deliver high-quality LSST data products for science and education, all on time and within reasonable cost.
 
-\subsection{Goals And Objectives}
+\subsection{Goals and Objectives}
 LSST Data Management will:
 \begin{itemize}
-\item Define the data products, data access mechanisms, and data management and curation requirements for the LSST
-\item Assess current and LSST-time frame technologies for use in providing engineered solutions to the requirements
-\item Define a secure computing, communications, and storage infrastructure and services architecture underlying LSST data management
-\item Select, implement, construct, test, document, and deploy the LSST data management infrastructure, middleware, applications, and external interfaces
-\item Adopt appropriate cybersecurity measures throughout data management and especially on external facing services.
-\item Document the operational procedures associated with using and maintaining the LSST data management capabilities
-\item Evaluate, select, recruit, hire/contract and direct permanent staff, contract, and in-kind resources in LSST and from partner organizations participating in LSST Data Management initiatives.
+\item Define the data products, data access mechanisms, and data management and curation requirements for LSST.
+\item Assess current and operations-era technologies for use in providing engineered solutions to the requirements.
+\item Define a secure computing, communications, and storage infrastructure and services architecture underlying DM.
+\item Select, implement, construct, test, document, and deploy the data management infrastructure, middleware, applications, and external interfaces.
+\item Adopt appropriate cybersecurity measures throughout the DM subsystem and especially on external facing services.
+\item Document the operational procedures associated with using and maintaining DM capabilities.
+\item Evaluate, select, recruit, hire/contract and direct permanent staff, contract, and in-kind resources in LSST and from partner organizations participating in LSST DM initiatives.
 
 \end{itemize}
-
 
 The DM goals in selecting and, where necessary, developing LSST software solutions are:
 
 \begin{itemize}
-	\item Acquire and/or develop solutions: To achieve its mission, LSST DM subsystem prefers to acquire and configure existing, off-the-shelf, solutions. Where no satisfactory off-the-shelf solutions are available, DM develops the software and hardware systems necessary to:
+	\item Acquire and/or develop solutions: To achieve its mission, LSST DM prefers to acquire and configure existing, off-the-shelf, solutions. Where no satisfactory off-the-shelf solutions are available, DM develops the software and hardware systems necessary to:
 \begin{itemize}
 	\item Enable the generation of LSST data products at the LSST Archive and Satellite processing center, and
 	\item Enable the the serving of LSST data products from the two LSST DACs (one in the U.S., and one in Chile).
 \end{itemize}
-	\item Maintain coherent architecture: DM software architecture is actively managed at the subsystem level. A well engineered, and cleanly designed codebase is less buggy, more maintainable, and makes developers who work on it more productive. Where there is no significant impact on capabilities, budget, or schedule, LSST DM prefers to acquire and/or develop reusable, open source, solutions.
-	\item Support reproducibility and insight into algorithms: Other than when prohibited by licensing, security, or other similar considerations, DM makes all newly developed source code public, especially the Science Pipelines code. Our primary goal in publicizing the code is to simplify reproducibility of LSST data products, and provide insight into algorithms used. The software is to be documented to achieve those goals.
-	\item Opportunities beyond LSST: LSST DM codes may be of interest and (re)used beyond the LSST project (e.g., by other survey projects, or individual LSST end-users). While enabling or supporting such applications goes beyond LSST’s construction requirements, cost and schedule-neutral technical and programmatic options that do not preclude them and allow for future generalization should be strongly preferred.
+	\item Maintain coherent architecture: DM software architecture is actively managed at the subsystem level. A well engineered and cleanly designed codebase is less buggy, more maintainable, and makes developers who work on it more productive. Where there is no significant impact on capabilities, budget, or schedule, LSST DM prefers to acquire and/or develop reusable, open source, solutions.
+	\item Support reproducibility and insight into algorithms: Other than when prohibited by licensing, security, or other similar considerations, DM makes all newly developed source code, and in particular that pertaining to scientific algorithms,  public. Our primary goals in publicizing the code is to simplify reproducibility of LSST data products and to provide insight into algorithms used. Achieving this goals requires that the software must be properly documented.
+	\item Opportunities beyond LSST: LSST DM codes may be of interest and (re)used beyond the LSST project (e.g., by other survey projects, or by individual LSST end-users). While enabling or supporting such applications goes beyond LSST’s construction requirements, cost and schedule-neutral technical and programmatic options that do not preclude them and allow for future generalization should be strongly preferred.
 
 
 \end{itemize}
 
-Background decision material on choices made in DM will be documented in technical notes (DMTN) which will be lodged in DocuShare (see \secref{sect:docman}).
+Background decision material on choices made in DM will be documented in technical notes which will be lodged in DocuShare (see \secref{sect:docman}) with ``DMTN'' series handles..
