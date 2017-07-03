@@ -217,7 +217,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (COMMENV) [pbox,below=4pt of BDBBENV] {\textbf{Comm Cluster Env}
  };
  \draw[pline] (ITBASE.east) -| ++(0.4,0)  |- (COMMENV.west);
- \node (L1) [pbox,below=476pt of ITENV] {{\tiny \color{gray}.} \newline
+ \node (L1) [pbox,below=476pt of ITENV] {{\tiny \color{gray}1.02C.03} \newline
 \textbf{Level 1 System}
  };
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (L1.west);
@@ -376,7 +376,95 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
  \node (WLM) [pbox,below=4pt of WFM] {\textbf{Workload Manager}
  };
  \draw[pline] (PRODEX.east) -| ++(0.4,0)  |- (WLM.west);
- \node (NETDM) [pbox,below=408pt of L2] {{\tiny \color{gray}.} \newline
+ \node (LSP) [pbox,below=408pt of L2] {{\tiny \color{gray}.} \newline
+\textbf{Science Platform}
+ };
+ \draw[pline] (DM.east) -| ++(0.4,0)  |- (LSP.west);
+ \node (LSPJL) [pbox,right=15mm of LSP] {{\tiny \color{gray}.} \newline
+\textbf{LSP JupyterLab}
+ };
+ \draw[pline] (LSP.east) -| ++(0.4,0)  |- (LSPJL.west);
+ \node (JLACTIV) [pbox,right=15mm of LSPJL] {{\tiny \color{gray}1.02C.10.02.02.05} \newline
+\textbf{JupyterLab Activator}
+ };
+ \draw[pline] (LSPJL.east) -| ++(0.4,0)  |- (JLACTIV.west);
+ \node (JLDPLY) [pbox,below=4pt of JLACTIV] {{\tiny \color{gray}1.02C.10.02.02.06} \newline
+\textbf{JupyterLab Deploy}
+ };
+ \draw[pline] (LSPJL.east) -| ++(0.4,0)  |- (JLDPLY.west);
+ \node (JLENV) [pbox,below=4pt of JLDPLY] {{\tiny \color{gray}1.02C.10.02.02.01} \newline
+\textbf{JupyterLab Env}
+ };
+ \draw[pline] (LSPJL.east) -| ++(0.4,0)  |- (JLENV.west);
+ \node (JLSUIT) [pbox,below=4pt of JLENV] {{\tiny \color{gray}1.02C.05.07} \newline
+\textbf{JupyterLab SUIT Intf}
+ };
+ \draw[pline] (LSPJL.east) -| ++(0.4,0)  |- (JLSUIT.west);
+ \node (JLSW) [pbox,below=4pt of JLSUIT] {{\tiny \color{gray}1.02C.10.02.02.04} \newline
+\textbf{JupyterLab SW Env}
+ };
+ \draw[pline] (LSPJL.east) -| ++(0.4,0)  |- (JLSW.west);
+ \node (LSPPRTL) [pbox,below=136pt of LSPJL] {{\tiny \color{gray}.} \newline
+\textbf{LSP Portal}
+ };
+ \draw[pline] (LSP.east) -| ++(0.4,0)  |- (LSPPRTL.west);
+ \node (FFLYAPI) [pbox,right=15mm of LSPPRTL] {{\tiny \color{gray}1.02C.05.07} \newline
+\textbf{Firefly Python APIs}
+ };
+\node (FFLYAPIpkg) [tbox,below=3mm of FFLYAPI.north] {{\tiny \color{gray} \begin{verbatim} firefly_client \end{verbatim} }  };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (FFLYAPI.west);
+ \node (FIREFLY) [pbox,below=4pt of FFLYAPI] {{\tiny \color{gray}1.02C.05.06 } \newline
+\textbf{Firefly}
+ };
+\node (FIREFLYpkg) [tbox,below=3mm of FIREFLY.north] {{\tiny \color{gray} \begin{verbatim} firefly \end{verbatim} }  };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (FIREFLY.west);
+ \node (PRTLALRT) [pbox,below=4pt of FIREFLY] {{\tiny \color{gray}1.02C.05.09} \newline
+\textbf{SUI Alert Interfaces}
+ };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (PRTLALRT.west);
+ \node (PRTLAPPS) [pbox,below=4pt of PRTLALRT] {{\tiny \color{gray}1.02C.05.08} \newline
+\textbf{Portal Applications}
+ };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (PRTLAPPS.west);
+ \node (PRTLINTF) [pbox,below=4pt of PRTLAPPS] {{\tiny \color{gray} user workspace} \newline
+\textbf{Portal Interfaces}
+ };
+\node (PRTLINTFpkg) [tbox,below=3mm of PRTLINTF.north] {{\tiny \color{gray} \begin{verbatim} Xiuqin Wu \end{verbatim} }  };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (PRTLINTF.west);
+ \node (PRTLVIS) [pbox,below=4pt of PRTLINTF] {{\tiny \color{gray}1.02C.05.07} \newline
+\textbf{Visualizers}
+ };
+ \draw[pline] (LSPPRTL.east) -| ++(0.4,0)  |- (PRTLVIS.west);
+ \node (LSPWEB) [pbox,below=170pt of LSPPRTL] {{\tiny \color{gray}.} \newline
+\textbf{LSP Web APIs}
+ };
+ \draw[pline] (LSP.east) -| ++(0.4,0)  |- (LSPWEB.west);
+ \node (DAXCAT) [pbox,right=15mm of LSPWEB] {{\tiny \color{gray}1.02C.06.02.05} \newline
+\textbf{Catalog Access}
+ };
+\node (DAXCATpkg) [tbox,below=3mm of DAXCAT.north] {{\tiny \color{gray} \begin{verbatim} dax_dbserv \end{verbatim} }  };
+ \draw[pline] (LSPWEB.east) -| ++(0.4,0)  |- (DAXCAT.west);
+ \node (DAXCMETA) [pbox,below=4pt of DAXCAT] {{\tiny \color{gray}1.02C.06.02.05} \newline
+\textbf{Cat Metadata Acc}
+ };
+\node (DAXCMETApkg) [tbox,below=3mm of DAXCMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  };
+ \draw[pline] (LSPWEB.east) -| ++(0.4,0)  |- (DAXCMETA.west);
+ \node (DAXIMETA) [pbox,below=4pt of DAXCMETA] {{\tiny \color{gray}1.02C.06.02.05} \newline
+\textbf{Img Metadata Acc}
+ };
+\node (DAXIMETApkg) [tbox,below=3mm of DAXIMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  };
+ \draw[pline] (LSPWEB.east) -| ++(0.4,0)  |- (DAXIMETA.west);
+ \node (DAXIMG) [pbox,below=4pt of DAXIMETA] {{\tiny \color{gray}1.02C.06.02.04} \newline
+\textbf{Image Access}
+ };
+\node (DAXIMGpkg) [tbox,below=3mm of DAXIMG.north] {{\tiny \color{gray} \begin{verbatim} dax_imgserv \end{verbatim} }  };
+ \draw[pline] (LSPWEB.east) -| ++(0.4,0)  |- (DAXIMG.west);
+ \node (DAXWEB) [pbox,below=4pt of DAXIMG] {{\tiny \color{gray}1.02C.06.02.02} \newline
+\textbf{Web Framework}
+ };
+\node (DAXWEBpkg) [tbox,below=3mm of DAXWEB.north] {{\tiny \color{gray} \begin{verbatim} dax_webserv/dax_webservcommon \end{verbatim} }  };
+ \draw[pline] (LSPWEB.east) -| ++(0.4,0)  |- (DAXWEB.west);
+ \node (NETDM) [pbox,below=544pt of LSP] {{\tiny \color{gray}.} \newline
 \textbf{DM Networks}
  };
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (NETDM.west);
@@ -582,95 +670,7 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
 \textbf{Variability Char}
  };
  \draw[pline] (SCIALG.east) -| ++(0.4,0)  |- (VRBLTY.west);
- \node (SCIPLAT) [pbox,below=1054pt of SCIALG] {{\tiny \color{gray}.} \newline
-\textbf{Science Platform}
- };
- \draw[pline] (DM.east) -| ++(0.4,0)  |- (SCIPLAT.west);
- \node (SPLJL) [pbox,right=15mm of SCIPLAT] {{\tiny \color{gray}.} \newline
-\textbf{SciPlat JupyterLab}
- };
- \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLJL.west);
- \node (JLACTIV) [pbox,right=15mm of SPLJL] {{\tiny \color{gray}1.02C.10.02.02.05} \newline
-\textbf{JupyterLab Activator}
- };
- \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLACTIV.west);
- \node (JLDPLY) [pbox,below=4pt of JLACTIV] {{\tiny \color{gray}1.02C.10.02.02.06} \newline
-\textbf{JupyterLab Deploy}
- };
- \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLDPLY.west);
- \node (JLENV) [pbox,below=4pt of JLDPLY] {{\tiny \color{gray}1.02C.10.02.02.01} \newline
-\textbf{JupyterLab Env}
- };
- \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLENV.west);
- \node (JLSUIT) [pbox,below=4pt of JLENV] {{\tiny \color{gray}1.02C.05.07} \newline
-\textbf{JupyterLab SUIT Intf}
- };
- \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLSUIT.west);
- \node (JLSW) [pbox,below=4pt of JLSUIT] {{\tiny \color{gray}1.02C.10.02.02.04} \newline
-\textbf{JupyterLab SW Env}
- };
- \draw[pline] (SPLJL.east) -| ++(0.4,0)  |- (JLSW.west);
- \node (SPLPRTL) [pbox,below=136pt of SPLJL] {{\tiny \color{gray}.} \newline
-\textbf{SciPlat Portal}
- };
- \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLPRTL.west);
- \node (FFLYAPI) [pbox,right=15mm of SPLPRTL] {{\tiny \color{gray}1.02C.05.07} \newline
-\textbf{Firefly Python APIs}
- };
-\node (FFLYAPIpkg) [tbox,below=3mm of FFLYAPI.north] {{\tiny \color{gray} \begin{verbatim} firefly_client \end{verbatim} }  };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (FFLYAPI.west);
- \node (FIREFLY) [pbox,below=4pt of FFLYAPI] {{\tiny \color{gray}1.02C.05.06 } \newline
-\textbf{Firefly}
- };
-\node (FIREFLYpkg) [tbox,below=3mm of FIREFLY.north] {{\tiny \color{gray} \begin{verbatim} firefly \end{verbatim} }  };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (FIREFLY.west);
- \node (PRTLALRT) [pbox,below=4pt of FIREFLY] {{\tiny \color{gray}1.02C.05.09} \newline
-\textbf{SUI Alert Interfaces}
- };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (PRTLALRT.west);
- \node (PRTLAPPS) [pbox,below=4pt of PRTLALRT] {{\tiny \color{gray}1.02C.05.08} \newline
-\textbf{Portal Applications}
- };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (PRTLAPPS.west);
- \node (PRTLINTF) [pbox,below=4pt of PRTLAPPS] {{\tiny \color{gray} user workspace} \newline
-\textbf{Portal Interfaces}
- };
-\node (PRTLINTFpkg) [tbox,below=3mm of PRTLINTF.north] {{\tiny \color{gray} \begin{verbatim} Xiuqin Wu \end{verbatim} }  };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (PRTLINTF.west);
- \node (PRTLVIS) [pbox,below=4pt of PRTLINTF] {{\tiny \color{gray}1.02C.05.07} \newline
-\textbf{Visualizers}
- };
- \draw[pline] (SPLPRTL.east) -| ++(0.4,0)  |- (PRTLVIS.west);
- \node (SPLWEB) [pbox,below=170pt of SPLPRTL] {{\tiny \color{gray}.} \newline
-\textbf{SciPlat Web APIs}
- };
- \draw[pline] (SCIPLAT.east) -| ++(0.4,0)  |- (SPLWEB.west);
- \node (DAXCAT) [pbox,right=15mm of SPLWEB] {{\tiny \color{gray}1.02C.06.02.05} \newline
-\textbf{Catalog Access}
- };
-\node (DAXCATpkg) [tbox,below=3mm of DAXCAT.north] {{\tiny \color{gray} \begin{verbatim} dax_dbserv \end{verbatim} }  };
- \draw[pline] (SPLWEB.east) -| ++(0.4,0)  |- (DAXCAT.west);
- \node (DAXCMETA) [pbox,below=4pt of DAXCAT] {{\tiny \color{gray}1.02C.06.02.05} \newline
-\textbf{Cat Metadata Acc}
- };
-\node (DAXCMETApkg) [tbox,below=3mm of DAXCMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  };
- \draw[pline] (SPLWEB.east) -| ++(0.4,0)  |- (DAXCMETA.west);
- \node (DAXIMETA) [pbox,below=4pt of DAXCMETA] {{\tiny \color{gray}1.02C.06.02.05} \newline
-\textbf{Img Metadata Acc}
- };
-\node (DAXIMETApkg) [tbox,below=3mm of DAXIMETA.north] {{\tiny \color{gray} \begin{verbatim} dax_metaserv \end{verbatim} }  };
- \draw[pline] (SPLWEB.east) -| ++(0.4,0)  |- (DAXIMETA.west);
- \node (DAXIMG) [pbox,below=4pt of DAXIMETA] {{\tiny \color{gray}1.02C.06.02.04} \newline
-\textbf{Image Access}
- };
-\node (DAXIMGpkg) [tbox,below=3mm of DAXIMG.north] {{\tiny \color{gray} \begin{verbatim} dax_imgserv \end{verbatim} }  };
- \draw[pline] (SPLWEB.east) -| ++(0.4,0)  |- (DAXIMG.west);
- \node (DAXWEB) [pbox,below=4pt of DAXIMG] {{\tiny \color{gray}1.02C.06.02.02} \newline
-\textbf{Web Framework}
- };
-\node (DAXWEBpkg) [tbox,below=3mm of DAXWEB.north] {{\tiny \color{gray} \begin{verbatim} dax_webserv/dax_webservcommon \end{verbatim} }  };
- \draw[pline] (SPLWEB.east) -| ++(0.4,0)  |- (DAXWEB.west);
- \node (SCIPRIM) [pbox,below=544pt of SCIPLAT] {{\tiny \color{gray}.} \newline
+ \node (SCIPRIM) [pbox,below=1054pt of SCIALG] {{\tiny \color{gray}.} \newline
 \textbf{Science Primitives}
  };
  \draw[pline] (DM.east) -| ++(0.4,0)  |- (SCIPRIM.west);

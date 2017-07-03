@@ -6,7 +6,7 @@
 \tiny
 \begin{longtable}{|p{0.10\textwidth}|p{0.12\textwidth}|p{0.26\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.20\textwidth}|}\hline
 \textbf{WBS} & Product & Description & Manager & Owner & Packages\\ \hline
-1.02C &  Data Management & Data Management System & Mario Juric &  & \\ \hline
+1.02C &  Data Management & Data Management System & William O Mullane & Mario Juric & \\ \hline
 . &  Data Access Center & DAC Software &  &  & \\ \hline
  &  Bulk Distrib & Bulk Distribution System & Joel Plutchak &  & \\ \hline
  &  Proposal Manager & Proposal Manager & Joel Plutchak &  & \\ \hline
@@ -61,7 +61,7 @@
  &  Base DAC Env & Base DAC environment & Joel Plutchak &  & \\ \hline
  &  Base DBB Env & Base Data Backbone endpoints and storage & Joel Plutchak &  & \\ \hline
  &  Comm Cluster Env & Commissioning Cluster environment & Joel Plutchak &  & \\ \hline
-. &  Level 1 System & Level 1 System &  &  & \\ \hline
+1.02C.03 &  Level 1 System & Level 1 System & Simon Krughoff & Eric Bellm & \\ \hline
 1.02C.03.03 &  Alert Distribution & Alert distribution service & Simon Krughoff & Eric Bellm & \\ \hline
 1.02C.03.03 &  Alert Filtering & Alert filtering service & Simon Krughoff & Eric Bellm & \\ \hline
  &  L1 Offline Proc & L1 Offline Processing System & Joel Plutchak &  & \\ \hline
@@ -122,6 +122,26 @@
  &  Pre-Flight Activator & Pre-flight Activator & Joel Plutchak &  & \\ \hline
  &  Workflow Manager & Workflow Manager/Orchestrator & Joel Plutchak &  & ctrl\_orca/ ctrl\_platform\_*/ ctrl\_execute/ ctrl\_stats/ ctrl\_provenance\\ \hline
  &  Workload Manager & Workload Manager & Joel Plutchak &  & \\ \hline
+. &  Science Platform & LSST Science Platform &  &  & \\ \hline
+. &  LSP JupyterLab & LSST Science Platform JupyterLab Aspect &  &  & \\ \hline
+1.02C.10.02.02.05 &  JupyterLab Activator & JupyterLab Activators & Frossie Economou &  & \\ \hline
+1.02C.10.02.02.06 &  JupyterLab Deploy & JupterHub deployment & Frossie Economou &  & \\ \hline
+1.02C.10.02.02.01 &  JupyterLab Env & Basic JupyterLab environment & Frossie Economou &  & \\ \hline
+1.02C.05.07 &  JupyterLab SUIT Intf & JupyterLab visualization widgets and other JupterHub/Portal bridges  & Xiuqin Wu &  & \\ \hline
+1.02C.10.02.02.04 &  JupyterLab SW Env & JupyterLab software environments & Frossie Economou &  & \\ \hline
+. &  LSP Portal & LSST Science Platform Portal Aspect &  &  & \\ \hline
+1.02C.05.07 &  Firefly Python APIs & Low-level Python API to Firefly & Xiuqin Wu &  & firefly\_client\\ \hline
+1.02C.05.06  &  Firefly & LSST-independent Firefly framework and visualization capabilities & Xiuqin Wu &  & firefly\\ \hline
+1.02C.05.09 &  SUI Alert Interfaces & Portal alert interfaces to configure alert subscriptions & Xiuqin Wu &  & \\ \hline
+1.02C.05.08 &  Portal Applications & Web application(s) implementing the Portal & Xiuqin Wu &  & \\ \hline
+ user workspace &  Portal Interfaces & Interfaces to DAX &  identity management & 1.02C.05.07 & Xiuqin Wu\\ \hline
+1.02C.05.07 &  Visualizers & Firefly components to visualize LSST Science Pipelines data objects & Xiuqin Wu &  & \\ \hline
+. &  LSP Web APIs & LSST Science Platform Web APIs Aspect &  &  & \\ \hline
+1.02C.06.02.05 &  Catalog Access & Catalog access & Fritz Mueller &  & dax\_dbserv\\ \hline
+1.02C.06.02.05 &  Cat Metadata Acc & Catalog metadata access & Fritz Mueller &  & dax\_metaserv\\ \hline
+1.02C.06.02.05 &  Img Metadata Acc & Image metadata access & Fritz Mueller &  & dax\_metaserv\\ \hline
+1.02C.06.02.04 &  Image Access & Image access & Fritz Mueller &  & dax\_imgserv\\ \hline
+1.02C.06.02.02 &  Web Framework & Web services framework & Fritz Mueller &  & dax\_webserv/ dax\_webservcommon\\ \hline
 . &  DM Networks & Data Management Provided Networks &  &  & \\ \hline
 1.02C.07.04.06 &  Arc Extl Net & Archive External Network & Don Petravick & D Wheeler & \\ \hline
 1.02C.07.04.03 (moving to 1.02C.08) &  Base Network & Base Local Area Network  & Don Petravick (moving to Jeff Kantor) & Jeff Kantor/Don Petravick & \\ \hline
@@ -170,26 +190,6 @@
 1.02C.04.06 &  Star/Galaxy Sep & Star/galaxy classification & John Swinbank & Jim Bosch & \\ \hline
 1.02C.03.04 &  Template Storage & Difference template storage/retrieval & Simon Krughoff & Eric Bellm & \\ \hline
 1.02C.03.04 &  Variability Char & Variability characterization & Simon Krughoff & Eric Bellm & \\ \hline
-. &  Science Platform & Science Platform &  &  & \\ \hline
-. &  SciPlat JupyterLab & Science Platform JupyterLab Aspect &  &  & \\ \hline
-1.02C.10.02.02.05 &  JupyterLab Activator & JupyterLab Activators & Frossie Economou &  & \\ \hline
-1.02C.10.02.02.06 &  JupyterLab Deploy & JupyterHub deployment & Frossie Economou &  & \\ \hline
-1.02C.10.02.02.01 &  JupyterLab Env & Basic JupyterLab environment & Frossie Economou &  & \\ \hline
-1.02C.05.07 &  JupyterLab SUIT Intf & JupyterLab visualization widgets and other JupyterHub/Portal bridges  & Xiuqin Wu &  & \\ \hline
-1.02C.10.02.02.04 &  JupyterLab SW Env & JupyterLab software environments & Frossie Economou &  & \\ \hline
-. &  SciPlat Portal & Science Platform Portal Aspect &  &  & \\ \hline
-1.02C.05.07 &  Firefly Python APIs & Low-level Python API to Firefly & Xiuqin Wu &  & firefly\_client\\ \hline
-1.02C.05.06  &  Firefly & LSST-independent Firefly framework and visualization capabilities & Xiuqin Wu &  & firefly\\ \hline
-1.02C.05.09 &  SUI Alert Interfaces & Portal alert interfaces to configure alert subscriptions & Xiuqin Wu &  & \\ \hline
-1.02C.05.08 &  Portal Applications & Web application(s) implementing the Portal & Xiuqin Wu &  & \\ \hline
- user workspace &  Portal Interfaces & Interfaces to DAX &  identity management & 1.02C.05.07 & Xiuqin Wu\\ \hline
-1.02C.05.07 &  Visualizers & Firefly components to visualize LSST Science Pipelines data objects & Xiuqin Wu &  & \\ \hline
-. &  SciPlat Web APIs & Science Platform Web APIs Aspect &  &  & \\ \hline
-1.02C.06.02.05 &  Catalog Access & Catalog access & Fritz Mueller &  & dax\_dbserv\\ \hline
-1.02C.06.02.05 &  Cat Metadata Acc & Catalog metadata access & Fritz Mueller &  & dax\_metaserv\\ \hline
-1.02C.06.02.05 &  Img Metadata Acc & Image metadata access & Fritz Mueller &  & dax\_metaserv\\ \hline
-1.02C.06.02.04 &  Image Access & Image access & Fritz Mueller &  & dax\_imgserv\\ \hline
-1.02C.06.02.02 &  Web Framework & Web services framework & Fritz Mueller &  & dax\_webserv/ dax\_webservcommon\\ \hline
 . &  Science Primitives & Science software primitives &  &  & \\ \hline
 1.02C.03.05 &  Camera Descr & Camera descriptions & Simon Krughoff & Eric Bellm & afw\\ \hline
 1.02C.03.05 &  Chromaticity Utils & Chromaticity utilities & Simon Krughoff & Eric Bellm & afw\\ \hline
