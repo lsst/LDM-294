@@ -171,13 +171,13 @@ FT,Fourier Transforms,SCIPRIM,Fourier transforms,1.02C.03.05,AP,Simon Krughoff,E
 TREES,Tree Structures,SCIPRIM,Tree structures (for searching),1.02C.03.05,AP,Simon Krughoff,Eric Bellm,SW,afw
 SCITOOLS,Science Tools,SCIPRIM,Science tools,1.02C.04.01,DRP,John Swinbank,Jim Bosch,SW,afw/utils
 DRPDB,DRP-Internal DB,L2SCI,DRP-internal database,1.02C.06.01.01,DAX,Fritz Mueller,,SW,daf_ingest
-SCIPLAT,Science Platform,DM,Science Platform,.,.,,,,
-SPLWEB,SciPlat Web APIs,SCIPLAT,Science Platform Web APIs Aspect,.,.,,,,
-DAXWEB,Web Framework,SPLWEB,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
-DAXIMG,Image Access,SPLWEB,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
-DAXCAT,Catalog Access,SPLWEB,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
-DAXIMETA,Img Metadata Acc,SPLWEB,Image metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
-DAXCMETA,Cat Metadata Acc,SPLWEB,Catalog metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+LSP,Science Platform,DM,LSST Science Platform,.,.,,,,
+LSPWEB,LSP Web APIs,LSP,LSST Science Platform Web APIs Aspect,.,.,,,,
+DAXWEB,Web Framework,LSPWEB,Web services framework,1.02C.06.02.02,DAX,Fritz Mueller,,SW,dax_webserv/dax_webservcommon
+DAXIMG,Image Access,LSPWEB,Image access,1.02C.06.02.04,DAX,Fritz Mueller,,SW,dax_imgserv
+DAXCAT,Catalog Access,LSPWEB,Catalog access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_dbserv
+DAXIMETA,Img Metadata Acc,LSPWEB,Image metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
+DAXCMETA,Cat Metadata Acc,LSPWEB,Catalog metadata access,1.02C.06.02.05,DAX,Fritz Mueller,,SW,dax_metaserv
 TXF,Task Execution,INFRA,Task execution framework,.,.,,,,
 SPRTASK,SuperTask,TXF,SuperTask,1.02C.06.03,DAX,Fritz Mueller,,SW,pipe_supertask/pipe_base/pex_exceptions
 ACTIVATR,Activator Bases,TXF,Activator base and Command Line Activator,1.02C.06.03,DAX,Fritz Mueller,,SW,
@@ -190,12 +190,12 @@ SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,,S
 SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,,SW,
 SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,,SW,
 SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,,SW,
-SPLJL,SciPlat JupyterLab,SCIPLAT,Science Platform JupyterLab Aspect,.,.,,,,
-JLENV,JupyterLab Env,SPLJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
-JLSW,JupyterLab SW Env,SPLJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
-JLACTIV,JupyterLab Activator,SPLJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
-JLDPLY,JupyterLab Deploy,SPLJL,JupyterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
-JLSUIT,JupyterLab SUIT Intf,SPLJL,JupyterLab visualization widgets and other JupyterHub/Portal bridges ,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
+LSPJL,LSP JupyterLab,LSP,LSST Science Platform JupyterLab Aspect,.,.,,,,
+JLENV,JupyterLab Env,LSPJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
+JLSW,JupyterLab SW Env,LSPJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
+JLACTIV,JupyterLab Activator,LSPJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
+JLDPLY,JupyterLab Deploy,LSPJL,JupterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
+JLSUIT,JupyterLab SUIT Intf,LSPJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 DEVEL,Developer services,DM,Developer services,.,.,,,,
 DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
 BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
@@ -206,10 +206,10 @@ ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQu
 INTGTEST,Integration Test,DM,Integration and test,.,.,,,SW,
 CI,Contin Integration,INTGTEST,Automated integration and test services,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,Jenkins
 PRECURSR,Precursor Data,INTGTEST,Precursor data for development and testing,1.02C.01.01,DMSST,Mario Juric,,SW,obs_*/validation_data_*/testdata_*/afwdata
-SPLPRTL,SciPlat Portal,SCIPLAT,Science Platform Portal Aspect,.,.,,,,
-FIREFLY,Firefly,SPLPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
-FFLYAPI,Firefly Python APIs,SPLPRTL,Low-level Python API to Firefly,1.02C.05.07,SUIT,Xiuqin Wu,,SW,firefly_client
-PRTLINTF,Portal Interfaces,SPLPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
-PRTLVIS,Visualizers,SPLPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
-PRTLAPPS,Portal Applications,SPLPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
-PRTLALRT,SUI Alert Interfaces,SPLPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
+LSPPRTL,LSP Portal,LSP,LSST Science Platform Portal Aspect,.,.,,,,
+FIREFLY,Firefly,LSPPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
+FFLYAPI,Firefly Python APIs,LSPPRTL,Low-level Python API to Firefly,1.02C.05.07,SUIT,Xiuqin Wu,,SW,firefly_client
+PRTLINTF,Portal Interfaces,LSPPRTL,"Interfaces to DAX, user workspace, SuperTask, identity management",1.02C.05.07,SUIT,Xiuqin Wu,,SW,
+PRTLVIS,Visualizers,LSPPRTL,Firefly components to visualize LSST Science Pipelines data objects,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
+PRTLAPPS,Portal Applications,LSPPRTL,Web application(s) implementing the Portal,1.02C.05.08,SUIT,Xiuqin Wu,,SW,
+PRTLALRT,SUI Alert Interfaces,LSPPRTL,Portal alert interfaces to configure alert subscriptions,1.02C.05.09,SUIT,Xiuqin Wu,,SW,
