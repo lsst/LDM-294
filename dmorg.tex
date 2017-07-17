@@ -119,9 +119,10 @@ Configuration control of documents is dealt with in \secref{sect:docman}. Here w
 
 \subsubsection{Software Configuration Control}
 
-DM follows a git based versioning system based  on public git repositories and the approach is covered in the developer guide \url{https://developer.lsst.io/processes/workflow.html}.
+DM follows a git based versioning system based on public git repositories.  The approach is covered in the developer guide \url{https://developer.lsst.io/processes/workflow.html} and is consistent with the Systems Engineering Management Plan \citeds{LSE-17}.
 The master branch is the stable code with development done in \emph{ticket} branches (named with the id of the corresponding JIRA Ticket describing the work).
-Once reviewed a branch is merged to master, which should always be functional and releasable.\footnote{LSE-14 seem out of date and should be updated or revoked - titled a guideline it seems inappropriate as an LSE.}
+Once reviewed a branch is merged to master, which should always be functional and releasable.
+% \footnote{LSE-14 seem out of date and should be updated or revoked - titled a guideline it seems inappropriate as an LSE.}
 Releases are recorded by tagging the master branch; release branches can be created if patches are required.
 
 As we approach commissioning and operations DM will have much stricter configuration control.
