@@ -1,16 +1,16 @@
 \section{Data Management Conceptual Architecture \label{sect:dmarc}}
 
 The DM Subsystem Architecture is detailed in \citeds{LDM-148}.
-A few of the higher level diagrams are reproduced here to orientate the reader within DM.
+A few of the higher level diagrams are reproduced here to orient the reader within DM.
 
 During Operations, components of the DM Subsystem will be installed and run in
 multiple locations. These include:
 
 \begin{itemize}
-\item The Commissioning Cluster, which may be physically at NCSA in Urbana-Champaign
-\item The main compute enclave, also at NCSA in Urbana-Champaign
+\item The Commissioning Cluster in the Base Facility in La Serena, Chile
+\item The main compute facility at NCSA in Urbana-Champaign
 \item The US Data Access Center (DAC), also at NCSA in Urbana-Champaign
-\item The Chilean DAC in the Base Facility in La Serena Chile
+\item The Chilean DAC in the Base Facility
 \item The Satellite Processing Center at CC-IN2P3 in Lyon, France
 \end{itemize}
 
@@ -21,7 +21,7 @@ Science users will access the data products produced by LSST through the
 Science Platform, as shown in \figref{fig:sciplat}.
 
 \figref{fig:dcs} shows the common infrastructure and services layer which underlies the compute environments.
-This does not list specific technologies for management/monitoring, provisioning/deployment, or workload/workflow --- these are still under development --- but consider industry-standard tools such as Nagios, Puppet/vSphere/OpenStack/Kubernetes, and Pegasus.
+This does not list specific technologies for management/monitoring, provisioning/deployment, or workload/workflow --- these are still being selected --- but under consideration are industry-standard tools such as Nagios, Puppet/vSphere/OpenStack/Kubernetes, and Pegasus.
 
 \begin{figure}[htbp]
 \begin{center}
