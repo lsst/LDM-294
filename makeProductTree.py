@@ -10,12 +10,12 @@ import argparse
 # pt sizes for box + margin + gap between boex
 txtheight = 28
 leafHeight = 1.26  # cm space per leaf box .. height of page calc
+leafWidth = 3.7  # cm space per leaf box .. width of page calc
 sep = 2  # inner sep
 gap = 4
 WBS = 1  # Put WBS on diagram
 PKG = 1  # put packages on diagram
 outdepth = 100  # set with --depth if you want a shallower tree
-
 
 class Product(object):
     def __init__(self, id, name, parent, desc, wbs, manager, owner,
@@ -100,11 +100,80 @@ def outputTexTable(tout, ptree):
     return
 
 
-def outputTexTree(fout, ptree):
+def outputWBSPKG(fout,prod):
+    print("] {", file=fout, end='')
+    if WBS == 1 and prod.wbs != "":
+        print(r"{{\tiny \color{{black}}{}}} \newline".format(prod.wbs), file=fout)
+    print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
+    # print(r"\newline", file=fout)
+    print("};", file=fout)
+    if PKG == 1 and prod.pkgs != "":
+        print(r"\node ({p.id}pkg) "
+            "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
+            file=fout, end='')
+        print(r"{\tiny \color{black} \begin{verbatim} " +
+            prod.pkgs + r" \end{verbatim} }  };",
+            file=fout)
+    return
+
+def outputTexTreeLand(fout, ptree, paperwidth):
+    count = 0
+    nodes = ptree.expand_tree(mode=Tree.WIDTH)
+    prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
+    depth=0
+    pdepth =0
+    nodec =1
+    pnodec =1
+    sdist=15  #imm  sibling group distance for equal distribution
+    # Text height + the gap added to each one
+    blocksize = txtheight + gap + sep
+    print("Landscape .. ".format())
+    for n in nodes:
+        prod = ptree[n].data
+        depth = ptree.depth(n)
+        count = count + 1
+        if (depth <= outdepth):
+            if (count == 1):  # root node
+                print(r"\node ({p.id}) "
+                      r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
+                      file=fout)
+            else:
+                if ( pdepth == depth):
+                    print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
+                    dist=1 # siblinkgs close then gap
+                    if (prev.parent != prod.parent):
+                        dist=sdist
+                    print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
+                    print(r" {p.id} right={d}mm parent={p.parent} prevparent={pr.parent} priev={pr.id}".format(
+                       p=prod,d=dist, pr=prev))
+                else:
+                    #figure out how many nodes acorss page at this depth
+                    ntree = slice(ptree, depth)
+                    nodec = len(ntree.leaves())
+                    print(r"\node ({p.id}P) [below=15mm of {p.parent}]".format(p=prod),file=fout,end='')
+                    print(r"{};",file=fout)
+	            #equally space siblings
+                    dist= ((leafWidth +0.5) * nodec / 2 ) + ((pnodec/2) *(sdist/10)) #cm  center siblings on page
+                    print(r"\node ({p.id}) [pbox, left={d}cm of {p.id}P".format(p=prod, d=dist), file=fout, end='')
+                    print(r"Got new row {p.id} toleft={d}cm depth={dp} pdepth={pd}"
+                        "  parent={p.parent} paperwidth={pw} sdist={sd} nodec={sc} ".format(p=prod,
+                        d=dist,dp=depth, pd=pdepth, sd=sdist, sc=nodec, pw=paperwidth))
+
+                outputWBSPKG(fout,prod)
+                print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
+                     file=fout )
+            prev = prod
+            pdepth = depth
+            pnodec= nodec
+    print("{} Product lines in TeX ".format(count))
+    return
+
+def outputTexTree(fout, ptree, paperwidth):
     fnodes = []
     nodes = ptree.expand_tree()
     count = 0
     prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
+    nodec =1
     # Text height + the gap added to each one
     blocksize = txtheight + gap + sep
     for n in nodes:
@@ -120,9 +189,8 @@ def outputTexTree(fout, ptree):
                       r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
                       file=fout)
             else:
-                print(r"\node ({p.id}) [pbox,".format(p=prod),
-                      file=fout, end='')
-                if (prev.parent != prod.parent):  # first child to the right
+                print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
+                if (prev.parent != prod.parent):  # first child to the right if portrait left if landscape
                     found = 0
                     scount = count - 1
                     while found == 0 and scount > 0:
@@ -150,27 +218,12 @@ def outputTexTree(fout, ptree):
                         #                                s=psib, p=prod))
                         print("below={}pt of {}".format(dist, psib.id),
                               file=fout, end='')
-                else:  # benetih the sibling
+                else:
+                    # benetih the sibling
                     dist = gap
-                    print("below={}pt of {}".format(dist, prev.id),
-                          file=fout, end='')
-                print("] {", file=fout, end='')
-                if WBS == 1 and prod.wbs != "":
-                    print(r"{{\tiny \color{{gray}}{}}}"
-                          r" \newline".format(prod.wbs), file=fout)
-                print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
-                # print(r"\newline", file=fout)
-                print("};", file=fout)
-                if PKG == 1 and prod.pkgs != "":
-                    print(r"\node ({p.id}pkg) "
-                          "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
-                          file=fout, end='')
-                    print(r"{\tiny \color{gray} \begin{verbatim} " +
-                          prod.pkgs + r" \end{verbatim} }  };",
-                          file=fout)
-                print(r" \draw[pline] ({p.parent}.east) -| ++(0.4,0)  "
-                      "|- ({p.id}.west);\n ".format(p=prod),
-                      file=fout, end='')
+                    print("below={}pt of {}".format(dist, prev.id), file=fout, end='')
+                outputWBSPKG(fout,prod)
+                print(r" \draw[pline] ({p.parent}.east) -| ++(0.4,0) |- ({p.id}.west); ".format(p=prod), file=fout)
             prev = prod
     print("{} Product lines in TeX ".format(count))
     return
@@ -180,27 +233,36 @@ def doFile(inFile):
     "This processes a csv and produced a tex tree diagram and a tex longtable."
     f = inFile
     nf = "ProductTree.tex"
+    if (land):
+       nf = "ProductTreeLand.tex"
     nt = "productlist.tex"
     print("Processing {}-> (figure){} and (table){}".format(f, nf, nt))
 
     with open(f, 'r') as fin:
         ptree = constructTree(fin)
     ntree = ptree
-    width = 0
+    paperwidth = 0
     height = 0
-    if (outdepth <= 100):
+    if (outdepth <= 100 ):
         ntree = slice(ptree, outdepth)
-        width = 2
-        height = -3
+        if (land!=1):
+            paperwidth = 2
+            height = -3
 
     # ptree.show(data_property="name")
-
-    width = width + ntree.depth() * 6.2  # cm
-    height = height + len(ntree.leaves()) * leafHeight  # cm
+    if (land):
+        height = height + ntree.depth() * 4  # cm
+        paperwidth = paperwidth + len(ntree.leaves()) * (leafWidth + .4)  # cm
+    else:
+        paperwidth = paperwidth + ntree.depth() * 6.2  # cm
+        height = height + len(ntree.leaves()) * leafHeight  # cm
 
     with open(nf, 'w') as fout:
-        header(fout, width, height)
-        outputTexTree(fout, ntree)
+        header(fout, paperwidth, height)
+        if (land):
+            outputTexTreeLand(fout, ntree, paperwidth)
+        else:
+            outputTexTree(fout, ntree, paperwidth)
         footer(fout)
 
     with open(nt, 'w') as tout:
@@ -255,7 +317,8 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
           " minimum height=" + str(txtheight) + "pt, inner sep=" + str(sep) +
           "pt, text centered, text width=35mm]", file=fout)
 
-    print(r"""\tikzstyle{pline}=[-, thick]\begin{document}
+    print(r"""\tikzstyle{pline}=[-, thick]
+\begin{document}
 \begin{tikzpicture}[node distance=0mm]""", file=fout)
 
     return
@@ -276,9 +339,9 @@ def tfooter(tout):
 # MAIN
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--depth", help="make tree pdf stopping at depth ",
-                    type=int)
+parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
+parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
 args = parser.parse_args()
-if args.depth is not None:
-    outdepth = args.depth
+outdepth=args.depth
+land=args.land
 doFile("productlist.csv")
