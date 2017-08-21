@@ -35,3 +35,22 @@ of major DM components as necessary to assess progress and maintain the integrit
 	%\end{itemize}
   %\item  Calibration Review
 %\end{itemize}
+
+In addition, smaller components of the system will undergo DM-internal design reviews.  The DMPM decides what will be reviewed (with input from all DM members) and is the Decision Making Authority for approving review recommendations.  Participants in the design review will normally include all members of the DMCCB and other experts as appropriate (e.g. the LSST Information Security Officer or designated substitute if there are any security implications).  The design review will check that the design:
+\begin{itemize}
+\item meets the requirements and satisfies the use cases, and an implementation can be verified as doing so
+\item conforms to the LSST DM architecture and has well-defined interfaces
+\item is expected to be efficient in terms of labor cost, non-labor cost, and schedule
+\item is expected to be reliable, maintainable, supportable, usable, and secure
+\item conforms to good engineering practices
+\end{itemize}
+
+Design review presentations should include:
+\begin{itemize}
+\item the identification of the components under review in terms of where they fit within the overall architecture
+\item use cases and requirements applicable to the components under review that show how they will be used and how they respond/support all usage
+\item an API or other description of the public interfaces to the components under review
+\item a description of the internal patterns and algorithms to be used in the design, known limitations to those, and justification why the limitations are acceptable for this development
+\item a description of the technological approach to implementation, including use of any third-party components, and reuse of existing elements (e.g. this will be a specialization of the XYZ framework classes)
+\item a description of how the function and performance of the component(s) under review will be tested
+\end{itemize}
