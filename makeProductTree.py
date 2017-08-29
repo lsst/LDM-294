@@ -148,6 +148,23 @@ def organiseRow(r, rowMap): #group according to parent in order of prevous row
     rowMap[r]=nrow
     return
 
+def layoutRows(rowMap, start, end, count, ptree, children ):
+    prow=None
+    for r in range(start,end,-1): # Printing last row first
+	row = rowMap[r]
+        count = count + doRow(fout,ptree,children,row,r)
+        if (prow):
+            print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
+            for p in prow:
+                prod=p.data
+                print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
+                     file=fout )
+            prow=row
+            row=[]
+	else:
+            prow=row
+    return count
+
 def outputLandW(fout,ptree):
     children= dict() # map of most central child to place this node ABOVE it
     rowMap = dict()
@@ -182,19 +199,9 @@ def outputLandW(fout,ptree):
             wideR=r
     print(r"Widest row  depth={d},   nodes={n}".format(d=wideR, n=len(rowMap[wideR])))
     #now lay out row wideR and UP to root
-    for r in range(wideR,-1,-1): # Printing last row first
-	row = rowMap[r]
-        count = count + doRow(fout,ptree,children,row,r)
-        if (prow):
-            print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
-            for p in prow:
-                prod=p.data
-                print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
-                     file=fout )
-            prow=row
-            row=[]
-	else:
-            prow=row
+    count = count + layoutRows(rowMap, start, end, count, ptree, children ):
+    # and layout the bottom ot the widest row...
+
     print("{} Product lines in TeX ".format(count))
     return
 
