@@ -158,23 +158,31 @@ def outputLandW(fout,ptree):
     d=0
     pdepth=d
     prow= None
-    # first make rows and sort in groups acording to parents
+    # first make rows
     for n in nodes:
         prod =ptree[n].data
         d = ptree.depth(prod.id)
         if d != pdepth: # new row
-            print(r" depth={d},   nodes={n}".format(d=pdepth, n=len(row)))
+            #print(r" depth={d},   nodes={n}".format(d=pdepth, n=len(row)))
             rowMap[pdepth] = row
             row=[]
             pdepth=d
         row.append(ptree[n])
-    print(r"Out of loop  depth={d},   nodes={n}".format(d=d, n=len(row)))
+    #print(r"Out of loop  depth={d},   nodes={n}".format(d=d, n=len(row)))
     rowMap[d] = row # should be root
-    # now group the children under parent ..
-    for r in range(2,depth,1): # root is ok and the next row
-    	organiseRow(r,rowMap)
+    # now group the children under parent .. should be done by WIDT FIRST walk fo tree
+    # for r in range(2,depth,1): # root is ok and the next row
+    #	organiseRow(r,rowMap)
     #now actually make the tex
-    for r in range(depth,-1,-1): # Printing last row first
+    # need to  find row with most leaves .. then layout relative to that..
+    wideR = depth
+    for r in range(depth,-1,-1): # Look at each row
+	rowSize = len(rowMap[r])
+        if rowSize > len(rowMap[wideR]):
+            wideR=r
+    print(r"Widest row  depth={d},   nodes={n}".format(d=wideR, n=len(rowMap[wideR])))
+    #now lay out row wideR and UP to root
+    for r in range(wideR,-1,-1): # Printing last row first
 	row = rowMap[r]
         count = count + doRow(fout,ptree,children,row,r)
         if (prow):
