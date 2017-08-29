@@ -69,6 +69,8 @@ def fixTex(text):
 
 
 def slice(ptree, outdepth):
+    if (ptree.depth() == outdepth):
+        return ptree
     # copy the tree but stopping at given depth
     ntree = Tree()
     nodes = ptree.expand_tree()
@@ -77,9 +79,7 @@ def slice(ptree, outdepth):
         depth = ptree.depth(n)
         prod = ptree[n].data
 
-        # print("{} Product: {} name: {} parent: {}".format(depth, prod.id,
-        #                                                   prod.name,
-        #                                                   prod.parent))
+        #print("outd={od} mydepth={d} Product: {p.id} name: {p.name} parent: {p.parent}".format(od=outdepth, d=depth, p=prod))
         if (depth <= outdepth):
             # print(" YES ", end='')
             if (prod.parent == ""):
@@ -116,61 +116,140 @@ def outputWBSPKG(fout,prod):
             file=fout)
     return
 
-def outputTexTreeLand(fout, ptree, paperwidth):
-    count = 0
-    nodes = ptree.expand_tree(mode=Tree.WIDTH)
-    prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
-    depth=0
-    pdepth =0
-    nodec =1
-    pnodec =1
-    sdist=15  #imm  sibling group distance for equal distribution
-    # Text height + the gap added to each one
-    blocksize = txtheight + gap + sep
-    print("Landscape .. ".format())
-    for n in nodes:
-        prod = ptree[n].data
-        depth = ptree.depth(n)
-        count = count + 1
-        if (depth <= outdepth):
-            if (count == 1):  # root node
-                print(r"\node ({p.id}) "
-                      r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
-                      file=fout)
-            else:
-                if ( pdepth == depth):
-                    print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
-                    dist=1 # siblinkgs close then gap
-                    if (prev.parent != prod.parent):
-                        dist=sdist
-                    print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
-                    print(r" {p.id} right={d}mm parent={p.parent} prevparent={pr.parent} priev={pr.id}".format(
-                       p=prod,d=dist, pr=prev))
-                else:
-                    #figure out how many nodes acorss page at this depth
-                    ntree = slice(ptree, depth)
-                    nodec = len(ntree.leaves())
-                    print(r"\node ({p.id}P) [below=15mm of {p.parent}]".format(p=prod),file=fout,end='')
-                    print(r"{};",file=fout)
-	            #equally space siblings
-                    dist= ((leafWidth +0.5) * nodec / 2 ) + ((pnodec/2) *(sdist/10)) #cm  center siblings on page
-                    print(r"\node ({p.id}) [pbox, left={d}cm of {p.id}P".format(p=prod, d=dist), file=fout, end='')
-                    print(r"Got new row {p.id} toleft={d}cm depth={dp} pdepth={pd}"
-                        "  parent={p.parent} paperwidth={pw} sdist={sd} nodec={sc} ".format(p=prod,
-                        d=dist,dp=depth, pd=pdepth, sd=sdist, sc=nodec, pw=paperwidth))
+def parent(node):
+    return node.data.parent
+def id(node):
+    return node.data.id
 
-                outputWBSPKG(fout,prod)
+def groupByParent(nodes):
+    nn = []
+    pars = []
+    for n in nodes:
+	parent = n.data.parent
+	if parent not in pars:
+            pars.append(parent)
+	    for n2 in nodes:
+                if (n2.data.parent == parent) :
+		   #print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+	           nn.append(n2)
+    return nn;
+
+def organiseRow(r, rowMap): #group according to parent in order of prevous row
+    prow=rowMap[r-1]
+    row = rowMap[r]
+    print(r" organise {n} nodes in  Row {r} by {nn} nodes in {r}-1".format(r=r, n=len(row),nn=len(prow)))
+    nrow= []
+    for p in prow: #scan parents
+	parent = p.data.id
+	for n2 in row:
+           if (n2.data.parent == parent) :
+		   print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+	           nrow.append(n2)
+    rowMap[r]=nrow
+    return
+
+def outputLandW(fout,ptree):
+    children= dict() # map of most central child to place this node ABOVE it
+    rowMap = dict()
+    nodes = ptree.expand_tree(mode=Tree.WIDTH) # default mode=DEPTH
+    count = 0
+    row=[]
+    depth=ptree.depth()
+    d=0
+    pdepth=d
+    prow= None
+    # first make rows and sort in groups acording to parents
+    for n in nodes:
+        prod =ptree[n].data
+        d = ptree.depth(prod.id)
+        if d != pdepth: # new row
+            print(r" depth={d},   nodes={n}".format(d=pdepth, n=len(row)))
+            rowMap[pdepth] = row
+            row=[]
+            pdepth=d
+        row.append(ptree[n])
+    print(r"Out of loop  depth={d},   nodes={n}".format(d=d, n=len(row)))
+    rowMap[d] = row # should be root
+    # now group the children under parent ..
+    for r in range(2,depth,1): # root is ok and the next row
+    	organiseRow(r,rowMap)
+    #now actually make the tex
+    for r in range(depth,-1,-1): # Printing last row first
+	row = rowMap[r]
+        count = count + doRow(fout,ptree,children,row,r)
+        if (prow):
+            print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
+            for p in prow:
+                prod=p.data
                 print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
                      file=fout )
-            prev = prod
-            pdepth = depth
-            pnodec= nodec
+            prow=row
+            row=[]
+	else:
+            prow=row
     print("{} Product lines in TeX ".format(count))
     return
 
+def doRow(fout,ptree,children,nodes,depth):
+#Assuming the nodes are sorted by parent .. putput the groups of siblings and record
+# children the middle child of each group
+    sdist=15  #mm  sibling group distance for equal distribution
+    ccount=0;
+    prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
+    sibs = []
+    child = None
+    ncount= len(nodes)
+    for n in nodes:
+        prod = n.data
+        ccount = ccount + 1
+	if (prod.id in children):
+	   child = children[prod.id]
+	else:
+           child= None
+        if (depth==0):  # root node
+           #print(r"depth==0 {p.id}  parent  {p.parent},   child={c}".format(p=prod, c=child))
+           print(r"\node ({p.id}) "
+               r"[wbbox, above=15mm of {c}]{{\textbf{{{p.name}}}}};".format(p=prod,c=child),
+               file=fout)
+        else:
+           print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
+           if (child): # easy case - node aboove child
+              print("above={d}mm of {c}".format(d=sdist,c=child), file=fout, end='')
+           # need to deal with next children
+           dist=1 # siblings close then gap
+           if ((prev.parent != prod.parent and ccount >1) or (ccount==ncount) ): # not forgetting the last group
+              if (ccount==ncount): #we ar eon the last group tha tis the one we do not prev
+	        theProd=prod
+              else:
+		theProd=prev
+                dist=sdist
+	      sibs = ptree.siblings(theProd.id)
+	      sc = len (sibs)
+              msib= (int) ((float) (sc) / 2.0 )
+              #print(r"prev={prev.id}  theProd={pr.id}  parent  {pr.parent}, sc={sc}  msib={ms}, prod={p.id}"
+	#	" count={cc} ncount={nc}".format(prev=prev,pr=theProd,p=prod, ms=msib, sc=sc, cc=ccount, nc =ncount))
+              if (msib !=0):
+                  children[theProd.parent] = sibs[msib].data.id
+                  print(r" parent  {pr.parent} over  prod {p.id}".format(pr=theProd, p=sibs[msib].data))
+              else: #only child
+                  children[theProd.parent] = theProd.id
+                  print(r" Only child or 1 sibling.  parent  {p.parent} over  prod {p.id} nsibs={sc}".format(p=theProd, sc=sc))
+              sibs = []
+           if (ccount !=1 and not child ): # easy put out to right
+              print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
+           #   print(r" GOT leaf  {p.id}".format(p=prod))
+	   #if (ccount ==1 and not child ): # this will not get a placement but others will be right of it
+              #print(r" GOT snowflake first leaf  {p.id}".format(p=prod))
+           #print(r"mydepth={md} depth={dp} {p.id} right={d}mm parent={p.parent} prevparent={pr.parent}"
+           #         " prev={pr.id}".format(md=ptree.depth(prod.id),dp=depth,p=prod,d=dist, pr=prev))
+           outputWBSPKG(fout,prod)
+           prev = prod
+    return ccount
+
+
 def outputTexTree(fout, ptree, paperwidth):
     fnodes = []
-    nodes = ptree.expand_tree()
+    nodes = ptree.expand_tree() # default mode=DEPTH
     count = 0
     prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
     nodec =1
@@ -252,7 +331,9 @@ def doFile(inFile):
     # ptree.show(data_property="name")
     if (land):
         height = height + ntree.depth() * 4  # cm
-        paperwidth = paperwidth + len(ntree.leaves()) * (leafWidth + .4)  # cm
+        paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
+        if paperwidth > 500:
+             paperwidth=500
     else:
         paperwidth = paperwidth + ntree.depth() * 6.2  # cm
         height = height + len(ntree.leaves()) * leafHeight  # cm
@@ -260,7 +341,8 @@ def doFile(inFile):
     with open(nf, 'w') as fout:
         header(fout, paperwidth, height)
         if (land):
-            outputTexTreeLand(fout, ntree, paperwidth)
+            outputLandW(fout, ntree)
+            #outputTexTreeLand(fout, ntree, paperwidth)
         else:
             outputTexTree(fout, ntree, paperwidth)
         footer(fout)
