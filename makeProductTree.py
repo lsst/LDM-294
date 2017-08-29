@@ -10,12 +10,12 @@ import argparse
 # pt sizes for box + margin + gap between boex
 txtheight = 28
 leafHeight = 1.26  # cm space per leaf box .. height of page calc
+leafWidth = 3.7  # cm space per leaf box .. width of page calc
 sep = 2  # inner sep
 gap = 4
 WBS = 1  # Put WBS on diagram
 PKG = 1  # put packages on diagram
 outdepth = 100  # set with --depth if you want a shallower tree
-
 
 class Product(object):
     def __init__(self, id, name, parent, desc, wbs, manager, owner,
@@ -69,6 +69,8 @@ def fixTex(text):
 
 
 def slice(ptree, outdepth):
+    if (ptree.depth() == outdepth):
+        return ptree
     # copy the tree but stopping at given depth
     ntree = Tree()
     nodes = ptree.expand_tree()
@@ -77,9 +79,7 @@ def slice(ptree, outdepth):
         depth = ptree.depth(n)
         prod = ptree[n].data
 
-        # print("{} Product: {} name: {} parent: {}".format(depth, prod.id,
-        #                                                   prod.name,
-        #                                                   prod.parent))
+        #print("outd={od} mydepth={d} Product: {p.id} name: {p.name} parent: {p.parent}".format(od=outdepth, d=depth, p=prod))
         if (depth <= outdepth):
             # print(" YES ", end='')
             if (prod.parent == ""):
@@ -100,11 +100,159 @@ def outputTexTable(tout, ptree):
     return
 
 
-def outputTexTree(fout, ptree):
+def outputWBSPKG(fout,prod):
+    print("] {", file=fout, end='')
+    if WBS == 1 and prod.wbs != "":
+        print(r"{{\tiny \color{{black}}{}}} \newline".format(prod.wbs), file=fout)
+    print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
+    # print(r"\newline", file=fout)
+    print("};", file=fout)
+    if PKG == 1 and prod.pkgs != "":
+        print(r"\node ({p.id}pkg) "
+            "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
+            file=fout, end='')
+        print(r"{\tiny \color{black} \begin{verbatim} " +
+            prod.pkgs + r" \end{verbatim} }  };",
+            file=fout)
+    return
+
+def parent(node):
+    return node.data.parent
+def id(node):
+    return node.data.id
+
+def groupByParent(nodes):
+    nn = []
+    pars = []
+    for n in nodes:
+	parent = n.data.parent
+	if parent not in pars:
+            pars.append(parent)
+	    for n2 in nodes:
+                if (n2.data.parent == parent) :
+		   #print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+	           nn.append(n2)
+    return nn;
+
+def organiseRow(r, rowMap): #group according to parent in order of prevous row
+    prow=rowMap[r-1]
+    row = rowMap[r]
+    print(r" organise {n} nodes in  Row {r} by {nn} nodes in {r}-1".format(r=r, n=len(row),nn=len(prow)))
+    nrow= []
+    for p in prow: #scan parents
+	parent = p.data.id
+	for n2 in row:
+           if (n2.data.parent == parent) :
+		   print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+	           nrow.append(n2)
+    rowMap[r]=nrow
+    return
+
+def outputLandW(fout,ptree):
+    children= dict() # map of most central child to place this node ABOVE it
+    rowMap = dict()
+    nodes = ptree.expand_tree(mode=Tree.WIDTH) # default mode=DEPTH
+    count = 0
+    row=[]
+    depth=ptree.depth()
+    d=0
+    pdepth=d
+    prow= None
+    # first make rows and sort in groups acording to parents
+    for n in nodes:
+        prod =ptree[n].data
+        d = ptree.depth(prod.id)
+        if d != pdepth: # new row
+            print(r" depth={d},   nodes={n}".format(d=pdepth, n=len(row)))
+            rowMap[pdepth] = row
+            row=[]
+            pdepth=d
+        row.append(ptree[n])
+    print(r"Out of loop  depth={d},   nodes={n}".format(d=d, n=len(row)))
+    rowMap[d] = row # should be root
+    # now group the children under parent ..
+    for r in range(2,depth,1): # root is ok and the next row
+    	organiseRow(r,rowMap)
+    #now actually make the tex
+    for r in range(depth,-1,-1): # Printing last row first
+	row = rowMap[r]
+        count = count + doRow(fout,ptree,children,row,r)
+        if (prow):
+            print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
+            for p in prow:
+                prod=p.data
+                print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
+                     file=fout )
+            prow=row
+            row=[]
+	else:
+            prow=row
+    print("{} Product lines in TeX ".format(count))
+    return
+
+def doRow(fout,ptree,children,nodes,depth):
+#Assuming the nodes are sorted by parent .. putput the groups of siblings and record
+# children the middle child of each group
+    sdist=15  #mm  sibling group distance for equal distribution
+    ccount=0;
+    prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
+    sibs = []
+    child = None
+    ncount= len(nodes)
+    for n in nodes:
+        prod = n.data
+        ccount = ccount + 1
+	if (prod.id in children):
+	   child = children[prod.id]
+	else:
+           child= None
+        if (depth==0):  # root node
+           #print(r"depth==0 {p.id}  parent  {p.parent},   child={c}".format(p=prod, c=child))
+           print(r"\node ({p.id}) "
+               r"[wbbox, above=15mm of {c}]{{\textbf{{{p.name}}}}};".format(p=prod,c=child),
+               file=fout)
+        else:
+           print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
+           if (child): # easy case - node aboove child
+              print("above={d}mm of {c}".format(d=sdist,c=child), file=fout, end='')
+           # need to deal with next children
+           dist=1 # siblings close then gap
+           if ((prev.parent != prod.parent and ccount >1) or (ccount==ncount) ): # not forgetting the last group
+              if (ccount==ncount): #we ar eon the last group tha tis the one we do not prev
+	        theProd=prod
+              else:
+		theProd=prev
+                dist=sdist
+	      sibs = ptree.siblings(theProd.id)
+	      sc = len (sibs)
+              msib= (int) ((float) (sc) / 2.0 )
+              #print(r"prev={prev.id}  theProd={pr.id}  parent  {pr.parent}, sc={sc}  msib={ms}, prod={p.id}"
+	#	" count={cc} ncount={nc}".format(prev=prev,pr=theProd,p=prod, ms=msib, sc=sc, cc=ccount, nc =ncount))
+              if (msib !=0):
+                  children[theProd.parent] = sibs[msib].data.id
+                  print(r" parent  {pr.parent} over  prod {p.id}".format(pr=theProd, p=sibs[msib].data))
+              else: #only child
+                  children[theProd.parent] = theProd.id
+                  print(r" Only child or 1 sibling.  parent  {p.parent} over  prod {p.id} nsibs={sc}".format(p=theProd, sc=sc))
+              sibs = []
+           if (ccount !=1 and not child ): # easy put out to right
+              print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
+           #   print(r" GOT leaf  {p.id}".format(p=prod))
+	   #if (ccount ==1 and not child ): # this will not get a placement but others will be right of it
+              #print(r" GOT snowflake first leaf  {p.id}".format(p=prod))
+           #print(r"mydepth={md} depth={dp} {p.id} right={d}mm parent={p.parent} prevparent={pr.parent}"
+           #         " prev={pr.id}".format(md=ptree.depth(prod.id),dp=depth,p=prod,d=dist, pr=prev))
+           outputWBSPKG(fout,prod)
+           prev = prod
+    return ccount
+
+
+def outputTexTree(fout, ptree, paperwidth):
     fnodes = []
-    nodes = ptree.expand_tree()
+    nodes = ptree.expand_tree() # default mode=DEPTH
     count = 0
     prev = Product("n", "n", "n", "n", "n", "n", "n", "n", "n")
+    nodec =1
     # Text height + the gap added to each one
     blocksize = txtheight + gap + sep
     for n in nodes:
@@ -120,9 +268,8 @@ def outputTexTree(fout, ptree):
                       r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
                       file=fout)
             else:
-                print(r"\node ({p.id}) [pbox,".format(p=prod),
-                      file=fout, end='')
-                if (prev.parent != prod.parent):  # first child to the right
+                print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
+                if (prev.parent != prod.parent):  # first child to the right if portrait left if landscape
                     found = 0
                     scount = count - 1
                     while found == 0 and scount > 0:
@@ -150,27 +297,12 @@ def outputTexTree(fout, ptree):
                         #                                s=psib, p=prod))
                         print("below={}pt of {}".format(dist, psib.id),
                               file=fout, end='')
-                else:  # benetih the sibling
+                else:
+                    # benetih the sibling
                     dist = gap
-                    print("below={}pt of {}".format(dist, prev.id),
-                          file=fout, end='')
-                print("] {", file=fout, end='')
-                if WBS == 1 and prod.wbs != "":
-                    print(r"{{\tiny \color{{gray}}{}}}"
-                          r" \newline".format(prod.wbs), file=fout)
-                print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
-                # print(r"\newline", file=fout)
-                print("};", file=fout)
-                if PKG == 1 and prod.pkgs != "":
-                    print(r"\node ({p.id}pkg) "
-                          "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
-                          file=fout, end='')
-                    print(r"{\tiny \color{gray} \begin{verbatim} " +
-                          prod.pkgs + r" \end{verbatim} }  };",
-                          file=fout)
-                print(r" \draw[pline] ({p.parent}.east) -| ++(0.4,0)  "
-                      "|- ({p.id}.west);\n ".format(p=prod),
-                      file=fout, end='')
+                    print("below={}pt of {}".format(dist, prev.id), file=fout, end='')
+                outputWBSPKG(fout,prod)
+                print(r" \draw[pline] ({p.parent}.east) -| ++(0.4,0) |- ({p.id}.west); ".format(p=prod), file=fout)
             prev = prod
     print("{} Product lines in TeX ".format(count))
     return
@@ -180,27 +312,39 @@ def doFile(inFile):
     "This processes a csv and produced a tex tree diagram and a tex longtable."
     f = inFile
     nf = "ProductTree.tex"
+    if (land):
+       nf = "ProductTreeLand.tex"
     nt = "productlist.tex"
     print("Processing {}-> (figure){} and (table){}".format(f, nf, nt))
 
     with open(f, 'r') as fin:
         ptree = constructTree(fin)
     ntree = ptree
-    width = 0
+    paperwidth = 0
     height = 0
-    if (outdepth <= 100):
+    if (outdepth <= 100 ):
         ntree = slice(ptree, outdepth)
-        width = 2
-        height = -3
+        if (land!=1):
+            paperwidth = 2
+            height = -3
 
     # ptree.show(data_property="name")
-
-    width = width + ntree.depth() * 6.2  # cm
-    height = height + len(ntree.leaves()) * leafHeight  # cm
+    if (land):
+        height = height + ntree.depth() * 4  # cm
+        paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
+        if paperwidth > 500:
+             paperwidth=500
+    else:
+        paperwidth = paperwidth + ntree.depth() * 6.2  # cm
+        height = height + len(ntree.leaves()) * leafHeight  # cm
 
     with open(nf, 'w') as fout:
-        header(fout, width, height)
-        outputTexTree(fout, ntree)
+        header(fout, paperwidth, height)
+        if (land):
+            outputLandW(fout, ntree)
+            #outputTexTreeLand(fout, ntree, paperwidth)
+        else:
+            outputTexTree(fout, ntree, paperwidth)
         footer(fout)
 
     with open(nt, 'w') as tout:
@@ -255,7 +399,8 @@ products in LSST DM }, pdfauthor={ William O'Mullane}}
           " minimum height=" + str(txtheight) + "pt, inner sep=" + str(sep) +
           "pt, text centered, text width=35mm]", file=fout)
 
-    print(r"""\tikzstyle{pline}=[-, thick]\begin{document}
+    print(r"""\tikzstyle{pline}=[-, thick]
+\begin{document}
 \begin{tikzpicture}[node distance=0mm]""", file=fout)
 
     return
@@ -276,9 +421,9 @@ def tfooter(tout):
 # MAIN
 
 parser = argparse.ArgumentParser()
-parser.add_argument("--depth", help="make tree pdf stopping at depth ",
-                    type=int)
+parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
+parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
 args = parser.parse_args()
-if args.depth is not None:
-    outdepth = args.depth
+outdepth=args.depth
+land=args.land
 doFile("productlist.csv")
