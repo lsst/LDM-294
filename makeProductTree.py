@@ -148,17 +148,28 @@ def organiseRow(r, rowMap): #group according to parent in order of prevous row
     rowMap[r]=nrow
     return
 
-def layoutRows(rowMap, start, end, count, ptree, children ):
+def drawLines(fout,row):
+    print(r"   nodes={n} - now lines for row={n} nodes  ".format( n=len(row)))
+    for p in row:
+	prod=p.data
+	print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
+	     file=fout )
+    return
+
+def layoutRows(fout, rowMap, start, end, count, ptree, children, goingDown ):
     prow=None
-    for r in range(start,end,-1): # Printing last row first
+    inc = -1
+    if goingDown==1:
+        inc=+1
+    for r in range(start,end,inc): # Printing last row first
 	row = rowMap[r]
-        count = count + doRow(fout,ptree,children,row,r)
-        if (prow):
-            print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
-            for p in prow:
-                prod=p.data
-                print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
-                     file=fout )
+        count = count + doRow(fout,ptree,children,row,r, goingDown)
+        print(r"Output  depth={d},   nodes={n} start={s} end={e} goingDown={a}".format(d=r, n=len(row), s=start, e=end, a=goingDown))
+        if (goingDown==1): #draw lines between current row and parents
+            drawLines(fout,row)
+        if (prow and goingDown == 0):
+           # print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
+	    drawLines(fout,prow)
             prow=row
             row=[]
 	else:
@@ -197,15 +208,18 @@ def outputLandW(fout,ptree):
 	rowSize = len(rowMap[r])
         if rowSize > len(rowMap[wideR]):
             wideR=r
-    print(r"Widest row  depth={d},   nodes={n}".format(d=wideR, n=len(rowMap[wideR])))
-    #now lay out row wideR and UP to root
-    count = count + layoutRows(rowMap, start, end, count, ptree, children ):
-    # and layout the bottom ot the widest row...
+    print(r"Widest row  depth={d},   nodes={n} layout {d} to  -1".format(d=wideR, n=len(rowMap[wideR])))
+    #now lay out row wideR and UP to root last 0 indicated goingUpward
+    count = count + layoutRows(fout,rowMap, wideR, -1, count, ptree, children, 0 )
+    if (wideR != depth):
+        print(r"Layout remainder down wideR={w} depth={d}".format(w=wideR+1, d=depth))
+        # and layout the the widest row to the bottowm downward ,.
+        count = count + layoutRows(fout,rowMap, wideR+1, depth+1, count, ptree, children,1 )
 
     print("{} Product lines in TeX ".format(count))
     return
 
-def doRow(fout,ptree,children,nodes,depth):
+def doRow(fout,ptree,children,nodes,depth, goingDown):
 #Assuming the nodes are sorted by parent .. putput the groups of siblings and record
 # children the middle child of each group
     sdist=15  #mm  sibling group distance for equal distribution
@@ -228,8 +242,10 @@ def doRow(fout,ptree,children,nodes,depth):
                file=fout)
         else:
            print(r"\node ({p.id}) [pbox,".format(p=prod), file=fout, end='')
-           if (child): # easy case - node aboove child
+           if child and goingDown==0: # easy case - node aboove child
               print("above={d}mm of {c}".format(d=sdist,c=child), file=fout, end='')
+           if goingDown==1 and ccount==1:
+              print("below={d}mm of {p.parent}".format(d=sdist,p=prod), file=fout, end='')
            # need to deal with next children
            dist=1 # siblings close then gap
            if ((prev.parent != prod.parent and ccount >1) or (ccount==ncount) ): # not forgetting the last group
@@ -245,16 +261,13 @@ def doRow(fout,ptree,children,nodes,depth):
 	#	" count={cc} ncount={nc}".format(prev=prev,pr=theProd,p=prod, ms=msib, sc=sc, cc=ccount, nc =ncount))
               if (msib !=0):
                   children[theProd.parent] = sibs[msib].data.id
-                  print(r" parent  {pr.parent} over  prod {p.id}".format(pr=theProd, p=sibs[msib].data))
+                  #print(r" parent  {pr.parent} over  prod {p.id}".format(pr=theProd, p=sibs[msib].data))
               else: #only child
                   children[theProd.parent] = theProd.id
-                  print(r" Only child or 1 sibling.  parent  {p.parent} over  prod {p.id} nsibs={sc}".format(p=theProd, sc=sc))
+                  #print(r" Only child or 1 sibling.  parent  {p.parent} over  prod {p.id} nsibs={sc}".format(p=theProd, sc=sc))
               sibs = []
-           if (ccount !=1 and not child ): # easy put out to right
+           if (not ccount==1 and (not child or goingDown==1) ): # easy put out to right
               print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
-           #   print(r" GOT leaf  {p.id}".format(p=prod))
-	   #if (ccount ==1 and not child ): # this will not get a placement but others will be right of it
-              #print(r" GOT snowflake first leaf  {p.id}".format(p=prod))
            #print(r"mydepth={md} depth={dp} {p.id} right={d}mm parent={p.parent} prevparent={pr.parent}"
            #         " prev={pr.id}".format(md=ptree.depth(prod.id),dp=depth,p=prod,d=dist, pr=prev))
            outputWBSPKG(fout,prod)
@@ -347,8 +360,8 @@ def doFile(inFile):
     if (land):
         height = height + ntree.depth() * 4  # cm
         paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
-        if paperwidth > 500:
-             paperwidth=500
+        if paperwidth > 400:
+             paperwidth=400
     else:
         paperwidth = paperwidth + ntree.depth() * 6.2  # cm
         height = height + len(ntree.leaves()) * leafHeight  # cm
