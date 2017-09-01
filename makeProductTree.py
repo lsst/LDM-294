@@ -8,8 +8,8 @@ from treelib import Tree
 import argparse
 
 # pt sizes for box + margin + gap between boex
-txtheight = 28
-leafHeight = 1.26  # cm space per leaf box .. height of page calc
+txtheight = 35
+leafHeight = 1.46  # cm space per leaf box .. height of page calc
 leafWidth = 3.7  # cm space per leaf box .. width of page calc
 sep = 2  # inner sep
 gap = 4
@@ -102,16 +102,17 @@ def outputTexTable(tout, ptree):
 
 def outputWBSPKG(fout,prod):
     print("] {", file=fout, end='')
-    if WBS == 1 and prod.wbs != "":
-        print(r"{{\tiny \color{{black}}{}}} \newline".format(prod.wbs), file=fout)
-    print(r"\textbf{" + prod.name + "}\n ", file=fout, end='')
-    # print(r"\newline", file=fout)
+    #if WBS == 1 and prod.wbs != "":
+        #print(r"{{\small \color{{blue}}{}}} \newline".format(prod.wbs), file=fout)
+    print(r"\textbf{" + prod.name + "} ", file=fout, end='')
     print("};", file=fout)
+    if WBS == 1 and prod.wbs != "":
+        print(r"\node [below right] at ({p.id}.north west) {{\small \color{{blue}}{p.wbs}}} ;".format(p=prod), file=fout)
     if PKG == 1 and prod.pkgs != "":
         print(r"\node ({p.id}pkg) "
             "[tbox,below=3mm of {p.id}.north] {{".format(p=prod),
             file=fout, end='')
-        print(r"{\tiny \color{black} \begin{verbatim} " +
+        print(r"{\small \color{black} \begin{verbatim} " +
             prod.pkgs + r" \end{verbatim} }  };",
             file=fout)
     return
