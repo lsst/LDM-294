@@ -186,25 +186,25 @@ LOG,Logging,TXF,Logging,1.02C.06.04.01,DAX,Fritz Mueller,,SW,log
 MULTNODE,Multi-Node Task,TXF,Multi-node Task API,1.02C.06.03,DAX,Fritz Mueller,,SW,pipe_base/ctrl_pool
 MULTCORE,Multi-Core Task,TXF,Multi-core Task API,1.02C.06.03,DAX,Fritz Mueller,,SW,
 SQUASH,QC Dashboard,DM,QC measurement collection/storage/dashboard service,.,.,,,,
-SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,,SW,validate_base
-SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,,SW,
-SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,,SW,
-SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,,SW,
+SQHARN,QC Harness,SQUASH,QC harness,1.02C.10.02.01.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,validate_base
+SQNOTIF,QC Notifications,SQUASH,QC threshold notification framework,1.02C.10.02.01.02,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+SQREPORT,QC Reports,SQUASH,QC verification reporting,1.02C.10.02.01.03,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+SQALERT,Alert QC,SQUASH,Alert stream QC harness,1.02C.10.02.01.04,SQuaRE,Frossie Economou,Simon Krughoff,SW,
 LSPJL,LSP JupyterLab,LSP,LSST Science Platform JupyterLab Aspect,.,.,,,,
-JLENV,JupyterLab Env,LSPJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,,SW,
-JLSW,JupyterLab SW Env,LSPJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,,SW,
-JLACTIV,JupyterLab Activator,LSPJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,,SW,
-JLDPLY,JupyterLab Deploy,LSPJL,JupterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,,SW,
+JLENV,JupyterLab Env,LSPJL,Basic JupyterLab environment,1.02C.10.02.02.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+JLSW,JupyterLab SW Env,LSPJL,JupyterLab software environments,1.02C.10.02.02.04,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+JLACTIV,JupyterLab Activator,LSPJL,JupyterLab Activators,1.02C.10.02.02.05,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+JLDPLY,JupyterLab Deploy,LSPJL,JupterHub deployment,1.02C.10.02.02.06,SQuaRE,Frossie Economou,Simon Krughoff,SW,
 JLSUIT,JupyterLab SUIT Intf,LSPJL,JupyterLab visualization widgets and other JupterHub/Portal bridges ,1.02C.05.07,SUIT,Xiuqin Wu,,SW,
 DEVEL,Developer services,DM,Developer services,.,.,,,,
-DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,
-BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,sconsUtils/base/lsstsw/lsst_build
-PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,Frossie Economou,,SW,lsst/shebangtron/lsst_dm_stack_demo
-DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,,SW,lsst-texmf/templates/lsstDoxygen
-COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,,SW,
-ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,,SW,
+DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,sconsUtils/base/lsstsw/lsst_build
+PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,Frossie Economou,Simon Krughoff,SW,lsst/shebangtron/lsst_dm_stack_demo
+DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,Simon Krughoff,SW,lsst-texmf/templates/lsstDoxygen
+COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,Simon Krughoff,SW,
+ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,Simon Krughoff,SW,
 INTGTEST,Integration Test,DM,Integration and test,.,.,,,SW,
-CI,Contin Integration,INTGTEST,Automated integration and test services,1.02C.10.02.03.01,SQuaRE,Frossie Economou,,SW,Jenkins
+CI,Contin Integration,INTGTEST,Automated integration and test services,1.02C.10.02.03.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,Jenkins
 PRECURSR,Precursor Data,INTGTEST,Precursor data for development and testing,1.02C.01.01,DMSST,Mario Juric,,SW,obs_*/validation_data_*/testdata_*/afwdata
 LSPPRTL,LSP Portal,LSP,LSST Science Platform Portal Aspect,.,.,,,,
 FIREFLY,Firefly,LSPPRTL,LSST-independent Firefly framework and visualization capabilities,1.02C.05.06 ,SUIT,Xiuqin Wu,,SW,firefly
