@@ -201,6 +201,7 @@ DVCS,SW Version Control,DEVEL,Software version control system,1.02C.10.02.03.01,
 BUILD,Build/Unit Test,DEVEL,Build and unit test service,1.02C.10.02.03.01,SQuaRE,Frossie Economou,Simon Krughoff,SW,sconsUtils/base/lsstsw/lsst_build
 PKG,Packaging/Distrib,DEVEL,Packaging and distribution,1.02C.10.02.03.02,SQuaRE,Frossie Economou,Simon Krughoff,SW,lsst/shebangtron/lsst_dm_stack_demo
 DOCS,Doc Infrastructure,DEVEL,Documentation infrastructure,1.02C.10.02.03.03,SQuaRE,Frossie Economou,Simon Krughoff,SW,lsst-texmf/templates/lsstDoxygen
+SCIPIDOCS,Science Pipelines Documentation,DEVEL,Documentation of the Science Pipelines system,1.02C.10.02.03.03,SQuaRE,Frossie Economou,Simon Krughoff,SW,pipelines_lsst_io
 COMMS,Devel Comm Tools,DEVEL,Developer communication tools,1.02C.10.02.03.04,SQuaRE,Frossie Economou,Simon Krughoff,SW,
 ISSUE,Issue Tracking,DEVEL,Issue (ticket) tracking service,1.02C.10.02.03.05,SQuaRE,Frossie Economou,Simon Krughoff,SW,
 INTGTEST,Integration Test,DM,Integration and test,.,.,,,SW,
