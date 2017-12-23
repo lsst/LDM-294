@@ -126,13 +126,13 @@ def groupByParent(nodes):
     nn = []
     pars = []
     for n in nodes:
-	parent = n.data.parent
-	if parent not in pars:
+        parent = n.data.parent
+        if parent not in pars:
             pars.append(parent)
-	    for n2 in nodes:
+            for n2 in nodes:
                 if (n2.data.parent == parent) :
-		   #print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
-	           nn.append(n2)
+                   #print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+                   nn.append(n2)
     return nn;
 
 def organiseRow(r, rowMap): #group according to parent in order of prevous row
@@ -141,20 +141,20 @@ def organiseRow(r, rowMap): #group according to parent in order of prevous row
     print(r" organise {n} nodes in  Row {r} by {nn} nodes in {r}-1".format(r=r, n=len(row),nn=len(prow)))
     nrow= []
     for p in prow: #scan parents
-	parent = p.data.id
-	for n2 in row:
+        parent = p.data.id
+        for n2 in row:
            if (n2.data.parent == parent) :
-		   print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
-	           nrow.append(n2)
+                   print (r"Got {n.data.id} par {n.data.parent} looking for {par}".format(n=n2,par=parent))
+                   nrow.append(n2)
     rowMap[r]=nrow
     return
 
 def drawLines(fout,row):
     print(r"   nodes={n} - now lines for row={n} nodes  ".format( n=len(row)))
     for p in row:
-	prod=p.data
-	print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
-	     file=fout )
+        prod=p.data
+        print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
+             file=fout )
     return
 
 def layoutRows(fout, rowMap, start, end, count, ptree, children,childcount, goingDown ):
@@ -163,17 +163,17 @@ def layoutRows(fout, rowMap, start, end, count, ptree, children,childcount, goin
     if goingDown==1:
         inc=+1
     for r in range(start,end,inc): # Printing last row first
-	row = rowMap[r]
+        row = rowMap[r]
         count = count + doRow(fout,ptree,children,row,r,childcount, goingDown)
         print(r"Output  depth={d},   nodes={n} start={s} end={e} goingDown={a}".format(d=r, n=len(row), s=start, e=end, a=goingDown))
         if (goingDown==1): #draw lines between current row and parents
             drawLines(fout,row)
         if (prow and goingDown == 0):
            # print(r"Output  depth={d},   nodes={n} - now lines for prow={pr} nodes".format(d=r, n=len(row), pr=len(prow)))
-	    drawLines(fout,prow)
+            drawLines(fout,prow)
             prow=row
             row=[]
-	else:
+        else:
             prow=row
     return count
 
@@ -186,10 +186,10 @@ def outputLandMix(fout,ptree, pwidth):
     root= None
     child = None
     for n in nodes:
-	count= count +1
-   	if (count ==1): #  root node
+        count= count +1
+        if (count ==1): #  root node
            root=ptree[n].data
-	else:
+        else:
            row.append(ptree[n])
 
     child = row[count/2].data
@@ -197,17 +197,17 @@ def outputLandMix(fout,ptree, pwidth):
     count =1 # will output root after
     prev= None
     for n in row: # for each top level element put it out in portrait
-	p = n.data
-	stree = ptree.subtree(p.id)
-	d = 1
+        p = n.data
+        stree = ptree.subtree(p.id)
+        d = 1
         if (prev):
-	   d = prev.depth()
-	if (d==0): d=1
+           d = prev.depth()
+        if (d==0): d=1
         width =  d  * 6.2  # cm
         print(r" {p.id} {p.parent} depth={d} width={w} ".format(p=p, d=d,w=width ))
         count = count + outputTexTreeP(fout, stree, width, sib, 0)
-	sib=p
-	prev = stree
+        sib=p
+        prev = stree
 
     ### place root node
     print(r"\node ({p.id}) "
@@ -232,7 +232,7 @@ def outputLandW(fout,ptree):
     cc =0
     # first make rows
     for n in nodes:
-	count= count +1
+        count= count +1
         prod =ptree[n].data
         if (not pn):
             pn=prod
@@ -241,28 +241,28 @@ def outputLandW(fout,ptree):
         if ( not pn.parent == prod.parent):
             childcount[pn.parent]=cc
             print(r" Set {p.parent} : {cc} children".format(p=pn, cc=cc ))
-	    cc=0
+            cc=0
         cc= cc+1
         if d != pdepth: # new row
             #print(r" depth={d},   nodes={n}".format(d=pdepth, n=len(row)))
             rowMap[pdepth] = row
             row=[]
             pdepth=d
-	    pn= None
+            pn= None
         row.append(ptree[n])
-	pn = prod
+        pn = prod
     rowMap[d] = row # should be root
     childcount[pn.parent]=cc
     print(r"Out of loop  depth={d}, rows={r}  nodes={n}".format(d=depth, r=len(rowMap), n=count))
     count=0
     # now group the children under parent .. should be done by WIDT FIRST walk fo tree
     # for r in range(2,depth,1): # root is ok and the next row
-    #	organiseRow(r,rowMap)
+    #   organiseRow(r,rowMap)
     #now actually make the tex
     # need to  find row with most leaves .. then layout relative to that..
     wideR = depth
     for r in range(depth,-1,-1): # Look at each row
-	rowSize = len(rowMap[r])
+        rowSize = len(rowMap[r])
         if rowSize > len(rowMap[wideR]):
             wideR=r
     print(r"Widest row  depth={d},   nodes={n} layout {d} to  -1".format(d=wideR, n=len(rowMap[wideR])))
@@ -291,9 +291,9 @@ def doRow(fout,ptree,children,nodes,depth, childcount, goingDown):
         placed=0
         prod = n.data
         ccount = ccount + 1
-	if (prod.id in children):
-	   child = children[prod.id]
-	else:
+        if (prod.id in children):
+           child = children[prod.id]
+        else:
            child= None
         if (depth==0):  # root node
            #print(r"depth==0 {p.id}  parent  {p.parent},   child={c}".format(p=prod, c=child))
@@ -309,7 +309,7 @@ def doRow(fout,ptree,children,nodes,depth, childcount, goingDown):
            if goingDown==1  and not prev.parent == prod.parent:
               if not ccount==1: # if its the first one just put it left
                  ddist=sdist
-		 if childcount[prod.parent] > 4 : # I got siblings
+                 if childcount[prod.parent] > 4 : # I got siblings
                      if pushd==0:
                          pushd=1
                          ddist= 3* sdist
@@ -321,15 +321,15 @@ def doRow(fout,ptree,children,nodes,depth, childcount, goingDown):
            dist=1 # siblings close then gap
            if ((prev.parent != prod.parent and ccount >1) or (ccount==ncount) ): # not forgetting the last group
               if (ccount==ncount): #we ar eon the last group tha tis the one we do not prev
-	        theProd=prod
+                theProd=prod
               else:
-		theProd=prev
+                theProd=prev
                 dist=sdist
-	      sibs = ptree.siblings(theProd.id)
-	      sc = len (sibs)
+              sibs = ptree.siblings(theProd.id)
+              sc = len (sibs)
               msib= (int) ((float) (sc) / 2.0 )
               #print(r"prev={prev.id}  theProd={pr.id}  parent  {pr.parent}, sc={sc}  msib={ms}, prod={p.id}"
-	#	" count={cc} ncount={nc}".format(prev=prev,pr=theProd,p=prod, ms=msib, sc=sc, cc=ccount, nc =ncount))
+        #       " count={cc} ncount={nc}".format(prev=prev,pr=theProd,p=prod, ms=msib, sc=sc, cc=ccount, nc =ncount))
               if (msib !=0):
                   children[theProd.parent] = sibs[msib].data.id
                   #print(r" parent  {pr.parent} over  prod {p.id}".format(pr=theProd, p=sibs[msib].data))
@@ -339,7 +339,7 @@ def doRow(fout,ptree,children,nodes,depth, childcount, goingDown):
               sibs = []
            if (not ccount==1 and not child  and goingDown==0 or (goingDown ==1 and placed==0 )): # easy put out to right
                 # distance should account for how many children lie beneath the sibling to the left
-	      if prev and prev.id in childcount:
+              if prev and prev.id in childcount:
                  dist = childcount[prev.id] * 15  + 1
                  #print(r" dist  {d} prev {p.id} {nc} children".format(p=prev, d=dist, nc=childcount[prev.id]))
               print("right={d}mm of {p.id}".format(d=dist,p=prev), file=fout, end='')
@@ -377,7 +377,7 @@ def outputTexTreeP(fout, ptree, width, sib, full):
                    print(r"\node ({p.id}) "
                       r"[wbbox]{{\textbf{{{p.name}}}}};".format(p=prod),
                       file=fout)
-		else: #some sub tree
+                else: #some sub tree
                    print(r"\node ({p.id}) [pbox, ".format(p=prod), file=fout)
                    if (sib):
                       print("right={d}cm of {p.id}".format(d=width,p=sib), file=fout, end='')
@@ -448,7 +448,7 @@ def doFile(inFile):
     streew=paperwidth
     height = height + len(ntree.leaves()) * leafHeight  # cm
     if (land):
-	height = height  /5
+        height = height  /5
         #paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
         paperwidth = paperwidth * 9   # cm
         if paperwidth > 400:
