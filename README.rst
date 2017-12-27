@@ -23,4 +23,5 @@ To build from scratch::
   cd ldm-294
   git submodule init
   git submodule update
+  pip install -r requirements.txt
   make
