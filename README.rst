@@ -6,6 +6,12 @@ This document defines the mission, goals and objectives, organization and respon
 The document is currently scoped to define these elements for the LSST Design and Development, Construction, and Commissioning phases.
 It does not presently address any ongoing mission for the DMO during LSST operations.
 
+Links
+=====
+
+- Accepted version: https://ls.st/LDM-294
+- Drafts: https://ldm-294.lsst.io/v
+
 Building the PDF locally
 ========================
 
