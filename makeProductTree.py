@@ -6,6 +6,7 @@ from __future__ import print_function
 
 from treelib import Tree
 import argparse
+import csv
 
 # pt sizes for box + margin + gap between boex
 txtheight = 35
@@ -32,17 +33,16 @@ class Product(object):
 
 
 def constructTree(fin):
-    "Read the tree file and ocntrcut a tree structure"
+    "Read the tree file and construct  a tree structure"
     count = 0
     ptree = Tree()
-    for line in fin:
-        if line.startswith(",,,,") or line.startswith("id,Item,"):
+    reader= csv.reader(fin,dialect='excel')
+    for line in reader:
+        if (line[0]=="") or (line[0]=="id" and line[1]=="Item"):
                 continue
         count = count + 1
-        line = line.replace("\"", "")
-        line = line.rstrip('\r\n')
-        part = line.split(",")  # id,prod, parent, descr ..
 
+	part = line
         prod = Product(part[0], part[1], part[2], part[3], part[4], part[6],
                        part[7], part[8], part[9])
         # print("Product:" + prod.id + " name:" + prod.name + " parent:"
