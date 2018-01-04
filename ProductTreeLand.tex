@@ -8,7 +8,7 @@
 \usepackage{tikz,hyperref,amsmath}
 \usetikzlibrary{positioning,arrows,shapes,decorations.shapes,shapes.arrows}
 \usetikzlibrary{backgrounds,calc}
-\usepackage[paperwidth=223.2cm,paperheight=51.684cm,
+\usepackage[paperwidth=223.2cm,paperheight=51.976cm,
 left=-2mm,top=3mm,bottom=0mm,right=0mm,
 noheadfoot,marginparwidth=0pt,includemp=false,
 textwidth=30cm,textheight=50mm]{geometry}
@@ -95,6 +95,10 @@ right=18.6cm of DBB] {\textbf{Developer services} };
 \node [below right] at (PKG.north west) {\small \color{blue}1.02C.10.02.03.02} ;
 \node (PKGpkg) [tbox,below=3mm of PKG.north] {{\small \color{black} \begin{verbatim} lsst/shebangtron/lsst_dm_stack_demo \end{verbatim} }  };
  \draw[pline] (DEVEL.east) -| ++(0.4,0) |- (PKG.west); 
+\node (SCIPIDOCS) [pbox,below=4pt of PKG] {\textbf{Science Pipelines Documentation} };
+\node [below right] at (SCIPIDOCS.north west) {\small \color{blue}1.02C.10.02.03.03} ;
+\node (SCIPIDOCSpkg) [tbox,below=3mm of SCIPIDOCS.north] {{\small \color{black} \begin{verbatim} pipelines_lsst_io \end{verbatim} }  };
+ \draw[pline] (DEVEL.east) -| ++(0.4,0) |- (SCIPIDOCS.west); 
 \node (IDM) [pbox, 
 right=6.2cm of DEVEL] {\textbf{Identity Manager} };
 \node (INFRA) [pbox, 
@@ -391,8 +395,7 @@ right=18.6cm of L2] {\textbf{Science Platform} };
 \node [below right] at (PRTLAPPS.north west) {\small \color{blue}1.02C.05.08} ;
  \draw[pline] (LSPPRTL.east) -| ++(0.4,0) |- (PRTLAPPS.west); 
 \node (PRTLINTF) [pbox,below=4pt of PRTLAPPS] {\textbf{Portal Interfaces} };
-\node [below right] at (PRTLINTF.north west) {\small \color{blue} user workspace} ;
-\node (PRTLINTFpkg) [tbox,below=3mm of PRTLINTF.north] {{\small \color{black} \begin{verbatim} Xiuqin Wu \end{verbatim} }  };
+\node [below right] at (PRTLINTF.north west) {\small \color{blue}1.02C.05.07} ;
  \draw[pline] (LSPPRTL.east) -| ++(0.4,0) |- (PRTLINTF.west); 
 \node (PRTLVIS) [pbox,below=4pt of PRTLINTF] {\textbf{Visualizers} };
 \node [below right] at (PRTLVIS.north west) {\small \color{blue}1.02C.05.07} ;

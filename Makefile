@@ -4,7 +4,7 @@ TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devp
 
 all : LDM-294.pdf
 
-LDM-294.pdf: *.tex wbslist.tex ProductTree.pdf
+LDM-294.pdf: *.tex wbslist.tex ProductTree.pdf ProductTreeLand.pdf
 	latexmk -bibtex -pdf -f LDM-294.tex
 
 acronyms:${TEX} myacronyms.tex
@@ -19,3 +19,9 @@ ProductTree.tex: productlist.csv
 
 ProductTree.pdf: ProductTree.tex
 	latexmk -pdf ProductTree.tex
+
+ProductTreeLand.tex: productlist.csv
+	python makeProductTree.py --land=1
+
+ProductTreeLand.pdf: ProductTreeLand.tex
+	latexmk -pdf ProductTreeLand.tex
