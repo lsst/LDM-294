@@ -14,7 +14,8 @@ wbslist.tex: wbs/*tex productlist.csv
 	python makeWbs.py
 
 ProductTree.tex: productlist.csv
-	./makeProductTree.py --depth=3	
+	python --version
+	python makeProductTree.py --depth=1
 
 ProductTree.pdf: ProductTree.tex
 	latexmk -pdf ProductTree.tex
