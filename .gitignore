@@ -19,6 +19,8 @@ LDM-294.pdf
 *.dvi
 *-converted-to.*
 wbslist.tex
+ProductTree.tex
+ProductTree.pdf
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps

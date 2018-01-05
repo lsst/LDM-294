@@ -7,16 +7,21 @@ python:
    - '3.5'
 before_install:
    - "pip install 'lander>=0.1.0,<0.2'"
+install:
+   - "pip install -r requirements.txt"
 script:
-   # Compile PDF using containerized lsst-texmf
-   - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make'"
-after_success:
+   # Prepare document dependencies in Travis (Python 3.5) environment
+   - "make wbslist.tex"
+   - "make ProductTree.tex"
+   # Ensure acronyms are built
+   - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make acronyms'"
+   # Compile LaTeX using containerized lsst-texmf.
+   # Make targets that rely on Python should be no-ops at this point.
+   - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make all'"
    # Deploy website. See https://github.com/lsst-sqre/lander for CLI options
-   - "lander --pdf ${PRODUCT}.pdf --upload --lsstdoc ${PRODUCT}.tex --env=travis --ltd-product $PRODUCT --docushare-url $DOCUSHAREURL"
+   - "lander --pdf LDM-294.pdf --upload --lsstdoc LDM-294.tex --env=travis --ltd-product ldm-294 --extra-downloads ProductTree.pdf ProductTreeLand.pdf"
 env:
   global:
-    - PRODUCT="LDM-294"
-    - DOCUSHAREURL="https://ls.st/ldm-294*"
     # LSST the Docs credentials
     - secure: "GwJy4W1QwZlY3J6O45ilQXwX6KcQLr0bfom9AOA8pQsu9GwuDcHrs0e+2f1Z/06L2CsO2+3WATUYDLCNn6wwjF8yMfySbCL0ip4+agH2lF66EhCjfRcly6+BzNjA4/iDEpOvYLEK0LYhflK31Y5WQ5JOy1vZu6qn+gHI7FXo1FcfN4HLzq1lm6FpCqpIahu4XVuwR+L6ZWo15+99fRjFysYcK5DFizi7RDthDIv9+EnmqPaWjPOM3kpOgqqK4wYeYlddMtfBUiku1tVXl/HRffKgToUdXVgXzivqfLqsdOnFUtQkgbIvT8pJ6/elGX+82MtCmhfKgoH4bQhCrCmt7zvMcMcfoIiJnbjze4SmWZrHqQoTqz/ygCDHQKnHvg1JUN9mti+Ygd8fkK3VBVsEsxtCqZ+Urmt0mITz2zjScX6VUZqxfwexmRB1Bp0R1REu90Oel1Aj4X1/lEO8E+4pSVGMgKS+OTRG10a2+1YSvCYMeydTn4d1EUgw2X5YPChg0fhjPFHSdq6Emkx3jlCiYBKcF75LYgLszqWhRd09XpYmdP2xxGK6slkze+j5sVfT2o/TSsptNoinVMhpavYmhd5zYqHxjOFChBPTcOWL+IAz17+Cqls6bEo2o9Ll6Z1XfdBqAbUag2AlwoBSxHyQGWV3YLHzumDagnQQ+iMGCL8="
     - secure: "eGgoLMwgbj61lpI+A3BwmbPPZqM0BaUlIK6ruiy0q6fwez0VrJscfVpyCeeX7hp3MrHWUL7+wGuDNGlsmetHmrGbdjku3n6gq+Zf3dPqGD8T/ZJY57nHRRIlemdRkLfl/iIPCYoHvAQ6GdSFo7khrO1bgxYIZdZZAaFpPpRwlIltaerDL6Hm1/EQqnm9wzE4izKeHDr2xBCg0ZY/g+rQh2KHgq3XdhI/OcRtfehUXI12pD5yjrOyFGbhYjLpTtGmcsrFURkIIdRy4g9PYbu632d7VQwii4rseLkjjpnsnbS77gWix3PscPIrqW8IcLljsa9YcHwCY1R73HfnIjN/q7RuVLZ5SWnREwY8zbjSRlpDtkx0NT1WICOr4TV72ENuLNOOy0IwTRzz4GG3f+zqZvxlkoqESxreyIZaTTflFjUrErcH9EGmoGDoInPeLw1cldvN8iJTWPiscovaoxSbS9zqYfFvlbRAEPUwfrQoPZvveniCYngCtazc79/DlPGYs8gp0gs9+YqcCU46k95r2E0zU3tO8AarOnFaEk6raR6ozGiMSQ2Oz6jgXUcKi0uXci1U/i3yXfrlB6BFcOnApme0ks/rSuRMvtXrSLW1hQcfFrr2kV8FMRmwEj3SUbNo43+Yy48DfA0iFfRYRWU4ktufRMR98HQFnRV09H+Dk3g="
