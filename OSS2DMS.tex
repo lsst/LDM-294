@@ -24,6 +24,8 @@ DMS-REQ-0315 DMS Communication with OCS \\
 DMS-REQ-0171 Summit to Base Network \\
  &
 DMS-REQ-0176 Base Facility Infrastructure \\
+ &
+DMS-REQ-0352 Base Wireless LAN (WiFi) \\
 \hline
 OSS-REQ-0004 The Archive Facility &
 DMS-REQ-0299 Data Product Ingest \\
@@ -156,11 +158,11 @@ DMS-REQ-0294 Processing of Datasets \\
 OSS-REQ-0118 Consistency and Completeness &
 DMS-REQ-0307 Unique Processing Coverage \\
  &
-DMS-REQ-0293 Selection of Datasets \\
+DMS-REQ-0120 Level 3 Data Product Self Consistency \\
  &
 DMS-REQ-0294 Processing of Datasets \\
  &
-DMS-REQ-0120 Level 3 Data Product Self Consistency \\
+DMS-REQ-0293 Selection of Datasets \\
 \hline
 OSS-REQ-0119 Completeness &
 DMS-REQ-0294 Processing of Datasets \\
@@ -168,13 +170,11 @@ DMS-REQ-0294 Processing of Datasets \\
 OSS-REQ-0120 Consistency &
 DMS-REQ-0307 Unique Processing Coverage \\
  &
-DMS-REQ-0294 Processing of Datasets \\
- &
 DMS-REQ-0120 Level 3 Data Product Self Consistency \\
+ &
+DMS-REQ-0294 Processing of Datasets \\
 \hline
 OSS-REQ-0121 Open Source, Open Configuration &
-DMS-REQ-0308 Software Architecture to Enable Community Re-Use \\
- &
 DMS-REQ-0032 Image Differencing \\
  &
 DMS-REQ-0033 Provide Source Detection Software \\
@@ -184,6 +184,8 @@ DMS-REQ-0297 DMS Initialization Component \\
 DMS-REQ-0306 Task Configuration \\
  &
 DMS-REQ-0305 Task Specification \\
+ &
+DMS-REQ-0308 Software Architecture to Enable Community Re-Use \\
  &
 DMS-REQ-0125 Software framework for Level 3 catalog processing \\
  &
@@ -215,6 +217,15 @@ DMS-REQ-0132 Calibration Image Provenance \\
 \hline
 OSS-REQ-0124 Software Development Standards &
 DMS-REQ-0314 Compute Platform Heterogeneity \\
+\hline
+OSS-REQ-0126 Level 1 Data Products &
+DMS-REQ-0341 Providing a Precovery Service \\
+ &
+DMS-REQ-0319 Characterizing Variability \\
+ &
+DMS-REQ-0323 Calculating SSObject Parameters \\
+ &
+DMS-REQ-0324 Matching DIASources to Objects \\
 \hline
 OSS-REQ-0127 Level 1 Data Product Availability &
 DMS-REQ-0312 Level 1 Data Product Access \\
@@ -260,11 +271,11 @@ DMS-REQ-0043 Provide Calibrated Photometry \\
  &
 DMS-REQ-0310 Un-Archived Data Product Cache \\
  &
-DMS-REQ-0292 Uniqueness of IDs Across Data Releases \\
- &
 DMS-REQ-0285 Level 1 Source Association \\
  &
 DMS-REQ-0287 DIASource Precovery \\
+ &
+DMS-REQ-0292 Uniqueness of IDs Across Data Releases \\
  &
 DMS-REQ-0266 Exposure Catalog \\
  &
@@ -293,6 +304,13 @@ DMS-REQ-0101 Level 1 Calibration Report Definition \\
 \hline
 OSS-REQ-0132 Engineering and Facility Database Archive &
 DMS-REQ-0102 Provide Engineering \& Facility Database Archive \\
+\hline
+OSS-REQ-0133 Level 2 Data Products &
+DMS-REQ-0332 Denormalizing Database Tables \\
+ &
+DMS-REQ-0335 PSF-Matched Coadds \\
+ &
+DMS-REQ-0349 Detecting extended  low surface brightness objects \\
 \hline
 OSS-REQ-0134 Level 2 Data Product Availability &
 DMS-REQ-0345 Logging of catalog queries \\
@@ -423,11 +441,11 @@ DMS-REQ-0078 Catalog Export Formats \\
  &
 DMS-REQ-0186 Archive Center Disaster Recovery \\
  &
+DMS-REQ-0340 Access Controls of Level 3 Data Products \\
+ &
 DMS-REQ-0293 Selection of Datasets \\
  &
 DMS-REQ-0295 Transparent Data Access \\
- &
-DMS-REQ-0340 Access Controls of Level 3 Data Products \\
 \hline
 OSS-REQ-0177 Data Access Environment &
 DMS-REQ-0314 Compute Platform Heterogeneity \\
@@ -462,6 +480,9 @@ DMS-REQ-0077 Maintain Archive Publicly Accessible \\
 \hline
 OSS-REQ-0187 Information Security &
 DMS-REQ-0340 Access Controls of Level 3 Data Products \\
+\hline
+OSS-REQ-0193 Alerts per Visit &
+DMS-REQ-0343 Performance Requirements for LSST Alert Filtering Service \\
 \hline
 OSS-REQ-0194 Calibration Exposures Per Day &
 DMS-REQ-0131 Calibration Images Available Within Specified Time \\
@@ -520,4 +541,30 @@ DMS-REQ-0318 Data Management Unscheduled Downtime \\
 DMS-REQ-0172 Summit to Base Network Availability \\
  &
 DMS-REQ-0173 Summit to Base Network Reliability \\
+\hline
+OSS-REQ-0378 Advanced Publishing of Scheduler Sequence &
+DMS-REQ-0353 Publishing predicted visit schedule \\
+\hline
+OSS-REQ-0383 Beam Projector Coordinate Relationship &
+DMS-REQ-0351 Provide Beam Projector Coordinate Calculation Software \\
+\hline
+OSS-REQ-0391 Data Product Conventions &
+DMS-REQ-0347 Measurements in catalogs \\
+ &
+DMS-REQ-0331 Computing Derived Quantities \\
+ &
+DMS-REQ-0333 Maximum Likelihood Values and Covariances \\
+ &
+DMS-REQ-0326 Storing Approximations of Per-pixel Metadata \\
+ &
+DMS-REQ-0328 Documenting Image Characterization \\
+\hline
+OSS-REQ-0392 Data Products Handling for Special Programs &
+DMS-REQ-0320 Processing of Data From Special Programs \\
+ &
+DMS-REQ-0321 Level 1 Processing of Special Programs Data \\
+ &
+DMS-REQ-0344 Constraints on Level 1 Special Program Products Generation \\
+ &
+DMS-REQ-0322 Special Programs Database \\
 \hline
