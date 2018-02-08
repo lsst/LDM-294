@@ -16,7 +16,7 @@ OODSSRV,Obs Ops Data Srvc,PRSRV,Observatory Operations Data Service,,NCSA,Margar
 TMGSRV,Telem Gwy Service,PRSRV,Telemetry Gateway Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,,Telemetry Gateway,
 PRODSRV,Batch Prodn Service,DMSRV,Batch Production Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,Batch Production Services,"Offline Processing/Template and Calibration Products Production Execution/Data Release Production Execution/Data Release Production Satellite Processing/Workload/Workflow",
 DATASRV,Data Access Services,DMSRV,Data Access Services,,NCSA,Margaret Gelman,Michelle Butler,Service,,,,
-UDASRV,User Data Acc Srvc,DATASRV,User Data Access Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,User Data Access Services,LSP DAC Instances,
+DACSRV,LSP DAC Service,DATASRV,LSP DAC Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,User Data Access Services,LSP DAC Instances,
 BULKDSRV,Bulk Distrib Service,DATASRV,Bulk Data Distribution Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,Bulk Data Distribution Service,Bulk Data Distribution,
 ALRTDSTSRV,Alert Distrib Service,DATASRV,Alert Distribution Service,,NCSA,Margaret Gelman,Michelle Butler,Service,,Hosting of Feeds to Brokers,"Alert Distribution/Alert Filtering",
 INFRASRV,Infrastructure Srvcs,DMSRV,Infrastructure Services,,NCSA,Margaret Gelman,Michelle Butler,Service,,,,
