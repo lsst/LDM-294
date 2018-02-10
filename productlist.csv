@@ -219,7 +219,7 @@ ITENV,IT Environments,DM,Computing and Storage Infrastructure,Multiple,NCSA,Marg
 ITARC,Archive IT,ITENV,Archive IT Environments,Multiple,NCSA,Margaret Gelman,Michelle Butler,HW,,,,
 DEVENV,Dev Env,ITARC,Developer environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,"LSST-dev Complex/Dedicated Qserv Development Nodes"
 PRINTGR,Prompt Integ Env,ITARC,Level 1 Integration environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,NCSA L1 Complete Test Stand
-DRINTGR,DR Integration Env,ITARC,Level 2 Integration environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,LSST-dev Complex
+DRINTGR,DR Integration Env,ITARC,Data Release Integration environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,LSST-dev Complex
 DACINTGR,DAC Integ Env,ITARC,DAC Integration environment (PDAC),,NCSA,Margaret Gelman,Michelle Butler,HW,,,,NCSA Prototype Data Access Center
 DBBINTGR,DBB Integ Env,ITARC,Data Backbone Integration environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,
 CTRENV,Archive Center Env,ITARC,Archive Production Center environment,,NCSA,Margaret Gelman,Michelle Butler,HW,,,,"NCSA Master Provisioning Enclave/L1 Enclave/NCSA General Production Enclave"
