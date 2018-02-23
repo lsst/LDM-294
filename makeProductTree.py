@@ -10,7 +10,7 @@ import csv
 
 # pt sizes for box + margin + gap between boex
 txtheight = 35
-leafHeight = 1.46  # cm space per leaf box .. height of page calc
+leafHeight = 1.56  # cm space per leaf box .. height of page calc
 leafWidth = 3.7  # cm space per leaf box .. width of page calc
 sep = 2  # inner sep
 gap = 4
