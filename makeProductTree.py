@@ -192,7 +192,7 @@ def outputLandMix(fout,ptree, pwidth):
         else:
            row.append(ptree[n])
 
-    child = row[count/2].data
+    child = row[count//2].data
     sib=None
     count =1 # will output root after
     prev= None
