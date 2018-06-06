@@ -7,6 +7,7 @@ from __future__ import print_function
 from treelib import Tree
 import argparse
 import csv
+import re
 
 # pt sizes for box + margin + gap between boex
 txtheight = 35
@@ -41,12 +42,26 @@ def constructTree(fin):
         if (line[0]=="") or (line[0]=="id" and line[1]=="Item"):
                 continue
         count = count + 1
-
         part = line
-        prod = Product(part[0], part[1], part[2], part[3], part[4], part[6],
+        if (len(part) <= 3):
+            
+            id= re.sub(r"\"", "", part[0])
+            pid= re.sub(r"\"", "", part[1])
+            id = re.sub(r"\s+", "", id)
+            pid = re.sub(r"\s+", "", pid)
+            id=id.replace(".","")
+            pid=pid.replace(".","")
+            id=id.replace("_","")
+            pid=pid.replace("_","")
+            part[0]=part[0].replace("_","\_")
+            part[1]=part[1].replace("_","\_")
+
+
+            prod= Product(id, part[0],pid,"","","","","","")
+        else:
+            prod = Product(part[0], part[1], part[2], part[3], part[4], part[6],
                        part[7], part[8], part[9])
-        # print("Product:" + prod.id + " name:" + prod.name + " parent:"
-        #       + prod.parent)
+        #print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         if (count == 1):  # root node
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
@@ -539,7 +554,9 @@ def tfooter(tout):
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
 parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
+parser.add_argument("--file", help="Input csv file ", default='productlist.csv')
 args = parser.parse_args()
 outdepth=args.depth
 land=args.land
-doFile("productlist.csv")
+inp=args.file
+doFile(inp)
