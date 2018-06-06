@@ -45,23 +45,16 @@ def constructTree(fin):
         part = line
         if (len(part) <= 3):
             
-            id= re.sub(r"\"", "", part[0])
-            pid= re.sub(r"\"", "", part[1])
-            id = re.sub(r"\s+", "", id)
-            pid = re.sub(r"\s+", "", pid)
-            id=id.replace(".","")
-            pid=pid.replace(".","")
-            id=id.replace("_","")
-            pid=pid.replace("_","")
-            part[0]=part[0].replace("_","\_")
-            part[1]=part[1].replace("_","\_")
+            id = fixIdTex(part[0]) #make an id from the name
+            pid= fixIdTex(part[1]) #use the same formaula on the parent name then we are good
+            name= fixTex(part[0])
 
 
-            prod= Product(id, part[0],pid,"","","","","","")
+            prod= Product(id, name,pid,"","","","","","")
         else:
             prod = Product(part[0], part[1], part[2], part[3], part[4], part[6],
                        part[7], part[8], part[9])
-        #print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
+        print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         if (count == 1):  # root node
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
@@ -77,9 +70,21 @@ def constructTree(fin):
     return ptree
 
 
+def fixIdTex(text):
+    id= re.sub(r"\s+","", text)
+    id= id.replace("(","")
+    id= id.replace(")","")
+    id= id.replace("\"","")
+    id= id.replace("_", "")
+    id= id.replace(".","")
+    id= id.replace("&","")
+    
+    return id
+
 def fixTex(text):
     ret = text.replace("_", "\\_")
     ret = ret.replace("/", "/ ")
+    ret = ret.replace("&", "\\& ")
     return ret
 
 
