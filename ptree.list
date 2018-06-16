@@ -1,107 +1,104 @@
-"Data Management", ""
-"Products", "Data Management"
-"Hardware", "Products"
-"Compute Nodes", "Hardware"
-"Dell blade 8 cores 16 GB ram", "Compute Nodes"
-"Network Nodes", "Hardware"
-"Network Component X", "Network Nodes"
-"Low Level SW", "Hardware"
-"RedHat CentOS 7.4", "Low Level SW"
-"Storage Nodes", "Hardware"
-"SAN disk 2TB storage", "Storage Nodes"
-"Procedures", "Products"
-"DRP Procedure", "Procedures"
-"Software Products", "Products"
-"DM Developed SW Products", "Software Products"
-"Supporting SW Products", "DM Developed SW Products"
-"Image/Cutout Server", "Supporting SW Products"
-"Data Butler", "Supporting SW Products"
-"ADQL", "Supporting SW Products"
-"Distributed Database", "Supporting SW Products"
-"Firefly", "Supporting SW Products"
-"Science Pipelines Libraries", "Supporting SW Products"
-"Task Framework", "Supporting SW Products"
-"Backbone SW Products", "DM Developed SW Products"
-"DBB Transport/Replication/Backup SW", "Backbone SW Products"
-"DBB Lifetime Management SW", "Backbone SW Products"
-"DBB Ingest/Metadata Management SW", "Backbone SW Products"
-"Prompt SW Products", "DM Developed SW Products"
-"Alert Distribution SW", "Prompt SW Products"
-"ctrl_iip", "Prompt SW Products"
-"batch_csc", "Prompt SW Products"
-"Header Service SW", "Prompt SW Products"
-"Planned Observation Publication SW", "Prompt SW Products"
-"EFD Transformation", "Prompt SW Products"
-"OODS SW", "Prompt SW Products"
-"Science Pipeline SW Products", "DM Developed SW Products"
-"MOPS and Forced Photometry", "Science Pipeline SW Products"
-"Template Generation", "Science Pipeline SW Products"
-"Special Programs", "Science Pipeline SW Products"
-"Alert Production", "Science Pipeline SW Products"
-"Periodic Calibration", "Science Pipeline SW Products"
-"Data Release Production", "Science Pipeline SW Products"
-"Daily Calibration Update", "Science Pipeline SW Products"
-"Annual Calibration", "Science Pipeline SW Products"
-"Raw Calibration Validation", "Science Pipeline SW Products"
-"Portal SW Products", "DM Developed SW Products"
-"LSP Portal and SUIT", "Portal SW Products"
-"LSP JupyterLab SW", "Portal SW Products"
-"LSP Web API SW", "Portal SW Products"
-"Batch Production Products", "DM Developed SW Products"
-"Campaign Management", "Batch Production Products"
-"Workload/Workflow", "Batch Production Products"
-"Quality Control Products", "DM Developed SW Products"
-"Quality Control SW", "Quality Control Products"
-"DM COTS and 3rdParty", "Software Products"
-"CILogon", "DM COTS and 3rdParty"
-"Kubernetes", "DM COTS and 3rdParty"
-"GPFS", "DM COTS and 3rdParty"
-"Puppet", "DM COTS and 3rdParty"
-"vSphere", "DM COTS and 3rdParty"
-"HTCondor", "DM COTS and 3rdParty"
-"Grafana", "DM COTS and 3rdParty"
-"SW Prd. for IT Security Service", "DM COTS and 3rdParty"
-"Oracle", "DM COTS and 3rdParty"
-"Docker", "DM COTS and 3rdParty"
-"Services", "Products"
-"LSP Services", "Services"
-"LSP JupyterLab", "LSP Services"
-"LSP Portal", "LSP Services"
-"LSP Web API", "LSP Services"
-"Backbone Services", "Services"
-"DBB Lifetime Management", "Backbone Services"
-"DBB Storage", "Backbone Services"
-"DBB Ingest/Metadata Management", "Backbone Services"
-"DBB Transport/Replication/Backup", "Backbone Services"
-"Prompt Services", "Services"
-"Observatory Operations Data", "Prompt Services"
-"OCS-Driven Batch", "Prompt Services"
-"Prompt Processing", "Prompt Services"
-"Archiving", "Prompt Services"
-"Alert Distribution", "Prompt Services"
-"Planned Observation Publication", "Prompt Services"
-"Telemetry Gateway", "Prompt Services"
-"Prompt Quality Control", "Prompt Services"
-"Offline Services", "Services"
-"Offline Quality Control", "Offline Services"
-"Batch Production", "Offline Services"
-"Bulk Distribution", "Offline Services"
-"Infrastructure", "Data Management"
-"Facilities", "Infrastructure"
-"Base Facility", "Facilities"
-"NCSA Facility", "Facilities"
-"Networks", "Infrastructure"
-"Base LAN Network", "Networks"
-"Summit to Base Network", "Networks"
-"Base to Archive Network", "Networks"
-"NCSA LAN Network", "Networks"
-"Network Management", "Networks"
-"Enclaves", "Infrastructure"
-"Offline Production Enclave", "Enclaves"
-"DAC Chile Enclave", "Enclaves"
-"Prompt NCSA Enclave", "Enclaves"
-"Archive Base Enclave", "Enclaves"
-"DAC US Enclave", "Enclaves"
-"Prompt Base Enclave", "Enclaves"
-"Commissioning Cluster Enclave", "Enclaves"
-"Archive NCSA Enclave", "Enclaves"
+id,Item,Parent,Description,WBS,Team,Manager,Product Owner,Service/SW/HW,Package List,LDM-230,LDM-148,LDM-129
+"DM","Components","",,"1.02C",,,"Leanne Guy",,,,,
+"DMSW","Software Products","DM",,,,,"Multiple",,,,,
+"DMSRV","Services","DM",,,,,"Leanne Guy",,,,,
+"INFRA","Infrastructure","DM",,,,,"Multiple",,,,,
+"HWCOTS","Hardware and COTS SW","DM",,,,,"Multiple",,,,,
+"SUPPSW","Supporting SW Products","DMSW",,,,,"Multiple",,,,,
+"PR","Prompt SW Products","DMSW",,"1.02C.07.08",,,"Multiple",,,,,
+"ADQL","ADQL","SUPPSW",,"1.02C.06.02.05",,,"Colin Slater",,,,,
+"ALRTDSTR","Alert Distribution SW","PR",,"1.02C.03.03",,,"Eric Bellm",,,,,
+"PRSRV","Prompt Services","DMSRV",,,,,"Multiple",,,,,
+"ALRTDSTSRV","Alert Distribution","PRSRV",,"1.02C.03.03",,,"Eric Bellm",,,,,
+"PRODN","Science Pipeline SW Products","DMSW",,,,,"Leanne Guy",,,,,
+"APPRMPT","Alert Production","PRODN",,"1.02C.03",,,"Eric Bellm",,,,,
+"CALYEAR","Annual Calibration","PRODN",,"1.02C.04.02",,,"Robert Lupton",,,,,
+"ENC","Enclaves","INFRA",,,,,"Multiple",,,,,
+"ENCARCB","Archive Base Enclave","ENC",,"1.02C.08.01",,,"Michelle Butler",,,,,
+"ENCARCN","Archive NCSA Enclave","ENC",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"ARCSRV","Archiving","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"DBB","Backbone SW Products","DMSW",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"DBBSRV","Backbone Services","DMSRV",,"1.02C.07.07",,,"Michelle Butler",,,,,
+"FAC","Facilities","INFRA",,,,,"Multiple",,,,,
+"FACBASE","Base Facility","FAC",,"1.02C.08.01/1.02C.08.02",,,"Jeff Kantor",,,,,
+"NET","Networks","INFRA",,,,,"Jeff Kantor",,,,,
+"NETBASE","Base LAN Network","NET",,"1.02C.07.08",,,"Jeff Kantor",,,,,
+"NETBA","Base to Archive Network","NET",,"1.02C.08.03",,,"Jeff Kantor",,,,,
+"BPP","Batch Production Products","DMSW",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"OFFLSRV","Offline Services","DMSRV",,,,,"Multiple",,,,,
+"PRODSRV","Batch Production","OFFLSRV",,"1.02C.07.06.02",,,"Michelle Butler",,,,,
+"BULKDSRV","Bulk Distribution","OFFLSRV",,"1.02C.07.06.02",,,"Michelle Butler",,,,,
+"COTS","COTS and 3rd Party SW","HWCOTS",,,,,"Multiple",,,,,
+"CILOGON","CILogon","COTS",,,,,,,,,,
+"CMPGN","Campaign Management","BPP",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"ENCCOMM","Commissioning Cluster Enclave","ENC",,"1.02C.08.01",,,"Simon Krughoff",,,,,
+"HWCOMP","Compute Nodes","HWCOTS",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"ENCDACC","DAC Chile Enclave","ENC",,"1.02C.08.02",,,"Michelle Butler",,,,,
+"ENCDACU","DAC US Enclave","ENC",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"DBBMD","DBB Ingest/Metadata Management SW","DBB",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"DBBMDSRV","DBB Ingest/Metadata Management","DBBSRV",,"1.02C.07.07",,,"Michelle Butler",,,,,
+"DBBLIFE","DBB Lifetime Management SW","DBB",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"DBBLIFESRV","DBB Lifetime Management","DBBSRV",,"1.02C.07.07",,,"Michelle Butler",,,,,
+"DBBSTRSRV","DBB Storage","DBBSRV",,"1.02C.07.07",,,"Michelle Butler",,,,,
+"DBBTR","DBB Transport/Replication/Backup SW","DBB",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"DBBTRSRV","DBB Transport/Replication/Backup","DBBSRV",,"1.02C.07.07",,,"Michelle Butler",,,,,
+"CALDAILY","Daily Calibration Update","PRODN",,"1.02C.04.02",,,"Robert Lupton",,,,,
+"BUTLER","Data Butler","SUPPSW",,"1.02C.06.02.01",,,"Jim Bosch",,,,,
+"DRP","Data Release Production","PRODN",,"1.02C.04",,,"Jim Bosch",,,,,
+"DELL8","Dell blade 8 cores 16 GB ram","HWCOMP",,"1.02C.07.09",,,,,,,,
+"QSERV","Distributed Database","SUPPSW",,"1.02C.06.02.03",,,"Colin Slater",,,,,
+"DOCKER","Docker","COTS",,,,,,,,,,
+"EFDT","EFD Transformation","PR",,"1.02C.07.08",,,"Simon Krughoff",,,,,
+"FIREFLY","Firefly","SUPPSW",,"1.02C.05.06",,,"Gregory Dubois-Felsmann",,,,,
+"GPFS","GPFS","COTS",,,,,,,,,,
+"GRAFANA","Grafana","COTS",,,,,,,,,,
+"HTCONDOR","HTCondor","COTS",,,,,,,,,,
+"HEADER","Header Service SW","PR",,"1.02C.07.08",,,"Felipe Menanteau",,,,,
+"DAXIMG","Image/Cutout Server","SUPPSW",,"1.02C.06.02.04",,,"Colin Slater",,,,,
+"K8S","Kubernetes","COTS",,,,,,,,,,
+"LSP","Portal SW Products","DMSW",,,,,"Gregory Dubois-Felsmann",,,,,
+"LSPSRV","LSP Services","DMSRV",,,,,"Gregory Dubois-Felsmann",,,,,
+"LSPJL","LSP JupyterLab SW","LSP",,"1.02C.10.02.02",,,"Simon Krughoff",,,,,
+"LSPJLSRV","LSP JupyterLab","LSPSRV",,"1.02C.10.02.02",,,"Simon Krughoff",,,,,
+"LSPPRTL","LSP Portal and SUIT","LSP",,"1.02C.05.07/1.02C.05.08/1.02C.05.09",,,"Gregory Dubois-Felsmann",,,,,
+"LSPPRTLSRV","LSP Portal","LSPSRV",,"1.02C.05.07/1.02C.05.08/1.02C.05.09",,,"Gregory Dubois-Felsmann",,,,,
+"LSPWEB","LSP Web API SW","LSP",,"1.02C.06.02",,,"Colin Slater",,,,,
+"LSPWEBSRV","LSP Web API","LSPSRV",,"1.02C.06.02",,,"Colin Slater",,,,,
+"LLSW","Low Level SW","HWCOTS",,,,,"Multiple",,,,,
+"MOPS","MOPS and Forced Photometry","PRODN",,"1.02C.03.06",,,"Eric Bellm",,,,,
+"FACNCSA","NCSA Facility","FAC",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"NETNCSA","NCSA LAN Network","NET",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"HWNET","Network Nodes","HWCOTS",,"1.02C.07.09",,,"Multiple",,,,,
+"NETX","Network Component X","HWNET",,"1.02C.07.09",,,,,,,,
+"NETMGMT","Network Management","NET",,"1.02C.08.03",,,"Jeff Kantor",,,,,
+"OCSBATSRV","OCS-Driven Batch","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"OODS","OODS SW","PR",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"OODSSRV","Observatory Operations Data","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"ENCOFFL","Offline Production Enclave","ENC",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"OFFLQCSRV","Offline Quality Control","OFFLSRV",,"1.02C.04.07",,,"Jim Bosch",,,,,
+"ORACLE","Oracle","COTS",,,,,,,,,,
+"CALOFFL","Periodic Calibration","PRODN",,"1.02C.04.02",,,"Robert Lupton",,,,,
+"OBSPUB","Planned Observation Publication SW","PR",,"1.02C.07.08",,,"Felipe Menanteau",,,,,
+"POPSRV","Planned Observation Publication","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"ENCPRB","Prompt Base Enclave","ENC",,"1.02C.08.01",,,"Michelle Butler",,,,,
+"ENCPRN","Prompt NCSA Enclave","ENC",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"PRPRCSRV","Prompt Processing","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"PRQCSRV","Prompt Quality Control","PRSRV",,"1.02C.03.08",,,"Eric Bellm",,,,,
+"PUPPET","Puppet","COTS",,,,,,,,,,
+"QC","Quality Control Products","DMSW",,"1.02C.10.02.01",,,"Simon Krughoff",,,,,
+"QCSW","Quality Control SW","QC",,"1.02C.10.02.01",,,"Simon Krughoff",,,,,
+"CALPRMPT","Raw Calibration Validation","PRODN",,"1.02C.04.02",,,"Robert Lupton",,,,,
+"CENTOS","RedHat CentOS 7.4","LLSW",,,,,,,,,,
+"HWSTOR","Storage Nodes","HWCOTS",,"1.02C.07.09",,,"Michelle Butler",,,,,
+"SAN2","SAN disk 2TB storage","HWSTOR",,"1.02C.07.09",,,,,,,,
+"SECURITY","SW Prd. for IT Security Service","COTS",,,,,,,,,,
+"SCIPIPE","Science Pipelines Libraries","SUPPSW",,"1.02C.03.05/1.02C.04.01",,,"Jim Bosch",,,,,
+"SP","Special Programs","PRODN",,"1.02C.03/1.02C.04",,,"Melissa Graham",,,,,
+"NETSB","Summit to Base Network","NET",,"1.02C.08.03",,,"Jeff Kantor",,,,,
+"TXF","Task Framework","SUPPSW",,"1.02C.06.03",,,"Jim Bosch",,,,,
+"TMGSRV","Telemetry Gateway","PRSRV",,"1.02C.07.06.02",,,"Felipe Menanteau",,,,,
+"TMPLGEN","Template Generation","PRODN",,"1.02C.04.04",,,"Jim Bosch",,,,,
+"WLWF","Workload/Workflow","BPP",,"1.02C.07.08",,,"Michelle Butler",,,,,
+"OCSBAT","batch_csc","PR",,"1.02C.07.08",,,"Felipe Menanteau",,,,,
+"IIP","ctrl_iip","PR",,"1.02C.07.08",,,"Felipe Menanteau",,,,,
+"VSPHERE","vSphere","COTS",,,,,,,,,,
