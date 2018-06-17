@@ -467,7 +467,7 @@ def doFile(inFile):
     # ptree.show(data_property="name")
     paperwidth = paperwidth + ntree.depth() * 6.2  # cm
     streew=paperwidth
-    height = height + len(ntree.leaves()) * leafHeight  # cm
+    height = height + len(ntree.leaves()) * leafHeight + 0.5 # cm
     if (land):
         height = height  /5
         #paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
