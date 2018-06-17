@@ -4,7 +4,7 @@ TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devp
 
 MKPDF=latexmk -pdf
 
-GENERATED_FIGURES=ProductTreeLand.pdf ProductTree.pdf
+GENERATED_FIGURES=ProductTree.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 
 all : LDM-294.pdf
