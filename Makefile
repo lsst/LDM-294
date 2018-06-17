@@ -20,7 +20,7 @@ wbslist.tex: wbs/*tex productlist.csv
 
 ProductTree.tex: ptree.list
 	python --version
-	python makeProductTree.py --depth=3
+	python makeProductTree.py --depth=2
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
