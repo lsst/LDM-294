@@ -44,15 +44,16 @@ def constructTree(fin):
         count = count + 1
         part = line
         if (len(part) <= 3):
-            
+
             id = fixIdTex(part[0]) #make an id from the name
             pid= fixIdTex(part[1]) #use the same formaula on the parent name then we are good
             name= fixTex(part[0])
 
 
             prod= Product(id, name,pid,"","","","","","")
+            print("Short Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         else:
-            prod = Product(part[0], part[1], part[2], part[3], part[4], part[6],
+            prod = Product(part[0], fixTex(part[1]), part[2], part[3], part[4], part[6],
                        part[7], part[8], part[9])
         #print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         if (count == 1):  # root node
@@ -78,7 +79,7 @@ def fixIdTex(text):
     id= id.replace("_", "")
     id= id.replace(".","")
     id= id.replace("&","")
-    
+
     return id
 
 def fixTex(text):
@@ -559,7 +560,7 @@ def tfooter(tout):
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
 parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
-parser.add_argument("--file", help="Input csv file ", default='productlist.csv')
+parser.add_argument("--file", help="Input csv file ", default='ptree.list')
 args = parser.parse_args()
 outdepth=args.depth
 land=args.land
