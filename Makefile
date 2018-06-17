@@ -18,14 +18,14 @@ acronyms: ${TEX} myacronyms.tex
 wbslist.tex: wbs/*tex productlist.csv
 	python makeWbs.py
 
-ProductTree.tex: productlist.csv
+ProductTree.tex: ptree.list
 	python --version
-	python makeProductTree.py --depth=2
+	python makeProductTree.py --depth=3
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
 
-ProductTreeLand.tex: productlist.csv
+ProductTreeLand.tex: ptree.list
 	python makeProductTree.py --land=1
 
 ProductTreeLand.pdf: ProductTreeLand.tex
