@@ -1,18 +1,24 @@
 \section{Development Process} \label{sect:devproc}
 
-DM is essentially a large software project; in particular we are developing scientific software with the uncertainties that brings with it.
-An Agile process \citep{it:agile} is particularly suited to scientific software development.  The development follows a six month  cyclical approach and  DM  products are under continuous
-integration using the Jenkins tool. All code is developed in the GitHub open source repository under an open source license.
-Releases follow a six-month cadence but the code on the master branch is intended to be always working with the continuous integration system ensuring this.
+In many respects, DM is effectively a large software project --- in particular, we are developing scientific software, and must face all the uncertainties implied by that.
+An agile process \citep{it:agile} is particularly suited to scientific
+software development of this sort.
 
-How this fits with the Earned Value System is described in \citeds{DMTN-020}.
+DM has adopted a cyclical approach to software development, with a period of six months.
+At the beginning of each development cycle, we define a set of ``epics'', which correspond to major pieces of work to be undertaken during the cycle.
 
+During the development cycle, all code is kept under continuous integration\footnote{Currently using the Jenkins tool; \url{https://jenkins.io}} (CI).
+Code is managed on GitHub\url{https://github.com}, and is made available using an open source license.
+
+Releases follow the six-month cadence, but the CI system ensures that code on the \texttt{master} branch is always deployeable.
+
+\citeds{DMTN-020} describes in detail the intgration of DM's agile approach to software development with the Earned Value Managenent system used by the LSST construction project.
 
 \subsection{Communications}
 
-The main stories for the six-month planning period are discussed at the DMLT F2F meeting near the beginning of the cycle (See \secref{sect:dmlt}).
+The epics for each six-month development cycle are agreed at the DMLT face-to-face meeting near the beginning of the period (see \secref{sect:dmlt}).
 
-The T/CAMs of each of the institutions meet via video on Tuesdays and Fridays for a short \emph{standup} meeting to ensure that any cross-team issues are surfaced and resolved expeditiously.
+The T/CAMs of each of the institutions meet via video on Tuesdays and Fridays for a short ``standup'' meeting to ensure that any cross-team issues are surfaced and resolved expeditiously.
 This meeting is chaired by the Deputy Project Manager.
 Each T/CAM notes any significant progress of interest to other teams and any problems or potential problems that may arise.
 
