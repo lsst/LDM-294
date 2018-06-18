@@ -32,7 +32,7 @@ def get_products_for_wbs(productlist, wbs, wbs_list):
             def score_key(cand):
                 return score(row["WBS"], cand)
             if min(wbs_list, key=score_key) == wbs:
-                products.append(row["Description"])
+                products.append(row["short name"])
 
     return products
 
