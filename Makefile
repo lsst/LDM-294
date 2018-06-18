@@ -1,6 +1,6 @@
 export TEXMFHOME = lsst-texmf/texmf
 
-TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devprocess.tex	dmorg.tex	dmwbs.tex dmarc.tex	dmproducts.tex	intro.tex
+TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devprocess.tex	dmorg.tex	dmwbs.tex dmarc.tex	dmproducts.tex intro.tex productlist.tex
 
 MKPDF=latexmk -pdf
 
@@ -31,6 +31,9 @@ ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
 
 ProductTreeLand.pdf: ProductTreeLand.tex
 	$(MKPDF) $<
+
+# productlist.tex is generated as a by-product of making ProductTree.tex.
+productlist.tex: ProductTree.tex
 
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.

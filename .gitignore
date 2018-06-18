@@ -21,6 +21,7 @@ LDM-294.pdf
 wbslist.tex
 ProductTree.tex
 ProductTree.pdf
+productlist.tex
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps
