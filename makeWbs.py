@@ -84,7 +84,7 @@ if __name__ == "__main__":
     try:
         productlist = sys.argv[1]
     except IndexError:
-        productlist = "productlist.csv"
+        productlist = "DM Product Properties.csv"
 
     try:
         wbsdir = sys.argv[2]
