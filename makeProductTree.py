@@ -44,8 +44,8 @@ def constructTree(fin):
             continue
         part = line
         id = fixIdTex(part[1]) #make an id from the name
-        pid= fixIdTex(part[2]) #use the same formaula on the parent name then we are good
-        name= fixTex(part[3])
+        pid= fixIdTex(part[3]) #use the same formaula on the parent name then we are good
+        name= fixTex(part[2])
         prod = Product(id, name, pid, "", part[4], part[6],
                        part[7], "", part[8])
         print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
