@@ -39,24 +39,17 @@ def constructTree(fin):
     ptree = Tree()
     reader= csv.reader(fin,dialect='excel')
     for line in reader:
-        if (line[0]=="") or (line[0]=="id" and line[1]=="Item"):
-                continue
         count = count + 1
+        if count == 1:
+            continue
         part = line
-        if (len(part) <= 3):
-
-            id = fixIdTex(part[0]) #make an id from the name
-            pid= fixIdTex(part[1]) #use the same formaula on the parent name then we are good
-            name= fixTex(part[0])
-
-
-            prod= Product(id, name,pid,"","","","","","")
-            print("Short Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
-        else:
-            prod = Product(part[0], fixTex(part[1]), part[2], part[3], part[4], part[6],
-                       part[7], part[8], part[9])
+        id = fixIdTex(part[1]) #make an id from the name
+        pid= fixIdTex(part[2]) #use the same formaula on the parent name then we are good
+        name= fixTex(part[3])
+        prod = Product(id, name, pid, "", part[4], part[6],
+                       part[7], "", part[8])
         #print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
-        if (count == 1):  # root node
+        if (count == 2):  # root node
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
             # print("Creating node:" + prod.id + " name:"+ prod.name +
@@ -116,7 +109,7 @@ def outputTexTable(tout, ptree):
     nodes = ptree.expand_tree()
     for n in nodes:
         prod = ptree[n].data
-        print(r"{p.wbs} &  {p.name} & {p.desc} & {p.manager} & {p.owner} "
+        print(r"{p.wbs} &  {p.name} & {p.manager} & {p.owner} "
               r"& {}\\ \hline".format(fixTex(prod.pkgs), p=prod), file=tout)
     return
 
@@ -501,7 +494,7 @@ def theader(tout):
 """.format(__file__), file=tout)
     print(r"""\tiny
 \begin{longtable}{|p{0.10\textwidth}|p{0.12\textwidth}|p{0.26\textwidth}|p{0.11\textwidth}|p{0.11\textwidth}|p{0.20\textwidth}|}\hline
-\textbf{WBS} & Product & Description & Manager & Owner & Packages\\ \hline""",
+\textbf{WBS} & Product & Manager & Owner & Packages\\ \hline""",
           file=tout)
 
     return
