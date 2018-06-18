@@ -6,6 +6,7 @@ MKPDF=latexmk -pdf
 
 GENERATED_FIGURES=ProductTreeLand.pdf ProductTree.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
+PRODUCT_CSV=DM\ Product\ Properties.csv
 
 all : LDM-294.pdf
 
@@ -15,17 +16,17 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES}
 acronyms: ${TEX} myacronyms.tex
 	acronyms.csh  ${TEX}
 
-wbslist.tex: wbs/*tex productlist.csv
-	python makeWbs.py
+wbslist.tex: wbs/*tex ${PRODUCT_CSV}
+	python makeWbs.py ${PRODUCT_CSV}
 
-ProductTree.tex: ptree.list
+ProductTree.tex: ${PRODUCT_CSV}
 	python --version
-	python makeProductTree.py --depth=3
+	python makeProductTree.py --depth=3 --file=${PRODUCT_CSV}
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
 
-ProductTreeLand.tex: ptree.list
+ProductTreeLand.tex: ${PRODUCT_CSV}
 	python makeProductTree.py --land=1
 
 ProductTreeLand.pdf: ProductTreeLand.tex

@@ -48,12 +48,12 @@ def constructTree(fin):
         name= fixTex(part[3])
         prod = Product(id, name, pid, "", part[4], part[6],
                        part[7], "", part[8])
-        #print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
+        print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         if (count == 2):  # root node
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
-            # print("Creating node:" + prod.id + " name:"+ prod.name +
-            #       " parent:" + prod.parent)
+            print("Creating node:" + prod.id + " name:"+ prod.name +
+                  " parent:" + prod.parent)
             if prod.parent != "":
                 ptree.create_node(prod.id, prod.id, data=prod,
                                   parent=prod.parent)
@@ -553,7 +553,7 @@ def tfooter(tout):
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
 parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
-parser.add_argument("--file", help="Input csv file ", default='ptree.list')
+parser.add_argument("--file", help="Input csv file ", default='DM Product Properties.csv')
 args = parser.parse_args()
 outdepth=args.depth
 land=args.land
