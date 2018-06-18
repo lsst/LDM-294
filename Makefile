@@ -13,20 +13,20 @@ all : LDM-294.pdf
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES}
 	$(MKPDF) -bibtex -f LDM-294.tex
 
-acronyms: ${TEX} myacronyms.tex
+acronyms: acronyms.csh ${TEX} myacronyms.tex
 	acronyms.csh  ${TEX}
 
-wbslist.tex: wbs/*tex ${PRODUCT_CSV}
+wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
 
-ProductTree.tex: ${PRODUCT_CSV}
+ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
 	python --version
 	python makeProductTree.py --depth=3 --file=${PRODUCT_CSV}
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
 
-ProductTreeLand.tex: ${PRODUCT_CSV}
+ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
 	python makeProductTree.py --land=1
 
 ProductTreeLand.pdf: ProductTreeLand.tex
