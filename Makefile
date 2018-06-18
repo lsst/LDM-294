@@ -1,35 +1,39 @@
 export TEXMFHOME = lsst-texmf/texmf
 
-TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devprocess.tex	dmorg.tex	dmwbs.tex dmarc.tex	dmproducts.tex	intro.tex
+TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devprocess.tex	dmorg.tex	dmwbs.tex dmarc.tex	dmproducts.tex intro.tex productlist.tex
 
 MKPDF=latexmk -pdf
 
-GENERATED_FIGURES=ProductTreeLand.pdf ProductTree.pdf
+GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
+PRODUCT_CSV=DM\ Product\ Properties.csv
 
 all : LDM-294.pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES}
 	$(MKPDF) -bibtex -f LDM-294.tex
 
-acronyms: ${TEX} myacronyms.tex
-	acronyms.csh  ${TEX}
+#acronyms: acronyms.csh ${TEX} myacronyms.tex
+#	acronyms.csh  ${TEX}
 
-wbslist.tex: wbs/*tex productlist.csv
-	python makeWbs.py
+wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
+	python makeWbs.py ${PRODUCT_CSV}
 
-ProductTree.tex: productlist.csv
+ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
 	python --version
-	python makeProductTree.py --depth=2
+	python makeProductTree.py --depth=3 --file=${PRODUCT_CSV}
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
 
-ProductTreeLand.tex: productlist.csv
+ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
 	python makeProductTree.py --land=1
 
 ProductTreeLand.pdf: ProductTreeLand.tex
 	$(MKPDF) $<
+
+# productlist.tex is generated as a by-product of making ProductTree.tex.
+productlist.tex: ProductTree.tex
 
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.

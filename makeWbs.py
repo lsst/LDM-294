@@ -32,7 +32,7 @@ def get_products_for_wbs(productlist, wbs, wbs_list):
             def score_key(cand):
                 return score(row["WBS"], cand)
             if min(wbs_list, key=score_key) == wbs:
-                products.append(row["Description"])
+                products.append(row["short name"])
 
     return products
 
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     try:
         productlist = sys.argv[1]
     except IndexError:
-        productlist = "productlist.csv"
+        productlist = "DM Product Properties.csv"
 
     try:
         wbsdir = sys.argv[2]

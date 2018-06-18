@@ -12,8 +12,8 @@ install:
 script:
    # Prepare document dependencies in Travis (Python 3.5) environment
    - "make generated"
-   # Ensure acronyms are built
-   - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make acronyms'"
+   ## Ensure acronyms are built
+   #- "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make acronyms'"
    # Compile LaTeX using containerized lsst-texmf.
    # Make targets that rely on Python should be no-ops at this point.
    - "docker run --rm -v `pwd`:/workspace -w /workspace lsstsqre/lsst-texmf:latest sh -c 'make travis-all'"
