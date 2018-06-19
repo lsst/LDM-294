@@ -21,7 +21,7 @@ wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 
 ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
 	python --version
-	python makeProductTree.py --depth=3 --file=${PRODUCT_CSV}
+	python makeProductTree.py --depth=2 --file=${PRODUCT_CSV}
 
 ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
