@@ -478,7 +478,7 @@ def doFile(inFile):
     height = 0
     if (outdepth <= 100 ):
         ntree = slice(ptree, outdepth)
-	if (land!=1):
+        if (land!=1):
             paperwidth = 2
             height = -3
 
