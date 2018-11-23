@@ -48,12 +48,12 @@ def constructTree(fin):
         name= fixTex(part[2])
         prod = Product(id, name, pid, "", part[4], part[6],
                        part[7], "", part[8])
-        print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
+       # print("Product:" + prod.id + " name:" + prod.name + " parent:" + prod.parent)
         if (count == 2):  # root node
             ptree.create_node(prod.id, prod.id, data=prod)
         else:
-            print("Creating node:" + prod.id + " name:"+ prod.name +
-                  " parent:" + prod.parent)
+            #print("Creating node:" + prod.id + " name:"+ prod.name +
+            #      " parent:" + prod.parent)
             if prod.parent != "":
                 ptree.create_node(prod.id, prod.id, data=prod,
                                   parent=prod.parent)
@@ -195,7 +195,7 @@ def layoutRows(fout, rowMap, start, end, count, ptree, children,childcount, goin
             prow=row
     return count
 
-def outputLandMix(fout,ptree, pwidth):
+def outputLandMix(fout,ptree):
 # attempt to put DM on top of page then each of the top level sub trees in portrait beneath it accross the page ..
     stub = slice(ptree, 1)
     nodes = stub.expand_tree(mode=Tree.WIDTH) # default mode=DEPTH
@@ -441,6 +441,22 @@ def outputTexTreeP(fout, ptree, width, sib, full):
     return count
 
 
+def mixTreeDim(ptree):
+    "Return the max second level nodes is counting how many leaves."
+    n2l = 0
+    nmaxSub = 0
+    nodes = ptree.expand_tree()
+    for n in nodes:
+        depth = ptree.depth(n)
+        #print(depth)
+        if depth == 1:
+            n2l = n2l +1
+            #print('> leaves:', len(ptree.leaves(n)))
+            subL = len(ptree.leaves(n))
+            if subL > nmaxSub:
+               nmaxSub = subL
+    return (n2l, nmaxSub)
+
 def doFile(inFile):
     "This processes a csv and produced a tex tree diagram and a tex longtable."
     f = inFile
@@ -453,30 +469,39 @@ def doFile(inFile):
     with open(f, 'r') as fin:
         ptree = constructTree(fin)
     ntree = ptree
+
+    n2, nMS = mixTreeDim(ptree)    
+
+    print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
+
     paperwidth = 0
     height = 0
     if (outdepth <= 100 ):
         ntree = slice(ptree, outdepth)
-        if (land!=1):
+	if (land!=1):
             paperwidth = 2
             height = -3
 
     # ptree.show(data_property="name")
-    paperwidth = paperwidth + ntree.depth() * 6.2  # cm
-    streew=paperwidth
-    height = height + len(ntree.leaves()) * leafHeight + 0.5 # cm
+    #if (land==1):   #full landscape
+    #  paperwidth = paperwidth + len(ntree.leaves()) * 6.2 # cm
+    #  height = height + ntree.depth() * leafHeight + 0.5  # cm
+    #elif (land==2):  #mixed landscape/portrait
     if (land):
-        height = height  /5
-        #paperwidth = (paperwidth + len(ntree.leaves()) * (leafWidth +.1 ))  # cm
-        paperwidth = paperwidth * 9   # cm
-        if paperwidth > 400:
-             paperwidth=400
+      paperwidth = paperwidth + ( ntree.depth() * 5.2 ) * n2 + 0.7 # cm
+      streew=paperwidth
+      height = height + nMS * 1.6  # cm
+      print('height:', height, 'width:', paperwidth)
+    else:
+      paperwidth = paperwidth + ntree.depth() * 6.2  # cm
+      streew=paperwidth
+      height = height + len(ntree.leaves()) * leafHeight + 0.5 # cm
 
     with open(nf, 'w') as fout:
         header(fout, paperwidth, height)
         if (land):
             #outputLandW(fout, ntree)
-            outputLandMix(fout, ntree, streew)
+            outputLandMix(fout, ntree)
         else:
             outputTexTree(fout, ntree, paperwidth)
         footer(fout)
