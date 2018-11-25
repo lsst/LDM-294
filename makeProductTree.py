@@ -472,7 +472,7 @@ def doFile(inFile):
 
     n2, nMS = mixTreeDim(ptree)    
 
-    print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
+    #print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
 
     paperwidth = 0
     height = 0
@@ -491,11 +491,12 @@ def doFile(inFile):
       paperwidth = paperwidth + ( ntree.depth() * 5.2 ) * n2 + 0.7 # cm
       streew=paperwidth
       height = height + nMS * 1.6  # cm
-      print('height:', height, 'width:', paperwidth)
     else:
       paperwidth = paperwidth + ntree.depth() * 6.2  # cm
       streew=paperwidth
-      height = height + len(ntree.leaves()) * leafHeight + 0.5 # cm
+      height = len(ntree.leaves()) * 1.6 + 0.5 # cm
+
+    print('height:', height, '; width:', paperwidth)
 
     with open(nf, 'w') as fout:
         header(fout, paperwidth, height)
