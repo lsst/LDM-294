@@ -147,16 +147,53 @@ DMCCB validates that the form and content of the Technical Baseline is consisten
 	\end{itemize}
 \item Membership
 	\begin{itemize}
-	\item Chaired by the Systems Engineer (\secref{role:sysengineer}).
-	\item The DMCCB has the same membership as the Systems Engineering Team (\secref{sect:sysengt}).
+        \item Core members:
+                \begin{itemize}
+                \item DM Project Manager
+                \item DM Subsystem Scientist
+	        \item Chaired by the Systems Engineer (\secref{role:sysengineer}).
+                \item Operations Architect
+                \item DM Configuration and Release Manager
+                \end{itemize}
+        \item Optional members, involved when topics to discuss are relevant for theyr areas of expertise:
+                \begin{itemize}
+                \item DMPM Deputy, when DMPM is not available
+                \item DM Deputy Subsystem Scientist, when DM Subsystem Scientist is not available
+                \item Software Architect
+                \item Pipeline Scientist
+                \item Science Pipelines / Interface Scientist
+                \item T/CAMs, they can delegate to theyr deputies
+                \end{itemize}
+	%\item The DMCCB has the same membership as the Systems Engineering Team (\secref{sect:sysengt}).
 	\item For on-line virtual meetings, if a consensus or quorum or is not reached within one week, the DM Project Manager will make a unilateral decision
+        \item DMPM can take unilateral decisions in case of urgency, i.e. a decision is required in immediately and DM-CCB is not available. The DM-CCB need to be informed a posteriori.
 	\end{itemize}
 \item Responsibilities
 	\begin{itemize}
 	\item Determines when specification and deliverables are of sufficient maturity and quality to be baselined (placed under configuration controlled status) or released.
 	\item Reviews and approves/rejects proposed changes to baselined items
+        \item Overview the release process, approve new or unplanned releases, i.e. patch releases, and approve release content
+        \item Review and approve all RFCs prior to 'Adoption'
+        \item Monitor DM Jira issues status and ensure that no issues are forgotten
 	\end{itemize}
 \end{itemize}
+
+The DM-CCB will meet, physically or virtually, every week. Agenda will be available beforehand and topics to discuss will include:
+
+\begin{itemize}
+\item Approve the release schedule
+        \begin{itemize}
+        \item All releases need to be proposed to the DM-CCB via RFC
+        \item Once a release has been accepted, the CRM will create a corresponding release issue to track the implementation of the release
+        \end{itemize}
+\item Approve release content
+        \begin{itemize}
+        \item The DM-CCB will monitor, with the support of Optional CCB members, RFX, epics and stories that are implemented in master repositories and therefor included in major or minor releases
+        \item The DM-CCB will approve, with the support of Optional CCB members, all issues that need to be included in a patch release. This is done approving the RFC in which the patch release is requested, RFC that shall list all issues that are intended to be included in the patch.
+        \item All issues that are scheduled for a specific release must be added as 'blocker' to the corresponding release issue.
+\item Monitor old issues backlog: ensure that no Jira issues are forgotten
+\item Approve all RFCs, flagging them as 'adopted', before implementing
+\nd end{itemize}
 
 \subsection{DM Science Validation Team}
 \label{sect:dmsvt}
