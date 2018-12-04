@@ -13,6 +13,8 @@ import re
 txtheight = 35
 leafHeight = 1.56  # cm space per leaf box .. height of page calc
 leafWidth = 3.7  # cm space per leaf box .. width of page calc
+smallGap = 0.2 # cm between leaf boxes in the same group
+bigGap = 1.5 # cm between different levels, or leaf boxes
 sep = 2  # inner sep
 gap = 4
 WBS = 1  # Put WBS on diagram
@@ -88,20 +90,22 @@ def slice(ptree, outdepth):
     # copy the tree but stopping at given depth
     ntree = Tree()
     nodes = ptree.expand_tree()
+    count = 0  # subtree in input
     for n in nodes:
-        # print("Accesing {}".format(n))
+        #print("Accesing {}".format(n))
         depth = ptree.depth(n)
         prod = ptree[n].data
 
         #print("outd={od} mydepth={d} Product: {p.id} name: {p.name} parent: {p.parent}".format(od=outdepth, d=depth, p=prod))
         if (depth <= outdepth):
             # print(" YES ", end='')
-            if (prod.parent == ""):
+            if (count == 0):
                 ntree.create_node(prod.id, prod.id, data=prod)
             else:
                 ntree.create_node(prod.id, prod.id, data=prod,
                                   parent=prod.parent)
-        # print()
+            count = count + 1
+         #print()
     return ntree
 
 
@@ -168,7 +172,7 @@ def organiseRow(r, rowMap): #group according to parent in order of prevous row
     return
 
 def drawLines(fout,row):
-    print(r"   nodes={n} - now lines for row={n} nodes  ".format( n=len(row)))
+    #print(r"   nodes={n} - now lines for row={n} nodes  ".format( n=len(row)))
     for p in row:
         prod=p.data
         print(r" \draw[pline]   ({p.id}.north) -- ++(0.0,0.5) -| ({p.parent}.south) ; ".format(p=prod),
@@ -219,9 +223,10 @@ def outputLandMix(fout,ptree):
         stree = ptree.subtree(p.id)
         d = 1
         if (prev):
-           d = prev.depth()
-        if (d==0): d=1
-        width =  d  * 6.2  # cm
+            d = prev.depth()
+        width =  d  * ( leafWidth + bigGap ) + bigGap # cm
+        if sib:
+            print(sib.name, d, p.name)
         print(r" {p.id} {p.parent} depth={d} width={w} ".format(p=p, d=d,w=width ))
         count = count + outputTexTreeP(fout, stree, width, sib, 0)
         sib=p
@@ -234,6 +239,210 @@ def outputLandMix(fout,ptree):
     drawLines(fout,row)
     print("{} Product lines in TeX ".format(count))
     return
+
+#def land_red_leaves(ptree):
+#    # returns the span of a subtree,
+#    d = ptree.depth()
+#    stub = slice(ptree, 1)
+#    #print('STUB\n', stub)
+#    if d==0:
+#        return(1)
+#    nodes = stub.expand_tree(mode=Tree.WIDTH)
+#    row = []
+#    count = 0
+#    root = None
+#    nl = 0
+#    prevw = None
+#    for n in nodes:
+#        count = count +1
+#        if (count ==1): #  root node, nothing to do here
+#           root=ptree[n].data
+#           print('root', root.id)
+#        else:
+#            stree = ptree.subtree(n)
+#            p = ptree[n].data
+#            sdepth = stree.depth()
+#            delta = 0
+#            if (prevw):
+#                sprevw = slice(prevw, sdepth)
+#                nlred = len(sprevw.leaves())
+#                nlfull = len(prevw.leaves())
+#                print('   - compare', p.id, nlred, nlfull)
+#                delta = nlred - nlfull
+#            if delta>=0:
+#                if (sdepth==0):
+#                    nl = nl + 1
+#                    #print('leave', p.id, nl)
+#                else:
+#                    # calculate the leaves of the subtree
+#                    nl = nl + land_red_leaves(stree)
+#                    print('   node', p.id, nl)
+#            prevw = stree
+#    return(nl)
+
+def land_red_leaves(ptree):
+    # returns the span of a subtree,
+    d = ptree.depth()
+    stub = slice(ptree, 1)
+    #print('STUB\n', stub)
+    if d==0:
+        #print('  --  no depth', ptree)
+        return(1)
+    nodes = stub.expand_tree(mode=Tree.WIDTH)
+    row = []
+    count = 0
+    root = None
+    nl = 0
+    prevw = None
+    pnl = 0
+    for n in nodes:
+        count = count +1
+        if (count ==1): #  root node, nothing to do here
+           root=ptree[n].data
+        else:
+            stree = ptree.subtree(n)
+            p = ptree[n].data
+            sdepth = stree.depth()
+            if (prevw):
+                sprevw = slice(prevw, sdepth)
+                tmp = land_red_leaves(sprevw)
+                #print(' compare', p.id, sdepth, tmp, pnl, pd)
+                if (sdepth == 0 and pd == 1 and tmp == 1 and pnl > 1):
+                    nl = nl
+                else:
+                    nl = nl + tmp
+                #print(' - node', p.id, nl)
+            else:
+                nl = land_red_leaves(stree)
+                #print(' - primeN', p.id, nl)
+            prevw = stree
+            pnl = land_red_leaves(stree)
+            pd = sdepth
+    #print('root', root.id, nl)
+    return(nl)
+
+def outputLandR(fout, ptree, pid):
+    stub = slice(ptree, 1) # I want to print only one level down
+    nodes = stub.expand_tree(mode=Tree.WIDTH)
+    row = []
+    count =0
+    root= None
+    child = None
+    for n in nodes:
+        count= count +1
+        if (count ==1): #  root node
+           root=ptree[n].data
+        else:
+           row.append(ptree[n])
+
+    child = row[(count-1)//2].data # the mid child, the parent will be positioned above it
+    sib=None
+    count =1 # the root
+    prev= None
+    prevw = None 
+    pnl = None
+    for n in row:
+        prod = n.data
+        stree = ptree.subtree(prod.id)
+        sdepth = stree.depth()
+        if (sib):
+            sprevw = slice(prevw, sdepth) # Slice previus subtree that can acomodated with the actual one
+            nleaves = len(sprevw.leaves()) 
+            #nleaves = land_red_leaves(sprevw) 
+            #if prod.id=='lsstobs':
+            #    print(nleaves, prod.name)
+            #print('Previous tree:\n', sprevw)
+            nl = land_red_leaves(sprevw)
+            nleaves = nl
+            dist = (nleaves -1) * 109 + gap
+            print(r"\node ({p.id}) "
+                 r"[pbox, right={d}pt of {s.id}]{{\textbf{{{p.name}}}}};".format(p=prod,s=sib,d=dist),
+                 file=fout)
+        else:
+            if (pid):
+                print(r"\node ({p.id}) "
+                     r"[pbox, below=15mm of {pid}]{{\textbf{{{p.name}}}}};".format(p=prod,pid=pid),
+                     file=fout)
+            else:
+                print(r"\node ({p.id}) "
+                     r"[pbox]{{\textbf{{{p.name}}}}};".format(p=prod),
+                     file=fout)
+        sib = prod
+        prevw = stree
+        if (sdepth > 0):
+            outputLandR(fout, stree, prod.id) 
+
+    if (pid):
+        drawLines(fout,row)
+    else:
+        ### place root node
+        print(r"\node ({p.id}) "
+             r"[wbbox, above=15mm of {c.id}]{{\textbf{{{p.name}}}}};".format(p=root,c=child),
+             file=fout)
+        print("{} Product lines in TeX ".format(count))
+        drawLines(fout,row)
+    return
+
+def outputLandR2(fout, ptree, pid):
+    stub = slice(ptree, 1) # I want to print only one level down
+    nodes = stub.expand_tree(mode=Tree.WIDTH)
+    row = []
+    count =0
+    root= None
+    child = None
+    for n in nodes:
+        count= count +1
+        if (count ==1): #  root node
+           root=ptree[n].data
+        else:
+           row.append(ptree[n])
+
+    child = row[(count-1)//2].data # the mid child, the parent will be positioned above it
+    sib=None
+    count =1 # the root
+    prev= None
+    prevw = None 
+    pnl = None
+    for n in row:
+        prod = n.data
+        stree = ptree.subtree(prod.id)
+        sdepth = stree.depth()
+        nl = land_red_leaves(stree) #I get the number of leaves of the subtree
+        #print(prod.id, nl)
+        if (sib):
+            sprevw = slice(prevw, sdepth) # Slice previus subtree that can collide with the actual one
+            nleaves = land_red_leaves(sprevw)
+            delta = nl / 2 + nleaves / 2
+            #dist = (nleaves -1) * 109 + gap
+            dist = (delta -1) * 109 + gap
+            print(r"\node ({p.id}) "
+                 r"[pbox, right={d}pt of {s.id}]{{\textbf{{{p.name}}}}};".format(p=prod,s=sib,d=dist),
+                 file=fout)
+        else:
+            if (pid):
+                print(r"\node ({p.id}) "
+                     r"[pbox, below=15mm of {pid}]{{\textbf{{{p.name}}}}};".format(p=prod,pid=pid),
+                     file=fout)
+            else:
+                print(r"\node ({p.id}) "
+                     r"[pbox]{{\textbf{{{p.name}}}}};".format(p=prod),
+                     file=fout)
+        sib = prod
+        prevw = stree
+        if (sdepth > 0):
+            outputLandR2(fout, stree, prod.id) 
+
+    if (pid):
+        drawLines(fout,row)
+    else:
+        ### place root node
+        print(r"\node ({p.id}) "
+             r"[wbbox, above=15mm of {c.id}]{{\textbf{{{p.name}}}}};".format(p=root,c=child),
+             file=fout)
+        print("{} Product lines in TeX ".format(count))
+        drawLines(fout,row)
+    return
+
 
 def outputLandW(fout,ptree):
     childcount = dict() # map of counts of children
@@ -270,6 +479,7 @@ def outputLandW(fout,ptree):
         row.append(ptree[n])
         pn = prod
     rowMap[d] = row # should be root
+
     childcount[pn.parent]=cc
     print(r"Out of loop  depth={d}, rows={r}  nodes={n}".format(d=depth, r=len(rowMap), n=count))
     count=0
@@ -415,17 +625,17 @@ def outputTexTreeP(fout, ptree, width, sib, full):
                     else:  # Figure how low to go  - find my prior sibling
                         psib = fnodes[scount]
                         leaves = ptree.leaves(psib.id)
-                        depth = len(leaves)
+                        depth = len(leaves) - 1
                         lleaf = leaves[depth-1].data
                         # print("Prev: {} psib: {} "
                         #       "llead.parent: {}".format(prev.id, psib.id,
                         #                                 lleaf.parent))
-                        if (lleaf.parent == psib.id):
-                            depth = depth - 1
+                        ##if (lleaf.parent == psib.id):
+                        ##    depth = depth - 1
                         # if (prod.id=="L2"):
                         #     depth=depth + 1 # Not sure why this is one short
                         # the number of leaves below my sibling
-                        dist = depth * blocksize
+                        dist = depth * blocksize + gap
                         # print("{p.id} Depth: {} dist: {} blocksize: {}"
                         #       " siblin: {s.id}".format(depth, dist,
                         #                                s=psib, p=prod))
@@ -442,27 +652,42 @@ def outputTexTreeP(fout, ptree, width, sib, full):
 
 
 def mixTreeDim(ptree):
-    "Return the max second level nodes is counting how many leaves."
+    "Return the max number of elements (hight and width) in a mixed tree."
+
+    stub = slice(ptree, 1) # I want to print only one level down
+    nodes = stub.expand_tree(mode=Tree.WIDTH)
+    row = []
+    count =0
+    root= None
     n2l = 0
     nmaxSub = 0
-    nodes = ptree.expand_tree()
     for n in nodes:
-        depth = ptree.depth(n)
-        #print(depth)
-        if depth == 1:
-            n2l = n2l +1
-            #print('> leaves:', len(ptree.leaves(n)))
+        count= count +1
+        if (count == 1): #  root node
+           root=ptree[n].data
+        else:
+            prod = ptree[n].data
+            stree = ptree.subtree(prod.id)
+            sdepth = stree.depth()
+            n2l = n2l + 1 + sdepth
             subL = len(ptree.leaves(n))
             if subL > nmaxSub:
                nmaxSub = subL
+
+    #nodes = ptree.expand_tree()
+    #for n in nodes:
+    #    depth = ptree.depth(n)
+    #    #print(depth)
+    #    if depth == 1:
     return (n2l, nmaxSub)
 
 def doFile(inFile):
     "This processes a csv and produced a tex tree diagram and a tex longtable."
     f = inFile
     nf = "ProductTree.tex"
-    if (land):
-       nf = "ProductTreeLand.tex"
+    if (land!=None):
+       nf = "ProductTreeLand" + str(land) + ".tex"
+    print('Saving product tree in: ', nf)
     nt = "productlist.tex"
     print("Processing {}-> (figure){} and (table){}".format(f, nf, nt))
 
@@ -470,39 +695,55 @@ def doFile(inFile):
         ptree = constructTree(fin)
     ntree = ptree
 
-    n2, nMS = mixTreeDim(ptree)    
-
-    #print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
-
     paperwidth = 0
     height = 0
     if (outdepth <= 100 ):
         ntree = slice(ptree, outdepth)
-        if (land!=1):
-            paperwidth = 2
-            height = -3
+    else:
+        ntree = ptree
+        #if (land!=1):
+        #    paperwidth = 2
+        #    height = -3
+
+    n2, nMS = mixTreeDim(ntree)    
+
+    #print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
 
     # ptree.show(data_property="name")
-    #if (land==1):   #full landscape
-    #  paperwidth = paperwidth + len(ntree.leaves()) * 6.2 # cm
-    #  height = height + ntree.depth() * leafHeight + 0.5  # cm
-    #elif (land==2):  #mixed landscape/portrait
-    if (land):
-      paperwidth = paperwidth + ( ntree.depth() * 5.2 ) * n2 + 0.7 # cm
+    if (land==1):   #full landscape
+      # get the number of groups of leaves
+      tree_depth = ntree.depth()
+      reduced_tree = slice(ntree, tree_depth -1)
+      paperwidth = paperwidth + len(ntree.leaves()) * ( leafWidth + smallGap ) + len(reduced_tree.leaves()) * bigGap # cm
+      height = height + ( ntree.depth() + 1 ) * ( leafHeight + 1.5 )  # cm
+    elif (land==2):  #mixed landscape/portrait
+      paperwidth = paperwidth + 5.2 * n2 + 0.7 # cm
       streew=paperwidth
       height = height + nMS * 1.6  # cm
+    elif (land==3 or land==0):  #recursive landscape, same spacing
+      # get the number of groups of leaves
+      #print('-------------------------')
+      nl = land_red_leaves(ntree)
+      print('-------------------------', nl)
+      paperwidth = paperwidth + nl  * ( leafWidth + smallGap ) # cm
+      height = height + ( ntree.depth() + 1 ) * ( leafHeight + 1.5 )  # cm
     else:
-      paperwidth = paperwidth + ntree.depth() * 6.2  # cm
+      paperwidth = paperwidth + ( ntree.depth() + 1 ) * ( leafWidth + bigGap ) # cm
       streew=paperwidth
-      height = len(ntree.leaves()) * 1.6 + 0.5 # cm
+      height = len(ntree.leaves()) * leafHeight + 0.5 # cm
 
     print('height:', height, '; width:', paperwidth)
 
     with open(nf, 'w') as fout:
         header(fout, paperwidth, height)
-        if (land):
-            #outputLandW(fout, ntree)
+        if (land==0):
+            outputLandR2(fout, ntree, None)
+        elif (land==1):
+            outputLandW(fout, ntree)
+        elif (land==2):
             outputLandMix(fout, ntree)
+        elif (land==3):
+            outputLandR(fout, ntree, None)
         else:
             outputTexTree(fout, ntree, paperwidth)
         footer(fout)
@@ -587,10 +828,14 @@ def tfooter(tout):
 
 parser = argparse.ArgumentParser()
 parser.add_argument("--depth", help="make tree pdf stopping at depth ", type=int, default=100)
-parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make landscape)", type=bool, default=0 )
+parser.add_argument("--land", help="make tree pdf landscape rather than portrait default portrait (1 to make full landscape, 2 mixed)", type=int, default=None )
 parser.add_argument("--file", help="Input csv file ", default='DM Product Properties.csv')
 args = parser.parse_args()
 outdepth=args.depth
 land=args.land
+if (land==None):
+    print('Output portraint')
+else:
+    print('Output landscape ', land)
 inp=args.file
 doFile(inp)
