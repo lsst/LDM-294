@@ -27,7 +27,7 @@ ProductTree.pdf: ProductTree.tex
 	$(MKPDF) $<
 
 ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
-	python makeProductTree.py --land=1
+	python makeProductTree.py --land=2 --file=${PRODUCT_CSV}
 
 ProductTreeLand.pdf: ProductTreeLand.tex
 	$(MKPDF) $<

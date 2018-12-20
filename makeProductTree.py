@@ -392,7 +392,7 @@ def outputLandR(fout, ptree, pid):
     sib=None
     count =1 # the root
     prev= None
-    prevw = None 
+    prevw = None
     pnl = None
     tnnl = []
     for n in row:
@@ -401,8 +401,8 @@ def outputLandR(fout, ptree, pid):
         sdepth = stree.depth()
         if (sib):
             sprevw = slice(prevw, sdepth) # Slice previus subtree that can acomodated with the actual one
-            nleaves = len(sprevw.leaves()) 
-            #nleaves = land_red_leaves(sprevw) 
+            nleaves = len(sprevw.leaves())
+            #nleaves = land_red_leaves(sprevw)
             #if prod.id=='lsstobs':
             #    print(nleaves, prod.name)
             #print('Previous tree:\n', sprevw)
@@ -424,7 +424,7 @@ def outputLandR(fout, ptree, pid):
         sib = prod
         prevw = stree
         if (sdepth > 0):
-            outputLandR(fout, stree, prod.id) 
+            outputLandR(fout, stree, prod.id)
 
     if (pid):
         drawLines(fout,row)
@@ -461,7 +461,7 @@ def outputLandR2(fout, ptree, pid, prevd, prevl):
     #print('root', root.id, nch)
     sib=None
     count =1 # the root
-    prevw = None 
+    prevw = None
     pnl = 0
     pdph = 0
     plad = 0
@@ -497,7 +497,7 @@ def outputLandR2(fout, ptree, pid, prevd, prevl):
                     #    alpd = land_red_leaves2(astree, 'debug')
                     #else:
                     alpd = land_red_leaves2(astree, None)
-                al = land_red_leaves2(stree, None)                
+                al = land_red_leaves2(stree, None)
             else:
                 al = land_red_leaves2(stree, None)
 
@@ -514,7 +514,7 @@ def outputLandR2(fout, ptree, pid, prevd, prevl):
                  r"[pbox, right={d}pt of {s.id}]{{\textbf{{{p.name}}}}};".format(p=prod,s=sib,d=dist),
                  file=fout)
         else:
-            # 
+            #
             al = land_red_leaves2(stree, None)
             if (pid):
                 dist = 109 * ( (nch - 1 ) / 2 - 1 ) + gap * ( ( nch - 1 ) / 2 + 1 )
@@ -528,12 +528,12 @@ def outputLandR2(fout, ptree, pid, prevd, prevl):
                      r"[pbox]{{\textbf{{{p.name}}}}};".format(p=prod),
                      file=fout)
         if (sdepth > 0):
-            outputLandR2(fout, stree, prod.id, pdph, pnl) 
+            outputLandR2(fout, stree, prod.id, pdph, pnl)
         sib = prod
         if (pnl < al and sdepth>=pdph):
             prevw = stree
             pnl = al
-            pdph = sdepth            
+            pdph = sdepth
 
     if (pid):
         drawLines(fout,row)
@@ -789,7 +789,7 @@ def doFile(inFile):
     f = inFile
     nf = "ProductTree.tex"
     if (land!=None):
-       nf = "ProductTreeLand" + str(land) + ".tex"
+       nf = "ProductTreeLand.tex"
     print('Saving product tree in: ', nf)
     nt = "productlist.tex"
     print("Processing {}-> (figure){} and (table){}".format(f, nf, nt))
@@ -809,7 +809,7 @@ def doFile(inFile):
         #    paperwidth = 2
         #    height = -3
 
-    n2, nMS = mixTreeDim(ntree)    
+    n2, nMS = mixTreeDim(ntree)
 
     #print('>n2 - tree depth: ', n2, ntree.depth(), nMS)
 
