@@ -144,11 +144,11 @@ DMCCB validates that the form and content of the Technical Baseline is consisten
 \item Responsibilities:
         \begin{itemize}
         \item Determine when deliverables (controlled documents and software) are ready to be baselined (placed under configuration controlled status) or released. This include LDM series documents.
-        \item Review and approve/reject proposed changes to baselined items
-        \item Review and approve all RFCs prior to 'Adoption'.
+        \item Review and approve/reject proposed changes to baselined items - any LCR must go through the DMCCB before being submitted to the project CCB.
+        \item Review all RFCs and approves \textit{flagged} RFCs prior to 'Adoption'
         \item Monitor and approve DM software releases
-        \item Monitor the status of issues in the DM project on Jira.
-        \item Ensure that the DM follows LSST and DM configuration control processes.
+        \item Monitor the status of issues in the DM project on Jira
+        \item Ensure that the DM Technical Baseline (LDM-xxx) follows LSST and DM configuration control processes.
         \end{itemize}
 \item Membership:
         \begin{itemize}
@@ -176,6 +176,17 @@ DMCCB validates that the form and content of the Technical Baseline is consisten
 
 The DMCCB will meet, physically or virtually, every week for 30 minutes. Agenda will be available beforehand.
 Urgent decisions can be taken offline, outside the weekly meeting, in a modality to be defined by the DMCCB itself (email or slack channel).
+
+All RFCs that implies one of the following changes:
+
+\begin{itemize}
+\item Changes to controlled documents
+\item API changes to the codebase, including deprecations
+\item Data model changes
+\end{itemize}
+ 
+need to be \textit{flagged} and therefore approved by the DMCCB, as detailed in the \href{https://developer.lsst.io/communications/rfc.html#rfc-exceptions}{Developer Guide}.
+
 
 \subsection{DM Science Validation Team}
 \label{sect:dmsvt}
