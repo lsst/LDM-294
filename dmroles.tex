@@ -232,16 +232,21 @@ The DM Science Validation Scientist leads the Science Validation team (\secref{s
 This individual has primary responsibility for planning, executing and analyzing the results of science validation activities, as defined in \citeds{LDM-503}; typically, this includes large-scale data challenges.
 The Science Validation Scientist is responsible for End to End Science validation and reports to the DM Subsystem Scientist.
 
-\subsection{Cross cutting roles}\label{role:crosscut}
-There are at least two roles which involve work across institute and WBS boundaries.
-These individuals act coordinators for the cross cutting activity, including holding standups and resolving technical difficulties.
-They should provide a schedule for the activities and synchronize it with the other TCAMS.
-Day to day management of staff resides with the WBS TCAM - stories loaded on individuals have to be agreed the the relevant TCAM.
-Though  this is  more a coordination oriented role the managers  have authority to prioritize stories in the relevant WBS areas.
-\subsubsection{LSP manager} \label{role:lsplead}
-The LSST Science Platform spans multiple WBS elements  bringing together authentication, front end services, database access and notebook execution. Frossie Economou is the manager for the LSP.
+\subsection{Cross-Cutting Roles}\label{role:crosscut}
 
-\subsubsection{Middleware manager} \label{role:mwlead}
-Middleware covers several WBS elements and requires multiple parts of the system to work in unison. This brings together
- task execution, workflow management , data access (butler), and provenance. Fritz Mueller is the middleware manager.
+There are at least two roles which involve managing work across institute and WBS boundaries.
+These individuals act coordinators for the cross-cutting activity, including organizing ``standup'' (or other) meetings and resolving technical difficulties.
+They should develop a master schedule for activities within their area of responsibility and synchronize it with the T/CAMs who are managing individual teams.
+Day-to-day management of staff resides with the T/CAM of the appropriate WBS; it follows that stories can only be assigned to individuals with the agreement of that T/CAM.
+Though this is more a coordination-oriented role, these managers have authority to prioritize stories in the relevant area.
 
+\subsubsection{Science Platform Manager}\label{role:lsplead}
+
+The LSST Science Platform spans multiple WBS elements bringing together authentication, front-end services, database access, and notebook execution.
+At time of writing, Frossie Economou is the Science Platform Manager.
+
+\subsubsection{Middleware Manager}\label{role:mwlead}
+
+Middleware covers several WBS elements and requires multiple parts of the system to work in unison.
+This includes together task execution, workflow management, data access abstractions (the ``Data Butler''), and provenance.
+At time of writing, Fritz Mueller is the Middleware Manager.
