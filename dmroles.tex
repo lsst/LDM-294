@@ -57,7 +57,7 @@ Specific authorities include:
 
 \subsection{Deputy DM Subsystem Scientist (DMSS) \label{role:ddmss} }
 
-The relationship the Subsytem Scientist and deputy is equivalent to that
+The relationship the Subsystem Scientist and deputy is equivalent to that
 between the Project Manager and deputy (see \secref{role:ddmpm}).
 
 
@@ -231,3 +231,22 @@ Institutional science leads are members of the DM System Science Team (\secref{s
 The DM Science Validation Scientist leads the Science Validation team (\secref{sect:dmsvt}).
 This individual has primary responsibility for planning, executing and analyzing the results of science validation activities, as defined in \citeds{LDM-503}; typically, this includes large-scale data challenges.
 The Science Validation Scientist is responsible for End to End Science validation and reports to the DM Subsystem Scientist.
+
+\subsection{Cross-Cutting Roles}\label{role:crosscut}
+
+There are at least two roles which involve managing work across institute and WBS boundaries.
+These individuals act coordinators for the cross-cutting activity, including organizing ``standup'' (or other) meetings and resolving technical difficulties.
+They should develop a master schedule for activities within their area of responsibility and synchronize it with the T/CAMs who are managing individual teams.
+Day-to-day management of staff resides with the T/CAM of the appropriate WBS; it follows that stories can only be assigned to individuals with the agreement of that T/CAM.
+Though this is more a coordination-oriented role, these managers have authority to prioritize stories in the relevant area.
+
+\subsubsection{Science Platform Manager}\label{role:lsplead}
+
+The LSST Science Platform spans multiple WBS elements bringing together authentication, front-end services, database access, and notebook execution.
+At time of writing, Frossie Economou is the Science Platform Manager.
+
+\subsubsection{Middleware Manager}\label{role:mwlead}
+
+Middleware covers several WBS elements and requires multiple parts of the system to work in unison.
+This includes together task execution, workflow management, data access abstractions (the ``Data Butler''), and provenance.
+At time of writing, Fritz Mueller is the Middleware Manager.
