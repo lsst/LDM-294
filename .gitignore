@@ -18,6 +18,7 @@ LDM-294.pdf
 ## Intermediate documents:
 *.dvi
 *-converted-to.*
+acronyms.tex
 wbslist.tex
 ProductTree.tex
 ProductTree.pdf
