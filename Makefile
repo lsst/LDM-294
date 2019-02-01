@@ -13,7 +13,7 @@ all : LDM-294.pdf
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES}
 	$(MKPDF) -bibtex -f LDM-294.tex
 
-acronyms.tex:  ${TEX} myacronyms.txt
+acronyms.tex:  ${TEX} myacronyms.txt skipacronyms.txt
 	$(TEXMFHOME)/../bin/generateAcronyms.py  ${TEX}
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
