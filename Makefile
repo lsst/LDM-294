@@ -10,7 +10,7 @@ PRODUCT_CSV=DM\ Product\ Properties.csv
 
 all : LDM-294.pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES}
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} acronyms.tex
 	$(MKPDF) -bibtex -f LDM-294.tex
 
 acronyms.tex:  ${TEX} myacronyms.txt skipacronyms.txt
@@ -38,7 +38,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex acronyms.tex
 
 # "travis-all" must only call Latex
 travis-all: *.tex
