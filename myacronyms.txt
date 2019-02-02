@@ -25,6 +25,8 @@ DMTN:DM Technical Note
 DR:Data Release
 DRP:Data Release Production
 EFD:Engineering Facilities Database
+EVM:Earned Value Management
+FIU:Florida International University
 ICBS:International Communications and Base Site
 IPAC: No longer an acronym
 IRSA:Infrared Science Archive
@@ -68,5 +70,6 @@ TCT:Technical Control Team (Obsolete - now DMCCB)
 TS:Test Specification
 US:United States
 VO:Virtual Observatory
+WAN:Wide Area Network
 WCS:World Coordinate System
 bps:bit(s) per second
