@@ -1,6 +1,6 @@
 export TEXMFHOME ?= lsst-texmf/texmf
 
-TEX=DDMP.tex	dmgroups.tex	dmroles.tex	leadtutes.tex	probman.tex LDM-294.tex	devprocess.tex	dmorg.tex	dmwbs.tex dmarc.tex	dmproducts.tex intro.tex productlist.tex
+TEX=DDMP.tex LDM-294.tex devprocess.tex dmarc.tex dmgroups.tex dmorg.tex dmproducts.tex dmroles.tex dmwbs.tex intro.tex leadtutes.tex probman.tex productlist.tex wbslist.tex
 
 MKPDF=latexmk -pdf
 
