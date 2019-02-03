@@ -1,17 +1,13 @@
-
-
-
-AP:Alerts Production
+AP:Alert Production
 AURA:Association of Universities for Research in Astronomy
-CAM: CAMera
 CB:Configuration Baseline
+CC:Change Control
 CCB:Change Control Board
-CI:Configuration Item
-CIL:Configuration Item List
 CM:Configuration Management
 CR:Change Request
 DAC:Data Access Center
 DAX:Data access services
+DBB:Data Back Bone
 DC:Data Center
 DCR:Document Change Request
 DDMPM:Data Management Deputy Project Manager
@@ -22,14 +18,18 @@ DMLT: DM Leadership Team
 DMO:Data Management Organization
 DMPM:Data Management Project Manager
 DMS:Data Management Sub-system
-DMSE:Data Management System Engineering
+DMSE:Data Management System Engineer
 DMSR:DM System Requirements
 DMSS:DM Subsystem Scientist
 DMTN:DM Technical Note
+DR:Data Release
 DRP:Data Release Production
 EFD:Engineering Facilities Database
+EVM:Earned Value Management
+FIU:Florida International University
 ICBS:International Communications and Base Site
 IPAC: No longer an acronym
+IRSA:Infrared Science Archive
 IS:Interface Scientist
 ISR:Instrument Signal Removal
 IT:Integration Test
@@ -38,22 +38,29 @@ LCR:LSST Change Request
 LDF:LSST Data Facility
 LPM:LSST Project Management (Document Handle)
 LSE:LSST Systems Engineering (Document Handle)
+LSR:LSST Science Requirements
 MC:Monte-Carlo (simulation/process)
-MOPS:Moving Object Pipelines
+MOPS:Moving Object Processing System
 NCSA: National Center for Supercomputing Applications
+NET:Network Engineering Team
 NSF:National Science Foundation
 OCS:Observatory Control System
+OS:Operating System
 OSS:Observatory System Specifications
 PDF:Portable Document Format
 PM:Project Manager
 PMCS:Project Management Control System
+PMP:Planning Management Plan
 PS:Project Scientist
 PST:Project Science Team
+REUNA:Red Universitaria Nacional 
+RM:Release Manager
 SA:Science Alert(s)
 SEMP:Systems Engineering Management Plan
 SLA:Service Level Agreement
 SLAC:Stanford Linear Accelerator Center
 SS:Subsystem Scientist
+SST:Subsystem Science Team
 SUI:Science User Interface
 SUIT:Science User Interface and Tools
 SW:Software (also denoted S/W)
@@ -63,14 +70,6 @@ TCT:Technical Control Team (Obsolete - now DMCCB)
 TS:Test Specification
 US:United States
 VO:Virtual Observatory
+WAN:Wide Area Network
 WCS:World Coordinate System
 bps:bit(s) per second
-DBB:Data Back Bone
-REUNA:Red Universitaria Nacional 
-IRSA:Infrared Science Archive
-LSR:LSST Sceince Requirements
-CC:Change Control
-DR:Data Release
-OS:Operating System
-PMP:Planning Management Plan
-SST:Subsystem Science Team
