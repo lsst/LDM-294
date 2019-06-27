@@ -13,8 +13,10 @@ all : LDM-294.pdf
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} acronyms.tex
 	$(MKPDF) -bibtex -f LDM-294.tex
 
-acronyms.tex:  ${TEX} myacronyms.txt skipacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py  ${TEX}
+
+#Run with -u manually to put \gls on glossary entries 
+aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex 
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
@@ -38,7 +40,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex acronyms.tex
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
 
 # "travis-all" must only call Latex
 travis-all: *.tex

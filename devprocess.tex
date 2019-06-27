@@ -1,34 +1,34 @@
 \section{Development Process} \label{sect:devproc}
 
-In many respects, DM is effectively a large software project --- in particular, we are developing scientific software, and must face all the uncertainties implied by that.
+In many respects, \gls{DM} is effectively a large software project --- in particular, we are developing scientific software, and must face all the uncertainties implied by that.
 An agile process \citep{it:agile} is particularly suited to scientific
 software development of this sort.
 
 DM has adopted a cyclical approach to software development, with a period of six months.
 At the beginning of each development cycle, we define a set of ``epics'', which correspond to major pieces of work to be undertaken during the cycle.
 
-During the development cycle, all code is kept under continuous integration\footnote{Currently using the Jenkins tool; \url{https://jenkins.io}} (CI).
+During the development cycle, all code is kept under continuous integration\footnote{Currently using the Jenkins tool; \url{https://jenkins.io}} (\gls{CI}).
 Code is managed on GitHub\url{https://github.com}, and is made available using an open source license.
 
-Releases follow the six-month cadence, but the CI system ensures that code on the \texttt{master} branch is always deployeable.
+Releases follow the six-month cadence, but the \gls{CI} system ensures that code on the \texttt{master} branch is always deployeable.
 
-\citeds{DMTN-020} describes in detail the intgration of DM's agile approach to software development with the Earned Value Managenent system used by the LSST construction project.
+\citeds{DMTN-020} describes in detail the intgration of \gls{DM}'s agile approach to software development with the \gls{Earned Value} Managenent system used by the \gls{LSST} construction project.
 
 \subsection{Communications}
 
-The epics for each six-month development cycle are agreed at the DMLT face-to-face meeting near the beginning of the period (see \secref{sect:dmlt}).
+The epics for each six-month development cycle are agreed at the \gls{DMLT} face-to-face meeting near the beginning of the period (see \secref{sect:dmlt}).
 
 The T/CAMs of each of the institutions meet via video on Tuesdays and Fridays for a short ``standup'' meeting to ensure that any cross-team issues are surfaced and resolved expeditiously.
-This meeting is chaired by the Deputy Project Manager.
-Each T/CAM notes any significant progress of interest to other teams and any problems or potential problems that may arise.
+This meeting is chaired by the Deputy \gls{Project Manager}.
+Each \gls{T/CAM} notes any significant progress of interest to other teams and any problems or potential problems that may arise.
 
 \subsection{Conventions}
 Coding guidelines and conventions are documented online in \url{https://developer.lsst.io}
 
 \subsection{Reviews} \label{sect:reviews}
 
-The DM Project Manager and Subsystem Scientist will periodically convene internal reviews (following \citeds{LSE-159})
-of major DM components as necessary to assess progress and maintain the integrity of the overall system. Planned DM reviews will be listed at the LSST Project Review Hub (\url{https://project.lsst.org/reviews/hub/}).
+The \gls{DM} \gls{Project Manager} and \gls{Subsystem Scientist} will periodically convene internal reviews (following \citeds{LSE-159})
+of major \gls{DM} components as necessary to assess progress and maintain the integrity of the overall system. Planned \gls{DM} reviews will be listed at the \gls{LSST} Project \gls{Review Hub} (\url{https://project.lsst.org/reviews/hub/}).
 %\begin{itemize}
 
 %\item  Science and Alerts Pipelines Review
@@ -42,10 +42,10 @@ of major DM components as necessary to assess progress and maintain the integrit
   %\item  Calibration Review
 %\end{itemize}
 
-In addition, smaller components of the system will undergo DM-internal design reviews.  The DMPM decides what will be reviewed (with input from all DM members) and is the Decision Making Authority for approving review recommendations.  Participants in the design review will normally include all members of the DMCCB and other experts as appropriate (e.g. the LSST Information Security Officer or designated substitute if there are any security implications).  The design review will check that the design:
+In addition, smaller components of the system will undergo DM-internal design reviews.  The \gls{DMPM} decides what will be reviewed (with input from all DM members) and is the Decision Making Authority for approving review recommendations.  Participants in the design review will normally include all members of the \gls{DMCCB} and other experts as appropriate (e.g. the \gls{LSST} Information Security Officer or designated substitute if there are any security implications).  The design review will check that the design:
 \begin{itemize}
 \item meets the requirements and satisfies the use cases, and an implementation can be verified as doing so
-\item conforms to the LSST DM architecture and has well-defined interfaces
+\item conforms to the \gls{LSST} \gls{DM} architecture and has well-defined interfaces
 \item is expected to be efficient in terms of labor cost, non-labor cost, and schedule
 \item is expected to be reliable, maintainable, supportable, usable, and secure
 \item conforms to good engineering practices
@@ -55,7 +55,7 @@ Design review presentations should include:
 \begin{itemize}
 \item the identification of the components under review in terms of where they fit within the overall architecture
 \item use cases and requirements applicable to the components under review that show how they will be used and how they respond/support all usage
-\item an API or other description of the public interfaces to the components under review
+\item an \gls{API} or other description of the public interfaces to the components under review
 \item a description of the internal patterns and algorithms to be used in the design, known limitations to those, and justification why the limitations are acceptable for this development
 \item a description of the technological approach to implementation, including use of any third-party components, and reuse of existing elements (e.g. this will be a specialization of the XYZ framework classes)
 \item a description of how the function and performance of the component(s) under review will be tested
