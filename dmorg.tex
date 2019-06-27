@@ -4,7 +4,7 @@ This section defines the organizational structure during the period in which the
 
 The \gls{DM} \gls{Project Manager} (William O'Mullane), Deputy \gls{Project Manager} (John Swinbank) and \gls{DM} \gls{Subsystem Scientist} (Leanne Guy), who are known collectively as \gls{DM} Management, lead the \gls{DM} Subsystem.
 The \gls{Project Manager} has direct responsibility for coordination with the overall \gls{LSST} Project Office, the \gls{LSST} \gls{Change Control Board}, the \gls{LSST} Corporation, and \gls{LSST} partner organizations on all budgetary, schedule, and resource matters.
-The \gls{Subsystem Scientist} has primary scientific and technical responsibility within the subsystem and responsibility for ensuring that the scientific requirements of the \gls{LSST} are supported and is a member of the \gls{LSST} \gls{PST}.
+The \gls{Subsystem Scientist} has primary scientific and technical responsibility within the subsystem and responsibility for ensuring that the scientific requirements of the \gls{LSST} are supported and is a member of the \gls{LSST} \gls{Project Science Team} (\gls{PST}).
 
 DM views its deliverables as hierarchical tree of \textit{products}, as described in \secref{sect:products}.
 The subsystem organization is based around groups which are responsible for the highest levels of that product tree (corresponding to \gls{Work Breakdown Structure} elements at the third level, i.e. \textit{1.02C.n}; refer to \secref{sect:WBS}).
@@ -158,6 +158,24 @@ The \gls{DMCCB} maintains the release plan, \citeds{LDM-564}, synchronized with 
 \footnote{As of January 2019 the release plan needs to be reviewed and the release milestones listed therein need to be made consistent with the scope of the document.
 Issue \gls{DM}-17001 is tracking this activity.}
 
+All releases will be identified by a release issue.
+
+Any unscheduled release, major, minor or \gls{patch}, needs to be requested by the end user to the \gls{DMCCB} using a \gls{RFC} Jira issue. The \gls{RFC} shall contain:
+
+\begin{itemize}
+\item The justification for the release.
+\item The date the release is requested to be available.
+\item A list of proposed functionalities or fixes (Jira issues) which are requested to be implemented in the release.
+\end{itemize}
+
+The \gls{DMCCB} will assess the release request within one week. If the release is urgent, \gls{DMCCB} will assess it within 24 hours.
+The \gls{DMCCB} will approve or reject the proposed release and add a comment to the \gls{RFC} with the reason of rejection or, in case of approval, with the following information:
+
+\begin{itemize}
+\item The release identifier (version number NN.nn ).
+\item The estimated release date.
+\item The list of Jira issues that will be included.
+\end{itemize}
 
 
 \subsection {Risk Management } \label{sect:risk}
