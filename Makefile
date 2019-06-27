@@ -7,11 +7,15 @@ MKPDF=latexmk -pdf
 GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 PRODUCT_CSV=DM\ Product\ Properties.csv
-
-all : LDM-294.pdf
+DOC=LDM-294
+SRC=$(DOC).tex
+all $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} acronyms.tex
-	$(MKPDF) -bibtex -f LDM-294.tex
+	$(MKPDF) -bibtex -f $(SRC)
+	makeglossaries $(DOC)        
+	xelatex  $(SRC)
+
 
 
 #Run with -u manually to put \gls on glossary entries 
