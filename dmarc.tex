@@ -1,23 +1,23 @@
 \section{Data Management Conceptual Architecture \label{sect:dmarc}}
 
-The DM Subsystem Architecture is detailed in \citeds{LDM-148}.
-A few of the higher level diagrams are reproduced here to orient the reader within DM.
+The \gls{DM} \gls{Subsystem} Architecture is detailed in \citeds{LDM-148}.
+A few of the higher level diagrams are reproduced here to orient the reader within \gls{DM}.
 
-During Operations, components of the DM Subsystem will be installed and run in
+During \gls{Operations}, components of the \gls{DM} \gls{Subsystem} will be installed and run in
 multiple locations. These include:
 
 \begin{itemize}
-\item The Commissioning Cluster in the Base Facility in La Serena, Chile
-\item The main compute facility at NCSA in Urbana-Champaign
-\item The US Data Access Center (DAC), also at NCSA in Urbana-Champaign
-\item The Chilean DAC in the Base Facility
-\item The Satellite Processing Center at CC-IN2P3 in Lyon, France
+\item The \gls{Commissioning} Cluster in the \gls{Base Facility} in La Serena, Chile
+\item The main compute facility at \gls{NCSA} in Urbana-Champaign
+\item The \gls{US} \gls{Data Access Center} (\gls{DAC}), also at \gls{NCSA} in Urbana-Champaign
+\item The Chilean \gls{DAC} in the \gls{Base Facility}
+\item The Satellite Processing \gls{Center} at \gls{CC}-IN2P3 in Lyon, France
 \end{itemize}
 
-\figref{fig:dmsdeploy} shows the various DM components which will be used in operations and the physical compute environments in which they will be deployed.
-Bulk data storage and transport between components is provided by the Data Backbone. This complex piece of infrastructure is displayed in \figref{fig:databb}.
+\figref{fig:dmsdeploy} shows the various \gls{DM} components which will be used in operations and the physical compute environments in which they will be deployed.
+Bulk data storage and transport between components is provided by the \gls{Data Backbone}. This complex piece of infrastructure is displayed in \figref{fig:databb}.
 
-Science users will access the data products produced by LSST through the
+Science users will access the data products produced by \gls{LSST} through the
 Science Platform, as shown in \figref{fig:sciplat}.
 
 \figref{fig:dcs} shows the common infrastructure and services layer which underlies the compute environments.
@@ -26,7 +26,7 @@ This does not list specific technologies for management/monitoring, provisioning
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=1.0\textwidth, trim={0cm 15cm 0cm 0cm}]{images/DMSDeployment}
-\caption{DM components as deployed during Operations. Refer to \citeds{LDM-148} for details of each component.}
+\caption{DM components as deployed during \gls{Operations}. Refer to \citeds{LDM-148} for details of each component.}
 \label{fig:dmsdeploy}
 \end{center}
 \end{figure}
@@ -34,7 +34,7 @@ This does not list specific technologies for management/monitoring, provisioning
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.5\textwidth]{images/SciencePlatform}
-\caption{The sub-components of the Science Platform. \label{fig:sciplat}}
+\caption{The sub-components of the \gls{Science Platform}. \label{fig:sciplat}}
 \end{center}
 \end{figure}
 
@@ -42,43 +42,43 @@ This does not list specific technologies for management/monitoring, provisioning
 \begin{figure}[htbp]
 \begin{center}
 \includegraphics[width=0.6\textwidth]{images/DataBackbone}
-\caption{The Data Backbone links all the physical components of DM. \label{fig:databb}}
+\caption{The \gls{Data Backbone} links all the physical components of \gls{DM}. \label{fig:databb}}
 \end{center}
 \end{figure}
 
 \begin{figure}[htbp]
 \begin{center}
  \includegraphics[width=\textwidth, trim={0cm 14cm 0cm 0cm}]{images/DMSCommonServices}
-\caption{Common infrastructure services available at DM locations. \label{fig:dcs}}
+\caption{Common infrastructure services available at \gls{DM} locations. \label{fig:dcs}}
 \end{center}
 \end{figure}
 
 
 
 \subsection{External Interfaces \& Auxiliary Data}
-The DM external interfaces are controlled by the ICDs listed in \tabref{tab:icds}.
+The \gls{DM} external interfaces are controlled by the ICDs listed in \tabref{tab:icds}.
 
 \begin{table}
     \begin{center}
       \caption{DM Interface Control Documents \label{tab:icds}}
       \begin{tabular}{l p{0.7\textwidth}}
           \hline
-          \citeds{LSE-68} & Data Acquisition Interface between Data Management and Camera\\
-          \citeds{LSE-69} & Interface between the Camera and Data Management   \\
-          \citeds{LSE-72} & OCS Command Dictionary for Data Management\\
-          \citeds{LSE-75} & Control System Interfaces between the Telescope and Data Management\\
-          \citeds{LSE-76} & Infrastructure Interfaces between Summit Facility and Data Management\\
-          \citeds{LSE-77} & Infrastructure Interfaces between Base Facility and Data Management\\
-          \citeds{LSE-130} & List of Data Items to be Exchanged Between the Camera and Data Management\\
-          \citeds{LSE-131} & Data Management Interface Requirements to Support Education and Public Outreach \\
-          \citeds{LSE-140} & Auxiliary Instrumentation Interface between Data Management and Telescope\\
+          \citeds{LSE-68} & Data Acquisition Interface between \gls{Data Management} and \gls{Camera}\\
+          \citeds{LSE-69} & Interface between the \gls{Camera} and \gls{Data Management}   \\
+          \citeds{LSE-72} & \gls{OCS} Command Dictionary for \gls{Data Management}\\
+          \citeds{LSE-75} & Control System Interfaces between the Telescope and \gls{Data Management}\\
+          \citeds{LSE-76} & Infrastructure Interfaces between \gls{Summit Facility} and \gls{Data Management}\\
+          \citeds{LSE-77} & Infrastructure Interfaces between \gls{Base Facility} and \gls{Data Management}\\
+          \citeds{LSE-130} & List of Data Items to be Exchanged Between the \gls{Camera} and \gls{Data Management}\\
+          \citeds{LSE-131} & \gls{Data Management} Interface Requirements to Support Education and Public Outreach \\
+          \citeds{LSE-140} & Auxiliary Instrumentation Interface between \gls{Data Management} and Telescope\\
           \hline
       \end{tabular}
     \end{center}
 \end{table}
 
-In addition, certain tasks in DM rely on external catalogs and other information.
+In addition, certain tasks in \gls{DM} rely on external catalogs and other information.
 The current design requires:
 \begin{itemize}
-\item Gaia catalog (Release 2) as a photometry baseline.
+\item Gaia catalog (\gls{Release} 2) as a photometry baseline.
 \end{itemize}
