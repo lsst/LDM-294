@@ -9,9 +9,9 @@ GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 PRODUCT_CSV=DM\ Product\ Properties.csv
 DOC=LDM-294
 SRC=$(DOC).tex
-all $(DOC).pdf
+all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} acronyms.tex
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	$(MKPDF) -bibtex -f $(SRC)
 	makeglossaries $(DOC)        
 	xelatex  $(SRC)
