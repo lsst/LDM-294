@@ -13,8 +13,11 @@ all: $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	$(MKPDF) -bibtex -f $(SRC)
-	makeglossaries $(DOC)        
+	echo "JDS Look here! running makeglossaries"
+	makeglossaries $(DOC)
+	echo "JDS Look here! running xelatex"
 	xelatex  $(SRC)
+	echo "JDS Look here! running done"
 
 
 
