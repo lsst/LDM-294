@@ -13,14 +13,14 @@ all: $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	$(MKPDF) -bibtex -f $(SRC)
-	makeglossaries $(DOC)        
+	makeglossaries $(DOC)
 	xelatex  $(SRC)
 
 
 
-#Run with -u manually to put \gls on glossary entries 
+#Run with -u manually to put \gls on glossary entries
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex 
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
@@ -53,4 +53,4 @@ travis-all: *.tex
 
 clean :
 	latexmk -c
-	rm *.pdf *.nav *.bbl *.xdv *.snm
+	rm *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
