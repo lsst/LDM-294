@@ -28,11 +28,11 @@ class Product(object):
         self.name = name
         self.parent = parent
         self.desc = desc
-        self.wbs = wbs
+        self.wbs = re.sub(r',(?!\s)', ', ', wbs)
         self.manager = manager
         self.owner = owner
         self.kind = kind
-        self.pkgs = pkgs
+        self.pkgs = re.sub(r',(?!\s)', ', ', pkgs)
 
 
 def constructTree(fin):

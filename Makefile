@@ -44,3 +44,7 @@ generated: $(GENERATED_FIGURES_TEX) wbslist.tex acronyms.tex
 travis-all: *.tex
 	for f in $(GENERATED_FIGURES_TEX); do $(MKPDF) "$$f" ; done
 	$(MKPDF) -bibtex -f LDM-294
+
+clean :
+	latexmk -c
+	rm *.pdf *.nav *.bbl *.xdv *.snm
