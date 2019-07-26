@@ -12,15 +12,21 @@ SRC=$(DOC).tex
 all: $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
-	$(MKPDF) -bibtex -f $(SRC)
+	xelatex $(DOC)
 	makeglossaries $(DOC)
-	xelatex  $(SRC)
+	bibtex $(DOC)
+	$(MKPDF) -bibtex -f $(SRC)
 
 
 
-#Run with -u manually to put \gls on glossary entries
+# Run with -u manually to put \gls on glossary entries
+# Note need to run multiple times to recursively expand all glossary entries!
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
@@ -53,4 +59,4 @@ travis-all: *.tex
 
 clean :
 	latexmk -c
-	rm *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
+	rm -f *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
