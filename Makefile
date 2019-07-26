@@ -15,6 +15,8 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	$(MKPDF) -bibtex -f $(SRC)
 	makeglossaries $(DOC)
 	xelatex  $(SRC)
+	xelatex  $(SRC)
+	xelatex  $(SRC)
 
 
 
@@ -53,4 +55,4 @@ travis-all: *.tex
 
 clean :
 	latexmk -c
-	rm *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
+	rm -f *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
