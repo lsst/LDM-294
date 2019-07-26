@@ -12,11 +12,10 @@ SRC=$(DOC).tex
 all: $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
-	$(MKPDF) -bibtex -f $(SRC)
+	xelatex $(DOC)
 	makeglossaries $(DOC)
-	xelatex  $(SRC)
-	xelatex  $(SRC)
-	xelatex  $(SRC)
+	bibtex $(DOC)
+	$(MKPDF) -bibtex -f $(SRC)
 
 
 
