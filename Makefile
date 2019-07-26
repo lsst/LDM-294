@@ -19,9 +19,14 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 
 
 
-#Run with -u manually to put \gls on glossary entries
+# Run with -u manually to put \gls on glossary entries
+# Note need to run multiple times to recursively expand all glossary entries!
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
