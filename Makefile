@@ -52,9 +52,12 @@ productlist.tex: ProductTree.tex
 # "generated" can call python.
 generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
 
-# "travis-all" must only call Latex
+# "travis-all" must only call LaTeX & associated commands (makeglossaries,
+# latexmk, etc).
 travis-all: *.tex
 	for f in $(GENERATED_FIGURES_TEX); do $(MKPDF) "$$f" ; done
+	xelatex LDM-294
+	makeglossaries LDM-294
 	$(MKPDF) -bibtex -f LDM-294
 
 clean :
