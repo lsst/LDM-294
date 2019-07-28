@@ -16,8 +16,9 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	makeglossaries $(DOC)
 	bibtex $(DOC)
 	$(MKPDF) -bibtex -f $(SRC)
-
-
+	makeglossaries $(DOC)
+	xelatex $(DOC)
+	xelatex $(DOC)
 
 # Run with -u manually to put \gls on glossary entries
 # Note need to run multiple times to recursively expand all glossary entries!
@@ -52,10 +53,16 @@ productlist.tex: ProductTree.tex
 # "generated" can call python.
 generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
 
-# "travis-all" must only call Latex
+# "travis-all" must only call LaTeX & associated commands (makeglossaries,
+# latexmk, etc).
 travis-all: *.tex
 	for f in $(GENERATED_FIGURES_TEX); do $(MKPDF) "$$f" ; done
+	xelatex LDM-294
+	makeglossaries LDM-294
 	$(MKPDF) -bibtex -f LDM-294
+	makeglossaries $(DOC)
+	xelatex $(DOC)
+	xelatex $(DOC)
 
 clean :
 	latexmk -c
