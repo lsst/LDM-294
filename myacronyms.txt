@@ -1,1 +1,1 @@
-CI:Continuous Integration
+SLAC:No longer an acronym - a place in Menlo Park
