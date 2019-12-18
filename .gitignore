@@ -26,6 +26,7 @@ ProductTree.pdf
 ProductTreeLand.tex
 ProductTreeLand.pdf
 productlist.tex
+aglossary.tex
 # these rules might exclude image files for figures etc.
 # *.ps
 # *.eps

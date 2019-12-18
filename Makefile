@@ -12,15 +12,22 @@ SRC=$(DOC).tex
 all: $(DOC).pdf
 
 LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
+	xelatex $(DOC)
+	makeglossaries $(DOC)
+	bibtex $(DOC)
 	$(MKPDF) -bibtex -f $(SRC)
 	makeglossaries $(DOC)
-	xelatex  $(SRC)
+	xelatex $(DOC)
+	xelatex $(DOC)
 
-
-
-#Run with -u manually to put \gls on glossary entries
+# Run with -u manually to put \gls on glossary entries
+# Note need to run multiple times to recursively expand all glossary entries!
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
-	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  devprocess.tex dmarc.tex dmorg.tex dmroles.tex leadtutes.tex probman.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
+	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM"  aglossary.tex
 
 wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
 	python makeWbs.py ${PRODUCT_CSV}
@@ -46,11 +53,17 @@ productlist.tex: ProductTree.tex
 # "generated" can call python.
 generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
 
-# "travis-all" must only call Latex
+# "travis-all" must only call LaTeX & associated commands (makeglossaries,
+# latexmk, etc).
 travis-all: *.tex
 	for f in $(GENERATED_FIGURES_TEX); do $(MKPDF) "$$f" ; done
+	xelatex LDM-294
+	makeglossaries LDM-294
 	$(MKPDF) -bibtex -f LDM-294
+	makeglossaries $(DOC)
+	xelatex $(DOC)
+	xelatex $(DOC)
 
 clean :
 	latexmk -c
-	rm *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
+	rm -f *.pdf *.nav *.bbl *.xdv *.snm *.gls *.glg *.glo
