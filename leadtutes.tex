@@ -19,9 +19,9 @@ The \gls{SQuaRE} group is primarily charged with providing technical feedback to
 
 \item \gls{DM} documentation support, to include defining standards and providing tooling for documentation as well as some document writing
 
-\item Support of software products build infrastructure e.g. Jenkins, and release tools e.g. container creation.
+\item Development and support of the build infrastructure (e.g. Jenkins) and release tools (e.g. container creation) for all \gls{DM} software products
 
-\item Support  repositories of coding/release artifacts e.g. private conda repository, to support releases as needed.
+\item Provide repositories of release artifacts, such as private Conda repositories, to support releases as needed and agreed with the Systems Engineering Team (\secref{sect:sysengt})
 
 \end{itemize}
 
@@ -38,20 +38,6 @@ Since a large majority of the \gls{ICBS} work involves procurement and contracte
 	\item \gls{REUNA}: Chilean National Networks
 	\item Florida International University/AmLight: International Networks connecting Chile and the United States, and \gls{US} National Networks.
 \end{itemize}
-
-\subsubsection{Middleware \label{sec:middleware}}
-The leader of this cross cutting group is based in Tucson see \secref{role:mwlead}.
-This team  requires effort from the Data Facility(ies), Alert Production,  Data Release Production and Architecture.
-Effort for middleware must be negotiated by the middleware leader with the \gls{T/CAM}s of the various institutes.
-The main elements of middleware are \gls{Butler} and the pipe\_base task framework - however it is also important that we have back end implementations which work at scale in the Data Facility for both Alert and Data Release production.
-
-
-\subsubsection{Science Platform \label{sec:sciplat}}
-The leader of this cross cutting group is based in Tucson see \secref{role:lsplead}
-The platform consists of three components as outlined in \citeds{LDM-542} and is deployed in
-various locations. There are various teams involved in the effort which is coordinated via
-weekly meetings and an active slack channel. Though not a single product this should appear cohesive to users
-and as such a single science lead has been identified as essential (see \secref{role:scip}.
 
 \subsection {Princeton University \label{sect:princeton}}
 
@@ -169,12 +155,13 @@ scale tests to validate the performance of the science data archive and data acc
 
 \subsection {NCSA\label{sect:ncsa}}
 
+NCSA hosts the \gls{LSST} Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the \gls{LSST} Data Facility (\gls{LDF}), described below.
 
-NCSA hosts the \gls{LSST} Project Office Information Security Officer and Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the \gls{LSST} Data Facility (\gls{LDF}), described below.
+\subsubsection{LSST Data Facility \label{sect:ldf}}
 
 The \gls{LDF} group has the following major areas of activity within \gls{DM}:
 
-\begin{enumerate}
+\begin{itemize}
 	\item	\gls{Construction} of services, including software and operational methods, supporting observatory operations and nightly data production (Level 1 Services). Level 1 Services ingest raw data from all Observatory cameras and the Engineering and Facilities Database (\gls{EFD}) into the central archive; provide a dedicated computing service controllable by the Observatory Control System (\gls{OCS}) for prompt generation of nightly \gls{calibration} assessments, science image parameters, and \gls{transient} alerts; and provide computing services, data access, and a \gls{QA} portal for Observatory staff.
 	\item	\gls{Construction} of services, including software and operational methods, for bulk batch data production. \gls{Batch Production} Services execute processing campaigns, using resources at \gls{NCSA} and satellite computing centers, to produce data release products, generate templates and calibrations, and perform scaled testing of science pipelines to assess production readiness.
 	\item	\gls{Construction} of services, including software and operational methods, for hosting and operating data access services for community users. These services host the \gls{SUIT} portal, manage the JupyterLab environment, provide computing and data storage for the Data Access Centers, enable bulk data export, and host the \gls{LSST} limited alert-filtering service and feeds to community-provided brokers.
@@ -183,5 +170,6 @@ The \gls{LDF} group has the following major areas of activity within \gls{DM}:
 	\item	Provisioning and management of hardware infrastructure at NCSA and the Chilean Base Center for all services described above, as well as infrastructure for project-wide network-based computer security services and authentication and authorization services.
 	\item	\gls{Construction} and operation of a service management framework and methods to monitor operations of service elements in accordance with service level agreements, track issues, manage service availability, and support change management.
 	\item	Operation of services and \gls{IT} systems during construction to support on-going development, integration, and commissioning activities.
-\end{enumerate}
+\end{itemize}
+
 The \gls{LDF} group is responsible for delivering instantiated production services, which integrate software and hardware components developed across \gls{DM}. The \gls{LDF} group performs large-scale tests to integrate and verify production readiness of all components.
