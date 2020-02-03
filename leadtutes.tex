@@ -19,7 +19,9 @@ The \gls{SQuaRE} group is primarily charged with providing technical feedback to
 
 \item \gls{DM} documentation support, to include defining standards and providing tooling for documentation as well as some document writing
 
-\item Support of publicly released software products, including porting and distributing them according to the scientific community's needs
+\item Development and support of the build infrastructure (e.g. Jenkins) and release tools (e.g. container creation) for all \gls{DM} software products
+
+\item Provide repositories of release artifacts, such as private Conda repositories, to support releases as needed and agreed with the Systems Engineering Team (\secref{sect:sysengt})
 
 \end{itemize}
 
@@ -153,12 +155,13 @@ scale tests to validate the performance of the science data archive and data acc
 
 \subsection {NCSA\label{sect:ncsa}}
 
+NCSA hosts the \gls{LSST} Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the \gls{LSST} Data Facility (\gls{LDF}), described below.
 
-NCSA hosts the \gls{LSST} Project Office Information Security Officer and Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the \gls{LSST} Data Facility (\gls{LDF}), described below.
+\subsubsection{LSST Data Facility \label{sect:ldf}}
 
 The \gls{LDF} group has the following major areas of activity within \gls{DM}:
 
-\begin{enumerate}
+\begin{itemize}
 	\item	\gls{Construction} of services, including software and operational methods, supporting observatory operations and nightly data production (Level 1 Services). Level 1 Services ingest raw data from all Observatory cameras and the Engineering and Facilities Database (\gls{EFD}) into the central archive; provide a dedicated computing service controllable by the Observatory Control System (\gls{OCS}) for prompt generation of nightly \gls{calibration} assessments, science image parameters, and \gls{transient} alerts; and provide computing services, data access, and a \gls{QA} portal for Observatory staff.
 	\item	\gls{Construction} of services, including software and operational methods, for bulk batch data production. \gls{Batch Production} Services execute processing campaigns, using resources at \gls{NCSA} and satellite computing centers, to produce data release products, generate templates and calibrations, and perform scaled testing of science pipelines to assess production readiness.
 	\item	\gls{Construction} of services, including software and operational methods, for hosting and operating data access services for community users. These services host the \gls{SUIT} portal, manage the JupyterLab environment, provide computing and data storage for the Data Access Centers, enable bulk data export, and host the \gls{LSST} limited alert-filtering service and feeds to community-provided brokers.
@@ -167,5 +170,6 @@ The \gls{LDF} group has the following major areas of activity within \gls{DM}:
 	\item	Provisioning and management of hardware infrastructure at NCSA and the Chilean Base Center for all services described above, as well as infrastructure for project-wide network-based computer security services and authentication and authorization services.
 	\item	\gls{Construction} and operation of a service management framework and methods to monitor operations of service elements in accordance with service level agreements, track issues, manage service availability, and support change management.
 	\item	Operation of services and \gls{IT} systems during construction to support on-going development, integration, and commissioning activities.
-\end{enumerate}
+\end{itemize}
+
 The \gls{LDF} group is responsible for delivering instantiated production services, which integrate software and hardware components developed across \gls{DM}. The \gls{LDF} group performs large-scale tests to integrate and verify production readiness of all components.

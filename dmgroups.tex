@@ -83,6 +83,8 @@ The specific tasks of this group include:
 \item Formalize the documentation tree for DM, defining which documents need to be produced for each product
 \item Agree the process for tracing the baseline requirements verification and validation status.
 \item Agree the formal versions of documents and software which form the technical baseline, individual items will go through the CCB for formal approval.  This includes upload to docushare.
+\item Perform releases of software products --- including, but not limited to, the Science Pipelines --- as needed, using tooling provided by SQuaRE (\secref{sect:square}).
+\item Debug build problems related tot he build infrastructure for any product being released --- pass off product specific problems to the relevant product time.
 \end{itemize}
 
 Some of these tasks are will be delegated to individual group members.
@@ -190,10 +192,10 @@ All RFCs that implies one of the following changes:
 
 \begin{itemize}
 \item Changes to controlled documents
-\item API changes to the codebase, including deprecations
+\item API changes to the codebase, including deprecation
 \item Data model changes
 \end{itemize}
- 
+
 need to be \textit{flagged} and therefore approved by the DMCCB, as detailed in the \href{https://developer.lsst.io/communications/rfc.html#rfc-exceptions}{Developer Guide}.
 
 
@@ -206,3 +208,20 @@ Decisions on the strategic goals of these activities are made in conjunction wit
 The DM Science Validation Team is chaired by the DM Science Validation Scientist (\secref{role:dmsvs}).
 Its membership includes the DM Pipelines Scientist (\secref{role:pipe}) and the various Institutional Science/Engineering Leads (\secref{role:scilead}).
 Depending on the activities currently being executed, other members of the System Science Team (\secref{sect:dmsst}), the wider DM Construction Project, and/or external experts may be temporarily added to the team.
+
+
+\subsection{Middleware Team \label{sec:middleware}}
+
+The Middleware Team is responsible for delivering the Data Butler and pipe\_base task framework, including supporting infrastructure to make it possible to deploy them at-scale in the Data Facility in support of Alert and Data Release Production pipeline execution.
+
+The Middleware Team has a Product Owner (Robert Gruendl, NCSA at time of writing) and Manager (\secref{role:mwlead}).
+However, it does not have a permanent staff; rather it draws on effort from across the Alert Production (\secref{sect:ap}), Data Release Production (\secref{sect:drp}), Data Access Services (\secref{sect:dax}), and Data Facility (\secref{sect:ldf}) groups, as well as other members of the subsystem as necessary.
+Effort allocation is agreed between the Middleware Manager and the T/CAMs of the various institutes.
+
+\subsection{Science Platform Team \label{sec:sciplat}}
+
+The Science Platform Team is responsible for delivering the three aspects of the LSST Science Platform, as described in \citeds{LDM-542}.
+
+The Product Owner for the Science Platform is the \gls{DMSS}, supported by the Science Platform Scientist (\secref{role:scip}).
+The team is managed by the Middleware Manager (\secref{role:mwlead}).
+They coordinate effort across the subsystem, drawing primarily on the Data Access Services (\secref{sect:dax}), Data Facility (\secref{sect:ldf}) and SQuaRE (\secref{sect:square}) teams.
