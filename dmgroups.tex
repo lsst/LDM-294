@@ -84,7 +84,12 @@ The specific tasks of this group include:
 \item Agree the process for tracing the baseline requirements verification and validation status.
 \item Agree the formal versions of documents and software which form the technical baseline, individual items will go through the CCB for formal approval.  This includes upload to docushare.
 \item Perform releases of software products --- including, but not limited to, the Science Pipelines --- as needed, using tooling provided by SQuaRE (\secref{sect:square}).
-\item Debug build problems related tot he build infrastructure for any product being released --- pass off product specific problems to the relevant product time.
+\item Debug unexpected build problems:
+\begin{itemize}
+  \item{Resolve issues related to the underlying build infrastructure directly;}
+  \item{Pass off product-specific problems to the relevant product team.}
+\end{itemize}
+\item Maintain the build/packaging system e.g.  newinstall.sh, lsstsw, lsst\_build.
 \end{itemize}
 
 Some of these tasks are will be delegated to individual group members.
@@ -223,5 +228,5 @@ Effort allocation is agreed between the Middleware Manager and the T/CAMs of the
 The Science Platform Team is responsible for delivering the three aspects of the LSST Science Platform, as described in \citeds{LDM-542}.
 
 The Product Owner for the Science Platform is the \gls{DMSS}, supported by the Science Platform Scientist (\secref{role:scip}).
-The team is managed by the Middleware Manager (\secref{role:mwlead}).
+The team is managed by the Science Platform Manager (\secref{role:lsplead}).
 They coordinate effort across the subsystem, drawing primarily on the Data Access Services (\secref{sect:dax}), Data Facility (\secref{sect:ldf}) and SQuaRE (\secref{sect:square}) teams.
