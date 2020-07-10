@@ -25,3 +25,13 @@ To build from scratch::
   git submodule update
   pip install -r requirements.txt
   make
+
+
+
+Other notes
+===========
+
+The file DM Product Properties.csv is a direct export from Magic Draw and the script makeProductList.py
+uses this to update the ProductTree.pdf, productlist.tex and wbslist.tex .
+
+The OSS2DMS and DMS2OSS files ...tim
