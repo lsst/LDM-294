@@ -34,4 +34,5 @@ Other notes
 The file DM Product Properties.csv is a direct export from Magic Draw and the script makeProductList.py
 uses this to update the ProductTree.pdf, productlist.tex and wbslist.tex .
 
-The OSS2DMS and DMS2OSS files ...tim
+The OSS2DMS and DMS2OSS files are produced by a macro in https://github.com/lsst/LSE-61/tree/master/support
+run it through the mkmatrix.py to generate the two tex files. (Tim Jenness)
