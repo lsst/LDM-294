@@ -11,7 +11,7 @@ DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex milestones/gantt.pdf
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -19,6 +19,9 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	makeglossaries $(DOC)
 	xelatex $(DOC)
 	xelatex $(DOC)
+
+milestones/gantt.pdf: 
+	cd milestones; make gantt.pdf
 
 # Run with -u manually to put \gls on glossary entries
 # Note need to run multiple times to recursively expand all glossary entries!
