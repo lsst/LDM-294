@@ -4,14 +4,14 @@ TEX=DDMP.tex LDM-294.tex devprocess.tex dmarc.tex dmgroups.tex dmorg.tex dmprodu
 
 MKPDF=latexmk -pdf
 
-GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf
+GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf gantt.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 PRODUCT_CSV=DM\ Product\ Properties.csv
 DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex milestones/gantt.pdf
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -20,8 +20,11 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex milestones/gan
 	xelatex $(DOC)
 	xelatex $(DOC)
 
-milestones/gantt.pdf:
-	cd milestones; make gantt.pdf
+gantt.tex:
+	PYTHONPATH=milestones python milestones/milestones.py gantt
+
+gantt.pdf: gantt.tex
+	$(MKPDF) $<
 
 # Run with -u manually to put \gls on glossary entries
 # Note need to run multiple times to recursively expand all glossary entries!
@@ -50,7 +53,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex milestones/gantt.pdf
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
 
 # "travis-all" must only call LaTeX & associated commands (makeglossaries,
 # latexmk, etc).
