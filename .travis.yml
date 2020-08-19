@@ -1,14 +1,15 @@
 sudo: true
-dist: trusty
+dist: xenial
 services:
    - docker
 language: python
 python:
-   - '3.6'
+   - '3.7'
 before_install:
    - "pip install 'lander>=0.1.0,<0.2'"
 install:
    - "pip install -r requirements.txt"
+   - "pip install -U -r milestones/requirements.txt"
 script:
    # Prepare document dependencies in Travis (Python 3.5) environment
    - "make generated"

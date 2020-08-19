@@ -4,14 +4,14 @@ TEX=DDMP.tex LDM-294.tex devprocess.tex dmarc.tex dmgroups.tex dmorg.tex dmprodu
 
 MKPDF=latexmk -pdf
 
-GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf
+GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf gantt.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 PRODUCT_CSV=DM\ Product\ Properties.csv
 DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -19,6 +19,12 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex
 	makeglossaries $(DOC)
 	xelatex $(DOC)
 	xelatex $(DOC)
+
+gantt.tex:
+	PYTHONPATH=milestones python milestones/milestones.py gantt
+
+gantt.pdf: gantt.tex
+	$(MKPDF) $<
 
 # Run with -u manually to put \gls on glossary entries
 # Note need to run multiple times to recursively expand all glossary entries!
