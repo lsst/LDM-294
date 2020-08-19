@@ -20,7 +20,7 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex milestones/gan
 	xelatex $(DOC)
 	xelatex $(DOC)
 
-milestones/gantt.pdf: 
+milestones/gantt.pdf:
 	cd milestones; make gantt.pdf
 
 # Run with -u manually to put \gls on glossary entries
@@ -50,7 +50,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex milestones/gantt.pdf
 
 # "travis-all" must only call LaTeX & associated commands (makeglossaries,
 # latexmk, etc).
