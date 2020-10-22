@@ -35,20 +35,20 @@ gantt.pdf: gantt.tex
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
 	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM Gen"  $(TEX)
 
-wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
+wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV} reqinst.txt
 	python makeWbs.py ${PRODUCT_CSV}
 
-ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
+ProductTree.tex: makeProductTree.py ${PRODUCT_CSV} reqinst.txt
 	python --version
 	python makeProductTree.py --depth=2 --file=${PRODUCT_CSV}
 
 ProductTree.pdf: ProductTree.tex reqinst.txt 
 	$(MKPDF) $<
 
-ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
+ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV} reqinst.txt
 	python makeProductTree.py --land=2 --file=${PRODUCT_CSV}
 
-ProductTreeLand.pdf: ProductTreeLand.tex
+ProductTreeLand.pdf: ProductTreeLand.tex reqinst.txt
 	$(MKPDF) $<
 
 # productlist.tex is generated as a by-product of making ProductTree.tex.
