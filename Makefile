@@ -11,7 +11,7 @@ DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf reqinst.txt
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf 
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -42,7 +42,7 @@ ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
 	python --version
 	python makeProductTree.py --depth=2 --file=${PRODUCT_CSV}
 
-ProductTree.pdf: ProductTree.tex
+ProductTree.pdf: ProductTree.tex reqinst.txt 
 	$(MKPDF) $<
 
 ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
@@ -57,7 +57,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex reqinst.txt
 
 # "travis-all" must only call LaTeX & associated commands (makeglossaries,
 # latexmk, etc).
