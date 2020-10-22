@@ -11,7 +11,7 @@ DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf reqinst.txt
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -19,6 +19,10 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
 	makeglossaries $(DOC)
 	xelatex $(DOC)
 	xelatex $(DOC)
+
+reqinst.txt:
+	touch reqinst.txt
+	pip install -r requirements.txt
 
 gantt.tex:
 	PYTHONPATH=milestones python milestones/milestones.py gantt
