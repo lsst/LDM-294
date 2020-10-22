@@ -21,6 +21,10 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           python -m pip install "lander<2.0.0"
+          python -m pip install -r requirements.txt
+          python -m pip install -r milestones/requirements.txt
+          make generated
+
 
       - name: TeX build
         run: |

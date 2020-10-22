@@ -23,9 +23,10 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
 reqinst.txt:
 	touch reqinst.txt
 	pip install -r requirements.txt
+	pip install -r milestones/requirements.txt
 
 gantt.tex:
-	PYTHONPATH=milestones python milestones/milestones.py gantt
+	PYTHONPATH=milestones python milestones/milestones.py  milestones/data/pmcs/202007-ME.xls gantt
 
 gantt.pdf: gantt.tex
 	$(MKPDF) $<
