@@ -26,7 +26,7 @@ reqinst.txt:
 	pip install -r milestones/requirements.txt
 
 gantt.tex:
-	PYTHONPATH=milestones python milestones/milestones.py --pmcs-data data/pmcs/202007-ME.xls gantt
+	PYTHONPATH=milestones python milestones/milestones.py --pmcs-data milestones/data/pmcs/202007-ME.xls gantt
 
 gantt.pdf: gantt.tex
 	$(MKPDF) $<
