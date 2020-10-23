@@ -11,6 +11,12 @@ jobs:
         with:
           fetch-depth: 0 # full history for metadata
           submodules: true
+        run: |
+          cd milestones
+          git lfs install
+          git config -f .lfsconfig lfs.url https://git-lfs.lsst.codes
+          git lfs pull
+
 
       - name: Set up Python
         uses: actions/setup-python@v2
