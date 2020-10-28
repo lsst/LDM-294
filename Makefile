@@ -11,7 +11,7 @@ DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf 
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
@@ -20,8 +20,13 @@ LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf
 	xelatex $(DOC)
 	xelatex $(DOC)
 
+reqinst.txt:
+	touch reqinst.txt
+	pip install -r requirements.txt
+	pip install -r milestones/requirements.txt
+
 gantt.tex:
-	PYTHONPATH=milestones python milestones/milestones.py gantt
+	PYTHONPATH=milestones python milestones/milestones.py   gantt
 
 gantt.pdf: gantt.tex
 	$(MKPDF) $<
@@ -31,20 +36,20 @@ gantt.pdf: gantt.tex
 aglossary.tex:  ${TEX} myacronyms.txt skipacronyms.txt
 	$(TEXMFHOME)/../bin/generateAcronyms.py  -g -t "DM Gen"  $(TEX)
 
-wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV}
+wbslist.tex: makeWbs.py wbs/*tex ${PRODUCT_CSV} reqinst.txt
 	python makeWbs.py ${PRODUCT_CSV}
 
-ProductTree.tex: makeProductTree.py ${PRODUCT_CSV}
+ProductTree.tex: makeProductTree.py ${PRODUCT_CSV} reqinst.txt
 	python --version
 	python makeProductTree.py --depth=2 --file=${PRODUCT_CSV}
 
-ProductTree.pdf: ProductTree.tex
+ProductTree.pdf: ProductTree.tex reqinst.txt 
 	$(MKPDF) $<
 
-ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV}
+ProductTreeLand.tex: makeProductTree.py ${PRODUCT_CSV} reqinst.txt
 	python makeProductTree.py --land=2 --file=${PRODUCT_CSV}
 
-ProductTreeLand.pdf: ProductTreeLand.tex
+ProductTreeLand.pdf: ProductTreeLand.tex reqinst.txt
 	$(MKPDF) $<
 
 # productlist.tex is generated as a by-product of making ProductTree.tex.
@@ -53,7 +58,7 @@ productlist.tex: ProductTree.tex
 # These targets are designed to be used by Travis
 # so that we can control when python will be called.
 # "generated" can call python.
-generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex
+generated: $(GENERATED_FIGURES_TEX) wbslist.tex aglossary.tex reqinst.txt
 
 # "travis-all" must only call LaTeX & associated commands (makeglossaries,
 # latexmk, etc).
