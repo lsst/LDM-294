@@ -29,7 +29,7 @@ gantt.tex:
 	PYTHONPATH=milestones python milestones/milestones.py   gantt
 
 gantt.pdf: gantt.tex
-	$(MKPDF) $<
+	pdflatex gantt.tex	
 
 # Run with -u manually to put \gls on glossary entries
 # Note need to run multiple times to recursively expand all glossary entries!
