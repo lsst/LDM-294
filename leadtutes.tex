@@ -2,8 +2,8 @@
 
 \subsection{LSST Tucson\label{sect:tucson}}
 
-The \gls{LSST} Project Office in Tucson hosts the \gls{DMPM} (\secref{role:dmpm}) and deputy DMPM, the \gls{DMSS} (\secref{role:dmps}), and the \gls{Systems Engineer} (\secref{role:sysengineer}).
-In addition, it is home to the Science Quality and Reliability Engineering (\gls{SQuaRE}) group and \gls{LSST} International Communications and Base Site (\gls{ICBS}) groups, described below.
+The LSST Project Office in Tucson hosts the \gls{DMPM} (\secref{role:dmpm}) and deputy DMPM, the \gls{DMSS} (\secref{role:dmps}), and the \gls{Systems Engineer} (\secref{role:sysengineer}).
+In addition, it is home to the Science Quality and Reliability Engineering (\gls{SQuaRE}) group and LSST International Communications and Base Site (\gls{ICBS}) groups, described below.
 
 \subsubsection{Science Quality and Reliability Engineering \label{sect:square}}
 
@@ -28,7 +28,7 @@ The \gls{SQuaRE} group is primarily charged with providing technical feedback to
 In the event that \gls{SQuaRE} identifies issues with the performance or future maintainability of the \gls{DM} codebase, it will bring them to the attention of the \gls{DM} Software Architect. In the event that \gls{SQuaRE} identifies issues with the quality of the data or algorithmic performance, it will bring them to the attention of the \gls{DMSS}.
 
 \subsubsection{LSST International Communications and Base Site}
-The \gls{ICBS} group spans both Tucson and La Serena, and is responsible for the design, procurement, installation, deployment, verification, and operating support during construction and commissioning of all data communications networks at the \gls{Summit} and Base sites, as well as links between all the \gls{LSST} Sites, with two exceptions:  the \gls{Summit} Network (\gls{WBS} 1.04C.12.5) and the \gls{Archive} External Network (1.02C.07.04.06).  In the case of the exceptions, there are technical and managerial interfaces between the \gls{ICBS} and the responsible parties, as well as overlaps of staff.  The \gls{LSST} Network Engineering Team (\gls{NET}) spans all of these networking assignees and is chaired by the \gls{ICBS} staff.
+The ICBS group spans both Tucson and La Serena, and is responsible for the design, procurement, installation, deployment, verification, and operating support during construction and commissioning of all data communications networks at the \gls{Summit} and Base sites, as well as links between all the LSST Sites, with two exceptions:  the \gls{Summit} Network (\gls{WBS} 1.04C.12.5) and the \gls{Archive} External Network (1.02C.07.04.06).  In the case of the exceptions, there are technical and managerial interfaces between the \gls{ICBS} and the responsible parties, as well as overlaps of staff.  The LSST Network Engineering Team (\gls{NET}) spans all of these networking assignees and is chaired by the \gls{ICBS} staff.
 
 The \gls{ICBS} group is also jointly responsible with the Data Facility Team at \gls{NCSA} for procurement, installation, deployment, verification, and operating support during construction and commissioning of the computing and storage infrastructure at the Base Site.
 
@@ -49,19 +49,19 @@ The \gls{DRP} group has three major areas of activity within \gls{DM}.
 
 \begin{itemize}
 
-  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generate \gls{LSST}'s annual data releases;}
+  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generate LSST's annual data releases;}
 
   \item{Definition and implementation of the algorithms and pipelines which will be used to produce the ``calibration products'' (for example, flat fields, characterization of detector effects, etc) which will be used as inputs to the photometric \gls{calibration} procedure in both nightly and annual data processing. This includes the development of the spectrophotometric data reduction \gls{pipeline} for the Auxiliary Telescope;}
 
-  \item{Development, in conjunction with the \gls{Alert Production} team (\gls{AP}; \secref{sect:ap}), of a library of re-usable software libraries and components which form the basis of both the \gls{AP} and \gls{DRP} pipelines and which are made available to science users within the \gls{LSST} \gls{Science Platform}.}
+  \item{Development, in conjunction with the \gls{Alert Production} team (\gls{AP}; \secref{sect:ap}), of a library of re-usable software libraries and components which form the basis of both the \gls{AP} and \gls{DRP} pipelines and which are made available to science users within the LSST \gls{Science Platform}.}
 
 \end{itemize}
 
 Development of software in support of annual data releases and of reusable software components are carried out under the direction of the \gls{DRP} Science Lead, who acts as product owner for this part of the system.
 The \gls{DRP} Science Lead is ultimately responsible to both the Pipelines Scientist (\secref{role:pipe}) and \gls{DMSS} (\secref{role:dmps}).
 
-The product owner for the \gls{calibration} products is the \gls{LSST} \gls{Calibration Scientist} (who doubles as the Pipelines Scientist, \secref{role:pipe}).
-The \gls{Calibration Scientist} liaises with other \gls{LSST} subsystems and with the products owners of the annual and nightly data processing pipelines to ensure that appropriate \gls{calibration} products are available to those pipelines to enable them to meet specifications.
+The product owner for the \gls{calibration} products is the LSST \gls{Calibration Scientist} (who doubles as the Pipelines Scientist, \secref{role:pipe}).
+The \gls{Calibration Scientist} liaises with other LSST subsystems and with the products owners of the annual and nightly data processing pipelines to ensure that appropriate \gls{calibration} products are available to those pipelines to enable them to meet specifications.
 
 Management of the group is the responsibility of the Deputy \gls{Science Pipelines} \gls{T/CAM}, reporting to the \gls{Science Pipelines} \gls{T/CAM} and ultimately to the \gls{DMPM} (\secref{role:dmpm}).
 
@@ -78,13 +78,13 @@ The \gls{AP} group has 4 major areas of activity within \gls{DM}.
 
 \begin{itemize}
 
-  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generate alerts from \gls{LSST}'s image stream.  This will serve as the alert generation \gls{pipeline};}
+  \item{Definition and implementation of the scientific algorithms and pipelines which will be used to generate alerts from LSST's image stream.  This will serve as the alert generation \gls{pipeline};}
 
   \item{Definition and implementation a scalable and reliable system for transmitting the alerts generated by the alert generation \gls{pipeline} including a mechanism for applying simple filters to the stream. This is the alert distribution and filtering system;}
 
   \item{Definition and implementation of a system for identifying moving objects in our solar system and fitting their physical properties. This is the Moving Objects Processing System (\gls{MOPS});}
 
-  \item{Development, in conjunction with the Data \gls{Release} Production team (\gls{DRP}; \secref{sect:drp}), of a library of re-usable software libraries and components which form the basis of both the \gls{AP} and \gls{DRP} pipelines and which are made available to science users within the \gls{LSST} \gls{Science Platform}.}
+  \item{Development, in conjunction with the Data \gls{Release} Production team (\gls{DRP}; \secref{sect:drp}), of a library of re-usable software libraries and components which form the basis of both the \gls{AP} and \gls{DRP} pipelines and which are made available to science users within the LSST \gls{Science Platform}.}
 
 \end{itemize}
 
@@ -97,7 +97,7 @@ The \gls{AP} group is responsible for delivering software which adheres to the a
 In addition, the \gls{AP} group is responsible for testing each major product delivered to demonstrate its fitness for purpose, and working with the \gls{DMSS} and \gls{DM} System Science Team (\secref{sect:dmsst}) to define, run and analyze ``data challenges'' and other large scale tests to validate the performance of the data release production system.
 
 \subsection {California Institute of Technology/IPAC\label{sect:ipac}}
-IPAC hosts the \gls{LSST} \gls{Science Platform} Scientist (\secref{role:scip})  and provides some support for   Firefly.
+IPAC hosts the LSST \gls{Science Platform} Scientist (\secref{role:scip})  and provides some support for   Firefly.
 This is now at the level of 1 FTE total.
 
 
@@ -117,14 +117,14 @@ within \gls{DM}:
 \begin{itemize}
 
   \item{Provides software to support ingestion, indexing, query, and administration of \gls{DM} catalog and image
-  data products, data \gls{provenance}, and other associated \gls{metadata} within the \gls{LSST} Data Access Centers;}
+  data products, data \gls{provenance}, and other associated \gls{metadata} within the LSST Data Access Centers;}
 
   \item{Provides implementations of data access services (including \gls{IVOA} services), as well as associated
-  client libraries, to be hosted within the \gls{LSST} Data Access Centers, which facilitate interaction between
-  \gls{LSST} data products and tools provided by both other parts of the \gls{LSST} project and by the astronomical
+  client libraries, to be hosted within the LSST Data Access Centers, which facilitate interaction between
+  LSST data products and tools provided by both other parts of the LSST project and by the astronomical
   research community at large;}
 
-  \item{Provides a Python framework (the ``Data \gls{Butler}''), used by the \gls{LSST} science pipelines, to facilitate
+  \item{Provides a Python framework (the ``Data \gls{Butler}''), used by the LSST science pipelines, to facilitate
   abstract persistence/retrieval of in-memory Python objects to/from generic archives of those objects;}
 
   \item{Provides a Python framework (``SuperTask'') which serves as an interface layer between \gls{pipeline}
@@ -146,7 +146,7 @@ scale tests to validate the performance of the science data archive and data acc
 
 \subsection {NCSA\label{sect:ncsa}}
 
-NCSA hosts the \gls{LSST} Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the \gls{LSST} Data Facility (\gls{LDF}), described below.
+NCSA hosts the LSST Computer Security group, as well as the \gls{DM} group responsible for construction and integration of the LSST Data Facility (\gls{LDF}), described below.
 
 \subsubsection{LSST Data Facility \label{sect:ldf}}
 
@@ -155,9 +155,9 @@ The \gls{LDF} group has the following major areas of activity within \gls{DM}:
 \begin{itemize}
 	\item	\gls{Construction} of services, including software and operational methods, supporting observatory operations and nightly data production (Level 1 Services). Level 1 Services ingest raw data from all Observatory cameras and the Engineering and Facilities Database (\gls{EFD}) into the central archive; provide a dedicated computing service controllable by the Observatory Control System (\gls{OCS}) for prompt generation of nightly \gls{calibration} assessments, science image parameters, and \gls{transient} alerts; and provide computing services, data access, and a \gls{QA} portal for Observatory staff.
 	\item	\gls{Construction} of services, including software and operational methods, for bulk batch data production. \gls{Batch Production} Services execute processing campaigns, using resources at \gls{NCSA} and satellite computing centers, to produce data release products, generate templates and calibrations, and perform scaled testing of science pipelines to assess production readiness.
-	\item	\gls{Construction} of services, including software and operational methods, for hosting and operating data access services for community users. These services host the \gls{SUIT} portal, manage the JupyterLab environment, provide computing and data storage for the Data Access Centers, enable bulk data export, and host the \gls{LSST} limited alert-filtering service and feeds to community-provided brokers.
-	\item	\gls{Construction} of services, including software and operational methods, for the \gls{Data Backbone}. \gls{Data Backbone} Services provide ingestion, management, distribution, access, integrity checking, and backup and disaster recovery for files and catalog data in the \gls{LSST} central data archive.
-	\item	\gls{Construction} and operation of services for \gls{LSST} staff. Staff Services provide specific testing and integration platforms (e.g., a Prototype \gls{Data Access Center}) and general computing and data services for \gls{LSST} developers.
+	\item	\gls{Construction} of services, including software and operational methods, for hosting and operating data access services for community users. These services host the \gls{SUIT} portal, manage the JupyterLab environment, provide computing and data storage for the Data Access Centers, enable bulk data export, and host the LSST limited alert-filtering service and feeds to community-provided brokers.
+	\item	\gls{Construction} of services, including software and operational methods, for the \gls{Data Backbone}. \gls{Data Backbone} Services provide ingestion, management, distribution, access, integrity checking, and backup and disaster recovery for files and catalog data in the LSST central data archive.
+	\item	\gls{Construction} and operation of services for LSST staff. Staff Services provide specific testing and integration platforms (e.g., a Prototype \gls{Data Access Center}) and general computing and data services for LSST developers.
 	\item	Provisioning and management of hardware infrastructure at NCSA and the Chilean Base Center for all services described above, as well as infrastructure for project-wide network-based computer security services and authentication and authorization services.
 	\item	\gls{Construction} and operation of a service management framework and methods to monitor operations of service elements in accordance with service level agreements, track issues, manage service availability, and support change management.
 	\item	Operation of services and \gls{IT} systems during construction to support on-going development, integration, and commissioning activities.
