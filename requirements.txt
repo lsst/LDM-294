@@ -1,2 +1,4 @@
 treelib==1.5.1
 matplotlib
+pyyaml
+xlrd
