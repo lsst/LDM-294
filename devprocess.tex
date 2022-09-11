@@ -10,17 +10,19 @@ At the beginning of each development cycle, we define a set of ``epics'', which 
 During the development cycle, all code is kept under continuous integration\footnote{Currently using the Jenkins tool; \url{https://jenkins.io}} (\gls{CI}).
 Code is managed on GitHub\url{https://github.com}, and is made available using an open source license.
 
-Releases follow the six-month cadence, but the \gls{CI} system ensures that code on the \texttt{master} branch is always deployeable.
+Releases follow the six-month cadence, but the \gls{CI} system ensures that code on the \texttt{main} branch is always deployable.
 
-\citeds{DMTN-020} describes in detail the intgration of \gls{DM}'s agile approach to software development with the \gls{Earned Value} Managenent system used by the \gls{LSST} construction project.
+\citeds{DMTN-020} describes in detail the integration of \gls{DM}'s agile approach to software development with the \gls{Earned Value} Management system used by the \gls{LSST} construction project.
 
 \subsection{Communications}
 
 The epics for each six-month development cycle are agreed at the \gls{DMLT} face-to-face meeting near the beginning of the period (see \secref{sect:dmlt}).
 
-The T/CAMs of each of the institutions meet via video on Tuesdays and Fridays for a short ``standup'' meeting to ensure that any cross-team issues are surfaced and resolved expeditiously.
+The T/CAMs of each of the institutions meet via video on Thursdays for a short ``standup'' meeting to ensure that any cross-team issues are surfaced and resolved expeditiously.
 This meeting is chaired by the Deputy \gls{Project Manager}.
 Each \gls{T/CAM} notes any significant progress of interest to other teams and any problems or potential problems that may arise.
+This is facilitated by a slack bot through which each cam answers a few questions and highlights any topic for live discussion.
+As of June 2022, post DP0, the operations team leads also join this meeting to allow effective linking between construction and operations.
 
 \subsection{Conventions}
 Coding guidelines and conventions are documented online in \url{https://developer.lsst.io}

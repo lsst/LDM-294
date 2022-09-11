@@ -48,7 +48,7 @@ The DMPM  may initiate or request studies by external parties to investigate or 
 
 \subsection {Document Management} \label{sect:docman}
 
-DM  documents will follow the \gls{Systems Engineering} Guidelines of LSST. PDF versions of released documents shall be deposited in \gls{DocuShare} in accordance with the Project's Document Management Plan \citedsp{LPM-51}.
+DM  documents will follow the \gls{Systems Engineering} Guidelines of Rubin Observatory. PDF versions of released documents shall be deposited in \gls{DocuShare} in accordance with the Project's Document Management Plan \citedsp{LPM-51}.
 
 An ``LDM-'' prefix on a document handle indicates that the document is change-controlled at the subsystem level; i.e., it may be released or modified only with the agreement of the DMCCB (\secref{sect:dmccb}). Uncontrolled documents, such as technical notes (prefix ``DMTN-''), may be released whenever the author decides it is appropriate (or when a release is requested by the Project Manager).
 
@@ -65,7 +65,7 @@ The document tree for DM is shown in \figref{fig:doctree}. This is not exhaustiv
 
 Draft DM documents will be kept in GitHub. A single repository per document will be maintained with the head revision containing the \emph{released} version which should match the version on \gls{DocuShare}.
 
-Use of Google Docs or Confluence is tolerated but final delivered documents must conform to the standard \VRO~  format, and hence either produced with \gls{LaTeX}, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate LSST template (\citeds{Document-9224}, \citeds{Document-11920}). The precursor document should then be erased with a pointer to the baseline document, stored in GitHub.
+Use of Google Docs or Confluence is tolerated but final delivered documents must conform to the standard \VRO~  format, and hence either produced with \gls{LaTeX}, using the lsst-texmf package\footnote{\url{https://lsst-texmf.lsst.io}}, or Word, using the appropriate Rubin template (\citeds{Document-9224}, \citeds{Document-11920}). The precursor document should then be erased with a pointer to the baseline document, stored in GitHub.
 
 \subsubsection{End-User Documentation}
 
@@ -115,10 +115,10 @@ The box at the top of Figure \ref{fig:servdoc}, \textit{use cases}, represents s
 
 The next two layers, \textit{reusable production services} and \textit{data, compute, and \gls{IT} security services}, represent tiers of supporting service. Documentation of these layers includes a theory of operations, as described above, explaining the dependencies on supporting service and \gls{ITC} layers, and integration with cross-cutting aspects of the facility.
 
-The \textit{ITC} box represents hardware components supporting all \gls{LDF} services. Documentation of \gls{ITC} describes the system elements at all facility sites, a DM inistration within each security enclave and integration with security operations, the overall provisioning plan, \gls{ITC} system \gls{monitoring} and integration into the service \gls{monitoring} framework, and integration into service management processes including \gls{configuration} management and change management.
+The \textit{ITC} box represents hardware components supporting all \gls{LDF} services. Documentation of \gls{ITC} describes the system elements at all facility sites, a DM administration within each security enclave and integration with security operations, the overall provisioning plan, \gls{ITC} system \gls{monitoring} and integration into the service \gls{monitoring} framework, and integration into service management processes including \gls{configuration} management and change management.
 
 The \textit{software} box represents service software components being developed by the Data Facility.
-Documentation of software elements follows the standards of the LSST software \gls{stack}.
+Documentation of software elements follows the standards of the Rubin software \gls{stack}.
 
 Documents are managed as \gls{configuration} items in the LSST Data Facility \gls{CMDB}.
 
@@ -129,13 +129,13 @@ Configuration control of documents is addressed in \secref{sect:docman}. In this
 \subsubsection{Software Configuration Control}
 
 DM  follows a \gls{git} based versioning system based on public \gls{git} repositories.  The approach is covered in the Developer Guide\footnote{\url{https://developer.lsst.io/processes/workflow.html}} and is consistent with the Project-level \gls{Systems Engineering} Management Plan \citeds{LSE-17}.
-The \texttt{master} branch is the stable code with development done in \emph{ticket} branches (named with the id of the corresponding Jira Ticket describing the work).
-Once reviewed a branch is merged to \texttt{master}, which should always be functional and releasable.
+The \texttt{main} branch is the stable code with development done in \emph{ticket} branches (named with the id of the corresponding Jira Ticket describing the work).
+Once reviewed a branch is merged to \texttt{main}, which should always be functional and releasable.
 % \footnote{LSE-14 seem out of date and should be updated or revoked - titled a guideline it seems inappropriate as an LSE.}
-Releases are recorded by tagging the \texttt{master} branch; release branches can be created if patches are required.
+Releases are recorded by tagging the \texttt{main} branch; release branches can be created if patches are required.
 
 As we approach commissioning and operations DM will have much stricter \gls{configuration} control.
-At this point there will be a version of the software which may need urgent patching, a next candidate release version of the software, and the \texttt{master}.
+At this point there will be a version of the software which may need urgent patching, a next candidate release version of the software, and the \texttt{main}.
 A \gls{patch} to the operational version will require the same fix to be made in the two other versions.
 The role of the DM  \gls{Change Control Board} (\gls{DMCCB}; \secref{sect:dmccb}) becomes very important at this point to ensure only essential fixes make it to the live system as patches and that required features are included in planned releases.
 
@@ -166,7 +166,7 @@ Issue \gls{DM}-17001 is tracking this activity.}
 
 All releases will be identified by a release issue.
 
-Any unscheduled release, major, minor or \gls{patch}, needs to be requested by the end user to the  DMCCB using a RFC  Jira issue. The RFC  shall contain:
+Any unscheduled release, major, minor or \gls{patch}, needs to be requested by the end user to the  \gls{DMCCB} using a \gls{RFC} Jira issue. The RFC  shall contain:
 
 \begin{itemize}
 \item The justification for the release.
@@ -186,9 +186,9 @@ The  DMCCB will approve or reject the proposed release and add a comment to the 
 
 \subsection {Risk Management } \label{sect:risk}
 
-Risks will be dealt with within the LSST Project framework as defined in \citeds{LPM-20}.
+Risks will be dealt with within the Rubin Project framework as defined in \citeds{LPM-20}.
 Risks in DM may be sent to the DM \gls{Project Manager} or Deputy \gls{Project Manager} at any time for consideration to be included in the formal risk register (appropriately costed and weighted).
-All risks are reviewed regularly by the DM \gls{Project Manager} and \gls{Systems Engineer}, who will consider at least three risks per month, and are discussed monthly at the regular DMLT  meetings.
+All risks are reviewed regularly by the DM \gls{Project Manager} and are discussed weekly at the regular DMLT  meetings.
 
 
 \subsection {Quality Assurance  } \label{sect:pa}
