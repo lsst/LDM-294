@@ -1,3 +1,4 @@
+pydantic<2.0.0
 treelib==1.5.1
 matplotlib
 pyyaml
