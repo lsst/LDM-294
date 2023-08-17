@@ -4,15 +4,14 @@ TEX=DDMP.tex LDM-294.tex devprocess.tex dmarc.tex dmgroups.tex dmorg.tex dmprodu
 
 MKPDF=latexmk -pdf
 
-GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf 
-#gantt.pdf
+GENERATED_FIGURES=ProductTree.pdf ProductTreeLand.pdf gantt.pdf
 GENERATED_FIGURES_TEX=$(GENERATED_FIGURES:.pdf=.tex)
 PRODUCT_CSV=DM\ Product\ Properties.csv
 DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex 
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.tex
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
