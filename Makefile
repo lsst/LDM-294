@@ -11,7 +11,7 @@ DOC=LDM-294
 SRC=$(DOC).tex
 all: $(DOC).pdf
 
-LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.pdf 
+LDM-294.pdf: *.tex wbslist.tex ${GENERATED_FIGURES} aglossary.tex gantt.tex
 	xelatex $(DOC)
 	makeglossaries $(DOC)
 	bibtex $(DOC)
